@@ -456,7 +456,7 @@
         
         <div class="site-info">
             <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <p>Profesional & Berkualitas</p>
+            <p>Auto Crop & Cutting Line</p>
         </div>
     </div>
     
@@ -598,6 +598,9 @@
     const BORDER_WHITE = 2 * MM_TO_PX; 
     const CUT_LINE_WIDTH = 1; 
     const A4_MARGIN_PX = 10 * MM_TO_PX; 
+
+    // Direct Link Configuration
+    const DIRECT_LINK_URL = "https://omg10.com/4/10633681";
 
     const PRESETS = {
         "2x3": {
@@ -837,11 +840,25 @@
         editorCanvas.style.cursor = 'default';
     }
 
-    // --- 4. ACTIONS (DIRECT LINKS) ---
+    // --- 4. ACTIONS (DOWNLOAD -> REDIRECT) ---
 
     function downloadSinglePhoto() {
-        window.open('https://omg10.com/4/10633681', '_blank');
-        showToast("Membuka tautan download...");
+        if (!originalImage) return;
+        
+        // 1. Download Process
+        const link = document.createElement('a');
+        const fileName = `KARYA-ABADI-${currentPreset}-${Date.now()}.jpg`;
+        link.download = fileName;
+        link.href = editorCanvas.toDataURL('image/jpeg', 0.95);
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        showToast("File sedang diunduh...");
+
+        // 2. Redirect to Direct Link
+        window.open(DIRECT_LINK_URL, '_blank');
     }
 
     function generateA4Preview() {
@@ -899,8 +916,21 @@
     }
 
     function downloadA4Image() {
-        window.open('https://omg10.com/4/10633681', '_blank');
-        showToast("Membuka tautan download A4...");
+        if (!a4PreviewImage.src) return;
+
+        // 1. Download Process
+        const link = document.createElement('a');
+        link.download = `KARYA-ABADI-A4-${currentPreset}-${Date.now()}.jpg`;
+        link.href = a4PreviewImage.src; // Menggunakan data gambar dari preview
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        showToast("File A4 sedang diunduh...");
+
+        // 2. Redirect to Direct Link
+        window.open(DIRECT_LINK_URL, '_blank');
     }
 
     function showToast(message) {
