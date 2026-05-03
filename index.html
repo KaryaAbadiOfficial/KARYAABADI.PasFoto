@@ -910,6 +910,120 @@
     }
 
 </script>
+<script>
+(function () {
+  if (localStorage.getItem("adsClosed") === "true") return;
 
+  function showAd() {
+    if (document.getElementById("anchorAds")) return;
+
+    var style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes slideUpBounce {
+        0% { transform: translateY(100%); opacity: 0; }
+        60% { transform: translateY(-10px); opacity: 1; }
+        80% { transform: translateY(5px); }
+        100% { transform: translateY(0); }
+      }
+
+      @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+      }
+
+      #anchorAdsBox {
+        animation: slideUpBounce 0.8s ease;
+        background: linear-gradient(135deg, #4facfe, #00f2fe);
+        color: #fff;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        box-shadow: 0 -4px 15px rgba(0,0,0,0.3);
+      }
+
+      #anchorAdsBox img {
+        transition: transform 0.3s ease;
+      }
+
+      #anchorAdsBox img:hover {
+        transform: scale(1.1);
+      }
+
+      #adsBtn {
+        animation: pulse 1.5s infinite;
+        transition: all 0.3s ease;
+      }
+
+      #adsBtn:hover {
+        transform: scale(1.1);
+        background: #ffcc00;
+      }
+    `;
+    document.head.appendChild(style);
+
+    var ad = document.createElement("div");
+    ad.id = "anchorAds";
+
+    ad.innerHTML = `
+      <div id="anchorAdsBox" style="
+        position:fixed;
+        bottom:0;
+        left:0;
+        width:100%;
+        padding:15px;
+        text-align:center;
+        font-family:Arial, sans-serif;
+        z-index:9999;
+      ">
+        <span id="closeAds" style="
+          position:absolute;
+          right:12px;
+          top:8px;
+          font-size:20px;
+          cursor:pointer;
+          font-weight:bold;
+        ">✕</span>
+
+        <a href="https://monetag.com/?ref_id=ttxJ" target="_blank">
+          <img src="https://latestlogo.com/wp-content/uploads/2024/03/monetag.png"
+          style="max-width:120px; height:auto; margin-bottom:10px;">
+        </a>
+
+        <div style="font-weight:bold; font-size:17px;">
+          Hasilkan Uang dari Internet
+        </div>
+
+        <div style="font-size:14px; margin-bottom:12px;">
+          CUMA MODAL HP
+        </div>
+
+        <a id="adsBtn" href="https://omg10.com/4/10633681" target="_blank" style="
+          display:inline-block;
+          background:#FFD700;
+          color:#000;
+          font-weight:bold;
+          padding:12px 25px;
+          border-radius:30px;
+          text-decoration:none;
+        ">MULAI</a>
+      </div>
+    `;
+
+    document.body.appendChild(ad);
+
+    document.getElementById("closeAds").onclick = function () {
+      document.getElementById("anchorAds").remove();
+      localStorage.setItem("adsClosed", "true");
+    };
+  }
+
+  setInterval(function () {
+    if (localStorage.getItem("adsClosed") !== "true") {
+      showAd();
+    }
+  }, 10000);
+
+})();
+</script>
 </body>
 </html>
