@@ -80,8 +80,8 @@
             flex-shrink: 0;
             border-radius: 4px;
             border: 1px solid #444;
-            background-color: #000; /* Background hitam agar logo terlihat jika transparan */
-            object-fit: contain; /* Agar logo tidak terpotong */
+            background-color: #000; /* Background logo hitam */
+            object-fit: contain; /* Agar logo tidak terpotong/pecah */
         }
 
         .site-info h1 {
@@ -403,7 +403,7 @@
             padding-top: 1rem;
             border-top: 1px solid var(--border-color);
             display: flex;
-            justify-content: flex-end;
+            justify-content: flex-end; /* Satu tombol kanan */
             gap: 1rem;
         }
 
@@ -426,30 +426,6 @@
             color: var(--accent-red);
         }
 
-        /* PRINT STYLES */
-        @media print {
-            body * {
-                visibility: hidden;
-            }
-            #printSection, #printSection * {
-                visibility: visible;
-            }
-            #printSection {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 100%;
-                height: 100%;
-            }
-            .modal, header, .card, .no-print {
-                display: none !important;
-            }
-            @page {
-                margin: 0; 
-                size: auto;
-            }
-        }
-        
         /* Container for printing (Hidden usually) */
         #printSection {
             display: none;
@@ -461,10 +437,10 @@
 
 <header>
     <div class="logo-container">
-        <!-- LOGO BARU (URL BARU) - Latar Hitam -->
+        <!-- LOGO BARU (URL) -->
         <img 
             id="siteLogo"
-            src="https://z-cdn-media.chatglm.cn/files/a988a8b7-6433-4d45-93bc-fd9c1828f07d.png?auth_key=1877784319-4e2dbeb9d8224c46afae46fa58787b6b-0-8001798665120368d6ddc0a34bf63621" 
+            src="https://z-cdn-media.chatglm.cn/files/02484372-79fa-454d-99b8-33614665fc9f.png?auth_key=1877783095-8ca6a7f6125c4eb797ac403cd09d18c7-0-17863a2b34d1aabeef13c1fa55d372b7" 
             alt="Karya Abadi Logo" 
             class="site-logo-img"
         >
@@ -489,7 +465,7 @@
             <input type="file" id="imageInput" accept="image/*">
             <div class="upload-icon">☁️</div>
             <p><strong>Klik untuk upload</strong> atau tarik foto ke sini</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Format: JPG, PNG (Disarankan Resolusi Tinggi)</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Format: JPG, PNG</p>
         </div>
 
         <div class="section-title">⚙️ 2. Pengaturan</div>
@@ -527,7 +503,7 @@
             <canvas id="editorCanvas"></canvas>
         </div>
         
-        <div class="section-title">💾 Simpan / Cetak</div>
+        <div class="section-title">💾 Simpan / Download</div>
         <div class="btn-group no-print">
             <button class="btn secondary" id="downloadSingleBtn" disabled>
                 ⬇️ Download 1 Foto
@@ -550,7 +526,7 @@
 <div id="a4Modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Preview Cetak Kertas A4 (DPI 300)</h2>
+            <h2>Preview A4 (DPI 100px/cm)</h2>
             <span class="close" id="closeModal">&times;</span>
         </div>
         <div class="modal-body">
@@ -558,8 +534,8 @@
             <img id="a4PreviewImage" src="" alt="A4 Preview">
         </div>
         <div class="modal-footer">
-            <button class="btn secondary" id="downloadA4Btn">⬇️ Download Gambar A4</button>
-            <button class="btn" id="printA4Btn">🖨️ Print Sekarang</button>
+            <!-- TOMBOL PRINT DIHAPUS SESUAI PERMINTAAN -->
+            <button class="btn" id="downloadA4Btn">⬇️ Download Gambar A4</button>
         </div>
     </div>
 </div>
@@ -570,50 +546,48 @@
 <script>
     /**
      * CONFIGURATION & CONSTANTS
-     * DPI 300 (Pixels per MM)
-     * 1 inch = 25.4 mm
-     * 300 px / 25.4 mm = 11.811 px per mm
+     * DPI 100 pxl / centimeter
+     * 1 cm = 100 px
+     * 1 mm = 10 px
      */
-    const MM_TO_PX = 11.811; // 300 DPI conversion
+    const MM_TO_PX = 10; // 10 px per mm (100 px per cm)
     
-    // Border Putih 2mm -> dalam pixel
+    // Border Putih 2mm -> 20 px
     const BORDER_WHITE = 2 * MM_TO_PX; 
     
     // Garis potong hitam 1px
     const CUT_LINE_WIDTH = 1; 
 
-    // Margin A4 dalam pixel (1 cm = 10mm)
+    // Margin A4 dalam pixel (1 cm = 10mm = 100px)
     const A4_MARGIN_PX = 10 * MM_TO_PX; 
 
     const PRESETS = {
         "2x3": {
             w_mm: 21.6, h_mm: 27.9,
-            w: Math.round(21.6 * MM_TO_PX), 
-            h: Math.round(27.9 * MM_TO_PX),
+            w: Math.round(21.6 * MM_TO_PX), // 216 px
+            h: Math.round(27.9 * MM_TO_PX), // 279 px
             ratio: 21.6 / 27.9,
             label: "2x3"
         },
         "3x4": {
             w_mm: 27.9, h_mm: 38.1,
-            w: Math.round(27.9 * MM_TO_PX), 
-            h: Math.round(38.1 * MM_TO_PX),
+            w: Math.round(27.9 * MM_TO_PX), // 279 px
+            h: Math.round(38.1 * MM_TO_PX), // 381 px
             ratio: 27.9 / 38.1,
             label: "3x4"
         },
         "4x6": {
             w_mm: 38.1, h_mm: 55.9,
-            w: Math.round(38.1 * MM_TO_PX), 
-            h: Math.round(55.9 * MM_TO_PX),
+            w: Math.round(38.1 * MM_TO_PX), // 381 px
+            h: Math.round(55.9 * MM_TO_PX), // 559 px
             ratio: 38.1 / 55.9,
             label: "4x6"
         }
     };
 
-    // A4 Size @ 300 DPI (210mm x 297mm)
-    // 210 * 11.811 = 2480 px
-    // 297 * 11.811 = 3508 px
-    const A4_WIDTH = Math.round(210 * MM_TO_PX);
-    const A4_HEIGHT = Math.round(297 * MM_TO_PX);
+    // A4 Size @ 100px/cm (210mm x 297mm)
+    const A4_WIDTH = Math.round(210 * MM_TO_PX); // 2100 px
+    const A4_HEIGHT = Math.round(297 * MM_TO_PX); // 2970 px
 
     // State
     let originalImage = null;
@@ -642,23 +616,18 @@
     const closeModal = document.getElementById('closeModal');
     const a4PreviewImage = document.getElementById('a4PreviewImage');
     const downloadA4Btn = document.getElementById('downloadA4Btn');
-    const printA4Btn = document.getElementById('printA4Btn');
-    const printSection = document.getElementById('printSection');
+    // Print Button Removed from DOM and JS
     const themeToggle = document.getElementById('themeToggle');
-    const siteLogo = document.getElementById('siteLogo');
 
     const toast = document.getElementById('toast');
 
     // --- 0. THEME TOGGLE ---
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
-        
         if (currentTheme === 'light') {
-            // Switch to Dark Mode
             document.documentElement.setAttribute('data-theme', 'dark');
             themeToggle.textContent = '☀️';
         } else {
-            // Switch to Light Mode
             document.documentElement.setAttribute('data-theme', 'light');
             themeToggle.textContent = '🌙';
         }
@@ -731,7 +700,6 @@
         }
     }
     downloadA4Btn.addEventListener('click', downloadA4Image);
-    printA4Btn.addEventListener('click', printA4Sheet);
 
     // --- 2. CORE FUNCTIONS ---
 
@@ -741,7 +709,6 @@
 
         const reader = new FileReader();
         reader.onload = (event) => {
-            // Setup Original Image for Cropping
             originalImage = new Image();
             originalImage.onload = () => {
                 sizeSelect.disabled = false;
@@ -853,7 +820,7 @@
         if (!originalImage) return;
         
         const link = document.createElement('a');
-        const fileName = `KARYA-ABADI-${currentPreset}-300DPI-${Date.now()}.jpg`;
+        const fileName = `KARYA-ABADI-${currentPreset}-${Date.now()}.jpg`;
         link.download = fileName;
         link.href = editorCanvas.toDataURL('image/jpeg', 0.95);
         
@@ -867,7 +834,7 @@
     function generateA4Preview() {
         if (!originalImage) return;
 
-        // 1. Create an Offscreen Canvas for A4 Sheet (HIGH RES 300 DPI)
+        // 1. Create an Offscreen Canvas for A4 Sheet
         const a4Canvas = document.createElement('canvas');
         a4Canvas.width = A4_WIDTH;
         a4Canvas.height = A4_HEIGHT;
@@ -911,44 +878,29 @@
             }
 
             // 5. Show in Modal
-            // Quality set to 1.0 for final A4 output
             const finalA4Data = a4Canvas.toDataURL('image/jpeg', 1.0); 
             a4PreviewImage.src = finalA4Data;
             
-            // Scale image to fit modal visually using CSS transform (Large canvas needs scaling down)
+            // Scale image to fit modal visually using CSS transform
             const scaleFactor = Math.min(
                 (window.innerWidth * 0.9) / A4_WIDTH,
                 (window.innerHeight * 0.7) / A4_HEIGHT
             );
             a4PreviewImage.style.transform = `scale(${scaleFactor})`;
             
-            // Prepare Print Section
-            printSection.innerHTML = '';
-            const printImg = document.createElement('img');
-            printImg.src = finalA4Data;
-            printImg.style.width = '100%';
-            printImg.style.height = '100%';
-            printImg.style.objectFit = 'contain';
-            printImg.style.display = 'block';
-            printSection.appendChild(printImg);
-
             // Show Modal
             modal.style.display = "block";
-            showToast(`Generated ${rows * cols} foto di kertas A4 (High Res)`);
+            showToast(`Generated ${rows * cols} foto di kertas A4`);
         };
     }
 
     function downloadA4Image() {
         const link = document.createElement('a');
-        link.download = `KARYA-ABADI-A4-300DPI-${currentPreset}-${Date.now()}.jpg`;
+        link.download = `KARYA-ABADI-A4-${currentPreset}-${Date.now()}.jpg`;
         link.href = a4PreviewImage.src;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-    }
-
-    function printA4Sheet() {
-        window.print();
     }
 
     function showToast(message) {
