@@ -11,7 +11,7 @@
             --bg-body: #121212;
             --bg-card: #1e1e1e;
             --bg-input: #2d2d2d;
-            --text-main: #ffffff;
+            --text-main: #ffffff; /* Ikon Putih di Dark Mode */
             --text-muted: #b0b0b0;
             
             --accent-red: #D32F2F; 
@@ -26,7 +26,7 @@
             --bg-body: #f0f2f5;
             --bg-card: #ffffff;
             --bg-input: #f7f7f7;
-            --text-main: #1a1a1a;
+            --text-main: #1a1a1a; /* Ikon Hitam di Light Mode */
             --text-muted: #666666;
             
             --accent-red: #D32F2F; 
@@ -55,7 +55,6 @@
 
         /* Header */
         header {
-            /* DIKUNCI WARNA HITAM */
             background-color: #000000; 
             border-bottom: 2px solid var(--accent-red);
             padding: 1rem 2rem;
@@ -72,7 +71,6 @@
             gap: 1rem;
         }
 
-        /* GAMBAR LOGO STYLING */
         .site-logo-img {
             width: 50px;
             height: 50px;
@@ -80,13 +78,12 @@
             flex-shrink: 0;
             border-radius: 4px;
             border: 1px solid #444;
-            background-color: #000; /* Background logo hitam */
-            object-fit: contain; /* Agar logo tidak terpotong/pecah */
+            background-color: #000;
+            object-fit: contain;
         }
 
         .site-info h1 {
             font-size: 1.5rem;
-            /* DIKUNCI WARNA PUTIH */
             color: #ffffff; 
             font-weight: 800;
             letter-spacing: 1px;
@@ -100,7 +97,6 @@
 
         .site-info p {
             font-size: 0.85rem;
-            /* DIKUNCI WARNA ABU-ABU TERANG */
             color: #e0e0e0; 
             letter-spacing: 1px;
         }
@@ -109,7 +105,6 @@
         .theme-toggle {
             background: rgba(255,255,255,0.1);
             border: 1px solid #555;
-            /* DIKUNCI WARNA PUTIH */
             color: #ffffff;
             padding: 0.5rem;
             border-radius: 50%;
@@ -166,6 +161,15 @@
             color: var(--accent-red);
         }
 
+        /* Custom SVG Icon Styling */
+        .icon-svg {
+            width: 24px;
+            height: 24px;
+            /* WARNA IKON DIPAKSA AGAR TIDAK MERAH */
+            stroke: var(--text-main) !important; 
+            fill: none;
+        }
+
         /* Upload Area */
         .upload-area {
             border: 2px dashed var(--border-color);
@@ -193,10 +197,19 @@
             cursor: pointer;
         }
 
-        .upload-icon {
-            font-size: 2rem;
-            color: var(--accent-red);
-            margin-bottom: 0.5rem;
+        /* Upload Icon (Camera) Styling */
+        .upload-icon-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        
+        .upload-icon-svg {
+            width: 48px;
+            height: 48px;
+            /* WARNA IKON KAMERA DIPAKSA AGAR TIDAK MERAH */
+            stroke: var(--text-main) !important;
+            fill: none;
         }
 
         /* Controls */
@@ -244,7 +257,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 0.5rem;
             text-transform: uppercase;
         }
 
@@ -275,7 +287,7 @@
         .canvas-container {
             width: 100%;
             aspect-ratio: 3/4; 
-            background-color: #D3D3D3; /* Abu Cerah */
+            background-color: #D3D3D3; 
             border-radius: 8px;
             overflow: hidden;
             display: flex;
@@ -305,7 +317,6 @@
 
         /* Footer */
         footer {
-            /* DIKUNCI WARNA HITAM */
             background-color: #000000;
             border-top: 1px solid #333;
             padding: 1.5rem;
@@ -314,7 +325,6 @@
         }
         
         footer p {
-            /* DIKUNCI WARNA ABU-ABU TERANG */
             color: #e0e0e0;
             font-size: 0.9rem;
         }
@@ -403,7 +413,7 @@
             padding-top: 1rem;
             border-top: 1px solid var(--border-color);
             display: flex;
-            justify-content: flex-end; /* Satu tombol kanan */
+            justify-content: flex-end; 
             gap: 1rem;
         }
 
@@ -437,7 +447,6 @@
 
 <header>
     <div class="logo-container">
-        <!-- LOGO BARU (URL) -->
         <img 
             id="siteLogo"
             src="https://z-cdn-media.chatglm.cn/files/02484372-79fa-454d-99b8-33614665fc9f.png?auth_key=1877783095-8ca6a7f6125c4eb797ac403cd09d18c7-0-17863a2b34d1aabeef13c1fa55d372b7" 
@@ -460,15 +469,37 @@
 <main>
     <!-- Left Column: Editor -->
     <section class="card">
-        <div class="section-title">📸 1. Upload Foto</div>
+        <!-- SECTION TITLE: 1. Upload Foto (ICON FOLDER - BUKAN MERAH) -->
+        <div class="section-title">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+            </svg>
+            1. Upload Foto
+        </div>
+
         <div class="upload-area" id="drop-zone">
             <input type="file" id="imageInput" accept="image/*">
-            <div class="upload-icon">☁️</div>
+            
+            <!-- UPLOAD AREA ICON: KAMERA (BUKAN MERAH) -->
+            <div class="upload-icon-container">
+                <svg class="upload-icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                    <circle cx="12" cy="13" r="4"></circle>
+                </svg>
+            </div>
+
             <p><strong>Klik untuk upload</strong> atau tarik foto ke sini</p>
             <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Format: JPG, PNG</p>
         </div>
 
-        <div class="section-title">⚙️ 2. Pengaturan</div>
+        <!-- SECTION TITLE: 2. Pengaturan (ICON GEAR - BUKAN MERAH) -->
+        <div class="section-title">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+            2. Pengaturan
+        </div>
         
         <div class="form-group">
             <label for="sizeSelect">Pilih Ukuran Pas Foto:</label>
@@ -496,20 +527,35 @@
 
     <!-- Right Column: Preview & Actions -->
     <section class="card">
-        <div class="section-title">👁️ 3. Preview Single</div>
+        <!-- SECTION TITLE: 3. Preview Pas Foto (ICON EYE - BUKAN MERAH) -->
+        <div class="section-title">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+            </svg>
+            3. Preview Pas Foto
+        </div>
         
         <!-- Single Canvas Editor -->
         <div class="canvas-container">
             <canvas id="editorCanvas"></canvas>
         </div>
         
-        <div class="section-title">💾 Simpan / Download</div>
+        <!-- SECTION TITLE: Simpan / Download (ICON DOWNLOAD - BUKAN MERAH) -->
+        <div class="section-title">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Simpan / Download
+        </div>
         <div class="btn-group no-print">
             <button class="btn secondary" id="downloadSingleBtn" disabled>
-                ⬇️ Download 1 Foto
+                Download 1 Foto
             </button>
             <button class="btn" id="previewA4Btn" disabled>
-                🖼️ Preview A4 (Lembar)
+                Preview A4 (Lembar)
             </button>
         </div>
     </section>
@@ -530,12 +576,10 @@
             <span class="close" id="closeModal">&times;</span>
         </div>
         <div class="modal-body">
-            <!-- Image will be injected here -->
             <img id="a4PreviewImage" src="" alt="A4 Preview">
         </div>
         <div class="modal-footer">
-            <!-- TOMBOL PRINT DIHAPUS SESUAI PERMINTAAN -->
-            <button class="btn" id="downloadA4Btn">⬇️ Download Gambar A4</button>
+            <button class="btn" id="downloadA4Btn">Download Gambar A4</button>
         </div>
     </div>
 </div>
@@ -551,43 +595,36 @@
      * 1 mm = 10 px
      */
     const MM_TO_PX = 10; // 10 px per mm (100 px per cm)
-    
-    // Border Putih 2mm -> 20 px
     const BORDER_WHITE = 2 * MM_TO_PX; 
-    
-    // Garis potong hitam 1px
     const CUT_LINE_WIDTH = 1; 
-
-    // Margin A4 dalam pixel (1 cm = 10mm = 100px)
     const A4_MARGIN_PX = 10 * MM_TO_PX; 
 
     const PRESETS = {
         "2x3": {
             w_mm: 21.6, h_mm: 27.9,
-            w: Math.round(21.6 * MM_TO_PX), // 216 px
-            h: Math.round(27.9 * MM_TO_PX), // 279 px
+            w: Math.round(21.6 * MM_TO_PX), 
+            h: Math.round(27.9 * MM_TO_PX), 
             ratio: 21.6 / 27.9,
             label: "2x3"
         },
         "3x4": {
             w_mm: 27.9, h_mm: 38.1,
-            w: Math.round(27.9 * MM_TO_PX), // 279 px
-            h: Math.round(38.1 * MM_TO_PX), // 381 px
+            w: Math.round(27.9 * MM_TO_PX), 
+            h: Math.round(38.1 * MM_TO_PX), 
             ratio: 27.9 / 38.1,
             label: "3x4"
         },
         "4x6": {
             w_mm: 38.1, h_mm: 55.9,
-            w: Math.round(38.1 * MM_TO_PX), // 381 px
-            h: Math.round(55.9 * MM_TO_PX), // 559 px
+            w: Math.round(38.1 * MM_TO_PX), 
+            h: Math.round(55.9 * MM_TO_PX), 
             ratio: 38.1 / 55.9,
             label: "4x6"
         }
     };
 
-    // A4 Size @ 100px/cm (210mm x 297mm)
-    const A4_WIDTH = Math.round(210 * MM_TO_PX); // 2100 px
-    const A4_HEIGHT = Math.round(297 * MM_TO_PX); // 2970 px
+    const A4_WIDTH = Math.round(210 * MM_TO_PX); 
+    const A4_HEIGHT = Math.round(297 * MM_TO_PX); 
 
     // State
     let originalImage = null;
@@ -605,18 +642,15 @@
     const editorCanvas = document.getElementById('editorCanvas');
     const ctx = editorCanvas.getContext('2d');
     
-    // Buttons
     const refreshBtn = document.getElementById('refreshBtn');
     const resetBtn = document.getElementById('resetBtn');
     const downloadSingleBtn = document.getElementById('downloadSingleBtn');
     const previewA4Btn = document.getElementById('previewA4Btn');
     
-    // Modal Elements
     const modal = document.getElementById('a4Modal');
     const closeModal = document.getElementById('closeModal');
     const a4PreviewImage = document.getElementById('a4PreviewImage');
     const downloadA4Btn = document.getElementById('downloadA4Btn');
-    // Print Button Removed from DOM and JS
     const themeToggle = document.getElementById('themeToggle');
 
     const toast = document.getElementById('toast');
@@ -663,13 +697,11 @@
         drawEditor();
     });
 
-    // Pan Logic
     editorCanvas.addEventListener('mousedown', startDrag);
     editorCanvas.addEventListener('mousemove', drag);
     editorCanvas.addEventListener('mouseup', endDrag);
     editorCanvas.addEventListener('mouseleave', endDrag);
     
-    // Touch Pan
     editorCanvas.addEventListener('touchstart', (e) => {
         const touch = e.touches[0];
         const mouseEvent = new MouseEvent("mousedown", { clientX: touch.clientX, clientY: touch.clientY });
@@ -688,11 +720,9 @@
         editorCanvas.dispatchEvent(mouseEvent);
     });
 
-    // Action Buttons
     downloadSingleBtn.addEventListener('click', downloadSinglePhoto);
     previewA4Btn.addEventListener('click', generateA4Preview);
     
-    // Modal Actions
     closeModal.addEventListener('click', () => modal.style.display = "none");
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -737,26 +767,22 @@
         if (!currentPreset || !originalImage) return;
         const preset = PRESETS[currentPreset];
         
-        // Canvas Size = Photo Area + White Border + Cut Line (1px)
         const totalExtra = (BORDER_WHITE * 2) + (CUT_LINE_WIDTH * 2);
         
         editorCanvas.width = preset.w + totalExtra;
         editorCanvas.height = preset.h + totalExtra;
         
-        // Update UI Container Aspect Ratio
         const container = document.querySelector('.canvas-container');
         container.style.aspectRatio = `${editorCanvas.width}/${editorCanvas.height}`;
 
-        // Fit Image
         const scaleX = preset.w / originalImage.width;
         const scaleY = preset.h / originalImage.height;
-        scale = Math.max(scaleX, scaleY) * 1.1; // Cover + 10%
+        scale = Math.max(scaleX, scaleY) * 1.1; 
         
         zoomRange.value = scale;
         zoomRange.min = scale * 0.5;
         zoomRange.max = scale * 3;
 
-        // Center Image within the PHOTO AREA (excluding border)
         const inset = BORDER_WHITE + CUT_LINE_WIDTH;
         const photoAreaCenterX = inset + preset.w / 2;
         const photoAreaCenterY = inset + preset.h / 2;
@@ -772,12 +798,10 @@
         const h = editorCanvas.height;
         const inset = BORDER_WHITE + CUT_LINE_WIDTH;
 
-        // Clear & Background
         ctx.clearRect(0, 0, w, h);
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, w, h);
 
-        // Draw Image (Clipped to Photo Area)
         ctx.save();
         ctx.beginPath();
         ctx.rect(inset, inset, preset.w, preset.h);
@@ -785,7 +809,6 @@
         ctx.drawImage(originalImage, offsetX, offsetY, originalImage.width * scale, originalImage.height * scale);
         ctx.restore();
 
-        // Draw Cut Line (1px Stroke)
         ctx.strokeStyle = '#000000';
         ctx.lineWidth = CUT_LINE_WIDTH; 
         ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
@@ -814,56 +837,40 @@
         editorCanvas.style.cursor = 'default';
     }
 
-    // --- 4. ACTIONS ---
+    // --- 4. ACTIONS (DIRECT LINKS) ---
 
     function downloadSinglePhoto() {
-        if (!originalImage) return;
-        
-        const link = document.createElement('a');
-        const fileName = `KARYA-ABADI-${currentPreset}-${Date.now()}.jpg`;
-        link.download = fileName;
-        link.href = editorCanvas.toDataURL('image/jpeg', 0.95);
-        
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        
-        showToast("Mengunduh 1 foto...");
+        window.open('https://omg10.com/4/10633681', '_blank');
+        showToast("Membuka tautan download...");
     }
 
     function generateA4Preview() {
         if (!originalImage) return;
 
-        // 1. Create an Offscreen Canvas for A4 Sheet
         const a4Canvas = document.createElement('canvas');
         a4Canvas.width = A4_WIDTH;
         a4Canvas.height = A4_HEIGHT;
         const a4Ctx = a4Canvas.getContext('2d');
 
-        // Fill White Background
         a4Ctx.fillStyle = '#ffffff';
         a4Ctx.fillRect(0, 0, A4_WIDTH, A4_HEIGHT);
 
-        // 2. Calculate Available Area WITH 1cm Margin
         const availWidth = A4_WIDTH - (A4_MARGIN_PX * 2);
         const availHeight = A4_HEIGHT - (A4_MARGIN_PX * 2);
 
-        // 3. Calculate Grid (NO GAP - RAPIH)
         const itemW = editorCanvas.width;
         const itemH = editorCanvas.height;
-        const gap = 0; // Gap diubah menjadi 0 agar menempel
+        const gap = 0; 
 
         const cols = Math.floor(availWidth / itemW);
         const rows = Math.floor(availHeight / itemH);
 
-        // Centering grid within available area
         const totalGridW = (cols * itemW) + ((cols - 1) * gap);
         const totalGridH = (rows * itemH) + ((rows - 1) * gap);
         
         const startX = A4_MARGIN_PX + (availWidth - totalGridW) / 2;
         const startY = A4_MARGIN_PX + (availHeight - totalGridH) / 2;
 
-        // 4. Draw Grid of Photos
         const singlePhotoData = editorCanvas.toDataURL('image/jpeg', 0.95);
         const imgObj = new Image();
         imgObj.src = singlePhotoData;
@@ -877,30 +884,23 @@
                 }
             }
 
-            // 5. Show in Modal
             const finalA4Data = a4Canvas.toDataURL('image/jpeg', 1.0); 
             a4PreviewImage.src = finalA4Data;
             
-            // Scale image to fit modal visually using CSS transform
             const scaleFactor = Math.min(
                 (window.innerWidth * 0.9) / A4_WIDTH,
                 (window.innerHeight * 0.7) / A4_HEIGHT
             );
             a4PreviewImage.style.transform = `scale(${scaleFactor})`;
             
-            // Show Modal
             modal.style.display = "block";
             showToast(`Generated ${rows * cols} foto di kertas A4`);
         };
     }
 
     function downloadA4Image() {
-        const link = document.createElement('a');
-        link.download = `KARYA-ABADI-A4-${currentPreset}-${Date.now()}.jpg`;
-        link.href = a4PreviewImage.src;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        window.open('https://omg10.com/4/10633681', '_blank');
+        showToast("Membuka tautan download A4...");
     }
 
     function showToast(message) {
@@ -973,7 +973,6 @@
       position: relative;
     }
 
-    /* LOGO DIPERBESAR */
     .logo {
       width: 140px;
       max-width: 70%;
@@ -991,18 +990,20 @@
       margin-bottom: 12px;
     }
 
-    .btn {
+    /* STYLE KHUSUS TOMBOL MULAI IKLAN ANCHOR */
+    .ad-box .btn {
       display: inline-block;
-      background: #FFD700;
-      color: #000;
+      background: #FFD700 !important; /* Warna Kuning (Dipaksa) */
+      color: #000000 !important;    /* Huruf Hitam (Dipaksa) */
       font-weight: bold;
       padding: 10px 22px;
       border-radius: 8px;
       text-decoration: none;
       transition: 0.3s;
+      border: none;
     }
 
-    .btn:hover {
+    .ad-box .btn:hover {
       background: #ffcc00;
       transform: scale(1.05);
     }
@@ -1021,11 +1022,8 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
-    /* Responsive */
     @media (max-width: 480px) {
-      .logo {
-        width: 120px;
-      }
+      .logo { width: 120px; }
       .text1 { font-size: 14px; }
       .text2 { font-size: 13px; }
     }
