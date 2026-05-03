@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA ABADI PAS FOTO</title>
+    <style>
+        /* --- CSS VARIABLES (THEMING) --- */
+        :root {
+            /* Default (Dark Mode) */
+            --bg-body: #121212;
+            --bg-card: #1e1e1e;
+            --bg-input: #2d2d2d;
+            --text-main: #ffffff;
+            --text-muted: #b0b0b0;
+            
+            --accent-red: #D32F2F; 
+            --border-color: #444444;
+            
+            --shadow: 0 4px 6px rgba(0,0,0,0.3);
+            --toast-bg: #333;
+        }
+
+        /* Light Mode Variables */
+        [data-theme="light"] {
+            --bg-body: #f0f2f5;
+            --bg-card: #ffffff;
+            --bg-input: #f7f7f7;
+            --text-main: #1a1a1a;
+            --text-muted: #666666;
+            
+            --accent-red: #D32F2F; 
+            --border-color: #ddd;
+            
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --toast-bg: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        header {
+            /* DIKUNCI WARNA HITAM */
+            background-color: #000000; 
+            border-bottom: 2px solid var(--accent-red);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 10;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        /* GAMBAR LOGO STYLING */
+        .site-logo-img {
+            width: 50px;
+            height: 50px;
+            display: block;
+            flex-shrink: 0;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #000; /* Background hitam agar logo terlihat jika transparan */
+            object-fit: contain; /* Agar logo tidak terpotong */
+        }
+
+        .site-info h1 {
+            font-size: 1.5rem;
+            /* DIKUNCI WARNA PUTIH */
+            color: #ffffff; 
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            line-height: 1.2;
+        }
+        
+        .site-info h1 span {
+            color: var(--accent-red);
+        }
+
+        .site-info p {
+            font-size: 0.85rem;
+            /* DIKUNCI WARNA ABU-ABU TERANG */
+            color: #e0e0e0; 
+            letter-spacing: 1px;
+        }
+
+        /* Theme Toggle Button */
+        .theme-toggle {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #555;
+            /* DIKUNCI WARNA PUTIH */
+            color: #ffffff;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(255,255,255,0.2);
+        }
+
+        /* Main Layout */
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 900px) {
+            main {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+
+        /* Cards */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent-red);
+        }
+
+        /* Upload Area */
+        .upload-area {
+            border: 2px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            background-color: var(--bg-input);
+        }
+
+        .upload-area:hover {
+            border-color: var(--accent-red);
+            background-color: rgba(211, 47, 47, 0.1);
+        }
+
+        .upload-area input {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            font-size: 2rem;
+            color: var(--accent-red);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Controls */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        select, button {
+            padding: 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            font-size: 1rem;
+            outline: none;
+            background-color: var(--bg-input);
+            color: var(--text-main);
+        }
+
+        select:focus {
+            border-color: var(--accent-red);
+        }
+
+        /* Buttons */
+        .btn-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: auto;
+        }
+
+        .btn {
+            background-color: var(--accent-red);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            transition: all 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            background-color: #b71c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+        }
+
+        .btn.secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn.secondary:hover {
+            background-color: var(--bg-input);
+            border-color: var(--text-main);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Canvas Preview Area */
+        .canvas-container {
+            width: 100%;
+            aspect-ratio: 3/4; 
+            background-color: #D3D3D3; /* Abu Cerah */
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            border: 1px solid var(--border-color);
+        }
+
+        canvas {
+            max-width: 100%;
+            max-height: 100%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .slider-group {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        input[type="range"] {
+            flex: 1;
+            cursor: pointer;
+            accent-color: var(--accent-red);
+        }
+
+        /* Footer */
+        footer {
+            /* DIKUNCI WARNA HITAM */
+            background-color: #000000;
+            border-top: 1px solid #333;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: auto;
+        }
+        
+        footer p {
+            /* DIKUNCI WARNA ABU-ABU TERANG */
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        /* Toast Notification */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--toast-bg);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            font-size: 1rem;
+            border: 1px solid var(--accent-red);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+
+        /* MODAL STYLES (For A4 Preview) */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.9); 
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            margin: 2% auto;
+            padding: 20px;
+            border: 1px solid var(--accent-red);
+            width: 90%;
+            max-width: 1200px;
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            border-radius: 12px;
+            color: var(--text-main);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-body {
+            flex: 1;
+            overflow: auto;
+            background-color: #111;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 2rem;
+        }
+
+        .modal-footer {
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+
+        /* A4 Preview Image Scaling */
+        #a4PreviewImage {
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            transform-origin: top center;
+            transition: transform 0.3s ease;
+        }
+
+        .close {
+            color: var(--text-muted);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: var(--accent-red);
+        }
+
+        /* PRINT STYLES */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printSection, #printSection * {
+                visibility: visible;
+            }
+            #printSection {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .modal, header, .card, .no-print {
+                display: none !important;
+            }
+            @page {
+                margin: 0; 
+                size: auto;
+            }
+        }
+        
+        /* Container for printing (Hidden usually) */
+        #printSection {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-container">
+        <!-- LOGO BARU (URL BARU) - Latar Hitam -->
+        <img 
+            id="siteLogo"
+            src="https://z-cdn-media.chatglm.cn/files/a988a8b7-6433-4d45-93bc-fd9c1828f07d.png?auth_key=1877784319-4e2dbeb9d8224c46afae46fa58787b6b-0-8001798665120368d6ddc0a34bf63621" 
+            alt="Karya Abadi Logo" 
+            class="site-logo-img"
+        >
+        
+        <div class="site-info">
+            <h1>KARYA ABADI <span>PAS FOTO</span></h1>
+            <p>Profesional & Berkualitas</p>
+        </div>
+    </div>
+    
+    <!-- Theme Toggle -->
+    <button class="theme-toggle" id="themeToggle" title="Ganti Mode Gelap/Terang">
+        ☀️
+    </button>
+</header>
+
+<main>
+    <!-- Left Column: Editor -->
+    <section class="card">
+        <div class="section-title">📸 1. Upload Foto</div>
+        <div class="upload-area" id="drop-zone">
+            <input type="file" id="imageInput" accept="image/*">
+            <div class="upload-icon">☁️</div>
+            <p><strong>Klik untuk upload</strong> atau tarik foto ke sini</p>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Format: JPG, PNG (Disarankan Resolusi Tinggi)</p>
+        </div>
+
+        <div class="section-title">⚙️ 2. Pengaturan</div>
+        
+        <div class="form-group">
+            <label for="sizeSelect">Pilih Ukuran Pas Foto:</label>
+            <select id="sizeSelect" disabled>
+                <option value="" disabled selected>-- Pilih Ukuran --</option>
+                <option value="2x3">Ukuran 2x3 (21.6 × 27.9 mm)</option>
+                <option value="3x4">Ukuran 3x4 (27.9 × 38.1 mm)</option>
+                <option value="4x6">Ukuran 4x6 (38.1 × 55.9 mm)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <div class="slider-group">
+                <label for="zoomRange">Zoom:</label>
+                <input type="range" id="zoomRange" min="1" max="3" step="0.05" value="1" disabled>
+            </div>
+            <p style="font-size: 0.8rem; color: var(--text-muted);">Drag foto di canvas untuk menggeser posisi.</p>
+        </div>
+
+        <div class="btn-group">
+            <button class="btn secondary" id="resetBtn" disabled>Reset</button>
+            <button class="btn" id="refreshBtn" disabled>Refresh</button>
+        </div>
+    </section>
+
+    <!-- Right Column: Preview & Actions -->
+    <section class="card">
+        <div class="section-title">👁️ 3. Preview Single</div>
+        
+        <!-- Single Canvas Editor -->
+        <div class="canvas-container">
+            <canvas id="editorCanvas"></canvas>
+        </div>
+        
+        <div class="section-title">💾 Simpan / Cetak</div>
+        <div class="btn-group no-print">
+            <button class="btn secondary" id="downloadSingleBtn" disabled>
+                ⬇️ Download 1 Foto
+            </button>
+            <button class="btn" id="previewA4Btn" disabled>
+                🖼️ Preview A4 (Lembar)
+            </button>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <p>&copy; 2024 Karya Abadi Pas Foto. Hak Cipta Dilindungi Undang-Undang.</p>
+</footer>
+
+<!-- Hidden Print Section -->
+<div id="printSection"></div>
+
+<!-- Modal for A4 Preview -->
+<div id="a4Modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Preview Cetak Kertas A4 (DPI 300)</h2>
+            <span class="close" id="closeModal">&times;</span>
+        </div>
+        <div class="modal-body">
+            <!-- Image will be injected here -->
+            <img id="a4PreviewImage" src="" alt="A4 Preview">
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary" id="downloadA4Btn">⬇️ Download Gambar A4</button>
+            <button class="btn" id="printA4Btn">🖨️ Print Sekarang</button>
+        </div>
+    </div>
+</div>
+
+<!-- Toast -->
+<div id="toast">Pesan notifikasi</div>
+
+<script>
+    /**
+     * CONFIGURATION & CONSTANTS
+     * DPI 300 (Pixels per MM)
+     * 1 inch = 25.4 mm
+     * 300 px / 25.4 mm = 11.811 px per mm
+     */
+    const MM_TO_PX = 11.811; // 300 DPI conversion
+    
+    // Border Putih 2mm -> dalam pixel
+    const BORDER_WHITE = 2 * MM_TO_PX; 
+    
+    // Garis potong hitam 1px
+    const CUT_LINE_WIDTH = 1; 
+
+    // Margin A4 dalam pixel (1 cm = 10mm)
+    const A4_MARGIN_PX = 10 * MM_TO_PX; 
+
+    const PRESETS = {
+        "2x3": {
+            w_mm: 21.6, h_mm: 27.9,
+            w: Math.round(21.6 * MM_TO_PX), 
+            h: Math.round(27.9 * MM_TO_PX),
+            ratio: 21.6 / 27.9,
+            label: "2x3"
+        },
+        "3x4": {
+            w_mm: 27.9, h_mm: 38.1,
+            w: Math.round(27.9 * MM_TO_PX), 
+            h: Math.round(38.1 * MM_TO_PX),
+            ratio: 27.9 / 38.1,
+            label: "3x4"
+        },
+        "4x6": {
+            w_mm: 38.1, h_mm: 55.9,
+            w: Math.round(38.1 * MM_TO_PX), 
+            h: Math.round(55.9 * MM_TO_PX),
+            ratio: 38.1 / 55.9,
+            label: "4x6"
+        }
+    };
+
+    // A4 Size @ 300 DPI (210mm x 297mm)
+    // 210 * 11.811 = 2480 px
+    // 297 * 11.811 = 3508 px
+    const A4_WIDTH = Math.round(210 * MM_TO_PX);
+    const A4_HEIGHT = Math.round(297 * MM_TO_PX);
+
+    // State
+    let originalImage = null;
+    let currentPreset = null;
+    let scale = 1;
+    let offsetX = 0;
+    let offsetY = 0;
+    let isDragging = false;
+    let startX, startY;
+
+    // DOM Elements
+    const imageInput = document.getElementById('imageInput');
+    const sizeSelect = document.getElementById('sizeSelect');
+    const zoomRange = document.getElementById('zoomRange');
+    const editorCanvas = document.getElementById('editorCanvas');
+    const ctx = editorCanvas.getContext('2d');
+    
+    // Buttons
+    const refreshBtn = document.getElementById('refreshBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const downloadSingleBtn = document.getElementById('downloadSingleBtn');
+    const previewA4Btn = document.getElementById('previewA4Btn');
+    
+    // Modal Elements
+    const modal = document.getElementById('a4Modal');
+    const closeModal = document.getElementById('closeModal');
+    const a4PreviewImage = document.getElementById('a4PreviewImage');
+    const downloadA4Btn = document.getElementById('downloadA4Btn');
+    const printA4Btn = document.getElementById('printA4Btn');
+    const printSection = document.getElementById('printSection');
+    const themeToggle = document.getElementById('themeToggle');
+    const siteLogo = document.getElementById('siteLogo');
+
+    const toast = document.getElementById('toast');
+
+    // --- 0. THEME TOGGLE ---
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        
+        if (currentTheme === 'light') {
+            // Switch to Dark Mode
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeToggle.textContent = '☀️';
+        } else {
+            // Switch to Light Mode
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeToggle.textContent = '🌙';
+        }
+    });
+
+    // ---1. EVENT LISTENERS ---
+
+    imageInput.addEventListener('change', handleImageUpload);
+    
+    sizeSelect.addEventListener('change', (e) => {
+        if(!originalImage) return;
+        currentPreset = e.target.value;
+        resetCropState();
+        enableControls();
+        drawEditor();
+        showToast(`Ukuran ${currentPreset} dipilih`);
+    });
+
+    zoomRange.addEventListener('input', (e) => {
+        scale = parseFloat(e.target.value);
+        drawEditor();
+    });
+
+    refreshBtn.addEventListener('click', () => {
+        resetCropState();
+        drawEditor();
+        showToast("Refresh Preview");
+    });
+
+    resetBtn.addEventListener('click', () => {
+        if(!originalImage) return;
+        resetCropState();
+        drawEditor();
+    });
+
+    // Pan Logic
+    editorCanvas.addEventListener('mousedown', startDrag);
+    editorCanvas.addEventListener('mousemove', drag);
+    editorCanvas.addEventListener('mouseup', endDrag);
+    editorCanvas.addEventListener('mouseleave', endDrag);
+    
+    // Touch Pan
+    editorCanvas.addEventListener('touchstart', (e) => {
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent("mousedown", { clientX: touch.clientX, clientY: touch.clientY });
+        editorCanvas.dispatchEvent(mouseEvent);
+    }, {passive: false});
+
+    editorCanvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const mouseEvent = new MouseEvent("mousemove", { clientX: touch.clientX, clientY: touch.clientY });
+        editorCanvas.dispatchEvent(mouseEvent);
+    }, {passive: false});
+
+    editorCanvas.addEventListener('touchend', () => {
+        const mouseEvent = new MouseEvent("mouseup", {});
+        editorCanvas.dispatchEvent(mouseEvent);
+    });
+
+    // Action Buttons
+    downloadSingleBtn.addEventListener('click', downloadSinglePhoto);
+    previewA4Btn.addEventListener('click', generateA4Preview);
+    
+    // Modal Actions
+    closeModal.addEventListener('click', () => modal.style.display = "none");
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+    downloadA4Btn.addEventListener('click', downloadA4Image);
+    printA4Btn.addEventListener('click', printA4Sheet);
+
+    // --- 2. CORE FUNCTIONS ---
+
+    function handleImageUpload(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            // Setup Original Image for Cropping
+            originalImage = new Image();
+            originalImage.onload = () => {
+                sizeSelect.disabled = false;
+                showToast("Foto diupload. Pilih ukuran.");
+                if(sizeSelect.value) {
+                    currentPreset = sizeSelect.value;
+                    resetCropState();
+                    enableControls();
+                    drawEditor();
+                }
+            };
+            originalImage.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function enableControls() {
+        zoomRange.disabled = false;
+        refreshBtn.disabled = false;
+        downloadSingleBtn.disabled = false;
+        previewA4Btn.disabled = false;
+        resetBtn.disabled = false;
+    }
+
+    function resetCropState() {
+        if (!currentPreset || !originalImage) return;
+        const preset = PRESETS[currentPreset];
+        
+        // Canvas Size = Photo Area + White Border + Cut Line (1px)
+        const totalExtra = (BORDER_WHITE * 2) + (CUT_LINE_WIDTH * 2);
+        
+        editorCanvas.width = preset.w + totalExtra;
+        editorCanvas.height = preset.h + totalExtra;
+        
+        // Update UI Container Aspect Ratio
+        const container = document.querySelector('.canvas-container');
+        container.style.aspectRatio = `${editorCanvas.width}/${editorCanvas.height}`;
+
+        // Fit Image
+        const scaleX = preset.w / originalImage.width;
+        const scaleY = preset.h / originalImage.height;
+        scale = Math.max(scaleX, scaleY) * 1.1; // Cover + 10%
+        
+        zoomRange.value = scale;
+        zoomRange.min = scale * 0.5;
+        zoomRange.max = scale * 3;
+
+        // Center Image within the PHOTO AREA (excluding border)
+        const inset = BORDER_WHITE + CUT_LINE_WIDTH;
+        const photoAreaCenterX = inset + preset.w / 2;
+        const photoAreaCenterY = inset + preset.h / 2;
+
+        offsetX = photoAreaCenterX - (originalImage.width * scale) / 2;
+        offsetY = photoAreaCenterY - (originalImage.height * scale) / 2;
+    }
+
+    function drawEditor() {
+        if (!originalImage || !currentPreset) return;
+        const preset = PRESETS[currentPreset];
+        const w = editorCanvas.width;
+        const h = editorCanvas.height;
+        const inset = BORDER_WHITE + CUT_LINE_WIDTH;
+
+        // Clear & Background
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+
+        // Draw Image (Clipped to Photo Area)
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(inset, inset, preset.w, preset.h);
+        ctx.clip();
+        ctx.drawImage(originalImage, offsetX, offsetY, originalImage.width * scale, originalImage.height * scale);
+        ctx.restore();
+
+        // Draw Cut Line (1px Stroke)
+        ctx.strokeStyle = '#000000';
+        ctx.lineWidth = CUT_LINE_WIDTH; 
+        ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
+    }
+
+    // --- 3. PAN INTERACTION ---
+
+    function startDrag(e) {
+        if(!originalImage) return;
+        isDragging = true;
+        startX = e.clientX - offsetX;
+        startY = e.clientY - offsetY;
+        editorCanvas.style.cursor = 'grabbing';
+    }
+
+    function drag(e) {
+        if (!isDragging) return;
+        e.preventDefault();
+        offsetX = e.clientX - startX;
+        offsetY = e.clientY - startY;
+        drawEditor();
+    }
+
+    function endDrag() {
+        isDragging = false;
+        editorCanvas.style.cursor = 'default';
+    }
+
+    // --- 4. ACTIONS ---
+
+    function downloadSinglePhoto() {
+        if (!originalImage) return;
+        
+        const link = document.createElement('a');
+        const fileName = `KARYA-ABADI-${currentPreset}-300DPI-${Date.now()}.jpg`;
+        link.download = fileName;
+        link.href = editorCanvas.toDataURL('image/jpeg', 0.95);
+        
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        showToast("Mengunduh 1 foto...");
+    }
+
+    function generateA4Preview() {
+        if (!originalImage) return;
+
+        // 1. Create an Offscreen Canvas for A4 Sheet (HIGH RES 300 DPI)
+        const a4Canvas = document.createElement('canvas');
+        a4Canvas.width = A4_WIDTH;
+        a4Canvas.height = A4_HEIGHT;
+        const a4Ctx = a4Canvas.getContext('2d');
+
+        // Fill White Background
+        a4Ctx.fillStyle = '#ffffff';
+        a4Ctx.fillRect(0, 0, A4_WIDTH, A4_HEIGHT);
+
+        // 2. Calculate Available Area WITH 1cm Margin
+        const availWidth = A4_WIDTH - (A4_MARGIN_PX * 2);
+        const availHeight = A4_HEIGHT - (A4_MARGIN_PX * 2);
+
+        // 3. Calculate Grid (NO GAP - RAPIH)
+        const itemW = editorCanvas.width;
+        const itemH = editorCanvas.height;
+        const gap = 0; // Gap diubah menjadi 0 agar menempel
+
+        const cols = Math.floor(availWidth / itemW);
+        const rows = Math.floor(availHeight / itemH);
+
+        // Centering grid within available area
+        const totalGridW = (cols * itemW) + ((cols - 1) * gap);
+        const totalGridH = (rows * itemH) + ((rows - 1) * gap);
+        
+        const startX = A4_MARGIN_PX + (availWidth - totalGridW) / 2;
+        const startY = A4_MARGIN_PX + (availHeight - totalGridH) / 2;
+
+        // 4. Draw Grid of Photos
+        const singlePhotoData = editorCanvas.toDataURL('image/jpeg', 0.95);
+        const imgObj = new Image();
+        imgObj.src = singlePhotoData;
+        
+        imgObj.onload = () => {
+            for(let r = 0; r < rows; r++) {
+                for(let c = 0; c < cols; c++) {
+                    const x = startX + c * (itemW + gap);
+                    const y = startY + r * (itemH + gap);
+                    a4Ctx.drawImage(imgObj, x, y, itemW, itemH);
+                }
+            }
+
+            // 5. Show in Modal
+            // Quality set to 1.0 for final A4 output
+            const finalA4Data = a4Canvas.toDataURL('image/jpeg', 1.0); 
+            a4PreviewImage.src = finalA4Data;
+            
+            // Scale image to fit modal visually using CSS transform (Large canvas needs scaling down)
+            const scaleFactor = Math.min(
+                (window.innerWidth * 0.9) / A4_WIDTH,
+                (window.innerHeight * 0.7) / A4_HEIGHT
+            );
+            a4PreviewImage.style.transform = `scale(${scaleFactor})`;
+            
+            // Prepare Print Section
+            printSection.innerHTML = '';
+            const printImg = document.createElement('img');
+            printImg.src = finalA4Data;
+            printImg.style.width = '100%';
+            printImg.style.height = '100%';
+            printImg.style.objectFit = 'contain';
+            printImg.style.display = 'block';
+            printSection.appendChild(printImg);
+
+            // Show Modal
+            modal.style.display = "block";
+            showToast(`Generated ${rows * cols} foto di kertas A4 (High Res)`);
+        };
+    }
+
+    function downloadA4Image() {
+        const link = document.createElement('a');
+        link.download = `KARYA-ABADI-A4-300DPI-${currentPreset}-${Date.now()}.jpg`;
+        link.href = a4PreviewImage.src;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+
+    function printA4Sheet() {
+        window.print();
+    }
+
+    function showToast(message) {
+        toast.textContent = message;
+        toast.className = "show";
+        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+    }
+
+</script>
+
+</body>
+</html>
