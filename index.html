@@ -843,5 +843,95 @@
   document.head.appendChild(style);
 })();
 </script>
+    <style>
+    /* Notifikasi */
+    .notif{
+        position:fixed;
+        top:-200px;
+        left:50%;
+        transform:translateX(-50%);
+        background:#fff;
+        padding:18px 25px;
+        border-radius:12px;
+        box-shadow:0 5px 15px rgba(0,0,0,0.2);
+        text-align:center;
+        min-width:280px;
+        z-index:9999;
+        transition:top 0.5s ease;
+        font-family:Arial, sans-serif;
+    }
+
+    /* Saat tampil */
+    .notif.show{
+        top:20px;
+    }
+
+    /* Judul */
+    .notif .title{
+        font-size:20px;
+        font-weight:bold;
+        color:#000;
+        margin-bottom:6px;
+    }
+
+    /* Deskripsi */
+    .notif .desc{
+        font-size:15px;
+        color:#444;
+    }
+
+    /* Tombol close */
+    .close-btn{
+        position:absolute;
+        top:8px;
+        right:10px;
+        cursor:pointer;
+        font-size:18px;
+        font-weight:bold;
+        color:#666;
+    }
+
+    .close-btn:hover{
+        color:red;
+    }
+</style>
+
+
+<div class="notif" id="notif">
+    <div class="close-btn" id="closeNotif">×</div>
+
+    <div class="title">Hasil DOWNLOAD</div>
+    <div class="desc">Cek di File Manager.</div>
+</div>
+
+
+<script>
+    const notif = document.getElementById("notif");
+    const closeBtn = document.getElementById("closeNotif");
+
+    // Jika belum pernah ditutup
+    if (!localStorage.getItem("notif_closed")) {
+
+        // Muncul dari atas
+        setTimeout(() => {
+            notif.classList.add("show");
+        }, 300);
+
+        // Hilang otomatis setelah 5 detik
+        setTimeout(() => {
+            notif.classList.remove("show");
+        }, 5300);
+    }
+
+    // Tombol close
+    closeBtn.addEventListener("click", () => {
+
+        // Hilangkan notif
+        notif.classList.remove("show");
+
+        // Simpan agar tidak muncul lagi
+        localStorage.setItem("notif_closed", "true");
+    });
+</script>
 </body>
 </html>
