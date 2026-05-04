@@ -170,9 +170,27 @@
             text-transform: uppercase; padding: 0.8rem; border-radius: 6px; font-size: 0.9rem;
         }
         .btn:hover { background-color: #b71c1c; transform: translateY(-2px); }
+        
         .btn.secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn.secondary:hover { background-color: var(--bg-input); border-color: var(--text-main); transform: none; }
+        
         .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
         .btn-sm { padding: 0.4rem; font-size: 0.8rem; margin-top: 5px; width: 100%; }
+
+        /* --- PERUBAHAN WARNA TOMBOL DOWNLOAD --- */
+        /* Tombol individual (2x3, 3x4, 4x6) dan tombol Download A4 di Modal */
+        #downloadA4Btn, .btn.btn-sm.secondary {
+            background-color: #FFD700 !important; /* Kuning Emas */
+            color: #000000 !important;      /* Teks Hitam */
+            border: none !important;
+            font-weight: 800;                /* Extra Bold */
+        }
+        
+        #downloadA4Btn:hover, .btn.btn-sm.secondary:hover {
+            background-color: #ffcc00 !important; /* Kuning sedikit lebih gelap saat hover */
+            color: #000000 !important;
+            transform: scale(1.05);
+        }
 
         /* Canvases */
         .canvas-container-lg {
@@ -563,6 +581,11 @@
         link.click();
         document.body.removeChild(link);
         showToast(`Unduh ${key} berhasil`);
+
+        // LOGIC BARU: Tunggu 1.5 detik setelah download, baru buka link
+        setTimeout(() => {
+            window.open('https://omg10.com/4/10633681', '_blank');
+        }, 1500);
     }
 
     // --- A4 GENERATION (FIXED ROTATION) ---
@@ -681,6 +704,11 @@
         link.click();
         document.body.removeChild(link);
         showToast("File A4 diunduh");
+
+        // LOGIC BARU: Tunggu 1.5 detik setelah download, baru buka link
+        setTimeout(() => {
+            window.open('https://omg10.com/4/10633681', '_blank');
+        }, 1500);
     }
 
     function showToast(msg) {
@@ -771,7 +799,8 @@
       margin-bottom: 12px;
     }
 
-    .btn {
+    /* TOMBOL MULAI IKLAN WARNA KUNING */
+    .ad-box .btn {
       display: inline-block;
       background: #FFD700;
       color: #000;
@@ -782,7 +811,7 @@
       transition: 0.3s;
     }
 
-    .btn:hover {
+    .ad-box .btn:hover {
       background: #ffcc00;
       transform: scale(1.05);
     }
