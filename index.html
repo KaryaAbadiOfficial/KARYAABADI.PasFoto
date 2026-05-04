@@ -3,36 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KARYA ABADI PAS FOTO - PRO</title>
     <link rel="icon" type="image/png" href="favicon.png">
-    <title>KARYA ABADI PAS FOTO</title>
     <style>
-        /* --- CSS VARIABLES (THEMING) --- */
+        /* --- CSS VARIABLES --- */
         :root {
-            /* Default (Dark Mode) */
             --bg-body: #121212;
             --bg-card: #1e1e1e;
             --bg-input: #2d2d2d;
-            --text-main: #ffffff; /* Ikon Putih di Dark Mode */
+            --text-main: #ffffff;
             --text-muted: #b0b0b0;
-            
             --accent-red: #D32F2F; 
             --border-color: #444444;
-            
+            --input-bg: #333333;
             --shadow: 0 4px 6px rgba(0,0,0,0.3);
             --toast-bg: #333;
         }
 
-        /* Light Mode Variables */
         [data-theme="light"] {
             --bg-body: #f0f2f5;
             --bg-card: #ffffff;
             --bg-input: #f7f7f7;
-            --text-main: #1a1a1a; /* Ikon Hitam di Light Mode */
+            --text-main: #1a1a1a;
             --text-muted: #666666;
-            
             --accent-red: #D32F2F; 
             --border-color: #ddd;
-            
+            --input-bg: #ffffff;
             --shadow: 0 4px 12px rgba(0,0,0,0.1);
             --toast-bg: #333;
         }
@@ -58,7 +54,7 @@
         header {
             background-color: #000000; 
             border-bottom: 2px solid var(--accent-red);
-            padding: 1rem 2rem;
+            padding: 0.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -73,13 +69,9 @@
         }
 
         .site-logo-img {
-            width: 50px;
-            height: 50px;
-            display: block;
-            flex-shrink: 0;
-            border-radius: 4px;
-            border: 1px solid #444;
-            background-color: #000;
+            width: 60px;
+            height: auto;
+            max-height: 50px;
             object-fit: contain;
         }
 
@@ -92,17 +84,10 @@
             line-height: 1.2;
         }
         
-        .site-info h1 span {
-            color: var(--accent-red);
-        }
+        .site-info h1 span { color: var(--accent-red); }
+        .site-info p { font-size: 0.85rem; color: #e0e0e0; letter-spacing: 1px; }
 
-        .site-info p {
-            font-size: 0.85rem;
-            color: #e0e0e0; 
-            letter-spacing: 1px;
-        }
-
-        /* Theme Toggle Button */
+        /* Theme Toggle */
         .theme-toggle {
             background: rgba(255,255,255,0.1);
             border: 1px solid #555;
@@ -110,37 +95,27 @@
             padding: 0.5rem;
             border-radius: 50%;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
         }
-        
-        .theme-toggle:hover {
-            background-color: rgba(255,255,255,0.2);
-        }
+        .theme-toggle:hover { background-color: rgba(255,255,255,0.2); }
 
-        /* Main Layout */
+        /* Layout */
         main {
             flex: 1;
             padding: 2rem;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
             width: 100%;
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 350px 1fr;
             gap: 2rem;
         }
 
         @media (max-width: 900px) {
-            main {
-                grid-template-columns: 1fr;
-                padding: 1rem;
-            }
+            main { grid-template-columns: 1fr; padding: 1rem; }
         }
 
-        /* Cards */
         .card {
             background-color: var(--bg-card);
             border-radius: 12px;
@@ -162,507 +137,259 @@
             color: var(--accent-red);
         }
 
-        /* Custom SVG Icon Styling */
-        .icon-svg {
-            width: 24px;
-            height: 24px;
-            /* WARNA IKON DIPAKSA AGAR TIDAK MERAH */
-            stroke: var(--text-main) !important; 
-            fill: none;
-        }
+        .icon-svg { width: 24px; height: 24px; stroke: var(--text-main); fill: none; }
 
-        /* Upload Area */
+        /* Upload */
         .upload-area {
             border: 2px dashed var(--border-color);
             border-radius: 8px;
-            padding: 2rem;
+            padding: 1.5rem;
             text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
             position: relative;
             background-color: var(--bg-input);
         }
-
-        .upload-area:hover {
-            border-color: var(--accent-red);
-            background-color: rgba(211, 47, 47, 0.1);
-        }
-
-        .upload-area input {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        /* Upload Icon (Camera) Styling */
-        .upload-icon-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 1rem;
-        }
-        
-        .upload-icon-svg {
-            width: 48px;
-            height: 48px;
-            /* WARNA IKON KAMERA DIPAKSA AGAR TIDAK MERAH */
-            stroke: var(--text-main) !important;
-            fill: none;
-        }
+        .upload-area:hover { border-color: var(--accent-red); background-color: rgba(211, 47, 47, 0.1); }
+        .upload-area input { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
 
         /* Controls */
-        .form-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+        label { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); }
+        input[type="number"] {
+            padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-color);
+            background-color: var(--input-bg); color: var(--text-main); width: 100%;
         }
 
-        label {
-            font-weight: 500;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-        }
-
-        select, button {
-            padding: 0.75rem;
-            border-radius: 6px;
-            border: 1px solid var(--border-color);
-            font-size: 1rem;
-            outline: none;
-            background-color: var(--bg-input);
-            color: var(--text-main);
-        }
-
-        select:focus {
-            border-color: var(--accent-red);
-        }
+        .qty-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+        .qty-item label { font-size: 0.8rem; text-align: center; }
 
         /* Buttons */
-        .btn-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: auto;
-        }
-
         .btn {
-            background-color: var(--accent-red);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: 700;
-            transition: all 0.2s;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-transform: uppercase;
+            background-color: var(--accent-red); color: white; border: none; cursor: pointer;
+            font-weight: 700; display: flex; justify-content: center; align-items: center;
+            text-transform: uppercase; padding: 0.8rem; border-radius: 6px; font-size: 0.9rem;
+        }
+        .btn:hover { background-color: #b71c1c; transform: translateY(-2px); }
+        .btn.secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+        .btn-sm { padding: 0.4rem; font-size: 0.8rem; margin-top: 5px; width: 100%; }
+
+        /* Canvases */
+        .canvas-container-lg {
+            width: 100%; aspect-ratio: 3/4; background-color: #D3D3D3;
+            border-radius: 8px; overflow: hidden; display: flex; justify-content: center; align-items: center;
+            position: relative; border: 1px solid var(--border-color); margin-bottom: 10px;
+        }
+        canvas { box-shadow: 0 0 10px rgba(0,0,0,0.2); }
+
+        /* Previews Wrapper */
+        .previews-wrapper {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
+            background: var(--bg-input); padding: 15px; border-radius: 8px;
         }
 
-        .btn:hover {
-            background-color: #b71c1c;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+        .preview-card {
+            display: flex; flex-direction: column; align-items: center; gap: 8px;
         }
 
-        .btn.secondary {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn.secondary:hover {
-            background-color: var(--bg-input);
-            border-color: var(--text-main);
-        }
-
-        .btn:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Canvas Preview Area */
-        .canvas-container {
-            width: 100%;
-            aspect-ratio: 3/4; 
-            background-color: #D3D3D3; 
-            border-radius: 8px;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-            border: 1px solid var(--border-color);
-        }
-
-        canvas {
-            max-width: 100%;
-            max-height: 100%;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-        }
-
-        .slider-group {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
+        .preview-card canvas {
+            border: 1px solid var(--border-color); background: #fff;
+            cursor: move; /* Indicate draggable */
+            width: 100%; height: auto; max-width: 120px;
         }
         
-        input[type="range"] {
-            flex: 1;
-            cursor: pointer;
-            accent-color: var(--accent-red);
+        .preview-slider-group {
+            width: 100%; display: flex; align-items: center; gap: 5px;
+        }
+        
+        input[type=range].mini-slider {
+            width: 100%; height: 4px; background: var(--border-color); border-radius: 2px;
+            appearance: none; outline: none;
+        }
+        input[type=range].mini-slider::-webkit-slider-thumb {
+            appearance: none; width: 12px; height: 12px; border-radius: 50%;
+            background: var(--accent-red); cursor: pointer;
         }
 
         /* Footer */
-        footer {
-            background-color: #000000;
-            border-top: 1px solid #333;
-            padding: 1.5rem;
-            text-align: center;
-            margin-top: auto;
-        }
-        
-        footer p {
-            color: #e0e0e0;
-            font-size: 0.9rem;
-        }
+        footer { background-color: #000000; border-top: 1px solid #333; padding: 1.5rem; text-align: center; margin-top: auto; }
+        footer p { color: #e0e0e0; font-size: 0.9rem; }
 
-        /* Toast Notification */
+        /* Toast */
         #toast {
-            visibility: hidden;
-            min-width: 250px;
-            background-color: var(--toast-bg);
-            color: #fff;
-            text-align: center;
-            border-radius: 4px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            bottom: 30px;
-            transform: translateX(-50%);
-            font-size: 1rem;
-            border: 1px solid var(--accent-red);
+            visibility: hidden; min-width: 250px; background-color: var(--toast-bg);
+            color: #fff; text-align: center; border-radius: 4px; padding: 16px;
+            position: fixed; z-index: 1000; left: 50%; bottom: 30px;
+            transform: translateX(-50%); font-size: 1rem; border: 1px solid var(--accent-red);
         }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-        #toast.show {
-            visibility: visible;
-            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        /* Modal */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
+        .modal-content { background-color: var(--bg-card); margin: 2% auto; padding: 20px; border: 1px solid var(--accent-red); width: 95%; max-width: 1200px; height: 90vh; display: flex; flex-direction: column; border-radius: 12px; color: var(--text-main); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+        .modal-body { flex: 1; overflow: auto; background-color: #111; display: flex; justify-content: center; align-items: flex-start; padding: 2rem; }
+        .modal-footer { padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 1rem; }
+        #a4PreviewImage { max-width: 100%; height: auto; }
+        .close { color: var(--text-muted); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+
+        @media (max-width: 600px) {
+            .qty-grid { grid-template-columns: 1fr; }
+            .previews-wrapper { grid-template-columns: 1fr; }
         }
-
-        @keyframes fadein {
-            from {bottom: 0; opacity: 0;}
-            to {bottom: 30px; opacity: 1;}
-        }
-
-        @keyframes fadeout {
-            from {bottom: 30px; opacity: 1;}
-            to {bottom: 0; opacity: 0;}
-        }
-
-        /* MODAL STYLES (For A4 Preview) */
-        .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
-            left: 0;
-            top: 0;
-            width: 100%; 
-            height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.9); 
-            backdrop-filter: blur(5px);
-        }
-
-        .modal-content {
-            background-color: var(--bg-card);
-            margin: 2% auto;
-            padding: 20px;
-            border: 1px solid var(--accent-red);
-            width: 90%;
-            max-width: 1200px;
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            border-radius: 12px;
-            color: var(--text-main);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .modal-body {
-            flex: 1;
-            overflow: auto;
-            background-color: #111;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 2rem;
-        }
-
-        .modal-footer {
-            padding-top: 1rem;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: flex-end; 
-            gap: 1rem;
-        }
-
-        /* A4 Preview Image Scaling */
-        #a4PreviewImage {
-            box-shadow: 0 0 20px rgba(0,0,0,0.5);
-            transform-origin: top center;
-            transition: transform 0.3s ease;
-        }
-
-        .close {
-            color: var(--text-muted);
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .close:hover {
-            color: var(--accent-red);
-        }
-
-        /* Container for printing (Hidden usually) */
-        #printSection {
-            display: none;
-        }
-
     </style>
 </head>
 <body>
 
 <header>
     <div class="logo-container">
-        <img 
-            id="siteLogo"
-            src="https://z-cdn-media.chatglm.cn/files/02484372-79fa-454d-99b8-33614665fc9f.png?auth_key=1877783095-8ca6a7f6125c4eb797ac403cd09d18c7-0-17863a2b34d1aabeef13c1fa55d372b7" 
-            alt="Karya Abadi Logo" 
-            class="site-logo-img"
-        >
-        
+        <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
         <div class="site-info">
             <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <!-- WARNA KUNING DITERAPKAN DISINI -->
-            <p style="color: #FFD700;">Auto Crop & Cutting Line</p>
+            <p style="color: #FFD700;">Auto Crop & Individual Adjustment</p>
         </div>
     </div>
-    
-    <!-- Theme Toggle -->
-    <button class="theme-toggle" id="themeToggle" title="Ganti Mode Gelap/Terang">
-        ☀️
-    </button>
+    <button class="theme-toggle" id="themeToggle">☀️</button>
 </header>
 
 <main>
-    <!-- Left Column: Editor -->
+    <!-- Left Column: Settings -->
     <section class="card">
-        <!-- SECTION TITLE: 1. Upload Foto (ICON FOLDER - BUKAN MERAH) -->
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
-            </svg>
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
             1. Upload Foto
         </div>
-
         <div class="upload-area" id="drop-zone">
             <input type="file" id="imageInput" accept="image/*">
-            
-            <!-- UPLOAD AREA ICON: KAMERA (BUKAN MERAH) -->
-            <div class="upload-icon-container">
-                <svg class="upload-icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
-                    <circle cx="12" cy="13" r="4"></circle>
-                </svg>
-            </div>
-
             <p><strong>Klik untuk upload</strong> atau tarik foto ke sini</p>
-            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Format: JPG, PNG</p>
         </div>
 
-        <!-- SECTION TITLE: 2. Pengaturan (ICON GEAR - BUKAN MERAH) -->
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="3"></circle>
-                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-            </svg>
-            2. Pengaturan
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            Jumlah Cetak (A4)
         </div>
-        
-        <div class="form-group">
-            <label for="sizeSelect">Pilih Ukuran Pas Foto:</label>
-            <select id="sizeSelect" disabled>
-                <option value="" disabled selected>-- Pilih Ukuran --</option>
-                <option value="2x3">Ukuran 2x3 (21.6 × 27.9 mm)</option>
-                <option value="3x4">Ukuran 3x4 (27.9 × 38.1 mm)</option>
-                <option value="4x6">Ukuran 4x6 (38.1 × 55.9 mm)</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <div class="slider-group">
-                <label for="zoomRange">Zoom:</label>
-                <input type="range" id="zoomRange" min="1" max="3" step="0.05" value="1" disabled>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-muted);">Drag foto di canvas untuk menggeser posisi.</p>
+        <div class="qty-grid">
+            <div class="qty-item"><label>2x3</label><input type="number" id="qty2x3" value="0" min="0"></div>
+            <div class="qty-item"><label>3x4</label><input type="number" id="qty3x4" value="0" min="0"></div>
+            <div class="qty-item"><label>4x6</label><input type="number" id="qty4x6" value="0" min="0"></div>
         </div>
 
         <div class="btn-group">
-            <button class="btn secondary" id="resetBtn" disabled>Reset</button>
-            <button class="btn" id="refreshBtn" disabled>Refresh</button>
+            <button class="btn secondary" id="resetAllBtn" disabled>Reset Semua</button>
+            <button class="btn" id="previewA4Btn" disabled>PREVIEW A4</button>
         </div>
     </section>
 
-    <!-- Right Column: Preview & Actions -->
+    <!-- Right Column: Editor -->
     <section class="card">
-        <!-- SECTION TITLE: 3. Preview Pas Foto (ICON EYE - BUKAN MERAH) -->
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                <circle cx="12" cy="12" r="3"></circle>
-            </svg>
-            3. Preview Pas Foto
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+            3 Hasil Crop (Edit Individu)
+        </div>
+
+        <div class="previews-wrapper">
+            <!-- 2x3 -->
+            <div class="preview-card">
+                <canvas id="canvas2x3"></canvas>
+                <div style="font-weight:bold; font-size:0.8rem;">2x3</div>
+                <div class="preview-slider-group">
+                    <input type="range" id="zoom2x3" class="mini-slider" disabled min="0.5" max="3" step="0.05">
+                </div>
+                <button class="btn btn-sm secondary" id="btnDl2x3" disabled>Download 1</button>
+            </div>
+
+            <!-- 3x4 -->
+            <div class="preview-card">
+                <canvas id="canvas3x4"></canvas>
+                <div style="font-weight:bold; font-size:0.8rem;">3x4</div>
+                <div class="preview-slider-group">
+                    <input type="range" id="zoom3x4" class="mini-slider" disabled min="0.5" max="3" step="0.05">
+                </div>
+                <button class="btn btn-sm secondary" id="btnDl3x4" disabled>Download 1</button>
+            </div>
+
+            <!-- 4x6 -->
+            <div class="preview-card">
+                <canvas id="canvas4x6"></canvas>
+                <div style="font-weight:bold; font-size:0.8rem;">4x6</div>
+                <div class="preview-slider-group">
+                    <input type="range" id="zoom4x6" class="mini-slider" disabled min="0.5" max="3" step="0.05">
+                </div>
+                <button class="btn btn-sm secondary" id="btnDl4x6" disabled>Download 1</button>
+            </div>
         </div>
         
-        <!-- Single Canvas Editor -->
-        <div class="canvas-container">
-            <canvas id="editorCanvas"></canvas>
-        </div>
-        
-        <!-- SECTION TITLE: Simpan / Download (ICON DOWNLOAD - BUKAN MERAH) -->
-        <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="7 10 12 15 17 10"></polyline>
-                <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            Simpan / Download
-        </div>
-        <div class="btn-group no-print">
-            <button class="btn secondary" id="downloadSingleBtn" disabled>
-                Download 1 Foto
-            </button>
-            <!-- TEKS DIUBAH MENJADI "PREVIEW A4" -->
-            <button class="btn" id="previewA4Btn" disabled>
-                Preview A4
-            </button>
-        </div>
+        <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
+            *Geser foto langsung di kotak di atas untuk menyesuaikan posisi masing-masing ukuran.
+        </p>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 Karya Abadi Pas Foto. Hak Cipta Dilindungi Undang-Undang.</p>
+    <p>&copy; 2026 Karya Abadi Pas Foto. All Rights Reserved</p>
 </footer>
 
-<!-- Hidden Print Section -->
-<div id="printSection"></div>
-
-<!-- Modal for A4 Preview -->
+<!-- Modal -->
 <div id="a4Modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>Preview A4 (DPI 100px/cm)</h2>
+            <h2>Preview Kertas A4</h2>
             <span class="close" id="closeModal">&times;</span>
         </div>
         <div class="modal-body">
             <img id="a4PreviewImage" src="" alt="A4 Preview">
         </div>
         <div class="modal-footer">
-            <!-- TEKS DIUBAH MENJADI "DOWNLOAD A4" -->
             <button class="btn" id="downloadA4Btn">Download A4</button>
         </div>
     </div>
 </div>
 
-<!-- Toast -->
 <div id="toast">Pesan notifikasi</div>
 
 <script>
-    /**
-     * CONFIGURATION & CONSTANTS
-     * DPI 100 pxl / centimeter
-     * 1 cm = 100 px
-     * 1 mm = 10 px
-     */
-    const MM_TO_PX = 10; // 10 px per mm (100 px per cm)
+    const MM_TO_PX = 10; 
     const BORDER_WHITE = 2 * MM_TO_PX; 
     const CUT_LINE_WIDTH = 1; 
-    const A4_MARGIN_PX = 10 * MM_TO_PX; 
-
-    // Direct Link Configuration
-    const DIRECT_LINK_URL = "https://omg10.com/4/10633681";
+    // Margin 0.5 cm
+    const A4_MARGIN_PX = 5 * MM_TO_PX; 
 
     const PRESETS = {
-        "2x3": {
-            w_mm: 21.6, h_mm: 27.9,
-            w: Math.round(21.6 * MM_TO_PX), 
-            h: Math.round(27.9 * MM_TO_PX), 
-            ratio: 21.6 / 27.9,
-            label: "2x3"
-        },
-        "3x4": {
-            w_mm: 27.9, h_mm: 38.1,
-            w: Math.round(27.9 * MM_TO_PX), 
-            h: Math.round(38.1 * MM_TO_PX), 
-            ratio: 27.9 / 38.1,
-            label: "3x4"
-        },
-        "4x6": {
-            w_mm: 38.1, h_mm: 55.9,
-            w: Math.round(38.1 * MM_TO_PX), 
-            h: Math.round(55.9 * MM_TO_PX), 
-            ratio: 38.1 / 55.9,
-            label: "4x6"
-        }
+        "2x3": { w_mm: 21.6, h_mm: 27.9, w: 216, h: 279, ratio: 21.6/27.9, label: "2x3" },
+        "3x4": { w_mm: 27.9, h_mm: 38.1, w: 279, h: 381, ratio: 27.9/38.1, label: "3x4" },
+        "4x6": { w_mm: 38.1, h_mm: 55.9, w: 381, h: 559, ratio: 38.1/55.9, label: "4x6" }
+    };
+    const A4_WIDTH = 2100; 
+    const A4_HEIGHT = 2970; 
+
+    let originalImage = null;
+    
+    const previewStates = {
+        "2x3": { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 },
+        "3x4": { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 },
+        "4x6": { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 }
     };
 
-    const A4_WIDTH = Math.round(210 * MM_TO_PX); 
-    const A4_HEIGHT = Math.round(297 * MM_TO_PX); 
-
-    // State
-    let originalImage = null;
-    let currentPreset = null;
-    let scale = 1;
-    let offsetX = 0;
-    let offsetY = 0;
-    let isDragging = false;
-    let startX, startY;
-
-    // DOM Elements
     const imageInput = document.getElementById('imageInput');
-    const sizeSelect = document.getElementById('sizeSelect');
-    const zoomRange = document.getElementById('zoomRange');
-    const editorCanvas = document.getElementById('editorCanvas');
-    const ctx = editorCanvas.getContext('2d');
-    
-    const refreshBtn = document.getElementById('refreshBtn');
-    const resetBtn = document.getElementById('resetBtn');
-    const downloadSingleBtn = document.getElementById('downloadSingleBtn');
+    const resetAllBtn = document.getElementById('resetAllBtn');
     const previewA4Btn = document.getElementById('previewA4Btn');
-    
+    const themeToggle = document.getElementById('themeToggle');
+    const toast = document.getElementById('toast');
+
+    const refs = {
+        "2x3": { canvas: document.getElementById('canvas2x3'), slider: document.getElementById('zoom2x3'), btn: document.getElementById('btnDl2x3') },
+        "3x4": { canvas: document.getElementById('canvas3x4'), slider: document.getElementById('zoom3x4'), btn: document.getElementById('btnDl3x4') },
+        "4x6": { canvas: document.getElementById('canvas4x6'), slider: document.getElementById('zoom4x6'), btn: document.getElementById('btnDl4x6') }
+    };
+
     const modal = document.getElementById('a4Modal');
     const closeModal = document.getElementById('closeModal');
     const a4PreviewImage = document.getElementById('a4PreviewImage');
     const downloadA4Btn = document.getElementById('downloadA4Btn');
-    const themeToggle = document.getElementById('themeToggle');
 
-    const toast = document.getElementById('toast');
-
-    // --- 0. THEME TOGGLE ---
+    // --- THEME ---
     themeToggle.addEventListener('click', () => {
         const currentTheme = document.documentElement.getAttribute('data-theme');
         if (currentTheme === 'light') {
@@ -674,88 +401,33 @@
         }
     });
 
-    // ---1. EVENT LISTENERS ---
-
+    // --- INITIALIZATION ---
     imageInput.addEventListener('change', handleImageUpload);
+    resetAllBtn.addEventListener('click', resetAllPreviews);
     
-    sizeSelect.addEventListener('change', (e) => {
-        if(!originalImage) return;
-        currentPreset = e.target.value;
-        resetCropState();
-        enableControls();
-        drawEditor();
-        showToast(`Ukuran ${currentPreset} dipilih`);
+    ["2x3", "3x4", "4x6"].forEach(key => {
+        setupInteractions(key);
+        refs[key].btn.addEventListener('click', () => downloadSingle(key));
     });
 
-    zoomRange.addEventListener('input', (e) => {
-        scale = parseFloat(e.target.value);
-        drawEditor();
-    });
-
-    refreshBtn.addEventListener('click', () => {
-        resetCropState();
-        drawEditor();
-        showToast("Refresh Preview");
-    });
-
-    resetBtn.addEventListener('click', () => {
-        if(!originalImage) return;
-        resetCropState();
-        drawEditor();
-    });
-
-    editorCanvas.addEventListener('mousedown', startDrag);
-    editorCanvas.addEventListener('mousemove', drag);
-    editorCanvas.addEventListener('mouseup', endDrag);
-    editorCanvas.addEventListener('mouseleave', endDrag);
-    
-    editorCanvas.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        const mouseEvent = new MouseEvent("mousedown", { clientX: touch.clientX, clientY: touch.clientY });
-        editorCanvas.dispatchEvent(mouseEvent);
-    }, {passive: false});
-
-    editorCanvas.addEventListener('touchmove', (e) => {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const mouseEvent = new MouseEvent("mousemove", { clientX: touch.clientX, clientY: touch.clientY });
-        editorCanvas.dispatchEvent(mouseEvent);
-    }, {passive: false});
-
-    editorCanvas.addEventListener('touchend', () => {
-        const mouseEvent = new MouseEvent("mouseup", {});
-        editorCanvas.dispatchEvent(mouseEvent);
-    });
-
-    downloadSingleBtn.addEventListener('click', downloadSinglePhoto);
     previewA4Btn.addEventListener('click', generateA4Preview);
-    
     closeModal.addEventListener('click', () => modal.style.display = "none");
-    window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
+    window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
     downloadA4Btn.addEventListener('click', downloadA4Image);
 
-    // --- 2. CORE FUNCTIONS ---
+    // --- LOGIC ---
 
     function handleImageUpload(e) {
         const file = e.target.files[0];
         if (!file) return;
-
         const reader = new FileReader();
         reader.onload = (event) => {
             originalImage = new Image();
             originalImage.onload = () => {
-                sizeSelect.disabled = false;
-                showToast("Foto diupload. Pilih ukuran.");
-                if(sizeSelect.value) {
-                    currentPreset = sizeSelect.value;
-                    resetCropState();
-                    enableControls();
-                    drawEditor();
-                }
+                enableControls();
+                initAllCanvases();
+                resetAllPreviews(); 
+                showToast("Foto berhasil diupload");
             };
             originalImage.src = event.target.result;
         };
@@ -763,110 +435,149 @@
     }
 
     function enableControls() {
-        zoomRange.disabled = false;
-        refreshBtn.disabled = false;
-        downloadSingleBtn.disabled = false;
+        resetAllBtn.disabled = false;
         previewA4Btn.disabled = false;
-        resetBtn.disabled = false;
+        Object.keys(refs).forEach(key => {
+            refs[key].slider.disabled = false;
+            refs[key].btn.disabled = false;
+        });
     }
 
-    function resetCropState() {
-        if (!currentPreset || !originalImage) return;
-        const preset = PRESETS[currentPreset];
-        
-        const totalExtra = (BORDER_WHITE * 2) + (CUT_LINE_WIDTH * 2);
-        
-        editorCanvas.width = preset.w + totalExtra;
-        editorCanvas.height = preset.h + totalExtra;
-        
-        const container = document.querySelector('.canvas-container');
-        container.style.aspectRatio = `${editorCanvas.width}/${editorCanvas.height}`;
-
-        const scaleX = preset.w / originalImage.width;
-        const scaleY = preset.h / originalImage.height;
-        scale = Math.max(scaleX, scaleY) * 1.1; 
-        
-        zoomRange.value = scale;
-        zoomRange.min = scale * 0.5;
-        zoomRange.max = scale * 3;
-
-        const inset = BORDER_WHITE + CUT_LINE_WIDTH;
-        const photoAreaCenterX = inset + preset.w / 2;
-        const photoAreaCenterY = inset + preset.h / 2;
-
-        offsetX = photoAreaCenterX - (originalImage.width * scale) / 2;
-        offsetY = photoAreaCenterY - (originalImage.height * scale) / 2;
+    function initAllCanvases() {
+        Object.keys(PRESETS).forEach(key => {
+            const p = PRESETS[key];
+            const c = refs[key].canvas;
+            const extra = (BORDER_WHITE * 2) + (CUT_LINE_WIDTH * 2);
+            c.width = p.w + extra;
+            c.height = p.h + extra;
+        });
     }
 
-    function drawEditor() {
-        if (!originalImage || !currentPreset) return;
-        const preset = PRESETS[currentPreset];
-        const w = editorCanvas.width;
-        const h = editorCanvas.height;
-        const inset = BORDER_WHITE + CUT_LINE_WIDTH;
+    function resetAllPreviews() {
+        if(!originalImage) return;
+        Object.keys(PRESETS).forEach(key => {
+            const p = PRESETS[key];
+            const state = previewStates[key];
+            
+            const scaleX = p.w / originalImage.width;
+            const scaleY = p.h / originalImage.height;
+            const initialScale = Math.max(scaleX, scaleY) * 1.1; 
+
+            state.scale = initialScale;
+            refs[key].slider.value = initialScale;
+            
+            const extra = (BORDER_WHITE * 2) + (CUT_LINE_WIDTH * 2);
+            const centerX = (p.w + extra)/2;
+            const centerY = (p.h + extra)/2;
+            
+            state.offsetX = centerX - (originalImage.width * state.scale) / 2;
+            state.offsetY = centerY - (originalImage.height * state.scale) / 2;
+            
+            drawPreview(key);
+        });
+    }
+
+    function setupInteractions(key) {
+        const canvas = refs[key].canvas;
+        const state = previewStates[key];
+        const slider = refs[key].slider;
+
+        slider.addEventListener('input', (e) => {
+            state.scale = parseFloat(e.target.value);
+            drawPreview(key);
+        });
+
+        canvas.addEventListener('mousedown', (e) => startDrag(e, state, key));
+        canvas.addEventListener('mousemove', (e) => drag(e, state, key));
+        canvas.addEventListener('mouseup', () => endDrag(state));
+        canvas.addEventListener('mouseleave', () => endDrag(state));
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousedown", { clientX: touch.clientX, clientY: touch.clientY });
+            startDrag(mouseEvent, state, key);
+        }, {passive: false});
+        
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent("mousemove", { clientX: touch.clientX, clientY: touch.clientY });
+            drag(mouseEvent, state, key);
+        }, {passive: false});
+        
+        canvas.addEventListener('touchend', () => endDrag(state));
+    }
+
+    function startDrag(e, state, key) {
+        state.isDragging = true;
+        state.startX = e.clientX - state.offsetX;
+        state.startY = e.clientY - state.offsetY;
+        refs[key].canvas.style.cursor = 'grabbing';
+    }
+
+    function drag(e, state, key) {
+        if (!state.isDragging) return;
+        state.offsetX = e.clientX - state.startX;
+        state.offsetY = e.clientY - state.startY;
+        drawPreview(key);
+    }
+
+    function endDrag(state) {
+        state.isDragging = false;
+        Object.keys(refs).forEach(k => refs[k].canvas.style.cursor = 'move');
+    }
+
+    function drawPreview(key) {
+        if(!originalImage) return;
+        const ctx = refs[key].canvas.getContext('2d');
+        const preset = PRESETS[key];
+        const w = refs[key].canvas.width;
+        const h = refs[key].canvas.height;
+        const state = previewStates[key];
 
         ctx.clearRect(0, 0, w, h);
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, w, h);
 
+        const inset = BORDER_WHITE + CUT_LINE_WIDTH;
+
         ctx.save();
         ctx.beginPath();
         ctx.rect(inset, inset, preset.w, preset.h);
         ctx.clip();
-        ctx.drawImage(originalImage, offsetX, offsetY, originalImage.width * scale, originalImage.height * scale);
+        ctx.drawImage(originalImage, state.offsetX, state.offsetY, originalImage.width * state.scale, originalImage.height * state.scale);
         ctx.restore();
 
         ctx.strokeStyle = '#000000';
-        ctx.lineWidth = CUT_LINE_WIDTH; 
+        ctx.lineWidth = CUT_LINE_WIDTH;
         ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
     }
 
-    // --- 3. PAN INTERACTION ---
-
-    function startDrag(e) {
+    function downloadSingle(key) {
         if(!originalImage) return;
-        isDragging = true;
-        startX = e.clientX - offsetX;
-        startY = e.clientY - offsetY;
-        editorCanvas.style.cursor = 'grabbing';
-    }
-
-    function drag(e) {
-        if (!isDragging) return;
-        e.preventDefault();
-        offsetX = e.clientX - startX;
-        offsetY = e.clientY - startY;
-        drawEditor();
-    }
-
-    function endDrag() {
-        isDragging = false;
-        editorCanvas.style.cursor = 'default';
-    }
-
-    // --- 4. ACTIONS (DOWNLOAD -> REDIRECT) ---
-
-    function downloadSinglePhoto() {
-        if (!originalImage) return;
-        
-        // 1. Download Process
         const link = document.createElement('a');
-        const fileName = `KARYA-ABADI-${currentPreset}-${Date.now()}.jpg`;
-        link.download = fileName;
-        link.href = editorCanvas.toDataURL('image/jpeg', 0.95);
-        
+        link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
+        link.href = refs[key].canvas.toDataURL('image/jpeg', 0.95);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        
-        showToast("File sedang diunduh...");
-
-        // 2. Redirect to Direct Link
-        window.open(DIRECT_LINK_URL, '_blank');
+        showToast(`Unduh ${key} berhasil`);
     }
+
+    // --- A4 GENERATION (FIXED ROTATION) ---
 
     function generateA4Preview() {
         if (!originalImage) return;
+
+        const q2x3 = parseInt(document.getElementById('qty2x3').value) || 0;
+        const q3x4 = parseInt(document.getElementById('qty3x4').value) || 0;
+        const q4x6 = parseInt(document.getElementById('qty4x6').value) || 0;
+
+        if (q2x3 + q3x4 + q4x6 === 0) {
+            showToast("Masukkan jumlah minimal 1!");
+            return;
+        }
 
         const a4Canvas = document.createElement('canvas');
         a4Canvas.width = A4_WIDTH;
@@ -876,74 +587,109 @@
         a4Ctx.fillStyle = '#ffffff';
         a4Ctx.fillRect(0, 0, A4_WIDTH, A4_HEIGHT);
 
-        const availWidth = A4_WIDTH - (A4_MARGIN_PX * 2);
-        const availHeight = A4_HEIGHT - (A4_MARGIN_PX * 2);
+        // Flatten jobs
+        let flatJobs = [];
+        const addFlatJob = (key, qty) => {
+            if(qty <= 0) return;
+            
+            const sourceCanvas = refs[key].canvas;
+            
+            // Logic Rotasi untuk 2x3 (DIPERBAIKI)
+            let finalCanvas = sourceCanvas;
+            let w = sourceCanvas.width;
+            let h = sourceCanvas.height;
 
-        const itemW = editorCanvas.width;
-        const itemH = editorCanvas.height;
-        const gap = 0; 
+            if (key === "2x3") {
+                const rotCanvas = document.createElement('canvas');
+                // Tukar dimensi (Width jadi Height, Height jadi Width)
+                rotCanvas.width = sourceCanvas.height;
+                rotCanvas.height = sourceCanvas.width;
+                
+                const rCtx = rotCanvas.getContext('2d');
+                
+                rCtx.save();
+                // Geser origin ke tengah canvas baru
+                rCtx.translate(rotCanvas.width / 2, rotCanvas.height / 2);
+                // Putar -90 derajat (Kiri)
+                rCtx.rotate(-90 * Math.PI / 180);
+                // Gambar canvas asli diposisikan di tengah terhadap axis yang diputar
+                rCtx.drawImage(sourceCanvas, -sourceCanvas.width / 2, -sourceCanvas.height / 2);
+                rCtx.restore();
 
-        const cols = Math.floor(availWidth / itemW);
-        const rows = Math.floor(availHeight / itemH);
-
-        const totalGridW = (cols * itemW) + ((cols - 1) * gap);
-        const totalGridH = (rows * itemH) + ((rows - 1) * gap);
-        
-        const startX = A4_MARGIN_PX + (availWidth - totalGridW) / 2;
-        const startY = A4_MARGIN_PX + (availHeight - totalGridH) / 2;
-
-        const singlePhotoData = editorCanvas.toDataURL('image/jpeg', 0.95);
-        const imgObj = new Image();
-        imgObj.src = singlePhotoData;
-        
-        imgObj.onload = () => {
-            for(let r = 0; r < rows; r++) {
-                for(let c = 0; c < cols; c++) {
-                    const x = startX + c * (itemW + gap);
-                    const y = startY + r * (itemH + gap);
-                    a4Ctx.drawImage(imgObj, x, y, itemW, itemH);
-                }
+                finalCanvas = rotCanvas;
+                w = rotCanvas.width;
+                h = rotCanvas.height;
             }
 
-            const finalA4Data = a4Canvas.toDataURL('image/jpeg', 1.0); 
-            a4PreviewImage.src = finalA4Data;
-            
-            const scaleFactor = Math.min(
-                (window.innerWidth * 0.9) / A4_WIDTH,
-                (window.innerHeight * 0.7) / A4_HEIGHT
-            );
-            a4PreviewImage.style.transform = `scale(${scaleFactor})`;
-            
-            modal.style.display = "block";
-            showToast(`Generated ${rows * cols} foto di kertas A4`);
+            for(let i=0; i<qty; i++) {
+                flatJobs.push({ 
+                    source: finalCanvas, 
+                    w: w, 
+                    h: h 
+                });
+            }
         };
+
+        addFlatJob("2x3", q2x3);
+        addFlatJob("3x4", q3x4);
+        addFlatJob("4x6", q4x6);
+
+        // Sort height descending
+        flatJobs.sort((a, b) => b.h - a.h);
+
+        const margin = A4_MARGIN_PX;
+        let currentX = margin;
+        let currentY = margin;
+        let rowHeight = 0;
+        const maxRight = A4_WIDTH - margin;
+
+        flatJobs.forEach(job => {
+            if (currentX + job.w > maxRight) {
+                currentX = margin;
+                currentY += rowHeight;
+                rowHeight = 0;
+            }
+
+            if (currentY + job.h > (A4_HEIGHT - margin)) {
+                showToast("Kertas A4 Penuh!");
+                return; 
+            }
+
+            // Draw
+            a4Ctx.drawImage(job.source, currentX, currentY, job.w, job.h);
+
+            // Stroke
+            a4Ctx.strokeStyle = '#000000';
+            a4Ctx.lineWidth = 1;
+            a4Ctx.strokeRect(currentX, currentY, job.w, job.h);
+
+            currentX += job.w;
+            rowHeight = Math.max(rowHeight, job.h);
+        });
+
+        a4PreviewImage.src = a4Canvas.toDataURL('image/jpeg', 1.0);
+        modal.style.display = "block";
+        showToast("Preview A4 siap");
     }
 
     function downloadA4Image() {
         if (!a4PreviewImage.src) return;
-
-        // 1. Download Process
         const link = document.createElement('a');
-        link.download = `KARYA-ABADI-A4-${currentPreset}-${Date.now()}.jpg`;
-        link.href = a4PreviewImage.src; // Menggunakan data gambar dari preview
-        
+        link.download = `KARYA-ABADI-A4-Sheet-${Date.now()}.jpg`;
+        link.href = a4PreviewImage.src;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-
-        showToast("File A4 sedang diunduh...");
-
-        // 2. Redirect to Direct Link
-        window.open(DIRECT_LINK_URL, '_blank');
+        showToast("File A4 diunduh");
     }
 
-    function showToast(message) {
-        toast.textContent = message;
+    function showToast(msg) {
+        toast.textContent = msg;
         toast.className = "show";
         setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
     }
-
 </script>
+
 <script>
 (function () {
   let adClosed = false;
@@ -1007,6 +753,7 @@
       position: relative;
     }
 
+    /* LOGO DIPERBESAR */
     .logo {
       width: 140px;
       max-width: 70%;
@@ -1024,20 +771,18 @@
       margin-bottom: 12px;
     }
 
-    /* STYLE KHUSUS TOMBOL MULAI IKLAN ANCHOR */
-    .ad-box .btn {
+    .btn {
       display: inline-block;
-      background: #FFD700 !important; /* Warna Kuning (Dipaksa) */
-      color: #000000 !important;    /* Huruf Hitam (Dipaksa) */
+      background: #FFD700;
+      color: #000;
       font-weight: bold;
       padding: 10px 22px;
       border-radius: 8px;
       text-decoration: none;
       transition: 0.3s;
-      border: none;
     }
 
-    .ad-box .btn:hover {
+    .btn:hover {
       background: #ffcc00;
       transform: scale(1.05);
     }
@@ -1056,8 +801,11 @@
       to { transform: translateY(0); opacity: 1; }
     }
 
+    /* Responsive */
     @media (max-width: 480px) {
-      .logo { width: 120px; }
+      .logo {
+        width: 120px;
+      }
       .text1 { font-size: 14px; }
       .text2 { font-size: 13px; }
     }
