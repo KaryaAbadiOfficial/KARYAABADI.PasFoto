@@ -539,12 +539,11 @@
         Object.keys(refs).forEach(k => refs[k].canvas.style.cursor = 'move');
     }
 
-    function drawPreview(key) {
-        if(!originalImage) return;
-        const ctx = refs[key].canvas.getContext('2d');
+    // Fungsi Dasar Menggambar Tanpa Garis Bantu (Khusus Export/Download)
+    function drawBaseImage(ctx, key) {
         const preset = PRESETS[key];
-        const w = refs[key].canvas.width;
-        const h = refs[key].canvas.height;
+        const w = ctx.canvas.width;
+        const h = ctx.canvas.height;
         const state = previewStates[key];
 
         ctx.clearRect(0, 0, w, h);
@@ -566,20 +565,62 @@
         ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
     }
 
+    // Fungsi Tampilan Layar (Dengan Garis Bantu Hijau Normal untuk Semua Ukuran)
+    function drawPreview(key) {
+        if(!originalImage) return;
+        const ctx = refs[key].canvas.getContext('2d');
+        drawBaseImage(ctx, key);
+
+        const preset = PRESETS[key];
+        const border_px = preset.border_mm * MM_TO_PX;
+        const inset = border_px + CUT_LINE_WIDTH;
+        const centerX = inset + (preset.w / 2);
+        const centerY = inset + (preset.h / 2);
+
+        ctx.save();
+        ctx.strokeStyle = '#00b300'; // Warna Hijau Normal yang solid dan jelas terlihat
+        ctx.lineWidth = 1;
+        ctx.setLineDash([4, 4]);
+        
+        // Garis Vertikal Tengah
+        ctx.beginPath(); 
+        ctx.moveTo(centerX, inset); 
+        ctx.lineTo(centerX, inset + preset.h); 
+        ctx.stroke();
+
+        // Garis Horizontal Tengah
+        ctx.beginPath(); 
+        ctx.moveTo(inset, centerY); 
+        ctx.lineTo(inset + preset.w, centerY); 
+        ctx.stroke();
+
+        ctx.restore();
+    }
+
+    // Membuat Canvas Khusus Export (Bersih tanpa garis hijau)
+    function getCleanCanvas(key) {
+        const c = document.createElement('canvas');
+        const p = PRESETS[key];
+        const border_px = p.border_mm * MM_TO_PX;
+        const extra = (border_px * 2) + (CUT_LINE_WIDTH * 2);
+        c.width = p.w + extra;
+        c.height = p.h + extra;
+        const ctx = c.getContext('2d');
+        drawBaseImage(ctx, key);
+        return c;
+    }
+
     function downloadSingle(key) {
         if(!originalImage) return;
         const link = document.createElement('a');
         link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
-        link.href = refs[key].canvas.toDataURL('image/jpeg', 0.95);
+        link.href = getCleanCanvas(key).toDataURL('image/jpeg', 0.95);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
         showToast(`Unduh ${key} berhasil`);
     }
 
-    // ====================================================================
-    // ALGORITMA MAXRECTS DENGAN ROTASI OTOMATIS (HEMAT KERTAS MAKSIMAL)
-    // ====================================================================
     function intersects(r1, r2) {
         return r1.x < r2.x + r2.w && r1.x + r1.w > r2.x &&
                r1.y < r2.y + r2.h && r1.y + r1.h > r2.y;
@@ -626,9 +667,9 @@
         const addFlatJob = (key, qty) => {
             if(qty <= 0) return;
             
-            const sourceCanvas = refs[key].canvas;
+            // Gunakan canvas yang bersih (tanpa garis bantu)
+            const sourceCanvas = getCleanCanvas(key);
             
-            // Buat versi rotasi 90 derajat untuk setiap foto
             const rotCanvas = document.createElement('canvas');
             rotCanvas.width = sourceCanvas.height;
             rotCanvas.height = sourceCanvas.width;
@@ -651,7 +692,6 @@
         addFlatJob("3x4", q3x4);
         addFlatJob("4x6", q4x6);
 
-        // Urutkan dari luas area terbesar ke terkecil
         flatJobs.sort((a, b) => (b.w * b.h) - (a.w * a.h));
 
         a4PagesData = []; 
@@ -675,7 +715,6 @@
                 let bestScore = Infinity;
                 let useRotated = false;
 
-                // Cek celah terbaik untuk orientasi NORMAL
                 for (let i = 0; i < freeRects.length; i++) {
                     const fr = freeRects[i];
                     if (job.w <= fr.w && job.h <= fr.h) {
@@ -690,7 +729,6 @@
                     }
                 }
 
-                // Cek celah terbaik untuk orientasi ROTASI (miring 90 derajat)
                 for (let i = 0; i < freeRects.length; i++) {
                     const fr = freeRects[i];
                     if (job.rotW <= fr.w && job.rotH <= fr.h) {
@@ -709,12 +747,10 @@
                     let placedX = bestRect.x;
                     let placedY = bestRect.y;
                     
-                    // Pilih dimensi dan sumber canvas sesuai rotasi terbaik
                     let currentW = useRotated ? job.rotW : job.w;
                     let currentH = useRotated ? job.rotH : job.h;
                     let currentSource = useRotated ? job.rotSource : job.source;
                     
-                    // Gambar Foto ke kertas A4
                     a4Ctx.drawImage(currentSource, placedX, placedY, currentW, currentH);
                     a4Ctx.strokeStyle = '#000000';
                     a4Ctx.lineWidth = 1;
@@ -722,7 +758,6 @@
 
                     let placedRect = { x: placedX, y: placedY, w: currentW, h: currentH };
 
-                    // Pecah sisa ruang dan buang yang tumpang tindih
                     let newFreeRects = [];
                     for (let i = 0; i < freeRects.length; i++) {
                         const fr = freeRects[i];
@@ -736,7 +771,6 @@
                         }
                     }
 
-                    // Pruning: Buang free rect yang berada di dalam free rect lain
                     freeRects = [];
                     for (let i = 0; i < newFreeRects.length; i++) {
                         let isSubRect = false;
@@ -753,7 +787,6 @@
 
                     placed = true;
                 } else {
-                    // Jika tidak muat (normal maupun rotasi), pindah ke halaman baru
                     a4PagesData.push(a4Canvas.toDataURL('image/jpeg', 1.0));
                     
                     a4Canvas = document.createElement('canvas');
@@ -768,12 +801,10 @@
             }
         });
 
-        // Simpan halaman terakhir
         if (flatJobs.length > 0) {
             a4PagesData.push(a4Canvas.toDataURL('image/jpeg', 1.0));
         }
 
-        // Render ke Modal
         a4PagesContainer.innerHTML = ''; 
         a4PagesData.forEach((dataUrl, index) => {
             const label = document.createElement('div');
