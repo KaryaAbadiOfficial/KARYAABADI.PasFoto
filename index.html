@@ -565,7 +565,7 @@
         ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
     }
 
-    // Fungsi Tampilan Layar (Dengan Garis Bantu Hijau Normal untuk Semua Ukuran)
+    // Fungsi Tampilan Layar (Dengan Garis Bantu Hijau Solid/Clear)
     function drawPreview(key) {
         if(!originalImage) return;
         const ctx = refs[key].canvas.getContext('2d');
@@ -578,9 +578,9 @@
         const centerY = inset + (preset.h / 2);
 
         ctx.save();
-        ctx.strokeStyle = '#00b300'; // Warna Hijau Normal yang solid dan jelas terlihat
+        ctx.strokeStyle = '#00b300'; // Warna Hijau Normal
         ctx.lineWidth = 1;
-        ctx.setLineDash([4, 4]);
+        ctx.setLineDash([]); // Garis solid nyata, tidak putus-putus
         
         // Garis Vertikal Tengah
         ctx.beginPath(); 
