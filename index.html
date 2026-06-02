@@ -12,280 +12,94 @@
             --bg-input: #2d2d2d;
             --text-main: #ffffff;
             --text-muted: #b0b0b0;
-            --accent-red: #D32F2F; 
+            --accent-red: #D32F2F;
             --border-color: #444444;
             --input-bg: #333333;
             --shadow: 0 4px 6px rgba(0,0,0,0.3);
             --toast-bg: #333;
         }
-
         [data-theme="light"] {
             --bg-body: #f0f2f5;
             --bg-card: #ffffff;
             --bg-input: #f7f7f7;
             --text-main: #1a1a1a;
             --text-muted: #666666;
-            --accent-red: #D32F2F; 
+            --accent-red: #D32F2F;
             --border-color: #ddd;
             --input-bg: #ffffff;
             --shadow: 0 4px 12px rgba(0,0,0,0.1);
             --toast-bg: #333;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        header {
-            background-color: #000000; 
-            border-bottom: 2px solid var(--accent-red);
-            padding: 0.5rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-            z-index: 10;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .site-logo-img {
-            width: 60px;
-            height: auto;
-            max-height: 50px;
-            object-fit: contain;
-        }
-
-        .site-info h1 {
-            font-size: 1.5rem;
-            color: #ffffff; 
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            line-height: 1.2;
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
+        body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
+        header { background-color: #000000; border-bottom: 2px solid var(--accent-red); padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; flex-wrap: wrap; gap: 10px; }
+        .logo-container { display: flex; align-items: center; gap: 1rem; }
+        .site-logo-img { width: 60px; height: auto; max-height: 50px; object-fit: contain; }
+        .site-info h1 { font-size: 1.4rem; color: #ffffff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
         .site-info h1 span { color: var(--accent-red); }
-        .site-info p { font-size: 0.85rem; color: #e0e0e0; letter-spacing: 1px; }
-
-        .theme-toggle {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid #555;
-            color: #ffffff;
-            padding: 0.5rem;
-            border-radius: 50%;
-            cursor: pointer;
-            width: 40px; height: 40px;
-            display: flex; align-items: center; justify-content: center;
-        }
+        .site-info p { font-size: 0.8rem; color: #FFD700; letter-spacing: 1px; }
+        .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid #555; color: #ffffff; padding: 0.5rem; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
         .theme-toggle:hover { background-color: rgba(255,255,255,0.2); }
-
-        main {
-            flex: 1;
-            padding: 2rem;
-            max-width: 1300px;
-            margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 350px 1fr;
-            gap: 2rem;
-        }
-
-        @media (max-width: 900px) {
-            main { grid-template-columns: 1fr; padding: 1rem; }
-        }
-
-        .card {
-            background-color: var(--bg-card);
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .section-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent-red);
-        }
-
-        .icon-svg { width: 24px; height: 24px; stroke: var(--text-main); fill: none; }
-
-        .upload-area {
-            border: 2px dashed var(--border-color);
-            border-radius: 8px;
-            padding: 1rem;
-            text-align: center;
-            cursor: pointer;
-            position: relative;
-            background-color: var(--bg-input);
-        }
-        .upload-area:hover { border-color: var(--accent-red); background-color: rgba(211, 47, 47, 0.1); }
+        main { flex: 1; padding: 1.5rem; max-width: 1400px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 360px 1fr; gap: 1.5rem; }
+        @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
+        .card { background-color: var(--bg-card); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; }
+        .section-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; color: var(--accent-red); }
+        .icon-svg { width: 20px; height: 20px; stroke: var(--text-main); fill: none; }
+        .upload-area { border: 2px dashed var(--border-color); border-radius: 8px; padding: 0.8rem; text-align: center; cursor: pointer; position: relative; background-color: var(--bg-input); font-size: 0.85rem; }
+        .upload-area:hover { border-color: var(--accent-red); background-color: rgba(211, 47, 47, 0.08); }
         .upload-area input { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
-
-        .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
-        label { font-weight: 500; font-size: 0.9rem; color: var(--text-muted); }
-        input[type="number"] {
-            padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-color);
-            background-color: var(--input-bg); color: var(--text-main); width: 100%;
-        }
-
+        .upload-area .file-name { color: #4CAF50; font-weight: 600; font-size: 0.75rem; margin-top: 4px; word-break: break-all; }
+        label { font-weight: 500; font-size: 0.85rem; color: var(--text-muted); }
+        input[type="number"] { padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--input-bg); color: var(--text-main); width: 100%; text-align: center; }
         .qty-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .qty-item label { font-size: 0.8rem; text-align: center; }
-
-        .btn {
-            background-color: var(--accent-red); color: white; border: none; cursor: pointer;
-            font-weight: 700; display: flex; justify-content: center; align-items: center;
-            text-transform: uppercase; padding: 0.8rem; border-radius: 6px; font-size: 0.9rem;
-        }
+        .qty-item label { font-size: 0.8rem; text-align: center; display: block; margin-bottom: 4px; }
+        .btn { background-color: var(--accent-red); color: white; border: none; cursor: pointer; font-weight: 700; display: flex; justify-content: center; align-items: center; text-transform: uppercase; padding: 0.75rem; border-radius: 6px; font-size: 0.85rem; gap: 6px; }
         .btn:hover { background-color: #b71c1c; transform: translateY(-2px); }
-        
         .btn.secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
         .btn.secondary:hover { background-color: var(--bg-input); border-color: var(--text-main); transform: none; }
-        
         .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
-        .btn-sm { padding: 0.4rem; font-size: 0.8rem; margin-top: 5px; width: 100%; }
-
-        #downloadA4Btn, .btn.btn-sm.secondary {
-            background-color: #FFD700 !important;
-            color: #000000 !important;
-            border: none !important;
-            font-weight: 800;
-        }
-        
-        #downloadA4Btn:hover, .btn.btn-sm.secondary:hover {
-            background-color: #ffcc00 !important;
-            color: #000000 !important;
-            transform: scale(1.05);
-        }
-
-        canvas { box-shadow: 0 0 10px rgba(0,0,0,0.2); }
-
-        .previews-wrapper {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
-            background: var(--bg-input); padding: 15px; border-radius: 8px;
-        }
-
-        .preview-card {
-            display: flex; flex-direction: column; align-items: center; gap: 8px;
-        }
-
-        .preview-card canvas {
-            border: 1px solid var(--border-color); background: #fff;
-            cursor: move;
-            width: 100%; height: auto; max-width: 120px;
-        }
-        
-        .preview-slider-group {
-            width: 100%; display: flex; align-items: center; gap: 5px;
-        }
-        
-        input[type=range].mini-slider {
-            width: 100%; height: 4px; background: var(--border-color); border-radius: 2px;
-            appearance: none; outline: none;
-        }
-        input[type=range].mini-slider::-webkit-slider-thumb {
-            appearance: none; width: 12px; height: 12px; border-radius: 50%;
-            background: var(--accent-red); cursor: pointer;
-        }
-
-        footer { background-color: #000000; border-top: 1px solid #333; padding: 1.5rem; text-align: center; margin-top: auto; }
-        footer p { color: #e0e0e0; font-size: 0.9rem; }
-
-        #toast {
-            visibility: hidden; min-width: 250px; background-color: var(--toast-bg);
-            color: #fff; text-align: center; border-radius: 4px; padding: 16px;
-            position: fixed; z-index: 1000; left: 50%; bottom: 30px;
-            transform: translateX(-50%); font-size: 1rem; border: 1px solid var(--accent-red);
-        }
+        .btn-sm { padding: 0.4rem; font-size: 0.75rem; margin-top: 4px; width: 100%; }
+        .btn-gold { background-color: #FFD700 !important; color: #000000 !important; border: none !important; font-weight: 800; }
+        .btn-gold:hover { background-color: #ffcc00 !important; transform: scale(1.03); }
+        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .option-row { display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); cursor: pointer; }
+        .option-row input[type="checkbox"] { width: 16px; height: 16px; accent-color: var(--accent-red); cursor: pointer; }
+        canvas { box-shadow: 0 0 8px rgba(0,0,0,0.15); display: block; }
+        .previews-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: var(--bg-input); padding: 12px; border-radius: 8px; }
+        .preview-card { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+        .preview-card canvas { border: 1px solid var(--border-color); background: #fff; cursor: move; width: 100%; height: auto; max-width: 140px; }
+        .preview-label { font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+        .preview-slider-group { width: 100%; display: flex; align-items: center; gap: 5px; }
+        input[type=range].mini-slider { width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; appearance: none; outline: none; }
+        input[type=range].mini-slider::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-red); cursor: pointer; }
+        footer { background-color: #000000; border-top: 1px solid #333; padding: 1rem; text-align: center; margin-top: auto; }
+        footer p { color: #e0e0e0; font-size: 0.8rem; }
+        #toast { visibility: hidden; min-width: 250px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 4px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 0.9rem; border: 1px solid var(--accent-red); }
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
-
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
-        .modal-content { background-color: var(--bg-card); margin: 2% auto; padding: 20px; border: 1px solid var(--accent-red); width: 95%; max-width: 1200px; height: 90vh; display: flex; flex-direction: column; border-radius: 12px; color: var(--text-main); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
-        .modal-body { flex: 1; overflow: auto; background-color: #111; display: flex; justify-content: center; align-items: flex-start; padding: 2rem; }
-        .modal-footer { padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 1rem; }
-        
-        #a4PagesContainer {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .a4-version-section {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .version-title {
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: bold;
-            border-bottom: 2px solid var(--accent-red);
-            padding-bottom: 10px;
-            width: 100%;
-            text-align: center;
-        }
-
-        .a4-page-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-            align-items: center;
-            width: 100%;
-        }
-
-        .a4-page-grid img {
-            max-width: 100%;
-            height: auto;
-            border: 2px solid #444;
-            border-radius: 4px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-        }
-        
-        .page-label {
-            color: #aaa;
-            font-size: 0.9rem;
-            margin-bottom: -20px;
-            margin-top: 10px;
-        }
-
-        .close { color: var(--text-muted); float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
-
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.92); backdrop-filter: blur(5px); }
+        .modal-content { background-color: var(--bg-card); margin: 1.5% auto; padding: 20px; border: 1px solid var(--accent-red); width: 96%; max-width: 1200px; height: 94vh; display: flex; flex-direction: column; border-radius: 12px; color: var(--text-main); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px; }
+        .modal-header h2 { font-size: 1.2rem; }
+        .modal-header-info { display: flex; align-items: center; gap: 15px; flex-wrap: wrap; }
+        .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.8rem; color: var(--text-muted); }
+        .legend-icon { background: var(--accent-red); color: #fff; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; }
+        .modal-body { flex: 1; overflow: auto; background-color: #111; display: flex; flex-direction: column; padding: 2rem; gap: 50px; }
+        .modal-footer { padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 1rem; flex-wrap: wrap; }
+        .a4-version-section { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; }
+        .version-title { color: #fff; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--accent-red); padding-bottom: 8px; width: 100%; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
+        .version-title .util-badge { font-size: 0.7rem; background: #4CAF50; color: #fff; padding: 2px 8px; border-radius: 20px; }
+        .a4-page-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; }
+        .a4-page-grid img { max-width: 100%; height: auto; border: 2px solid #555; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
+        .page-label { color: #aaa; font-size: 0.8rem; margin-bottom: -10px; margin-top: 5px; }
+        .close { color: var(--text-muted); font-size: 28px; font-weight: bold; cursor: pointer; line-height: 1; }
+        .close:hover { color: var(--accent-red); }
         @media (max-width: 600px) {
             .qty-grid { grid-template-columns: 1fr; }
-            .previews-wrapper { grid-template-columns: 1fr; }
+            .previews-wrapper { grid-template-columns: repeat(2, 1fr); }
+            header { padding: 0.5rem 1rem; }
+            .site-info h1 { font-size: 1.1rem; }
         }
     </style>
 </head>
@@ -296,34 +110,36 @@
         <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
         <div class="site-info">
             <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <p style="color: #FFD700;">Auto Crop & Individual Adjustment</p>
+            <p>Auto Crop, Rotasi Pintar &amp; Packing Efisien</p>
         </div>
     </div>
-    <button class="theme-toggle" id="themeToggle">☀️</button>
+    <button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
 </header>
 
 <main>
     <section class="card">
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="12" height="18" rx="2"/><rect x="9" y="3" width="12" height="12" rx="2"/></svg>
             Upload Foto (Portrait)
         </div>
         <div class="upload-area" id="drop-zone-p">
             <input type="file" id="imageInputP" accept="image/*">
-            <p>Upload Portrait</p>
+            <p>Klik atau seret foto portrait</p>
+            <div class="file-name" id="fileNameP"></div>
         </div>
 
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><rect x="3" y="9" width="12" height="12" rx="2"/></svg>
             Upload Foto (Landscape)
         </div>
         <div class="upload-area" id="drop-zone-l">
             <input type="file" id="imageInputL" accept="image/*">
-            <p>Upload Landscape</p>
+            <p>Klik atau seret foto landscape</p>
+            <div class="file-name" id="fileNameL"></div>
         </div>
 
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
             Jumlah Cetak (A4)
         </div>
         <div class="qty-grid">
@@ -332,84 +148,68 @@
             <div class="qty-item"><label>4X6</label><input type="number" id="qty4x6" value="0" min="0"></div>
         </div>
 
+        <label class="option-row">
+            <input type="checkbox" id="autoRotate" checked>
+            Rotasi otomatis fleksibel (Hemat Ruang)
+        </label>
+
         <div class="btn-group">
-            <button class="btn secondary" id="resetAllBtn" disabled>Reset Semua</button>
-            <button class="btn" id="previewA4Btn" disabled>PREVIEW A4</button>
+            <button class="btn secondary" id="resetAllBtn" disabled>Reset Posisi Crop</button>
+            <button class="btn btn-gold" id="previewA4Btn" disabled>PREVIEW A4</button>
         </div>
     </section>
 
     <section class="card">
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            3 Hasil Crop (Portrait)
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Hasil Crop (Portrait)
         </div>
-
         <div class="previews-wrapper">
             <div class="preview-card">
                 <canvas id="canvas2x3"></canvas>
-                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">2X3</div>
-                <div class="preview-slider-group">
-                    <input type="range" id="zoom2x3" class="mini-slider" disabled min="0.5" max="3" step="0.05">
-                </div>
-                <button class="btn btn-sm secondary" id="btnDl2x3" disabled>DOWNLOAD</button>
+                <div class="preview-label">2x3</div>
+                <div class="preview-slider-group"><input type="range" id="zoom2x3" class="mini-slider" disabled min="0.5" max="3" step="0.05"></div>
+                <button class="btn btn-sm btn-gold" id="btnDl2x3" disabled>DOWNLOAD</button>
             </div>
-
             <div class="preview-card">
                 <canvas id="canvas3x4"></canvas>
-                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">3X4</div>
-                <div class="preview-slider-group">
-                    <input type="range" id="zoom3x4" class="mini-slider" disabled min="0.5" max="3" step="0.05">
-                </div>
-                <button class="btn btn-sm secondary" id="btnDl3x4" disabled>DOWNLOAD</button>
+                <div class="preview-label">3x4</div>
+                <div class="preview-slider-group"><input type="range" id="zoom3x4" class="mini-slider" disabled min="0.5" max="3" step="0.05"></div>
+                <button class="btn btn-sm btn-gold" id="btnDl3x4" disabled>DOWNLOAD</button>
             </div>
-
             <div class="preview-card">
                 <canvas id="canvas4x6"></canvas>
-                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">4X6</div>
-                <div class="preview-slider-group">
-                    <input type="range" id="zoom4x6" class="mini-slider" disabled min="0.5" max="3" step="0.05">
-                </div>
-                <button class="btn btn-sm secondary" id="btnDl4x6" disabled>DOWNLOAD</button>
+                <div class="preview-label">4x6</div>
+                <div class="preview-slider-group"><input type="range" id="zoom4x6" class="mini-slider" disabled min="0.5" max="3" step="0.05"></div>
+                <button class="btn btn-sm btn-gold" id="btnDl4x6" disabled>DOWNLOAD</button>
             </div>
         </div>
-        
-        <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
-            *Geser foto langsung di kotak di atas untuk menyesuaikan posisi masing-masing ukuran
-        </p>
 
-        <div class="section-title" style="margin-top: 1rem;">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" transform="rotate(90 12 12)"></rect><circle cx="8.5" cy="8.5" r="1.5" transform="rotate(90 12 12)"></circle><polyline points="21 15 16 10 5 21" transform="rotate(90 12 12)"></polyline></svg>
-            3 Hasil Crop (Landscape)
+        <div class="section-title" style="margin-top: 0.5rem;">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Hasil Crop (Landscape)
         </div>
-
         <div class="previews-wrapper">
             <div class="preview-card">
                 <canvas id="canvas2x3L"></canvas>
-                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">2X3</div>
-                <div class="preview-slider-group">
-                    <input type="range" id="zoom2x3L" class="mini-slider" disabled min="0.5" max="3" step="0.05">
-                </div>
-                <button class="btn btn-sm secondary" id="btnDl2x3L" disabled>DOWNLOAD</button>
+                <div class="preview-label">2x3</div>
+                <div class="preview-slider-group"><input type="range" id="zoom2x3L" class="mini-slider" disabled min="0.5" max="3" step="0.05"></div>
+                <button class="btn btn-sm btn-gold" id="btnDl2x3L" disabled>DOWNLOAD</button>
             </div>
-
             <div class="preview-card">
                 <canvas id="canvas3x4L"></canvas>
-                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">3X4</div>
-                <div class="preview-slider-group">
-                    <input type="range" id="zoom3x4L" class="mini-slider" disabled min="0.5" max="3" step="0.05">
-                </div>
-                <button class="btn btn-sm secondary" id="btnDl3x4L" disabled>DOWNLOAD</button>
+                <div class="preview-label">3x4</div>
+                <div class="preview-slider-group"><input type="range" id="zoom3x4L" class="mini-slider" disabled min="0.5" max="3" step="0.05"></div>
+                <button class="btn btn-sm btn-gold" id="btnDl3x4L" disabled>DOWNLOAD</button>
             </div>
-
             <div class="preview-card">
                 <canvas id="canvas4x6L"></canvas>
-                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">4X6</div>
-                <div class="preview-slider-group">
-                    <input type="range" id="zoom4x6L" class="mini-slider" disabled min="0.5" max="3" step="0.05">
-                </div>
-                <button class="btn btn-sm secondary" id="btnDl4x6L" disabled>DOWNLOAD</button>
+                <div class="preview-label">4x6</div>
+                <div class="preview-slider-group"><input type="range" id="zoom4x6L" class="mini-slider" disabled min="0.5" max="3" step="0.05"></div>
+                <button class="btn btn-sm btn-gold" id="btnDl4x6L" disabled>DOWNLOAD</button>
             </div>
         </div>
+        <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">Geser foto di kotak preview untuk sesuaikan posisi crop</p>
     </section>
 </main>
 
@@ -420,23 +220,26 @@
 <div id="a4Modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>PREVIEW SIZE A4</h2>
+            <h2>PREVIEW A4 (MAXIMAL PACKING)</h2>
+            <div class="modal-header-info">
+                <div class="legend-item"><div class="legend-icon">&#8635;</div> Dirotasi otomatis</div>
+            </div>
             <span class="close" id="closeModal">&times;</span>
         </div>
         <div class="modal-body">
-            <div id="a4PagesContainer">
-                <div id="portraitContainer" class="a4-version-section">
-                    <div class="version-title">VERSI PORTRAIT</div>
-                    <div class="a4-page-grid" id="portraitPagesGrid"></div>
-                </div>
-                <div id="landscapeContainer" class="a4-version-section">
-                    <div class="version-title">VERSI LANDSCAPE</div>
-                    <div class="a4-page-grid" id="landscapePagesGrid"></div>
-                </div>
+            <div id="portraitContainer" class="a4-version-section">
+                <div class="version-title">VERSI FOTO PORTRAIT <span class="util-badge" id="utilP">-</span></div>
+                <div class="a4-page-grid" id="portraitPagesGrid"></div>
+            </div>
+            <div id="landscapeContainer" class="a4-version-section">
+                <div class="version-title">VERSI FOTO LANDSCAPE <span class="util-badge" id="utilL">-</span></div>
+                <div class="a4-page-grid" id="landscapePagesGrid"></div>
             </div>
         </div>
         <div class="modal-footer">
-            <button class="btn" id="downloadA4Btn">DOWNLOAD SEMUA</button>
+            <button class="btn secondary" id="dlPortraitBtn">Download Portrait</button>
+            <button class="btn secondary" id="dlLandscapeBtn">Download Landscape</button>
+            <button class="btn btn-gold" id="downloadA4Btn">DOWNLOAD SEMUA</button>
         </div>
     </div>
 </div>
@@ -444,517 +247,336 @@
 <div id="toast">Pesan notifikasi</div>
 
 <script>
-    const MM_TO_PX = 10; 
-    const CUT_LINE_WIDTH = 1; 
-    const A4_MARGIN_PX = 5 * MM_TO_PX; 
+    const MM_TO_PX = 10;
+    const CUT_LINE_WIDTH = 1;
+    const A4_MARGIN_PX = 50; 
 
     const PRESETS = {
-        "2x3": { w_mm: 21.6, h_mm: 27.9, w: 216, h: 279, ratio: 21.6/27.9, label: "2x3", border_mm: 1 },
-        "3x4": { w_mm: 27.9, h_mm: 38.1, w: 279, h: 381, ratio: 27.9/38.1, label: "3x4", border_mm: 1 },
-        "4x6": { w_mm: 38.1, h_mm: 55.9, w: 381, h: 559, ratio: 38.1/55.9, label: "4x6", border_mm: 1 },
-        "2x3L": { w_mm: 27.9, h_mm: 21.6, w: 279, h: 216, ratio: 27.9/21.6, label: "2x3L", border_mm: 1 },
-        "3x4L": { w_mm: 38.1, h_mm: 27.9, w: 381, h: 279, ratio: 38.1/27.9, label: "3x4L", border_mm: 1 },
-        "4x6L": { w_mm: 55.9, h_mm: 38.1, w: 559, h: 381, ratio: 55.9/38.1, label: "4x6L", border_mm: 1 }
+        "2x3":  { w: 216, h: 279, ratio: 216/279, border_mm: 1 },
+        "3x4":  { w: 279, h: 381, ratio: 279/381, border_mm: 1 },
+        "4x6":  { w: 381, h: 559, ratio: 381/559, border_mm: 1 },
+        "2x3L": { w: 279, h: 216, ratio: 279/216, border_mm: 1 },
+        "3x4L": { w: 381, h: 279, ratio: 381/279, border_mm: 1 },
+        "4x6L": { w: 559, h: 381, ratio: 559/381, border_mm: 1 }
     };
-    
-    const A4_W_P = 2100; 
-    const A4_H_P = 2970; 
-    const A4_W_L = 2970; 
-    const A4_H_L = 2100; 
 
-    // Dua variabel gambar terpisah
+    const A4_W = 2100, A4_H = 2970;
+
     let portraitImage = null;
     let landscapeImage = null;
-    
-    let a4PagesData = []; 
+    let portraitPagesData = [];
+    let landscapePagesData = [];
 
     const previewStates = {};
     const refs = {};
 
     Object.keys(PRESETS).forEach(key => {
         previewStates[key] = { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
-        refs[key] = { 
-            canvas: document.getElementById(`canvas${key}`), 
-            slider: document.getElementById(`zoom${key}`), 
-            btn: document.getElementById(`btnDl${key}`) 
+        refs[key] = {
+            canvas: document.getElementById(`canvas${key}`),
+            slider: document.getElementById(`zoom${key}`),
+            btn: document.getElementById(`btnDl${key}`)
         };
     });
 
     const imageInputP = document.getElementById('imageInputP');
     const imageInputL = document.getElementById('imageInputL');
+    const fileNameP = document.getElementById('fileNameP');
+    const fileNameL = document.getElementById('fileNameL');
     const resetAllBtn = document.getElementById('resetAllBtn');
     const previewA4Btn = document.getElementById('previewA4Btn');
+    const autoRotateCheck = document.getElementById('autoRotate');
     const themeToggle = document.getElementById('themeToggle');
-    const toast = document.getElementById('toast');
-
+    const toastEl = document.getElementById('toast');
     const modal = document.getElementById('a4Modal');
     const closeModal = document.getElementById('closeModal');
     const portraitPagesGrid = document.getElementById('portraitPagesGrid');
     const landscapePagesGrid = document.getElementById('landscapePagesGrid');
     const downloadA4Btn = document.getElementById('downloadA4Btn');
+    const dlPortraitBtn = document.getElementById('dlPortraitBtn');
+    const dlLandscapeBtn = document.getElementById('dlLandscapeBtn');
+    const utilP = document.getElementById('utilP');
+    const utilL = document.getElementById('utilL');
 
     themeToggle.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        if (currentTheme === 'light') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            themeToggle.textContent = '☀️';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            themeToggle.textContent = '🌙';
-        }
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        document.documentElement.setAttribute('data-theme', isLight ? 'dark' : 'light');
+        themeToggle.textContent = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
     });
 
     imageInputP.addEventListener('change', (e) => handleImageUpload(e, 'portrait'));
     imageInputL.addEventListener('change', (e) => handleImageUpload(e, 'landscape'));
-    resetAllBtn.addEventListener('click', resetAllPreviews);
-    
+    resetAllBtn.addEventListener('click', resetAll);
+
     Object.keys(PRESETS).forEach(key => {
         setupInteractions(key);
         refs[key].btn.addEventListener('click', () => downloadSingle(key));
     });
 
     previewA4Btn.addEventListener('click', generateA4Preview);
-    closeModal.addEventListener('click', () => modal.style.display = "none");
-    window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
-    downloadA4Btn.addEventListener('click', downloadA4Images);
+    closeModal.addEventListener('click', () => modal.style.display = 'none');
+    window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
+    downloadA4Btn.addEventListener('click', () => downloadPages([...portraitPagesData, ...landscapePagesData]));
+    dlPortraitBtn.addEventListener('click', () => downloadPages(portraitPagesData));
+    dlLandscapeBtn.addEventListener('click', () => downloadPages(landscapePagesData));
 
-    // Helper untuk mendapatkan gambar yang benar berdasarkan key
-    function getOriginalImage(key) {
-        return key.includes('L') ? landscapeImage : portraitImage;
-    }
+    function getOriginalImage(key) { return key.includes('L') ? landscapeImage : portraitImage; }
 
     function handleImageUpload(e, type) {
         const file = e.target.files[0];
         if (!file) return;
+        const nameEl = type === 'portrait' ? fileNameP : fileNameL;
+        nameEl.textContent = file.name;
         const reader = new FileReader();
-        reader.onload = (event) => {
+        reader.onload = (ev) => {
             const img = new Image();
             img.onload = () => {
-                if (type === 'portrait') portraitImage = img;
-                else landscapeImage = img;
-                
-                enableControls();
-                initAllCanvases();
-                resetAllPreviews(); 
+                if (type === 'portrait') portraitImage = img; else landscapeImage = img;
+                enableControls(); initAllCanvases(); resetAll();
                 showToast(`Foto ${type} berhasil diupload`);
             };
-            img.src = event.target.result;
+            img.src = ev.target.result;
         };
         reader.readAsDataURL(file);
     }
 
     function enableControls() {
         resetAllBtn.disabled = false;
-        previewA4Btn.disabled = !(portraitImage || landscapeImage); // Aktif jika salah satu ada
-        
+        previewA4Btn.disabled = !(portraitImage || landscapeImage);
         Object.keys(refs).forEach(key => {
-            const img = getOriginalImage(key);
-            if(img) {
-                refs[key].slider.disabled = false;
-                refs[key].btn.disabled = false;
-            }
+            if (getOriginalImage(key)) { refs[key].slider.disabled = false; refs[key].btn.disabled = false; }
         });
     }
 
     function initAllCanvases() {
         Object.keys(PRESETS).forEach(key => {
-            const p = PRESETS[key];
-            const c = refs[key].canvas;
-            const border_px = p.border_mm * MM_TO_PX;
-            const extra = (border_px * 2) + (CUT_LINE_WIDTH * 2);
-            c.width = p.w + extra;
-            c.height = p.h + extra;
+            const p = PRESETS[key]; const c = refs[key].canvas;
+            const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
+            c.width = p.w + extra; c.height = p.h + extra;
         });
     }
 
-    function resetAllPreviews() {
+    function resetAll() {
         Object.keys(PRESETS).forEach(key => {
-            const p = PRESETS[key];
-            const state = previewStates[key];
-            const img = getOriginalImage(key);
-            
-            if(!img) return; // Skip jika belum upload
-            
-            const scaleX = p.w / img.width;
-            const scaleY = p.h / img.height;
-            const initialScale = Math.max(scaleX, scaleY) * 1.1; 
-
-            state.scale = initialScale;
-            refs[key].slider.value = initialScale;
-            
-            const border_px = p.border_mm * MM_TO_PX;
-            const extra = (border_px * 2) + (CUT_LINE_WIDTH * 2);
-            const centerX = (p.w + extra)/2;
-            const centerY = (p.h + extra)/2;
-            
-            state.offsetX = centerX - (img.width * state.scale) / 2;
-            state.offsetY = centerY - (img.height * state.scale) / 2;
-            
+            const p = PRESETS[key]; const state = previewStates[key]; const img = getOriginalImage(key);
+            if (!img) return;
+            const scaleX = p.w / img.width; const scaleY = p.h / img.height;
+            state.scale = Math.max(scaleX, scaleY) * 1.1;
+            refs[key].slider.value = state.scale;
+            const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
+            state.offsetX = ((p.w + extra) - img.width * state.scale) / 2;
+            state.offsetY = ((p.h + extra) - img.height * state.scale) / 2;
             drawPreview(key);
         });
+    }
+
+    function getCanvasCoords(canvas, e) {
+        const rect = canvas.getBoundingClientRect();
+        return { x: (e.clientX - rect.left) * (canvas.width / rect.width), y: (e.clientY - rect.top) * (canvas.height / rect.height) };
     }
 
     function setupInteractions(key) {
-        const canvas = refs[key].canvas;
-        const state = previewStates[key];
-        const slider = refs[key].slider;
-
-        slider.addEventListener('input', (e) => {
-            state.scale = parseFloat(e.target.value);
-            drawPreview(key);
-        });
-
+        const canvas = refs[key].canvas; const state = previewStates[key]; const slider = refs[key].slider;
+        slider.addEventListener('input', (e) => { state.scale = parseFloat(e.target.value); drawPreview(key); });
         canvas.addEventListener('mousedown', (e) => startDrag(e, state, key));
-        canvas.addEventListener('mousemove', (e) => drag(e, state, key));
+        canvas.addEventListener('mousemove', (e) => doDrag(e, state, key));
         canvas.addEventListener('mouseup', () => endDrag(state));
         canvas.addEventListener('mouseleave', () => endDrag(state));
-
-        canvas.addEventListener('touchstart', (e) => {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const mouseEvent = new MouseEvent("mousedown", { clientX: touch.clientX, clientY: touch.clientY });
-            startDrag(mouseEvent, state, key);
-        }, {passive: false});
-        
-        canvas.addEventListener('touchmove', (e) => {
-            e.preventDefault();
-            const touch = e.touches[0];
-            const mouseEvent = new MouseEvent("mousemove", { clientX: touch.clientX, clientY: touch.clientY });
-            drag(mouseEvent, state, key);
-        }, {passive: false});
-        
+        canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; startDrag({ clientX: t.clientX, clientY: t.clientY }, state, key); }, { passive: false });
+        canvas.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; doDrag({ clientX: t.clientX, clientY: t.clientY }, state, key); }, { passive: false });
         canvas.addEventListener('touchend', () => endDrag(state));
     }
 
-    function startDrag(e, state, key) {
-        if(!getOriginalImage(key)) return;
-        state.isDragging = true;
-        state.startX = e.clientX - state.offsetX;
-        state.startY = e.clientY - state.offsetY;
-        refs[key].canvas.style.cursor = 'grabbing';
-    }
-
-    function drag(e, state, key) {
-        if (!state.isDragging) return;
-        state.offsetX = e.clientX - state.startX;
-        state.offsetY = e.clientY - state.startY;
-        drawPreview(key);
-    }
-
-    function endDrag(state) {
-        state.isDragging = false;
-        Object.keys(refs).forEach(k => { if(getOriginalImage(k)) refs[k].canvas.style.cursor = 'move'; });
-    }
+    function startDrag(e, state, key) { if (!getOriginalImage(key)) return; state.isDragging = true; const c = getCanvasCoords(refs[key].canvas, e); state.startX = c.x - state.offsetX; state.startY = c.y - state.offsetY; }
+    function doDrag(e, state, key) { if (!state.isDragging) return; const c = getCanvasCoords(refs[key].canvas, e); state.offsetX = c.x - state.startX; state.offsetY = c.y - state.startY; drawPreview(key); }
+    function endDrag(state) { state.isDragging = false; }
 
     function drawBaseImage(ctx, key, img) {
-        if(!img) return;
-        const preset = PRESETS[key];
-        const w = ctx.canvas.width;
-        const h = ctx.canvas.height;
-        const state = previewStates[key];
-
-        ctx.clearRect(0, 0, w, h);
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(0, 0, w, h);
-
-        const border_px = preset.border_mm * MM_TO_PX;
-        const inset = border_px + CUT_LINE_WIDTH;
-
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(inset, inset, preset.w, preset.h);
-        ctx.clip();
+        if (!img) return;
+        const preset = PRESETS[key]; const w = ctx.canvas.width; const h = ctx.canvas.height; const state = previewStates[key];
+        ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
+        const inset = (preset.border_mm * MM_TO_PX) + CUT_LINE_WIDTH;
+        ctx.save(); ctx.beginPath(); ctx.rect(inset, inset, preset.w, preset.h); ctx.clip();
         ctx.drawImage(img, state.offsetX, state.offsetY, img.width * state.scale, img.height * state.scale);
         ctx.restore();
-
-        ctx.strokeStyle = '#000000';
-        ctx.lineWidth = CUT_LINE_WIDTH;
-        ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
+        ctx.strokeStyle = '#000000'; ctx.lineWidth = CUT_LINE_WIDTH;
+        ctx.strokeRect(CUT_LINE_WIDTH / 2, CUT_LINE_WIDTH / 2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
     }
 
     function drawPreview(key) {
-        const img = getOriginalImage(key);
-        if(!img) return;
-        const ctx = refs[key].canvas.getContext('2d');
-        drawBaseImage(ctx, key, img);
-
-        const preset = PRESETS[key];
-        const border_px = preset.border_mm * MM_TO_PX;
-        const inset = border_px + CUT_LINE_WIDTH;
-        
-        const centerX = Math.round(inset + (preset.w / 2));
-        const centerY = Math.round(inset + (preset.h / 2));
-
-        ctx.save();
-        ctx.strokeStyle = '#00FF00'; 
-        ctx.lineWidth = 4; 
-        
+        const img = getOriginalImage(key); if (!img) return;
+        const ctx = refs[key].canvas.getContext('2d'); drawBaseImage(ctx, key, img);
+        const preset = PRESETS[key]; const inset = (preset.border_mm * MM_TO_PX) + CUT_LINE_WIDTH;
+        const centerX = Math.round(inset + (preset.w / 2)); const centerY = Math.round(inset + (preset.h / 2));
+        ctx.save(); ctx.strokeStyle = '#00FF00'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]);
         ctx.beginPath(); ctx.moveTo(centerX, inset); ctx.lineTo(centerX, inset + preset.h); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(inset, centerY); ctx.lineTo(inset + preset.w, centerY); ctx.stroke();
-
-        ctx.restore();
+        ctx.beginPath(); ctx.moveTo(inset, centerY); ctx.lineTo(inset + preset.w, centerY); ctx.stroke(); ctx.restore();
     }
 
     function getCleanCanvas(key, img) {
-        if(!img) return null;
-        const c = document.createElement('canvas');
-        const p = PRESETS[key];
-        const border_px = p.border_mm * MM_TO_PX;
-        const extra = (border_px * 2) + (CUT_LINE_WIDTH * 2);
-        c.width = p.w + extra;
-        c.height = p.h + extra;
-        const ctx = c.getContext('2d');
-        drawBaseImage(ctx, key, img);
-        return c;
+        if (!img) return null; const c = document.createElement('canvas'); const p = PRESETS[key];
+        const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
+        c.width = p.w + extra; c.height = p.h + extra;
+        drawBaseImage(c.getContext('2d'), key, img); return c;
     }
 
     function downloadSingle(key) {
-        const img = getOriginalImage(key);
-        if(!img) return;
-        const link = document.createElement('a');
-        link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
+        const img = getOriginalImage(key); if (!img) return;
+        const link = document.createElement('a'); link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
         link.href = getCleanCanvas(key, img).toDataURL('image/jpeg', 0.95);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        document.body.appendChild(link); link.click(); document.body.removeChild(link);
         showToast(`Unduh ${key} berhasil`);
     }
 
-    function intersects(r1, r2) {
-        return r1.x < r2.x + r2.w && r1.x + r1.w > r2.x &&
-               r1.y < r2.y + r2.h && r1.y + r1.h > r2.y;
-    }
-
-    function isContained(inner, outer) {
-        return inner.x >= outer.x && inner.y >= outer.y && 
-               inner.x + inner.w <= outer.x + outer.w && 
-               inner.y + inner.h <= outer.y + outer.h;
-    }
-
-    function splitFreeRect(fr, pr) {
-        let newRects = [];
-        let topH = pr.y - fr.y;
-        if (topH > 0) newRects.push({ x: fr.x, y: fr.y, w: fr.w, h: topH });
-        
-        let bottomY = pr.y + pr.h;
-        let bottomH = (fr.y + fr.h) - bottomY;
-        if (bottomH > 0) newRects.push({ x: fr.x, y: bottomY, w: fr.w, h: bottomH });
-        
-        let leftW = pr.x - fr.x;
-        if (leftW > 0) newRects.push({ x: fr.x, y: fr.y, w: leftW, h: fr.h });
-        
-        let rightX = pr.x + pr.w;
-        let rightW = (fr.x + fr.w) - rightX;
-        if (rightW > 0) newRects.push({ x: rightX, y: fr.y, w: rightW, h: fr.h });
-        
-        return newRects;
-    }
-
+    /* ========== GUILLOTINE MAXIMAL RECTANGLE SMART PACKING ========== */
     function generateA4Preview() {
-        if (!portraitImage && !landscapeImage) {
-            showToast("Upload minimal 1 foto!");
-            return;
-        }
-
+        if (!portraitImage && !landscapeImage) return showToast("Upload minimal 1 foto!");
         const q2x3 = parseInt(document.getElementById('qty2x3').value) || 0;
         const q3x4 = parseInt(document.getElementById('qty3x4').value) || 0;
         const q4x6 = parseInt(document.getElementById('qty4x6').value) || 0;
+        if (q2x3 + q3x4 + q4x6 === 0) return showToast("Masukkan jumlah cetak minimal 1!");
 
-        if (q2x3 + q3x4 + q4x6 === 0) {
-            showToast("Masukkan jumlah minimal 1!");
-            return;
-        }
+        const isAutoRotate = autoRotateCheck.checked;
+        let portraitJobs = [], landscapeJobs = [];
 
-        let portraitJobs = [];
-        let landscapeJobs = [];
-        
         const addJobs = (pKey, lKey, qty) => {
-            if(qty <= 0) return;
-            
-            if(portraitImage) {
-                const pSource = getCleanCanvas(pKey, portraitImage);
-                if(pSource) {
-                    for(let i=0; i<qty; i++) {
-                        portraitJobs.push({ source: pSource, w: pSource.width, h: pSource.height });
-                    }
-                }
-            }
-            
-            if(landscapeImage) {
-                const lSource = getCleanCanvas(lKey, landscapeImage);
-                if(lSource) {
-                    for(let i=0; i<qty; i++) {
-                        landscapeJobs.push({ source: lSource, w: lSource.width, h: lSource.height });
-                    }
-                }
-            }
+            if (qty <= 0) return;
+            if (portraitImage) { const s = getCleanCanvas(pKey, portraitImage); if(s) for(let i=0;i<qty;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
+            if (landscapeImage) { const s = getCleanCanvas(lKey, landscapeImage); if(s) for(let i=0;i<qty;i++) landscapeJobs.push({source:s, w:s.width, h:s.height}); }
         };
 
-        addJobs("2x3", "2x3L", q2x3);
-        addJobs("3x4", "3x4L", q3x4);
-        addJobs("4x6", "4x6L", q4x6);
+        addJobs("2x3", "2x3L", q2x3); addJobs("3x4", "3x4L", q3x4); addJobs("4x6", "4x6L", q4x6);
+        
+        portraitPagesData = packA4(portraitJobs, A4_W, A4_H, 'Foto-Portrait', isAutoRotate);
+        landscapePagesData = packA4(landscapeJobs, A4_W, A4_H, 'Foto-Landscape', isAutoRotate);
 
-        portraitJobs.sort((a, b) => b.h - a.h || b.w - a.w);
-        landscapeJobs.sort((a, b) => b.h - a.h || b.w - a.w);
+        renderA4Modal(); modal.style.display = "block";
+        showToast(`${portraitPagesData.length + landscapePagesData.length} Halaman A4 siap`);
+    }
 
-        function packA4(jobs, a4Width, a4Height, type) {
-            let pages = [];
-            if(jobs.length === 0) return pages; // Jangan buat halaman jika tidak ada job
+    function packA4(jobs, a4W, a4H, type, isAutoRotate) {
+        if (jobs.length === 0) return [];
+        const margin = A4_MARGIN_PX;
+        const maxW = a4W - 2 * margin, maxH = a4H - 2 * margin;
+        let pages = [];
+        let items = jobs.map(j => ({source: j.source, w: j.w, h: j.h}));
+
+        while (items.length > 0) {
+            let a4Canvas = document.createElement('canvas'); a4Canvas.width = a4W; a4Canvas.height = a4H;
+            let ctx = a4Canvas.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, a4W, a4H);
             
-            const margin = A4_MARGIN_PX;
-            const maxW = a4Width - 2 * margin;
-            const maxH = a4Height - 2 * margin;
+            let freeRects = [{x: margin, y: margin, w: maxW, h: maxH}];
+            let remainingItems = [];
+            let maxYUsed = margin;
 
-            let a4Canvas = document.createElement('canvas');
-            a4Canvas.width = a4Width;
-            a4Canvas.height = a4Height;
-            let a4Ctx = a4Canvas.getContext('2d');
-            a4Ctx.fillStyle = '#ffffff';
-            a4Ctx.fillRect(0, 0, a4Width, a4Height);
+            for (let i=0; i<items.length; i++) {
+                let item = items[i];
+                let bestScore = Infinity, bestRect = null, bestRotated = false, bestFitW = 0, bestFitH = 0;
 
-            let freeRects = [{ x: margin, y: margin, w: maxW, h: maxH }];
-            let hasContent = false;
-
-            jobs.forEach((job) => {
-                let placed = false;
-                while (!placed) {
-                    let bestRect = null;
-                    let bestScore = Infinity;
-
-                    for (let i = 0; i < freeRects.length; i++) {
-                        const fr = freeRects[i];
-                        if (job.w <= fr.w && job.h <= fr.h) {
-                            let leftoverArea = (fr.w * fr.h) - (job.w * job.h);
-                            let shortSideFit = Math.min(fr.w - job.w, fr.h - job.h);
-                            let score = (fr.y * 10000000) + (fr.x * 100000) + (leftoverArea * 10) + shortSideFit;
-                            
-                            if (score < bestScore) {
-                                bestScore = score;
-                                bestRect = fr;
-                            }
-                        }
+                for (let r = 0; r < freeRects.length; r++) {
+                    let fr = freeRects[r];
+                    // Coba Normal
+                    if (item.w <= fr.w && item.h <= fr.h) {
+                        let leftover = (fr.w * fr.h) - (item.w * item.h); // Sisa area
+                        let shortSide = Math.min(fr.w - item.w, fr.h - item.h);
+                        let score = leftover + shortSide; // Skor lebih kecil = lebih pas
+                        if (score < bestScore) { bestScore = score; bestRect = fr; bestRotated = false; bestFitW = item.w; bestFitH = item.h; }
                     }
-
-                    if (bestRect) {
-                        a4Ctx.drawImage(job.source, bestRect.x, bestRect.y, job.w, job.h);
-                        a4Ctx.strokeStyle = '#000000';
-                        a4Ctx.lineWidth = 1;
-                        a4Ctx.strokeRect(bestRect.x, bestRect.y, job.w, job.h);
-
-                        let placedRect = { x: bestRect.x, y: bestRect.y, w: job.w, h: job.h };
-
-                        let newFreeRects = [];
-                        for (let i = 0; i < freeRects.length; i++) {
-                            const fr = freeRects[i];
-                            if (intersects(fr, placedRect)) {
-                                let splits = splitFreeRect(fr, placedRect);
-                                for (let s of splits) {
-                                    if (s.w > 0 && s.h > 0) newFreeRects.push(s);
-                                }
-                            } else {
-                                newFreeRects.push(fr);
-                            }
-                        }
-
-                        freeRects = [];
-                        for (let i = 0; i < newFreeRects.length; i++) {
-                            let isSubRect = false;
-                            for (let j = 0; j < newFreeRects.length; j++) {
-                                if (i !== j && isContained(newFreeRects[i], newFreeRects[j])) {
-                                    isSubRect = true;
-                                    break;
-                                }
-                            }
-                            if (!isSubRect) {
-                                freeRects.push(newFreeRects[i]);
-                            }
-                        }
-
-                        hasContent = true;
-                        placed = true;
-                    } else {
-                        if (hasContent) {
-                            pages.push({ url: a4Canvas.toDataURL('image/jpeg', 1.0), type: type });
-                        }
-                        
-                        a4Canvas = document.createElement('canvas');
-                        a4Canvas.width = a4Width;
-                        a4Canvas.height = a4Height;
-                        a4Ctx = a4Canvas.getContext('2d');
-                        a4Ctx.fillStyle = '#ffffff';
-                        a4Ctx.fillRect(0, 0, a4Width, a4Height);
-                        
-                        freeRects = [{ x: margin, y: margin, w: maxW, h: maxH }];
-                        hasContent = false;
+                    // Coba Rotasi
+                    if (isAutoRotate && item.h <= fr.w && item.w <= fr.h) {
+                        let leftover = (fr.w * fr.h) - (item.h * item.w);
+                        let shortSide = Math.min(fr.w - item.h, fr.h - item.w);
+                        let score = leftover + shortSide;
+                        if (score < bestScore) { bestScore = score; bestRect = fr; bestRotated = true; bestFitW = item.h; bestFitH = item.w; }
                     }
                 }
-            });
 
-            if (hasContent) {
-                pages.push({ url: a4Canvas.toDataURL('image/jpeg', 1.0), type: type });
+                if (bestRect) {
+                    let px = bestRect.x, py = bestRect.y;
+                    ctx.save();
+                    if (bestRotated) {
+                        ctx.translate(px + bestFitW / 2, py + bestFitH / 2); ctx.rotate(Math.PI / 2);
+                        ctx.drawImage(item.source, -item.w / 2, -item.h / 2, item.w, item.h);
+                    } else {
+                        ctx.drawImage(item.source, px, py, item.w, item.h);
+                    }
+                    ctx.restore();
+                    ctx.strokeStyle = '#cccccc'; ctx.lineWidth = 2; ctx.strokeRect(px, py, bestFitW, bestFitH);
+                    if (bestRotated) drawRotateIcon(ctx, px + bestFitW - 18, py + 18);
+
+                    if (py + bestFitH > maxYUsed) maxYUsed = py + bestFitH;
+
+                    // Update Free Rects (Guillotine Split)
+                    let placedRect = {x: px, y: py, w: bestFitW, h: bestFitH};
+                    let newFreeRects = [];
+                    for (let j=0; j<freeRects.length; j++) {
+                        let fr = freeRects[j];
+                        if (intersects(fr, placedRect)) {
+                            // Potong sisi atas
+                            if (placedRect.y > fr.y) newFreeRects.push({x: fr.x, y: fr.y, w: fr.w, h: placedRect.y - fr.y});
+                            // Potong sisi bawah
+                            if (placedRect.y + placedRect.h < fr.y + fr.h) newFreeRects.push({x: fr.x, y: placedRect.y + placedRect.h, w: fr.w, h: (fr.y + fr.h) - (placedRect.y + placedRect.h)});
+                            // Potong sisi kiri
+                            if (placedRect.x > fr.x) newFreeRects.push({x: fr.x, y: fr.y, w: placedRect.x - fr.x, h: fr.h});
+                            // Potong sisi kanan
+                            if (placedRect.x + placedRect.w < fr.x + fr.w) newFreeRects.push({x: placedRect.x + placedRect.w, y: fr.y, w: (fr.x + fr.w) - (placedRect.x + placedRect.w), h: fr.h});
+                        } else {
+                            newFreeRects.push(fr);
+                        }
+                    }
+                    freeRects = newFreeRects;
+                    // Filter rak kecil yang tersangkut di dalam rak besar lain
+                    freeRects = freeRects.filter((fr, idx, arr) => !arr.some((other, oIdx) => idx !== oIdx && isContained(fr, other)));
+                } else {
+                    remainingItems.push(item);
+                }
             }
-
-            return pages;
+            
+            items = remainingItems;
+            let pageUtilization = Math.round(((maxYUsed - margin) / maxH) * 100);
+            pages.push({ url: a4Canvas.toDataURL('image/jpeg', 1.0), type: type, efficiency: Math.min(pageUtilization, 100) });
         }
-
-        const portraitPages = packA4(portraitJobs, A4_W_P, A4_H_P, 'Portrait');
-        const landscapePages = packA4(landscapeJobs, A4_W_L, A4_H_L, 'Landscape');
-        
-        a4PagesData = [...portraitPages, ...landscapePages];
-
-        portraitPagesGrid.innerHTML = '';
-        landscapePagesGrid.innerHTML = '';
-
-        portraitPages.forEach((pageData, index) => {
-            const label = document.createElement('div');
-            label.className = 'page-label';
-            label.innerText = `Halaman ${index + 1}`;
-            portraitPagesGrid.appendChild(label);
-
-            const img = document.createElement('img');
-            img.src = pageData.url;
-            portraitPagesGrid.appendChild(img);
-        });
-
-        landscapePages.forEach((pageData, index) => {
-            const label = document.createElement('div');
-            label.className = 'page-label';
-            label.innerText = `Halaman ${index + 1}`;
-            landscapePagesGrid.appendChild(label);
-
-            const img = document.createElement('img');
-            img.src = pageData.url;
-            landscapePagesGrid.appendChild(img);
-        });
-
-        downloadA4Btn.innerText = `DOWNLOAD SEMUA (${a4PagesData.length} HALAMAN)`;
-
-        modal.style.display = "block";
-        showToast(`${a4PagesData.length} Halaman A4 siap`);
+        return pages;
     }
 
-    function downloadA4Images() {
-        if (a4PagesData.length === 0) return;
-        
-        showToast(`${a4PagesData.length} file A4 sedang diunduh...`);
+    function intersects(r1, r2) { return r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.y + r1.h > r2.y; }
+    function isContained(inner, outer) { return inner.x >= outer.x && inner.y >= outer.y && inner.x + inner.w <= outer.x + outer.w && inner.y + inner.h <= outer.y + outer.h; }
 
-        a4PagesData.forEach((pageData, index) => {
+    function drawRotateIcon(ctx, x, y) {
+        ctx.fillStyle = 'rgba(211, 47, 47, 0.8)'; ctx.beginPath(); ctx.arc(x, y, 12, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#ffffff'; ctx.font = 'bold 14px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('↻', x, y);
+    }
+
+    function renderA4Modal() {
+        portraitPagesGrid.innerHTML = ''; landscapePagesGrid.innerHTML = '';
+        const renderGrid = (data, grid, badge, label) => {
+            if (data.length > 0) {
+                let avgEff = Math.round(data.reduce((s, p) => s + p.efficiency, 0) / data.length);
+                badge.textContent = `Efisiensi ~${avgEff}%`;
+                data.forEach((p, i) => {
+                    const lbl = document.createElement('div'); lbl.className = 'page-label';
+                    lbl.innerText = `${label} ${i + 1} (Terpakai ~${p.efficiency}%)`; grid.appendChild(lbl);
+                    const img = document.createElement('img'); img.src = p.url; grid.appendChild(img);
+                });
+            } else { badge.textContent = ''; grid.innerHTML = `<div style="color:#888; padding:20px;">Tidak ada foto ${label.toLowerCase()}</div>`; }
+        };
+        renderGrid(portraitPagesData, portraitPagesGrid, utilP, 'Versi Portrait');
+        renderGrid(landscapePagesData, landscapePagesGrid, utilL, 'Versi Landscape');
+        downloadA4Btn.innerText = `DOWNLOAD SEMUA (${portraitPagesData.length + landscapePagesData.length} HALAMAN)`;
+    }
+
+    function downloadPages(pagesArr) {
+        if (pagesArr.length === 0) return;
+        showToast(`${pagesArr.length} file A4 sedang diunduh...`);
+        pagesArr.forEach((pageData, index) => {
             setTimeout(() => {
-                const link = document.createElement('a');
-                link.download = `KARYA-ABADI-A4-${pageData.type}-Hal${index + 1}-${Date.now()}.jpg`;
-                link.href = pageData.url;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-            }, 500 * index); 
+                const link = document.createElement('a'); link.download = `KARYA-ABADI-A4-${pageData.type}-Hal${index + 1}-${Date.now()}.jpg`;
+                link.href = pageData.url; document.body.appendChild(link); link.click(); document.body.removeChild(link);
+            }, 500 * index);
         });
     }
 
-    function showToast(msg) {
-        toast.textContent = msg;
-        toast.className = "show";
-        setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-    }
+    function showToast(msg) { toastEl.textContent = msg; toastEl.className = "show"; setTimeout(() => { toastEl.className = toastEl.className.replace("show", ""); }, 3000); }
 </script>
 
 </body>
