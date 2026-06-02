@@ -40,15 +40,20 @@
         .site-info p { font-size: 0.8rem; color: #FFD700; letter-spacing: 1px; }
         .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid #555; color: #ffffff; padding: 0.5rem; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
         .theme-toggle:hover { background-color: rgba(255,255,255,0.2); }
-        main { flex: 1; padding: 1.5rem; max-width: 1400px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 360px 1fr; gap: 1.5rem; }
+        main { flex: 1; padding: 1.5rem; max-width: 1400px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 380px 1fr; gap: 1.5rem; }
         @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
-        .card { background-color: var(--bg-card); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; }
+        .card { background-color: var(--bg-card); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; max-height: 90vh; }
         .section-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; color: var(--accent-red); }
         .icon-svg { width: 20px; height: 20px; stroke: var(--text-main); fill: none; }
-        .upload-area { border: 2px dashed var(--border-color); border-radius: 8px; padding: 0.8rem; text-align: center; cursor: pointer; position: relative; background-color: var(--bg-input); font-size: 0.85rem; }
+        
+        /* Grid Upload Lebih Rapat */
+        .upload-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .upload-area { border: 2px dashed var(--border-color); border-radius: 8px; padding: 0.5rem; text-align: center; cursor: pointer; position: relative; background-color: var(--bg-input); font-size: 0.75rem; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70px; }
         .upload-area:hover { border-color: var(--accent-red); background-color: rgba(211, 47, 47, 0.08); }
         .upload-area input { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
-        .upload-area .file-name { color: #4CAF50; font-weight: 600; font-size: 0.75rem; margin-top: 4px; word-break: break-all; }
+        .upload-area .up-label { font-weight: 700; color: var(--text-main); pointer-events: none; }
+        .upload-area .file-name { color: #4CAF50; font-weight: 600; font-size: 0.65rem; margin-top: 2px; word-break: break-all; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
         label { font-weight: 500; font-size: 0.85rem; color: var(--text-muted); }
         input[type="number"] { padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--input-bg); color: var(--text-main); width: 100%; text-align: center; }
         .qty-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
@@ -93,6 +98,7 @@
         @media (max-width: 600px) {
             .qty-grid { grid-template-columns: 1fr; }
             .previews-wrapper { grid-template-columns: repeat(2, 1fr); }
+            .upload-grid { grid-template-columns: 1fr 1fr; }
             header { padding: 0.5rem 1rem; }
             .site-info h1 { font-size: 1.1rem; }
         }
@@ -105,7 +111,7 @@
         <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
         <div class="site-info">
             <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <p>Auto Crop &amp; Susun Pintar Hemat Ruang</p>
+            <p>6 Upload Mandiri &amp; Susun Pintar</p>
         </div>
     </div>
     <button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
@@ -114,23 +120,23 @@
 <main>
     <section class="card">
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="12" height="18" rx="2"/><rect x="9" y="3" width="12" height="12" rx="2"/></svg>
-            Upload Foto (Portrait)
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Upload Foto Portrait
         </div>
-        <div class="upload-area" id="drop-zone-p">
-            <input type="file" id="imageInputP" accept="image/*">
-            <p>Klik atau seret foto portrait</p>
-            <div class="file-name" id="fileNameP"></div>
+        <div class="upload-grid">
+            <div class="upload-area"><input type="file" id="img2x3" accept="image/*"><div class="up-label">2x3</div><div class="file-name" id="fn2x3"></div></div>
+            <div class="upload-area"><input type="file" id="img3x4" accept="image/*"><div class="up-label">3x4</div><div class="file-name" id="fn3x4"></div></div>
+            <div class="upload-area"><input type="file" id="img4x6" accept="image/*"><div class="up-label">4x6</div><div class="file-name" id="fn4x6"></div></div>
         </div>
 
         <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><rect x="3" y="9" width="12" height="12" rx="2"/></svg>
-            Upload Foto (Landscape)
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            Upload Foto Landscape
         </div>
-        <div class="upload-area" id="drop-zone-l">
-            <input type="file" id="imageInputL" accept="image/*">
-            <p>Klik atau seret foto landscape</p>
-            <div class="file-name" id="fileNameL"></div>
+        <div class="upload-grid">
+            <div class="upload-area"><input type="file" id="img2x3L" accept="image/*"><div class="up-label">2x3</div><div class="file-name" id="fn2x3L"></div></div>
+            <div class="upload-area"><input type="file" id="img3x4L" accept="image/*"><div class="up-label">3x4</div><div class="file-name" id="fn3x4L"></div></div>
+            <div class="upload-area"><input type="file" id="img4x6L" accept="image/*"><div class="up-label">4x6</div><div class="file-name" id="fn4x6L"></div></div>
         </div>
 
         <div class="section-title">
@@ -150,10 +156,7 @@
     </section>
 
     <section class="card">
-        <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Hasil Crop (Portrait)
-        </div>
+        <div class="section-title">Hasil Crop (Portrait)</div>
         <div class="previews-wrapper">
             <div class="preview-card">
                 <canvas id="canvas2x3"></canvas>
@@ -181,10 +184,7 @@
             </div>
         </div>
 
-        <div class="section-title" style="margin-top: 0.5rem;">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Hasil Crop (Landscape)
-        </div>
+        <div class="section-title" style="margin-top: 0.5rem;">Hasil Crop (Landscape)</div>
         <div class="previews-wrapper">
             <div class="preview-card">
                 <canvas id="canvas2x3L"></canvas>
@@ -261,27 +261,26 @@
 
     const A4_W = 2100, A4_H = 2970;
 
-    let portraitImage = null;
-    let landscapeImage = null;
+    // State berubah: Menyimpan 6 gambar secara terpisah
+    const uploadedImages = {};
     let portraitPagesData = [];
     let landscapePagesData = [];
 
     const previewStates = {};
     const refs = {};
 
+    // Inisialisasi referensi DOM dan State untuk 6 canvas
     Object.keys(PRESETS).forEach(key => {
         previewStates[key] = { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
         refs[key] = {
             canvas: document.getElementById(`canvas${key}`),
             slider: document.getElementById(`zoom${key}`),
-            btn: document.getElementById(`btnDl${key}`)
+            btn: document.getElementById(`btnDl${key}`),
+            input: document.getElementById(`img${key}`),
+            fileName: document.getElementById(`fn${key}`)
         };
     });
 
-    const imageInputP = document.getElementById('imageInputP');
-    const imageInputL = document.getElementById('imageInputL');
-    const fileNameP = document.getElementById('fileNameP');
-    const fileNameL = document.getElementById('fileNameL');
     const resetAllBtn = document.getElementById('resetAllBtn');
     const previewA4Btn = document.getElementById('previewA4Btn');
     const themeToggle = document.getElementById('themeToggle');
@@ -302,15 +301,14 @@
         themeToggle.textContent = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
     });
 
-    imageInputP.addEventListener('change', (e) => handleImageUpload(e, 'portrait'));
-    imageInputL.addEventListener('change', (e) => handleImageUpload(e, 'landscape'));
-    resetAllBtn.addEventListener('click', resetAll);
-
+    // Binding event untuk 6 upload area dan interaksinya
     Object.keys(PRESETS).forEach(key => {
+        refs[key].input.addEventListener('change', (e) => handleImageUpload(e, key));
         setupInteractions(key);
         refs[key].btn.addEventListener('click', () => downloadSingle(key));
     });
 
+    resetAllBtn.addEventListener('click', resetAll);
     previewA4Btn.addEventListener('click', generateA4Preview);
     closeModal.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
@@ -318,20 +316,19 @@
     dlPortraitBtn.addEventListener('click', () => downloadPages(portraitPagesData));
     dlLandscapeBtn.addEventListener('click', () => downloadPages(landscapePagesData));
 
-    function getOriginalImage(key) { return key.includes('L') ? landscapeImage : portraitImage; }
-
-    function handleImageUpload(e, type) {
+    function handleImageUpload(e, key) {
         const file = e.target.files[0];
         if (!file) return;
-        const nameEl = type === 'portrait' ? fileNameP : fileNameL;
-        nameEl.textContent = file.name;
+        refs[key].fileName.textContent = file.name;
         const reader = new FileReader();
         reader.onload = (ev) => {
             const img = new Image();
             img.onload = () => {
-                if (type === 'portrait') portraitImage = img; else landscapeImage = img;
-                enableControls(); initAllCanvases(); resetAll();
-                showToast(`Foto ${type} berhasil diupload`);
+                uploadedImages[key] = img; // Simpan ke state spesifik
+                enableControls(); 
+                initSingleCanvas(key); 
+                resetSingle(key);
+                showToast(`Foto ${key} berhasil diupload`);
             };
             img.src = ev.target.result;
         };
@@ -340,32 +337,37 @@
 
     function enableControls() {
         resetAllBtn.disabled = false;
-        previewA4Btn.disabled = !(portraitImage || landscapeImage);
+        previewA4Btn.disabled = Object.keys(uploadedImages).length === 0;
         Object.keys(refs).forEach(key => {
-            if (getOriginalImage(key)) { refs[key].slider.disabled = false; refs[key].btn.disabled = false; }
+            if (uploadedImages[key]) { 
+                refs[key].slider.disabled = false; 
+                refs[key].btn.disabled = false; 
+            }
         });
     }
 
-    function initAllCanvases() {
-        Object.keys(PRESETS).forEach(key => {
-            const p = PRESETS[key]; const c = refs[key].canvas;
-            const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
-            c.width = p.w + extra; c.height = p.h + extra;
-        });
+    function initSingleCanvas(key) {
+        const p = PRESETS[key]; const c = refs[key].canvas;
+        const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
+        c.width = p.w + extra; c.height = p.h + extra;
     }
 
     function resetAll() {
         Object.keys(PRESETS).forEach(key => {
-            const p = PRESETS[key]; const state = previewStates[key]; const img = getOriginalImage(key);
-            if (!img) return;
-            const scaleX = p.w / img.width; const scaleY = p.h / img.height;
-            state.scale = Math.max(scaleX, scaleY) * 1.1;
-            refs[key].slider.value = state.scale;
-            const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
-            state.offsetX = ((p.w + extra) - img.width * state.scale) / 2;
-            state.offsetY = ((p.h + extra) - img.height * state.scale) / 2;
-            drawPreview(key);
+            if(uploadedImages[key]) resetSingle(key);
         });
+    }
+
+    function resetSingle(key) {
+        const p = PRESETS[key]; const state = previewStates[key]; const img = uploadedImages[key];
+        if (!img) return;
+        const scaleX = p.w / img.width; const scaleY = p.h / img.height;
+        state.scale = Math.max(scaleX, scaleY) * 1.1;
+        refs[key].slider.value = state.scale;
+        const extra = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2);
+        state.offsetX = ((p.w + extra) - img.width * state.scale) / 2;
+        state.offsetY = ((p.h + extra) - img.height * state.scale) / 2;
+        drawPreview(key);
     }
 
     function getCanvasCoords(canvas, e) {
@@ -385,12 +387,11 @@
         canvas.addEventListener('touchend', () => endDrag(state));
     }
 
-    function startDrag(e, state, key) { if (!getOriginalImage(key)) return; state.isDragging = true; const c = getCanvasCoords(refs[key].canvas, e); state.startX = c.x - state.offsetX; state.startY = c.y - state.offsetY; }
+    function startDrag(e, state, key) { if (!uploadedImages[key]) return; state.isDragging = true; const c = getCanvasCoords(refs[key].canvas, e); state.startX = c.x - state.offsetX; state.startY = c.y - state.offsetY; }
     function doDrag(e, state, key) { if (!state.isDragging) return; const c = getCanvasCoords(refs[key].canvas, e); state.offsetX = c.x - state.startX; state.offsetY = c.y - state.startY; drawPreview(key); }
     function endDrag(state) { state.isDragging = false; }
 
     function drawBaseImage(ctx, key, img) {
-        if (!img) return;
         const preset = PRESETS[key]; const w = ctx.canvas.width; const h = ctx.canvas.height; const state = previewStates[key];
         ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);
         const inset = (preset.border_mm * MM_TO_PX) + CUT_LINE_WIDTH;
@@ -402,7 +403,7 @@
     }
 
     function drawPreview(key) {
-        const img = getOriginalImage(key); if (!img) return;
+        const img = uploadedImages[key]; if (!img) return;
         const ctx = refs[key].canvas.getContext('2d'); drawBaseImage(ctx, key, img);
         const preset = PRESETS[key]; const inset = (preset.border_mm * MM_TO_PX) + CUT_LINE_WIDTH;
         const centerX = Math.round(inset + (preset.w / 2)); const centerY = Math.round(inset + (preset.h / 2));
@@ -419,32 +420,34 @@
     }
 
     function downloadSingle(key) {
-        const img = getOriginalImage(key); if (!img) return;
+        const img = uploadedImages[key]; if (!img) return;
         const link = document.createElement('a'); link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
         link.href = getCleanCanvas(key, img).toDataURL('image/jpeg', 0.95);
         document.body.appendChild(link); link.click(); document.body.removeChild(link);
         showToast(`Unduh ${key} berhasil`);
     }
 
-    /* ========== MAXRECTS BEST GLOBAL FIT (PINTAR CARI CELAH KOSONG) ========== */
+    /* ========== MAXRECTS BEST GLOBAL FIT ========== */
     function generateA4Preview() {
-        if (!portraitImage && !landscapeImage) return showToast("Upload minimal 1 foto!");
+        if (Object.keys(uploadedImages).length === 0) return showToast("Upload minimal 1 foto!");
+        
         const q2x3 = parseInt(document.getElementById('qty2x3').value) || 0;
         const q3x4 = parseInt(document.getElementById('qty3x4').value) || 0;
         const q4x6 = parseInt(document.getElementById('qty4x6').value) || 0;
+
         if (q2x3 + q3x4 + q4x6 === 0) return showToast("Masukkan jumlah cetak minimal 1!");
 
         let portraitJobs = [], landscapeJobs = [];
 
-        const addJobs = (pKey, lKey, qty) => {
-            if (qty <= 0) return;
-            if (portraitImage) { const s = getCleanCanvas(pKey, portraitImage); if(s) for(let i=0;i<qty;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
-            if (landscapeImage) { const s = getCleanCanvas(lKey, landscapeImage); if(s) for(let i=0;i<qty;i++) landscapeJobs.push({source:s, w:s.width, h:s.height}); }
-        };
+        // Isi job berdasarkan gambar yang diupload masing-masing
+        if (uploadedImages["2x3"] && q2x3 > 0) { const s = getCleanCanvas("2x3", uploadedImages["2x3"]); for(let i=0;i<q2x3;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
+        if (uploadedImages["3x4"] && q3x4 > 0) { const s = getCleanCanvas("3x4", uploadedImages["3x4"]); for(let i=0;i<q3x4;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
+        if (uploadedImages["4x6"] && q4x6 > 0) { const s = getCleanCanvas("4x6", uploadedImages["4x6"]); for(let i=0;i<q4x6;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
 
-        addJobs("2x3", "2x3L", q2x3); addJobs("3x4", "3x4L", q3x4); addJobs("4x6", "4x6L", q4x6);
-        
-        // Parameter true berarti rotasi otomatis diaktifkan tanpa syarat
+        if (uploadedImages["2x3L"] && q2x3 > 0) { const s = getCleanCanvas("2x3L", uploadedImages["2x3L"]); for(let i=0;i<q2x3;i++) landscapeJobs.push({source:s, w:s.width, h:s.height}); }
+        if (uploadedImages["3x4L"] && q3x4 > 0) { const s = getCleanCanvas("3x4L", uploadedImages["3x4L"]); for(let i=0;i<q3x4;i++) landscapeJobs.push({source:s, w:s.width, h:s.height}); }
+        if (uploadedImages["4x6L"] && q4x6 > 0) { const s = getCleanCanvas("4x6L", uploadedImages["4x6L"]); for(let i=0;i<q4x6;i++) landscapeJobs.push({source:s, w:s.width, h:s.height}); }
+
         portraitPagesData = packA4(portraitJobs, A4_W, A4_H, 'Foto-Portrait', true);
         landscapePagesData = packA4(landscapeJobs, A4_W, A4_H, 'Foto-Landscape', true);
 
@@ -467,49 +470,33 @@
             let maxYUsed = margin;
             let itemsToPlace = [...items];
 
-            // Loop hingga tidak ada lagi foto yang muat di area kosong
             while (itemsToPlace.length > 0) {
-                let bestItemIdx = -1;
-                let bestRectIdx = -1;
-                let bestRotated = false;
-                let bestFitW = 0, bestFitH = 0;
-                let bestScore = Infinity;
+                let bestItemIdx = -1, bestRectIdx = -1, bestRotated = false, bestFitW = 0, bestFitH = 0, bestScore = Infinity;
 
-                // Cari kombinasi Foto & Area Kosong yang paling pas (Skor terkecil)
                 for (let i = 0; i < itemsToPlace.length; i++) {
                     let item = itemsToPlace[i];
                     for (let r = 0; r < freeRects.length; r++) {
                         let fr = freeRects[r];
-                        
-                        // Coba orientasi Normal
                         if (item.w <= fr.w && item.h <= fr.h) {
                             let shortSide = Math.min(fr.w - item.w, fr.h - item.h);
                             let longSide = Math.max(fr.w - item.w, fr.h - item.h);
-                            let score = shortSide * 10000 + longSide; // Prioritaskan sisa paling persegi/kecil
-                            if (score < bestScore) {
-                                bestScore = score; bestItemIdx = i; bestRectIdx = r;
-                                bestRotated = false; bestFitW = item.w; bestFitH = item.h;
-                            }
+                            let score = shortSide * 10000 + longSide; 
+                            if (score < bestScore) { bestScore = score; bestItemIdx = i; bestRectIdx = r; bestRotated = false; bestFitW = item.w; bestFitH = item.h; }
                         }
-                        // Coba orientasi Diputar
                         if (isAutoRotate && item.h <= fr.w && item.w <= fr.h) {
                             let shortSide = Math.min(fr.w - item.h, fr.h - item.w);
                             let longSide = Math.max(fr.w - item.h, fr.h - item.w);
                             let score = shortSide * 10000 + longSide;
-                            if (score < bestScore) {
-                                bestScore = score; bestItemIdx = i; bestRectIdx = r;
-                                bestRotated = true; bestFitW = item.h; bestFitH = item.w;
-                            }
+                            if (score < bestScore) { bestScore = score; bestItemIdx = i; bestRectIdx = r; bestRotated = true; bestFitW = item.h; bestFitH = item.w; }
                         }
                     }
                 }
 
-                // Jika ketemu foto yang muat, letakkan di canvas
                 if (bestItemIdx !== -1) {
                     let item = itemsToPlace[bestItemIdx];
                     let fr = freeRects[bestRectIdx];
-                    
                     let px = fr.x, py = fr.y;
+                    
                     ctx.save();
                     if (bestRotated) {
                         ctx.translate(px + bestFitW / 2, py + bestFitH / 2); ctx.rotate(Math.PI / 2);
@@ -522,7 +509,6 @@
 
                     if (py + bestFitH > maxYUsed) maxYUsed = py + bestFitH;
 
-                    // Potong area kosong (Guillotine Split)
                     let placedRect = {x: px, y: py, w: bestFitW, h: bestFitH};
                     let newFreeRects = [];
                     for (let j=0; j<freeRects.length; j++) {
@@ -532,18 +518,11 @@
                             if (placedRect.y + placedRect.h < currentFr.y + currentFr.h) newFreeRects.push({x: currentFr.x, y: placedRect.y + placedRect.h, w: currentFr.w, h: (currentFr.y + currentFr.h) - (placedRect.y + placedRect.h)});
                             if (placedRect.x > currentFr.x) newFreeRects.push({x: currentFr.x, y: currentFr.y, w: placedRect.x - currentFr.x, h: currentFr.h});
                             if (placedRect.x + placedRect.w < currentFr.x + currentFr.w) newFreeRects.push({x: placedRect.x + placedRect.w, y: currentFr.y, w: (currentFr.x + currentFr.w) - (placedRect.x + placedRect.w), h: currentFr.h});
-                        } else {
-                            newFreeRects.push(currentFr);
-                        }
+                        } else { newFreeRects.push(currentFr); }
                     }
                     freeRects = newFreeRects.filter((f1, idx, arr) => !arr.some((f2, oIdx) => idx !== oIdx && isContained(f1, f2)));
-                    
-                    // Hapus foto yang sudah diletakkan dari antrian
                     itemsToPlace.splice(bestItemIdx, 1);
-                } else {
-                    // Jika tidak ada lagi foto yang muat di sisa area, pindah ke halaman baru
-                    break; 
-                }
+                } else { break; }
             }
             
             items = itemsToPlace;
