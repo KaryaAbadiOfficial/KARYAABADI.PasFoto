@@ -138,7 +138,7 @@
         .upload-area {
             border: 2px dashed var(--border-color);
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
             cursor: pointer;
             position: relative;
@@ -235,16 +235,45 @@
         #a4PagesContainer {
             display: flex;
             flex-direction: column;
+            gap: 60px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .a4-version-section {
+            display: flex;
+            flex-direction: column;
             gap: 30px;
             align-items: center;
+            width: 100%;
         }
-        #a4PagesContainer img {
+
+        .version-title {
+            color: #fff;
+            font-size: 1.4rem;
+            font-weight: bold;
+            border-bottom: 2px solid var(--accent-red);
+            padding-bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .a4-page-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+            width: 100%;
+        }
+
+        .a4-page-grid img {
             max-width: 100%;
             height: auto;
             border: 2px solid #444;
             border-radius: 4px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
+        
         .page-label {
             color: #aaa;
             font-size: 0.9rem;
@@ -277,11 +306,20 @@
     <section class="card">
         <div class="section-title">
             <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
-            Upload Foto
+            Upload Foto (Portrait)
         </div>
-        <div class="upload-area" id="drop-zone">
-            <input type="file" id="imageInput" accept="image/*">
-            <p>Upload</p>
+        <div class="upload-area" id="drop-zone-p">
+            <input type="file" id="imageInputP" accept="image/*">
+            <p>Upload Portrait</p>
+        </div>
+
+        <div class="section-title">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+            Upload Foto (Landscape)
+        </div>
+        <div class="upload-area" id="drop-zone-l">
+            <input type="file" id="imageInputL" accept="image/*">
+            <p>Upload Landscape</p>
         </div>
 
         <div class="section-title">
@@ -303,7 +341,7 @@
     <section class="card">
         <div class="section-title">
             <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-            3 Hasil Crop (Edit Individu)
+            3 Hasil Crop (Portrait)
         </div>
 
         <div class="previews-wrapper">
@@ -338,6 +376,40 @@
         <p style="font-size: 0.8rem; color: var(--text-muted); text-align: center; margin-top: 10px;">
             *Geser foto langsung di kotak di atas untuk menyesuaikan posisi masing-masing ukuran
         </p>
+
+        <div class="section-title" style="margin-top: 1rem;">
+            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" transform="rotate(90 12 12)"></rect><circle cx="8.5" cy="8.5" r="1.5" transform="rotate(90 12 12)"></circle><polyline points="21 15 16 10 5 21" transform="rotate(90 12 12)"></polyline></svg>
+            3 Hasil Crop (Landscape)
+        </div>
+
+        <div class="previews-wrapper">
+            <div class="preview-card">
+                <canvas id="canvas2x3L"></canvas>
+                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">2X3</div>
+                <div class="preview-slider-group">
+                    <input type="range" id="zoom2x3L" class="mini-slider" disabled min="0.5" max="3" step="0.05">
+                </div>
+                <button class="btn btn-sm secondary" id="btnDl2x3L" disabled>DOWNLOAD</button>
+            </div>
+
+            <div class="preview-card">
+                <canvas id="canvas3x4L"></canvas>
+                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">3X4</div>
+                <div class="preview-slider-group">
+                    <input type="range" id="zoom3x4L" class="mini-slider" disabled min="0.5" max="3" step="0.05">
+                </div>
+                <button class="btn btn-sm secondary" id="btnDl3x4L" disabled>DOWNLOAD</button>
+            </div>
+
+            <div class="preview-card">
+                <canvas id="canvas4x6L"></canvas>
+                <div style="font-weight: bold; font-size: 0.8rem; text-transform: uppercase;">4X6</div>
+                <div class="preview-slider-group">
+                    <input type="range" id="zoom4x6L" class="mini-slider" disabled min="0.5" max="3" step="0.05">
+                </div>
+                <button class="btn btn-sm secondary" id="btnDl4x6L" disabled>DOWNLOAD</button>
+            </div>
+        </div>
     </section>
 </main>
 
@@ -352,7 +424,16 @@
             <span class="close" id="closeModal">&times;</span>
         </div>
         <div class="modal-body">
-            <div id="a4PagesContainer"></div>
+            <div id="a4PagesContainer">
+                <div id="portraitContainer" class="a4-version-section">
+                    <div class="version-title">VERSI PORTRAIT</div>
+                    <div class="a4-page-grid" id="portraitPagesGrid"></div>
+                </div>
+                <div id="landscapeContainer" class="a4-version-section">
+                    <div class="version-title">VERSI LANDSCAPE</div>
+                    <div class="a4-page-grid" id="landscapePagesGrid"></div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
             <button class="btn" id="downloadA4Btn">DOWNLOAD SEMUA</button>
@@ -370,36 +451,46 @@
     const PRESETS = {
         "2x3": { w_mm: 21.6, h_mm: 27.9, w: 216, h: 279, ratio: 21.6/27.9, label: "2x3", border_mm: 1 },
         "3x4": { w_mm: 27.9, h_mm: 38.1, w: 279, h: 381, ratio: 27.9/38.1, label: "3x4", border_mm: 1 },
-        "4x6": { w_mm: 38.1, h_mm: 55.9, w: 381, h: 559, ratio: 38.1/55.9, label: "4x6", border_mm: 1 }
+        "4x6": { w_mm: 38.1, h_mm: 55.9, w: 381, h: 559, ratio: 38.1/55.9, label: "4x6", border_mm: 1 },
+        "2x3L": { w_mm: 27.9, h_mm: 21.6, w: 279, h: 216, ratio: 27.9/21.6, label: "2x3L", border_mm: 1 },
+        "3x4L": { w_mm: 38.1, h_mm: 27.9, w: 381, h: 279, ratio: 38.1/27.9, label: "3x4L", border_mm: 1 },
+        "4x6L": { w_mm: 55.9, h_mm: 38.1, w: 559, h: 381, ratio: 55.9/38.1, label: "4x6L", border_mm: 1 }
     };
     
-    const A4_WIDTH = 2100; 
-    const A4_HEIGHT = 2970; 
+    const A4_W_P = 2100; 
+    const A4_H_P = 2970; 
+    const A4_W_L = 2970; 
+    const A4_H_L = 2100; 
 
-    let originalImage = null;
-    let a4PagesData = [];
+    // Dua variabel gambar terpisah
+    let portraitImage = null;
+    let landscapeImage = null;
+    
+    let a4PagesData = []; 
 
-    const previewStates = {
-        "2x3": { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 },
-        "3x4": { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 },
-        "4x6": { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 }
-    };
+    const previewStates = {};
+    const refs = {};
 
-    const imageInput = document.getElementById('imageInput');
+    Object.keys(PRESETS).forEach(key => {
+        previewStates[key] = { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
+        refs[key] = { 
+            canvas: document.getElementById(`canvas${key}`), 
+            slider: document.getElementById(`zoom${key}`), 
+            btn: document.getElementById(`btnDl${key}`) 
+        };
+    });
+
+    const imageInputP = document.getElementById('imageInputP');
+    const imageInputL = document.getElementById('imageInputL');
     const resetAllBtn = document.getElementById('resetAllBtn');
     const previewA4Btn = document.getElementById('previewA4Btn');
     const themeToggle = document.getElementById('themeToggle');
     const toast = document.getElementById('toast');
 
-    const refs = {
-        "2x3": { canvas: document.getElementById('canvas2x3'), slider: document.getElementById('zoom2x3'), btn: document.getElementById('btnDl2x3') },
-        "3x4": { canvas: document.getElementById('canvas3x4'), slider: document.getElementById('zoom3x4'), btn: document.getElementById('btnDl3x4') },
-        "4x6": { canvas: document.getElementById('canvas4x6'), slider: document.getElementById('zoom4x6'), btn: document.getElementById('btnDl4x6') }
-    };
-
     const modal = document.getElementById('a4Modal');
     const closeModal = document.getElementById('closeModal');
-    const a4PagesContainer = document.getElementById('a4PagesContainer');
+    const portraitPagesGrid = document.getElementById('portraitPagesGrid');
+    const landscapePagesGrid = document.getElementById('landscapePagesGrid');
     const downloadA4Btn = document.getElementById('downloadA4Btn');
 
     themeToggle.addEventListener('click', () => {
@@ -413,10 +504,11 @@
         }
     });
 
-    imageInput.addEventListener('change', handleImageUpload);
+    imageInputP.addEventListener('change', (e) => handleImageUpload(e, 'portrait'));
+    imageInputL.addEventListener('change', (e) => handleImageUpload(e, 'landscape'));
     resetAllBtn.addEventListener('click', resetAllPreviews);
     
-    ["2x3", "3x4", "4x6"].forEach(key => {
+    Object.keys(PRESETS).forEach(key => {
         setupInteractions(key);
         refs[key].btn.addEventListener('click', () => downloadSingle(key));
     });
@@ -426,29 +518,41 @@
     window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; };
     downloadA4Btn.addEventListener('click', downloadA4Images);
 
-    function handleImageUpload(e) {
+    // Helper untuk mendapatkan gambar yang benar berdasarkan key
+    function getOriginalImage(key) {
+        return key.includes('L') ? landscapeImage : portraitImage;
+    }
+
+    function handleImageUpload(e, type) {
         const file = e.target.files[0];
         if (!file) return;
         const reader = new FileReader();
         reader.onload = (event) => {
-            originalImage = new Image();
-            originalImage.onload = () => {
+            const img = new Image();
+            img.onload = () => {
+                if (type === 'portrait') portraitImage = img;
+                else landscapeImage = img;
+                
                 enableControls();
                 initAllCanvases();
                 resetAllPreviews(); 
-                showToast("Foto berhasil diupload");
+                showToast(`Foto ${type} berhasil diupload`);
             };
-            originalImage.src = event.target.result;
+            img.src = event.target.result;
         };
         reader.readAsDataURL(file);
     }
 
     function enableControls() {
         resetAllBtn.disabled = false;
-        previewA4Btn.disabled = false;
+        previewA4Btn.disabled = !(portraitImage || landscapeImage); // Aktif jika salah satu ada
+        
         Object.keys(refs).forEach(key => {
-            refs[key].slider.disabled = false;
-            refs[key].btn.disabled = false;
+            const img = getOriginalImage(key);
+            if(img) {
+                refs[key].slider.disabled = false;
+                refs[key].btn.disabled = false;
+            }
         });
     }
 
@@ -464,13 +568,15 @@
     }
 
     function resetAllPreviews() {
-        if(!originalImage) return;
         Object.keys(PRESETS).forEach(key => {
             const p = PRESETS[key];
             const state = previewStates[key];
+            const img = getOriginalImage(key);
             
-            const scaleX = p.w / originalImage.width;
-            const scaleY = p.h / originalImage.height;
+            if(!img) return; // Skip jika belum upload
+            
+            const scaleX = p.w / img.width;
+            const scaleY = p.h / img.height;
             const initialScale = Math.max(scaleX, scaleY) * 1.1; 
 
             state.scale = initialScale;
@@ -481,8 +587,8 @@
             const centerX = (p.w + extra)/2;
             const centerY = (p.h + extra)/2;
             
-            state.offsetX = centerX - (originalImage.width * state.scale) / 2;
-            state.offsetY = centerY - (originalImage.height * state.scale) / 2;
+            state.offsetX = centerX - (img.width * state.scale) / 2;
+            state.offsetY = centerY - (img.height * state.scale) / 2;
             
             drawPreview(key);
         });
@@ -521,6 +627,7 @@
     }
 
     function startDrag(e, state, key) {
+        if(!getOriginalImage(key)) return;
         state.isDragging = true;
         state.startX = e.clientX - state.offsetX;
         state.startY = e.clientY - state.offsetY;
@@ -536,11 +643,11 @@
 
     function endDrag(state) {
         state.isDragging = false;
-        Object.keys(refs).forEach(k => refs[k].canvas.style.cursor = 'move');
+        Object.keys(refs).forEach(k => { if(getOriginalImage(k)) refs[k].canvas.style.cursor = 'move'; });
     }
 
-    // Fungsi Dasar Menggambar Tanpa Garis Bantu (Khusus Export/Download)
-    function drawBaseImage(ctx, key) {
+    function drawBaseImage(ctx, key, img) {
+        if(!img) return;
         const preset = PRESETS[key];
         const w = ctx.canvas.width;
         const h = ctx.canvas.height;
@@ -557,7 +664,7 @@
         ctx.beginPath();
         ctx.rect(inset, inset, preset.w, preset.h);
         ctx.clip();
-        ctx.drawImage(originalImage, state.offsetX, state.offsetY, originalImage.width * state.scale, originalImage.height * state.scale);
+        ctx.drawImage(img, state.offsetX, state.offsetY, img.width * state.scale, img.height * state.scale);
         ctx.restore();
 
         ctx.strokeStyle = '#000000';
@@ -565,41 +672,31 @@
         ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
     }
 
-    // Fungsi Tampilan Layar (Dengan Garis Bantu Hijau Solid yang Sangat Jelas)
     function drawPreview(key) {
-        if(!originalImage) return;
+        const img = getOriginalImage(key);
+        if(!img) return;
         const ctx = refs[key].canvas.getContext('2d');
-        drawBaseImage(ctx, key);
+        drawBaseImage(ctx, key, img);
 
         const preset = PRESETS[key];
         const border_px = preset.border_mm * MM_TO_PX;
         const inset = border_px + CUT_LINE_WIDTH;
         
-        // Dibulatkan agar garis tidak blur/transparent di layar
         const centerX = Math.round(inset + (preset.w / 2));
         const centerY = Math.round(inset + (preset.h / 2));
 
         ctx.save();
-        ctx.strokeStyle = '#00FF00'; // Warna Hijau Cerah agar kontras dan jelas terlihat
-        ctx.lineWidth = 2; // Ketebalan 2px agar pasti terlihat jelas di semua kotak
+        ctx.strokeStyle = '#00FF00'; 
+        ctx.lineWidth = 4; 
         
-        // Garis Vertikal Tengah
-        ctx.beginPath(); 
-        ctx.moveTo(centerX, inset); 
-        ctx.lineTo(centerX, inset + preset.h); 
-        ctx.stroke();
-
-        // Garis Horizontal Tengah
-        ctx.beginPath(); 
-        ctx.moveTo(inset, centerY); 
-        ctx.lineTo(inset + preset.w, centerY); 
-        ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(centerX, inset); ctx.lineTo(centerX, inset + preset.h); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(inset, centerY); ctx.lineTo(inset + preset.w, centerY); ctx.stroke();
 
         ctx.restore();
     }
 
-    // Membuat Canvas Khusus Export (Bersih tanpa garis hijau)
-    function getCleanCanvas(key) {
+    function getCleanCanvas(key, img) {
+        if(!img) return null;
         const c = document.createElement('canvas');
         const p = PRESETS[key];
         const border_px = p.border_mm * MM_TO_PX;
@@ -607,15 +704,16 @@
         c.width = p.w + extra;
         c.height = p.h + extra;
         const ctx = c.getContext('2d');
-        drawBaseImage(ctx, key);
+        drawBaseImage(ctx, key, img);
         return c;
     }
 
     function downloadSingle(key) {
-        if(!originalImage) return;
+        const img = getOriginalImage(key);
+        if(!img) return;
         const link = document.createElement('a');
         link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
-        link.href = getCleanCanvas(key).toDataURL('image/jpeg', 0.95);
+        link.href = getCleanCanvas(key, img).toDataURL('image/jpeg', 0.95);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -653,7 +751,10 @@
     }
 
     function generateA4Preview() {
-        if (!originalImage) return;
+        if (!portraitImage && !landscapeImage) {
+            showToast("Upload minimal 1 foto!");
+            return;
+        }
 
         const q2x3 = parseInt(document.getElementById('qty2x3').value) || 0;
         const q3x4 = parseInt(document.getElementById('qty3x4').value) || 0;
@@ -664,157 +765,166 @@
             return;
         }
 
-        let flatJobs = [];
-        const addFlatJob = (key, qty) => {
+        let portraitJobs = [];
+        let landscapeJobs = [];
+        
+        const addJobs = (pKey, lKey, qty) => {
             if(qty <= 0) return;
             
-            const sourceCanvas = getCleanCanvas(key);
+            if(portraitImage) {
+                const pSource = getCleanCanvas(pKey, portraitImage);
+                if(pSource) {
+                    for(let i=0; i<qty; i++) {
+                        portraitJobs.push({ source: pSource, w: pSource.width, h: pSource.height });
+                    }
+                }
+            }
             
-            const rotCanvas = document.createElement('canvas');
-            rotCanvas.width = sourceCanvas.height;
-            rotCanvas.height = sourceCanvas.width;
-            const rCtx = rotCanvas.getContext('2d');
-            rCtx.save();
-            rCtx.translate(rotCanvas.width / 2, rotCanvas.height / 2);
-            rCtx.rotate(-90 * Math.PI / 180);
-            rCtx.drawImage(sourceCanvas, -sourceCanvas.width / 2, -sourceCanvas.height / 2);
-            rCtx.restore();
-
-            for(let i=0; i<qty; i++) {
-                flatJobs.push({ 
-                    source: sourceCanvas, w: sourceCanvas.width, h: sourceCanvas.height,
-                    rotSource: rotCanvas, rotW: rotCanvas.width, rotH: rotCanvas.height
-                });
+            if(landscapeImage) {
+                const lSource = getCleanCanvas(lKey, landscapeImage);
+                if(lSource) {
+                    for(let i=0; i<qty; i++) {
+                        landscapeJobs.push({ source: lSource, w: lSource.width, h: lSource.height });
+                    }
+                }
             }
         };
 
-        addFlatJob("2x3", q2x3);
-        addFlatJob("3x4", q3x4);
-        addFlatJob("4x6", q4x6);
+        addJobs("2x3", "2x3L", q2x3);
+        addJobs("3x4", "3x4L", q3x4);
+        addJobs("4x6", "4x6L", q4x6);
 
-        flatJobs.sort((a, b) => (b.w * b.h) - (a.w * a.h));
+        portraitJobs.sort((a, b) => b.h - a.h || b.w - a.w);
+        landscapeJobs.sort((a, b) => b.h - a.h || b.w - a.w);
 
-        a4PagesData = []; 
-        const margin = A4_MARGIN_PX;
-        const maxW = A4_WIDTH - 2 * margin;
-        const maxH = A4_HEIGHT - 2 * margin;
+        function packA4(jobs, a4Width, a4Height, type) {
+            let pages = [];
+            if(jobs.length === 0) return pages; // Jangan buat halaman jika tidak ada job
+            
+            const margin = A4_MARGIN_PX;
+            const maxW = a4Width - 2 * margin;
+            const maxH = a4Height - 2 * margin;
 
-        let a4Canvas = document.createElement('canvas');
-        a4Canvas.width = A4_WIDTH;
-        a4Canvas.height = A4_HEIGHT;
-        let a4Ctx = a4Canvas.getContext('2d');
-        a4Ctx.fillStyle = '#ffffff';
-        a4Ctx.fillRect(0, 0, A4_WIDTH, A4_HEIGHT);
+            let a4Canvas = document.createElement('canvas');
+            a4Canvas.width = a4Width;
+            a4Canvas.height = a4Height;
+            let a4Ctx = a4Canvas.getContext('2d');
+            a4Ctx.fillStyle = '#ffffff';
+            a4Ctx.fillRect(0, 0, a4Width, a4Height);
 
-        let freeRects = [{ x: margin, y: margin, w: maxW, h: maxH }];
+            let freeRects = [{ x: margin, y: margin, w: maxW, h: maxH }];
+            let hasContent = false;
 
-        flatJobs.forEach((job) => {
-            let placed = false;
-            while (!placed) {
-                let bestRect = null;
-                let bestScore = Infinity;
-                let useRotated = false;
+            jobs.forEach((job) => {
+                let placed = false;
+                while (!placed) {
+                    let bestRect = null;
+                    let bestScore = Infinity;
 
-                for (let i = 0; i < freeRects.length; i++) {
-                    const fr = freeRects[i];
-                    if (job.w <= fr.w && job.h <= fr.h) {
-                        let leftoverArea = (fr.w * fr.h) - (job.w * job.h);
-                        let shortSideFit = Math.min(fr.w - job.w, fr.h - job.h);
-                        let score = leftoverArea * 10000 + shortSideFit; 
-                        if (score < bestScore) {
-                            bestScore = score;
-                            bestRect = fr;
-                            useRotated = false;
-                        }
-                    }
-                }
-
-                for (let i = 0; i < freeRects.length; i++) {
-                    const fr = freeRects[i];
-                    if (job.rotW <= fr.w && job.rotH <= fr.h) {
-                        let leftoverArea = (fr.w * fr.h) - (job.rotW * job.rotH);
-                        let shortSideFit = Math.min(fr.w - job.rotW, fr.h - job.rotH);
-                        let score = leftoverArea * 10000 + shortSideFit; 
-                        if (score < bestScore) {
-                            bestScore = score;
-                            bestRect = fr;
-                            useRotated = true;
-                        }
-                    }
-                }
-
-                if (bestRect) {
-                    let placedX = bestRect.x;
-                    let placedY = bestRect.y;
-                    
-                    let currentW = useRotated ? job.rotW : job.w;
-                    let currentH = useRotated ? job.rotH : job.h;
-                    let currentSource = useRotated ? job.rotSource : job.source;
-                    
-                    a4Ctx.drawImage(currentSource, placedX, placedY, currentW, currentH);
-                    a4Ctx.strokeStyle = '#000000';
-                    a4Ctx.lineWidth = 1;
-                    a4Ctx.strokeRect(placedX, placedY, currentW, currentH);
-
-                    let placedRect = { x: placedX, y: placedY, w: currentW, h: currentH };
-
-                    let newFreeRects = [];
                     for (let i = 0; i < freeRects.length; i++) {
                         const fr = freeRects[i];
-                        if (intersects(fr, placedRect)) {
-                            let splits = splitFreeRect(fr, placedRect);
-                            for (let s of splits) {
-                                if (s.w > 0 && s.h > 0) newFreeRects.push(s);
+                        if (job.w <= fr.w && job.h <= fr.h) {
+                            let leftoverArea = (fr.w * fr.h) - (job.w * job.h);
+                            let shortSideFit = Math.min(fr.w - job.w, fr.h - job.h);
+                            let score = (fr.y * 10000000) + (fr.x * 100000) + (leftoverArea * 10) + shortSideFit;
+                            
+                            if (score < bestScore) {
+                                bestScore = score;
+                                bestRect = fr;
                             }
-                        } else {
-                            newFreeRects.push(fr);
                         }
                     }
 
-                    freeRects = [];
-                    for (let i = 0; i < newFreeRects.length; i++) {
-                        let isSubRect = false;
-                        for (let j = 0; j < newFreeRects.length; j++) {
-                            if (i !== j && isContained(newFreeRects[i], newFreeRects[j])) {
-                                isSubRect = true;
-                                break;
+                    if (bestRect) {
+                        a4Ctx.drawImage(job.source, bestRect.x, bestRect.y, job.w, job.h);
+                        a4Ctx.strokeStyle = '#000000';
+                        a4Ctx.lineWidth = 1;
+                        a4Ctx.strokeRect(bestRect.x, bestRect.y, job.w, job.h);
+
+                        let placedRect = { x: bestRect.x, y: bestRect.y, w: job.w, h: job.h };
+
+                        let newFreeRects = [];
+                        for (let i = 0; i < freeRects.length; i++) {
+                            const fr = freeRects[i];
+                            if (intersects(fr, placedRect)) {
+                                let splits = splitFreeRect(fr, placedRect);
+                                for (let s of splits) {
+                                    if (s.w > 0 && s.h > 0) newFreeRects.push(s);
+                                }
+                            } else {
+                                newFreeRects.push(fr);
                             }
                         }
-                        if (!isSubRect) {
-                            freeRects.push(newFreeRects[i]);
-                        }
-                    }
 
-                    placed = true;
-                } else {
-                    a4PagesData.push(a4Canvas.toDataURL('image/jpeg', 1.0));
-                    
-                    a4Canvas = document.createElement('canvas');
-                    a4Canvas.width = A4_WIDTH;
-                    a4Canvas.height = A4_HEIGHT;
-                    a4Ctx = a4Canvas.getContext('2d');
-                    a4Ctx.fillStyle = '#ffffff';
-                    a4Ctx.fillRect(0, 0, A4_WIDTH, A4_HEIGHT);
-                    
-                    freeRects = [{ x: margin, y: margin, w: maxW, h: maxH }];
+                        freeRects = [];
+                        for (let i = 0; i < newFreeRects.length; i++) {
+                            let isSubRect = false;
+                            for (let j = 0; j < newFreeRects.length; j++) {
+                                if (i !== j && isContained(newFreeRects[i], newFreeRects[j])) {
+                                    isSubRect = true;
+                                    break;
+                                }
+                            }
+                            if (!isSubRect) {
+                                freeRects.push(newFreeRects[i]);
+                            }
+                        }
+
+                        hasContent = true;
+                        placed = true;
+                    } else {
+                        if (hasContent) {
+                            pages.push({ url: a4Canvas.toDataURL('image/jpeg', 1.0), type: type });
+                        }
+                        
+                        a4Canvas = document.createElement('canvas');
+                        a4Canvas.width = a4Width;
+                        a4Canvas.height = a4Height;
+                        a4Ctx = a4Canvas.getContext('2d');
+                        a4Ctx.fillStyle = '#ffffff';
+                        a4Ctx.fillRect(0, 0, a4Width, a4Height);
+                        
+                        freeRects = [{ x: margin, y: margin, w: maxW, h: maxH }];
+                        hasContent = false;
+                    }
                 }
-            }
-        });
+            });
 
-        if (flatJobs.length > 0) {
-            a4PagesData.push(a4Canvas.toDataURL('image/jpeg', 1.0));
+            if (hasContent) {
+                pages.push({ url: a4Canvas.toDataURL('image/jpeg', 1.0), type: type });
+            }
+
+            return pages;
         }
 
-        a4PagesContainer.innerHTML = ''; 
-        a4PagesData.forEach((dataUrl, index) => {
+        const portraitPages = packA4(portraitJobs, A4_W_P, A4_H_P, 'Portrait');
+        const landscapePages = packA4(landscapeJobs, A4_W_L, A4_H_L, 'Landscape');
+        
+        a4PagesData = [...portraitPages, ...landscapePages];
+
+        portraitPagesGrid.innerHTML = '';
+        landscapePagesGrid.innerHTML = '';
+
+        portraitPages.forEach((pageData, index) => {
             const label = document.createElement('div');
             label.className = 'page-label';
             label.innerText = `Halaman ${index + 1}`;
-            a4PagesContainer.appendChild(label);
+            portraitPagesGrid.appendChild(label);
 
             const img = document.createElement('img');
-            img.src = dataUrl;
-            a4PagesContainer.appendChild(img);
+            img.src = pageData.url;
+            portraitPagesGrid.appendChild(img);
+        });
+
+        landscapePages.forEach((pageData, index) => {
+            const label = document.createElement('div');
+            label.className = 'page-label';
+            label.innerText = `Halaman ${index + 1}`;
+            landscapePagesGrid.appendChild(label);
+
+            const img = document.createElement('img');
+            img.src = pageData.url;
+            landscapePagesGrid.appendChild(img);
         });
 
         downloadA4Btn.innerText = `DOWNLOAD SEMUA (${a4PagesData.length} HALAMAN)`;
@@ -828,11 +938,11 @@
         
         showToast(`${a4PagesData.length} file A4 sedang diunduh...`);
 
-        a4PagesData.forEach((dataUrl, index) => {
+        a4PagesData.forEach((pageData, index) => {
             setTimeout(() => {
                 const link = document.createElement('a');
-                link.download = `KARYA-ABADI-A4-Hal${index + 1}-${Date.now()}.jpg`;
-                link.href = dataUrl;
+                link.download = `KARYA-ABADI-A4-${pageData.type}-Hal${index + 1}-${Date.now()}.jpg`;
+                link.href = pageData.url;
                 document.body.appendChild(link);
                 link.click();
                 document.body.removeChild(link);
