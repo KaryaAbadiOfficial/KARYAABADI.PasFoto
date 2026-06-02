@@ -565,7 +565,7 @@
         ctx.strokeRect(CUT_LINE_WIDTH/2, CUT_LINE_WIDTH/2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH);
     }
 
-    // Fungsi Tampilan Layar (Dengan Garis Bantu Hijau Solid/Clear)
+    // Fungsi Tampilan Layar (Dengan Garis Bantu Hijau Solid yang Sangat Jelas)
     function drawPreview(key) {
         if(!originalImage) return;
         const ctx = refs[key].canvas.getContext('2d');
@@ -574,13 +574,14 @@
         const preset = PRESETS[key];
         const border_px = preset.border_mm * MM_TO_PX;
         const inset = border_px + CUT_LINE_WIDTH;
-        const centerX = inset + (preset.w / 2);
-        const centerY = inset + (preset.h / 2);
+        
+        // Dibulatkan agar garis tidak blur/transparent di layar
+        const centerX = Math.round(inset + (preset.w / 2));
+        const centerY = Math.round(inset + (preset.h / 2));
 
         ctx.save();
-        ctx.strokeStyle = '#00b300'; // Warna Hijau Normal
-        ctx.lineWidth = 1;
-        ctx.setLineDash([]); // Garis solid nyata, tidak putus-putus
+        ctx.strokeStyle = '#00FF00'; // Warna Hijau Cerah agar kontras dan jelas terlihat
+        ctx.lineWidth = 2; // Ketebalan 2px agar pasti terlihat jelas di semua kotak
         
         // Garis Vertikal Tengah
         ctx.beginPath(); 
@@ -667,7 +668,6 @@
         const addFlatJob = (key, qty) => {
             if(qty <= 0) return;
             
-            // Gunakan canvas yang bersih (tanpa garis bantu)
             const sourceCanvas = getCleanCanvas(key);
             
             const rotCanvas = document.createElement('canvas');
