@@ -62,17 +62,14 @@
         .btn-gold:hover { background-color: #ffcc00 !important; }
         .btn-group { display: flex; flex-direction: column; gap: 8px; }
         canvas { box-shadow: 0 0 8px rgba(0,0,0,0.15); display: block; }
-        .previews-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: var(--bg-input); padding: 12px; border-radius: 8px; }
-        .preview-card { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+        .previews-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: var(--bg-input); padding: 12px; border-radius: 8px; align-items: stretch; }
+        .preview-card { display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; }
         .preview-card canvas { border: 1px solid var(--border-color); background: #fff; cursor: move; width: 100%; height: auto; max-width: 140px; }
         .preview-label { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
-        
-        /* Tata Letak Rapi Sejajar Bawah Slider */
-        .preview-controls { width: 100%; display: flex; flex-direction: column; gap: 6px; }
+        .preview-controls { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-top: auto; align-items: center; }
         input[type=range].mini-slider { width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; appearance: none; outline: none; }
         input[type=range].mini-slider::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-red); cursor: pointer; }
-        .preview-controls .btn { width: 100%; font-size: 0.75rem; padding: 0.4rem; }
-
+        .preview-controls .btn { width: auto; font-size: 0.75rem; padding: 0.4rem 1.2rem; margin-top: 2px; }
         footer { background-color: #000000; border-top: 1px solid #333; padding: 1rem; text-align: center; margin-top: auto; }
         footer p { color: #e0e0e0; font-size: 0.8rem; }
         #toast { visibility: hidden; min-width: 250px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 4px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 0.9rem; border: 1px solid var(--accent-red); }
@@ -429,7 +426,7 @@
         showToast(`Unduh ${key} berhasil`);
     }
 
-    /* ========== GUILLOTINE MAXIMAL RECTANGLE SMART PACKING ========== */
+    /* ========== MAXRECTS BEST GLOBAL FIT (PINTAR CARI CELAH KOSONG) ========== */
     function generateA4Preview() {
         if (!portraitImage && !landscapeImage) return showToast("Upload minimal 1 foto!");
         const q2x3 = parseInt(document.getElementById('qty2x3').value) || 0;
@@ -447,7 +444,7 @@
 
         addJobs("2x3", "2x3L", q2x3); addJobs("3x4", "3x4L", q3x4); addJobs("4x6", "4x6L", q4x6);
         
-        // Pakai logika susun pintar dengan rotasi otomatis aktif (parameter true)
+        // Parameter true berarti rotasi otomatis diaktifkan tanpa syarat
         portraitPagesData = packA4(portraitJobs, A4_W, A4_H, 'Foto-Portrait', true);
         landscapePagesData = packA4(landscapeJobs, A4_W, A4_H, 'Foto-Landscape', true);
 
@@ -461,40 +458,58 @@
         const maxW = a4W - 2 * margin, maxH = a4H - 2 * margin;
         let pages = [];
         let items = jobs.map(j => ({source: j.source, w: j.w, h: j.h}));
-        
-        // Sortir item dari yang terbesar dulu agar packing lebih optimal
-        items.sort((a, b) => (b.w * b.h) - (a.w * a.h));
 
         while (items.length > 0) {
             let a4Canvas = document.createElement('canvas'); a4Canvas.width = a4W; a4Canvas.height = a4H;
             let ctx = a4Canvas.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, a4W, a4H);
             
             let freeRects = [{x: margin, y: margin, w: maxW, h: maxH}];
-            let remainingItems = [];
             let maxYUsed = margin;
+            let itemsToPlace = [...items];
 
-            for (let i=0; i<items.length; i++) {
-                let item = items[i];
-                let bestScore = Infinity, bestRect = null, bestRotated = false, bestFitW = 0, bestFitH = 0;
+            // Loop hingga tidak ada lagi foto yang muat di area kosong
+            while (itemsToPlace.length > 0) {
+                let bestItemIdx = -1;
+                let bestRectIdx = -1;
+                let bestRotated = false;
+                let bestFitW = 0, bestFitH = 0;
+                let bestScore = Infinity;
 
-                for (let r = 0; r < freeRects.length; r++) {
-                    let fr = freeRects[r];
-                    if (item.w <= fr.w && item.h <= fr.h) {
-                        let leftover = (fr.w * fr.h) - (item.w * item.h); 
-                        let shortSide = Math.min(fr.w - item.w, fr.h - item.h);
-                        let score = leftover + shortSide; 
-                        if (score < bestScore) { bestScore = score; bestRect = fr; bestRotated = false; bestFitW = item.w; bestFitH = item.h; }
-                    }
-                    if (isAutoRotate && item.h <= fr.w && item.w <= fr.h) {
-                        let leftover = (fr.w * fr.h) - (item.h * item.w);
-                        let shortSide = Math.min(fr.w - item.h, fr.h - item.w);
-                        let score = leftover + shortSide;
-                        if (score < bestScore) { bestScore = score; bestRect = fr; bestRotated = true; bestFitW = item.h; bestFitH = item.w; }
+                // Cari kombinasi Foto & Area Kosong yang paling pas (Skor terkecil)
+                for (let i = 0; i < itemsToPlace.length; i++) {
+                    let item = itemsToPlace[i];
+                    for (let r = 0; r < freeRects.length; r++) {
+                        let fr = freeRects[r];
+                        
+                        // Coba orientasi Normal
+                        if (item.w <= fr.w && item.h <= fr.h) {
+                            let shortSide = Math.min(fr.w - item.w, fr.h - item.h);
+                            let longSide = Math.max(fr.w - item.w, fr.h - item.h);
+                            let score = shortSide * 10000 + longSide; // Prioritaskan sisa paling persegi/kecil
+                            if (score < bestScore) {
+                                bestScore = score; bestItemIdx = i; bestRectIdx = r;
+                                bestRotated = false; bestFitW = item.w; bestFitH = item.h;
+                            }
+                        }
+                        // Coba orientasi Diputar
+                        if (isAutoRotate && item.h <= fr.w && item.w <= fr.h) {
+                            let shortSide = Math.min(fr.w - item.h, fr.h - item.w);
+                            let longSide = Math.max(fr.w - item.h, fr.h - item.w);
+                            let score = shortSide * 10000 + longSide;
+                            if (score < bestScore) {
+                                bestScore = score; bestItemIdx = i; bestRectIdx = r;
+                                bestRotated = true; bestFitW = item.h; bestFitH = item.w;
+                            }
+                        }
                     }
                 }
 
-                if (bestRect) {
-                    let px = bestRect.x, py = bestRect.y;
+                // Jika ketemu foto yang muat, letakkan di canvas
+                if (bestItemIdx !== -1) {
+                    let item = itemsToPlace[bestItemIdx];
+                    let fr = freeRects[bestRectIdx];
+                    
+                    let px = fr.x, py = fr.y;
                     ctx.save();
                     if (bestRotated) {
                         ctx.translate(px + bestFitW / 2, py + bestFitH / 2); ctx.rotate(Math.PI / 2);
@@ -503,32 +518,35 @@
                         ctx.drawImage(item.source, px, py, item.w, item.h);
                     }
                     ctx.restore();
-                    
-                    // Garis potong saja, tanpa ikon rotasi
                     ctx.strokeStyle = '#cccccc'; ctx.lineWidth = 2; ctx.strokeRect(px, py, bestFitW, bestFitH);
 
                     if (py + bestFitH > maxYUsed) maxYUsed = py + bestFitH;
 
+                    // Potong area kosong (Guillotine Split)
                     let placedRect = {x: px, y: py, w: bestFitW, h: bestFitH};
                     let newFreeRects = [];
                     for (let j=0; j<freeRects.length; j++) {
-                        let fr = freeRects[j];
-                        if (intersects(fr, placedRect)) {
-                            if (placedRect.y > fr.y) newFreeRects.push({x: fr.x, y: fr.y, w: fr.w, h: placedRect.y - fr.y});
-                            if (placedRect.y + placedRect.h < fr.y + fr.h) newFreeRects.push({x: fr.x, y: placedRect.y + placedRect.h, w: fr.w, h: (fr.y + fr.h) - (placedRect.y + placedRect.h)});
-                            if (placedRect.x > fr.x) newFreeRects.push({x: fr.x, y: fr.y, w: placedRect.x - fr.x, h: fr.h});
-                            if (placedRect.x + placedRect.w < fr.x + fr.w) newFreeRects.push({x: placedRect.x + placedRect.w, y: fr.y, w: (fr.x + fr.w) - (placedRect.x + placedRect.w), h: fr.h});
+                        let currentFr = freeRects[j];
+                        if (intersects(currentFr, placedRect)) {
+                            if (placedRect.y > currentFr.y) newFreeRects.push({x: currentFr.x, y: currentFr.y, w: currentFr.w, h: placedRect.y - currentFr.y});
+                            if (placedRect.y + placedRect.h < currentFr.y + currentFr.h) newFreeRects.push({x: currentFr.x, y: placedRect.y + placedRect.h, w: currentFr.w, h: (currentFr.y + currentFr.h) - (placedRect.y + placedRect.h)});
+                            if (placedRect.x > currentFr.x) newFreeRects.push({x: currentFr.x, y: currentFr.y, w: placedRect.x - currentFr.x, h: currentFr.h});
+                            if (placedRect.x + placedRect.w < currentFr.x + currentFr.w) newFreeRects.push({x: placedRect.x + placedRect.w, y: currentFr.y, w: (currentFr.x + currentFr.w) - (placedRect.x + placedRect.w), h: currentFr.h});
                         } else {
-                            newFreeRects.push(fr);
+                            newFreeRects.push(currentFr);
                         }
                     }
-                    freeRects = newFreeRects.filter((fr, idx, arr) => !arr.some((other, oIdx) => idx !== oIdx && isContained(fr, other)));
+                    freeRects = newFreeRects.filter((f1, idx, arr) => !arr.some((f2, oIdx) => idx !== oIdx && isContained(f1, f2)));
+                    
+                    // Hapus foto yang sudah diletakkan dari antrian
+                    itemsToPlace.splice(bestItemIdx, 1);
                 } else {
-                    remainingItems.push(item);
+                    // Jika tidak ada lagi foto yang muat di sisa area, pindah ke halaman baru
+                    break; 
                 }
             }
             
-            items = remainingItems;
+            items = itemsToPlace;
             let pageUtilization = Math.round(((maxYUsed - margin) / maxH) * 100);
             pages.push({ url: a4Canvas.toDataURL('image/jpeg', 1.0), type: type, efficiency: Math.min(pageUtilization, 100) });
         }
