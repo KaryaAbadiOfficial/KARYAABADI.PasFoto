@@ -32,75 +32,89 @@
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; transition: background-color 0.3s ease, color 0.3s ease; }
         body { background-color: var(--bg-body); color: var(--text-main); line-height: 1.6; display: flex; flex-direction: column; min-height: 100vh; }
-        header { background-color: #000000; border-bottom: 2px solid var(--accent-red); padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; flex-wrap: wrap; gap: 10px; }
-        .logo-container { display: flex; align-items: center; gap: 1rem; }
-        .site-logo-img { width: 60px; height: auto; max-height: 50px; object-fit: contain; }
-        .site-info h1 { font-size: 1.4rem; color: #ffffff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
+        header { background-color: #000000; border-bottom: 2px solid var(--accent-red); padding: 0.5rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); z-index: 10; }
+        .logo-container { display: flex; align-items: center; gap: 0.8rem; }
+        .site-logo-img { width: 45px; height: auto; max-height: 45px; object-fit: contain; }
+        .site-info h1 { font-size: 1.2rem; color: #ffffff; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
         .site-info h1 span { color: var(--accent-red); }
-        .site-info p { font-size: 0.8rem; color: #FFD700; letter-spacing: 1px; }
-        .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid #555; color: #ffffff; padding: 0.5rem; border-radius: 50%; cursor: pointer; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+        .site-info p { font-size: 0.7rem; color: #FFD700; letter-spacing: 1px; }
+        .theme-toggle { background: rgba(255,255,255,0.1); border: 1px solid #555; color: #ffffff; padding: 0.4rem; border-radius: 50%; cursor: pointer; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
         .theme-toggle:hover { background-color: rgba(255,255,255,0.2); }
-        main { flex: 1; padding: 1.5rem; max-width: 1400px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 380px 1fr; gap: 1.5rem; }
-        @media (max-width: 900px) { main { grid-template-columns: 1fr; } }
-        .card { background-color: var(--bg-card); border-radius: 12px; padding: 1.5rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; max-height: 90vh; }
-        .section-title { font-size: 1rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; color: var(--accent-red); }
-        .icon-svg { width: 20px; height: 20px; stroke: var(--text-main); fill: none; }
+        main { flex: 1; padding: 1rem; max-width: 1400px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 380px 1fr; gap: 1rem; }
         
-        /* Grid Upload Lebih Rapat */
-        .upload-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
-        .upload-area { border: 2px dashed var(--border-color); border-radius: 8px; padding: 0.5rem; text-align: center; cursor: pointer; position: relative; background-color: var(--bg-input); font-size: 0.75rem; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 70px; }
+        .card { background-color: var(--bg-card); border-radius: 12px; padding: 1rem; box-shadow: var(--shadow); border: 1px solid var(--border-color); display: flex; flex-direction: column; gap: 0.8rem; overflow-y: auto; max-height: 92vh; }
+        .section-title { font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.5rem; color: var(--accent-red); }
+        
+        .upload-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+        .upload-area { border: 2px dashed var(--border-color); border-radius: 6px; padding: 6px; text-align: center; cursor: pointer; position: relative; background-color: var(--bg-input); font-size: 0.7rem; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 60px; }
         .upload-area:hover { border-color: var(--accent-red); background-color: rgba(211, 47, 47, 0.08); }
         .upload-area input { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
-        .upload-area .up-label { font-weight: 700; color: var(--text-main); pointer-events: none; }
-        .upload-area .file-name { color: #4CAF50; font-weight: 600; font-size: 0.65rem; margin-top: 2px; word-break: break-all; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .upload-area .up-label { font-weight: 700; color: var(--text-main); pointer-events: none; font-size: 0.75rem; }
+        .upload-area .file-name { color: #4CAF50; font-weight: 600; font-size: 0.6rem; margin-top: 2px; word-break: break-all; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
-        label { font-weight: 500; font-size: 0.85rem; color: var(--text-muted); }
-        input[type="number"] { padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--input-bg); color: var(--text-main); width: 100%; text-align: center; }
-        .qty-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
-        .qty-item label { font-size: 0.8rem; text-align: center; display: block; margin-bottom: 4px; }
-        .btn { background-color: var(--accent-red); color: white; border: none; cursor: pointer; font-weight: 700; display: flex; justify-content: center; align-items: center; text-transform: uppercase; padding: 0.6rem; border-radius: 6px; font-size: 0.8rem; gap: 6px; white-space: nowrap; }
+        label { font-weight: 500; font-size: 0.8rem; color: var(--text-muted); }
+        input[type="number"] { padding: 0.4rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--input-bg); color: var(--text-main); width: 100%; text-align: center; font-size: 0.85rem; }
+        .qty-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .qty-item label { font-size: 0.75rem; text-align: center; display: block; margin-bottom: 2px; }
+        .btn { background-color: var(--accent-red); color: white; border: none; cursor: pointer; font-weight: 700; display: flex; justify-content: center; align-items: center; text-transform: uppercase; padding: 0.5rem; border-radius: 6px; font-size: 0.75rem; gap: 4px; white-space: normal; word-break: break-word; }
         .btn:hover { background-color: #b71c1c; transform: translateY(-1px); }
         .btn.secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--border-color); }
         .btn.secondary:hover { background-color: var(--bg-input); border-color: var(--text-main); transform: none; }
         .btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
         .btn-gold { background-color: #FFD700 !important; color: #000000 !important; border: none !important; font-weight: 800; }
         .btn-gold:hover { background-color: #ffcc00 !important; }
-        .btn-group { display: flex; flex-direction: column; gap: 8px; }
+        .btn-group { display: flex; flex-direction: column; gap: 6px; }
+        
         canvas { box-shadow: 0 0 8px rgba(0,0,0,0.15); display: block; }
-        .previews-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; background: var(--bg-input); padding: 12px; border-radius: 8px; align-items: stretch; }
-        .preview-card { display: flex; flex-direction: column; align-items: center; gap: 6px; height: 100%; }
-        .preview-card canvas { border: 1px solid var(--border-color); background: #fff; cursor: move; width: 100%; height: auto; max-width: 140px; }
-        .preview-label { font-weight: 700; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
-        .preview-controls { width: 100%; display: flex; flex-direction: column; gap: 6px; margin-top: auto; align-items: center; }
-        input[type=range].mini-slider { width: 100%; height: 4px; background: var(--border-color); border-radius: 2px; appearance: none; outline: none; }
-        input[type=range].mini-slider::-webkit-slider-thumb { appearance: none; width: 14px; height: 14px; border-radius: 50%; background: var(--accent-red); cursor: pointer; }
-        .preview-controls .btn { width: auto; font-size: 0.75rem; padding: 0.4rem 1.2rem; margin-top: 2px; }
-        footer { background-color: #000000; border-top: 1px solid #333; padding: 1rem; text-align: center; margin-top: auto; }
-        footer p { color: #e0e0e0; font-size: 0.8rem; }
-        #toast { visibility: hidden; min-width: 250px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 4px; padding: 16px; position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 0.9rem; border: 1px solid var(--accent-red); }
+        .previews-wrapper { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; background: var(--bg-input); padding: 8px; border-radius: 8px; align-items: stretch; }
+        .preview-card { display: flex; flex-direction: column; align-items: center; gap: 4px; height: 100%; }
+        .preview-card canvas { border: 1px solid var(--border-color); background: #fff; cursor: move; width: 100%; height: auto; }
+        .preview-label { font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
+        .preview-controls { width: 100%; display: flex; flex-direction: column; gap: 4px; margin-top: auto; align-items: center; }
+        input[type=range].mini-slider { width: 100%; height: 3px; background: var(--border-color); border-radius: 2px; appearance: none; outline: none; }
+        input[type=range].mini-slider::-webkit-slider-thumb { appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-red); cursor: pointer; }
+        .preview-controls .btn { width: 100%; font-size: 0.6rem; padding: 0.3rem; line-height: 1.2; }
+
+        footer { background-color: #000000; border-top: 1px solid #333; padding: 0.8rem; text-align: center; margin-top: auto; }
+        footer p { color: #e0e0e0; font-size: 0.75rem; }
+        #toast { visibility: hidden; min-width: 200px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 4px; padding: 12px; position: fixed; z-index: 1000; left: 50%; bottom: 20px; transform: translateX(-50%); font-size: 0.85rem; border: 1px solid var(--accent-red); }
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
-        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 30px; opacity: 1; } }
-        @keyframes fadeout { from { bottom: 30px; opacity: 1; } to { bottom: 0; opacity: 0; } }
+        @keyframes fadein { from { bottom: 0; opacity: 0; } to { bottom: 20px; opacity: 1; } }
+        @keyframes fadeout { from { bottom: 20px; opacity: 1; } to { bottom: 0; opacity: 0; } }
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.92); backdrop-filter: blur(5px); }
-        .modal-content { background-color: var(--bg-card); margin: 1.5% auto; padding: 20px; border: 1px solid var(--accent-red); width: 96%; max-width: 1200px; height: 94vh; display: flex; flex-direction: column; border-radius: 12px; color: var(--text-main); }
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); flex-wrap: wrap; gap: 10px; }
-        .modal-header h2 { font-size: 1.2rem; }
-        .modal-body { flex: 1; overflow: auto; background-color: #111; display: flex; flex-direction: column; padding: 2rem; gap: 50px; }
-        .modal-footer { padding-top: 1rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 1rem; flex-wrap: wrap; }
-        .a4-version-section { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; }
-        .version-title { color: #fff; font-size: 1.2rem; font-weight: bold; border-bottom: 2px solid var(--accent-red); padding-bottom: 8px; width: 100%; text-align: center; display: flex; align-items: center; justify-content: center; gap: 10px; }
-        .version-title .util-badge { font-size: 0.7rem; background: #4CAF50; color: #fff; padding: 2px 8px; border-radius: 20px; }
-        .a4-page-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; width: 100%; }
-        .a4-page-grid img { max-width: 100%; height: auto; border: 2px solid #555; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); }
-        .page-label { color: #aaa; font-size: 0.8rem; margin-bottom: -10px; margin-top: 5px; }
-        .close { color: var(--text-muted); font-size: 28px; font-weight: bold; cursor: pointer; line-height: 1; }
+        .modal-content { background-color: var(--bg-card); margin: 2% auto; padding: 15px; border: 1px solid var(--accent-red); width: 96%; max-width: 1200px; height: 96vh; display: flex; flex-direction: column; border-radius: 10px; color: var(--text-main); }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.8rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); }
+        .modal-header h2 { font-size: 1rem; }
+        .modal-body { flex: 1; overflow: auto; background-color: #111; display: flex; flex-direction: column; padding: 1rem; gap: 40px; }
+        .modal-footer { padding-top: 0.8rem; border-top: 1px solid var(--border-color); display: flex; justify-content: flex-end; gap: 0.5rem; flex-wrap: wrap; }
+        .a4-version-section { display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; }
+        .version-title { color: #fff; font-size: 1rem; font-weight: bold; border-bottom: 2px solid var(--accent-red); padding-bottom: 5px; width: 100%; text-align: center; display: flex; align-items: center; justify-content: center; gap: 8px; }
+        .version-title .util-badge { font-size: 0.65rem; background: #4CAF50; color: #fff; padding: 2px 6px; border-radius: 20px; }
+        .a4-page-grid { display: flex; flex-direction: column; gap: 15px; align-items: center; width: 100%; }
+        .a4-page-grid img { max-width: 100%; height: auto; border: 2px solid #555; border-radius: 4px; }
+        .page-label { color: #aaa; font-size: 0.75rem; margin-bottom: -8px; }
+        .close { color: var(--text-muted); font-size: 24px; font-weight: bold; cursor: pointer; line-height: 1; }
         .close:hover { color: var(--accent-red); }
-        @media (max-width: 600px) {
-            .qty-grid { grid-template-columns: 1fr; }
-            .previews-wrapper { grid-template-columns: repeat(2, 1fr); }
-            .upload-grid { grid-template-columns: 1fr 1fr; }
-            header { padding: 0.5rem 1rem; }
-            .site-info h1 { font-size: 1.1rem; }
+
+        /* RESPONSIVE MOBILE RAPIH */
+        @media (max-width: 900px) {
+            main { grid-template-columns: 1fr; padding: 0.5rem; gap: 0.5rem; }
+            .card { max-height: none; padding: 0.8rem; gap: 0.6rem; }
+        }
+        @media (max-width: 500px) {
+            header { padding: 0.4rem 0.8rem; }
+            .site-logo-img { width: 35px; }
+            .site-info h1 { font-size: 0.9rem; }
+            .site-info p { font-size: 0.6rem; }
+            .upload-grid { gap: 4px; }
+            .upload-area { min-height: 50px; padding: 4px; }
+            .upload-area .up-label { font-size: 0.65rem; }
+            .previews-wrapper { gap: 6px; padding: 6px; }
+            .preview-label { font-size: 0.6rem; }
+            .preview-controls .btn { font-size: 0.55rem; }
+            input[type=range].mini-slider::-webkit-slider-thumb { width: 10px; height: 10px; }
+            .section-title { font-size: 0.8rem; }
+            .qty-item label { font-size: 0.7rem; }
         }
     </style>
 </head>
@@ -111,7 +125,7 @@
         <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
         <div class="site-info">
             <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <p>6 Upload Mandiri &amp; Susun Pintar</p>
+            <p>Susun Pintar &amp; Hemat Kertas</p>
         </div>
     </div>
     <button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
@@ -119,30 +133,21 @@
 
 <main>
     <section class="card">
-        <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Upload Foto Portrait
-        </div>
+        <div class="section-title">Upload Foto Portrait</div>
         <div class="upload-grid">
             <div class="upload-area"><input type="file" id="img2x3" accept="image/*"><div class="up-label">2x3</div><div class="file-name" id="fn2x3"></div></div>
             <div class="upload-area"><input type="file" id="img3x4" accept="image/*"><div class="up-label">3x4</div><div class="file-name" id="fn3x4"></div></div>
             <div class="upload-area"><input type="file" id="img4x6" accept="image/*"><div class="up-label">4x6</div><div class="file-name" id="fn4x6"></div></div>
         </div>
 
-        <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="12" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            Upload Foto Landscape
-        </div>
+        <div class="section-title">Upload Foto Landscape</div>
         <div class="upload-grid">
             <div class="upload-area"><input type="file" id="img2x3L" accept="image/*"><div class="up-label">2x3</div><div class="file-name" id="fn2x3L"></div></div>
             <div class="upload-area"><input type="file" id="img3x4L" accept="image/*"><div class="up-label">3x4</div><div class="file-name" id="fn3x4L"></div></div>
             <div class="upload-area"><input type="file" id="img4x6L" accept="image/*"><div class="up-label">4x6</div><div class="file-name" id="fn4x6L"></div></div>
         </div>
 
-        <div class="section-title">
-            <svg class="icon-svg" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            Jumlah Cetak (A4)
-        </div>
+        <div class="section-title">Jumlah Cetak (A4)</div>
         <div class="qty-grid">
             <div class="qty-item"><label>2X3</label><input type="number" id="qty2x3" value="0" min="0"></div>
             <div class="qty-item"><label>3X4</label><input type="number" id="qty3x4" value="0" min="0"></div>
@@ -184,7 +189,7 @@
             </div>
         </div>
 
-        <div class="section-title" style="margin-top: 0.5rem;">Hasil Crop (Landscape)</div>
+        <div class="section-title" style="margin-top: 0.3rem;">Hasil Crop (Landscape)</div>
         <div class="previews-wrapper">
             <div class="preview-card">
                 <canvas id="canvas2x3L"></canvas>
@@ -211,27 +216,27 @@
                 </div>
             </div>
         </div>
-        <p style="font-size: 0.75rem; color: var(--text-muted); text-align: center;">Geser foto di kotak preview untuk sesuaikan posisi crop</p>
+        <p style="font-size: 0.65rem; color: var(--text-muted); text-align: center;">Geser foto untuk sesuaikan posisi crop</p>
     </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 Karya Abadi Pas Foto. All Rights Reserved</p>
+    <p>&copy; 2026 Karya Abadi Pas Foto</p>
 </footer>
 
 <div id="a4Modal" class="modal">
     <div class="modal-content">
         <div class="modal-header">
-            <h2>PREVIEW SUSUN A4 (MAXIMAL PACKING)</h2>
+            <h2>PREVIEW SUSUN A4 PINTAR</h2>
             <span class="close" id="closeModal">&times;</span>
         </div>
         <div class="modal-body">
             <div id="portraitContainer" class="a4-version-section">
-                <div class="version-title">VERSI FOTO PORTRAIT <span class="util-badge" id="utilP">-</span></div>
+                <div class="version-title">VERSI PORTRAIT <span class="util-badge" id="utilP">-</span></div>
                 <div class="a4-page-grid" id="portraitPagesGrid"></div>
             </div>
             <div id="landscapeContainer" class="a4-version-section">
-                <div class="version-title">VERSI FOTO LANDSCAPE <span class="util-badge" id="utilL">-</span></div>
+                <div class="version-title">VERSI LANDSCAPE <span class="util-badge" id="utilL">-</span></div>
                 <div class="a4-page-grid" id="landscapePagesGrid"></div>
             </div>
         </div>
@@ -260,16 +265,11 @@
     };
 
     const A4_W = 2100, A4_H = 2970;
-
-    // State berubah: Menyimpan 6 gambar secara terpisah
     const uploadedImages = {};
-    let portraitPagesData = [];
-    let landscapePagesData = [];
+    let portraitPagesData = [], landscapePagesData = [];
 
-    const previewStates = {};
-    const refs = {};
+    const previewStates = {}, refs = {};
 
-    // Inisialisasi referensi DOM dan State untuk 6 canvas
     Object.keys(PRESETS).forEach(key => {
         previewStates[key] = { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
         refs[key] = {
@@ -301,7 +301,6 @@
         themeToggle.textContent = isLight ? '\u2600\uFE0F' : '\uD83C\uDF19';
     });
 
-    // Binding event untuk 6 upload area dan interaksinya
     Object.keys(PRESETS).forEach(key => {
         refs[key].input.addEventListener('change', (e) => handleImageUpload(e, key));
         setupInteractions(key);
@@ -324,7 +323,7 @@
         reader.onload = (ev) => {
             const img = new Image();
             img.onload = () => {
-                uploadedImages[key] = img; // Simpan ke state spesifik
+                uploadedImages[key] = img;
                 enableControls(); 
                 initSingleCanvas(key); 
                 resetSingle(key);
@@ -353,9 +352,7 @@
     }
 
     function resetAll() {
-        Object.keys(PRESETS).forEach(key => {
-            if(uploadedImages[key]) resetSingle(key);
-        });
+        Object.keys(PRESETS).forEach(key => { if(uploadedImages[key]) resetSingle(key); });
     }
 
     function resetSingle(key) {
@@ -424,10 +421,9 @@
         const link = document.createElement('a'); link.download = `KARYA-ABADI-${key}-${Date.now()}.jpg`;
         link.href = getCleanCanvas(key, img).toDataURL('image/jpeg', 0.95);
         document.body.appendChild(link); link.click(); document.body.removeChild(link);
-        showToast(`Unduh ${key} berhasil`);
     }
 
-    /* ========== MAXRECTS BEST GLOBAL FIT ========== */
+    /* ========== MAXRECTS BEST GLOBAL FIT (PINTAR CARI CELAH) ========== */
     function generateA4Preview() {
         if (Object.keys(uploadedImages).length === 0) return showToast("Upload minimal 1 foto!");
         
@@ -439,7 +435,6 @@
 
         let portraitJobs = [], landscapeJobs = [];
 
-        // Isi job berdasarkan gambar yang diupload masing-masing
         if (uploadedImages["2x3"] && q2x3 > 0) { const s = getCleanCanvas("2x3", uploadedImages["2x3"]); for(let i=0;i<q2x3;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
         if (uploadedImages["3x4"] && q3x4 > 0) { const s = getCleanCanvas("3x4", uploadedImages["3x4"]); for(let i=0;i<q3x4;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
         if (uploadedImages["4x6"] && q4x6 > 0) { const s = getCleanCanvas("4x6", uploadedImages["4x6"]); for(let i=0;i<q4x6;i++) portraitJobs.push({source:s, w:s.width, h:s.height}); }
@@ -480,13 +475,13 @@
                         if (item.w <= fr.w && item.h <= fr.h) {
                             let shortSide = Math.min(fr.w - item.w, fr.h - item.h);
                             let longSide = Math.max(fr.w - item.w, fr.h - item.h);
-                            let score = shortSide * 10000 + longSide; 
+                            let score = shortSide * 10000 + longSide + (fr.y * 2); 
                             if (score < bestScore) { bestScore = score; bestItemIdx = i; bestRectIdx = r; bestRotated = false; bestFitW = item.w; bestFitH = item.h; }
                         }
                         if (isAutoRotate && item.h <= fr.w && item.w <= fr.h) {
                             let shortSide = Math.min(fr.w - item.h, fr.h - item.w);
                             let longSide = Math.max(fr.w - item.h, fr.h - item.w);
-                            let score = shortSide * 10000 + longSide;
+                            let score = shortSide * 10000 + longSide + (fr.y * 2);
                             if (score < bestScore) { bestScore = score; bestItemIdx = i; bestRectIdx = r; bestRotated = true; bestFitW = item.h; bestFitH = item.w; }
                         }
                     }
@@ -546,7 +541,7 @@
                     lbl.innerText = `${label} ${i + 1} (Terpakai ~${p.efficiency}%)`; grid.appendChild(lbl);
                     const img = document.createElement('img'); img.src = p.url; grid.appendChild(img);
                 });
-            } else { badge.textContent = ''; grid.innerHTML = `<div style="color:#888; padding:20px;">Tidak ada foto ${label.toLowerCase()}</div>`; }
+            } else { badge.textContent = ''; grid.innerHTML = `<div style="color:#888; padding:15px; font-size:0.8rem;">Tidak ada foto ${label.toLowerCase()}</div>`; }
         };
         renderGrid(portraitPagesData, portraitPagesGrid, utilP, 'Versi Portrait');
         renderGrid(landscapePagesData, landscapePagesGrid, utilL, 'Versi Landscape');
