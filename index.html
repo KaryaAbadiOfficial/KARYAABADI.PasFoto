@@ -33,7 +33,7 @@
         .upload-area { border: 2px dashed var(--border-color); border-radius: 6px; padding: 6px; text-align: center; cursor: pointer; position: relative; background-color: var(--bg-input); font-size: 0.7rem; display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 60px; }
         .upload-area:hover { border-color: var(--accent-red); background-color: rgba(211, 47, 47, 0.08); }
         .upload-area input { position: absolute; width: 100%; height: 100%; top: 0; left: 0; opacity: 0; cursor: pointer; }
-        .upload-area .up-label { font-weight: 700; color: var(--text-main); pointer-events: none; font-size: 0.75rem; }
+        .upload-area .up-label { font-weight: 800; color: var(--text-main); pointer-events: none; font-size: 1.2rem; }
         .upload-area .file-name { color: #4CAF50; font-weight: 600; font-size: 0.6rem; margin-top: 2px; word-break: break-all; width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
         label { font-weight: 500; font-size: 0.8rem; color: var(--text-muted); }
         input[type="number"] { padding: 0.4rem; border-radius: 6px; border: 1px solid var(--border-color); background-color: var(--input-bg); color: var(--text-main); width: 100%; text-align: center; font-size: 0.85rem; }
@@ -53,9 +53,15 @@
         .preview-card canvas { border: 1px solid var(--border-color); background: #fff; cursor: move; width: 100%; height: auto; }
         .preview-label { font-weight: 700; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-muted); }
         .preview-controls { width: 100%; display: flex; flex-direction: column; gap: 4px; margin-top: auto; align-items: center; }
-        input[type=range].mini-slider { width: 100%; height: 3px; background: var(--border-color); border-radius: 2px; appearance: none; outline: none; }
-        input[type=range].mini-slider::-webkit-slider-thumb { appearance: none; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-red); cursor: pointer; }
         .preview-controls .btn { width: 100%; font-size: 0.6rem; padding: 0.3rem; line-height: 1.2; }
+        
+        /* Custom Controls Styling (Move Only) */
+        .ctrl-btn { background-color: var(--input-bg); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; cursor: pointer; font-size: 1rem; width: 100%; height: 32px; display: flex; align-items: center; justify-content: center; font-weight: bold; user-select: none; }
+        .ctrl-btn:hover { background-color: var(--accent-red); color: #fff; }
+        .ctrl-btn:active { transform: scale(0.95); }
+        .ctrl-btn.empty { visibility: hidden; border: none; background: none; }
+        .dpad-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; width: 100%; }
+
         footer { background-color: #000000; border-top: 1px solid #333; padding: 0.8rem; text-align: center; margin-top: auto; }
         footer p { color: #e0e0e0; font-size: 0.75rem; }
         #toast { visibility: hidden; min-width: 200px; background-color: var(--toast-bg); color: #fff; text-align: center; border-radius: 4px; padding: 12px; position: fixed; z-index: 1000; left: 50%; bottom: 20px; transform: translateX(-50%); font-size: 0.85rem; border: 1px solid var(--accent-red); }
@@ -77,7 +83,7 @@
         .close { color: var(--text-muted); font-size: 24px; font-weight: bold; cursor: pointer; line-height: 1; }
         .close:hover { color: var(--accent-red); }
         @media (max-width: 900px) { main { grid-template-columns: 1fr; padding: 0.5rem; gap: 0.5rem; } .card { max-height: none; padding: 0.8rem; gap: 0.6rem; } }
-        @media (max-width: 500px) { header { padding: 0.4rem 0.8rem; } .site-logo-img { width: 35px; } .site-info h1 { font-size: 0.9rem; } .site-info p { font-size: 0.6rem; } .upload-grid { gap: 4px; } .upload-area { min-height: 50px; padding: 4px; } .upload-area .up-label { font-size: 0.65rem; } .previews-wrapper { gap: 6px; padding: 6px; } .preview-label { font-size: 0.6rem; } .preview-controls .btn { font-size: 0.55rem; } input[type=range].mini-slider::-webkit-slider-thumb { width: 10px; height: 10px; } .section-title { font-size: 0.8rem; } .qty-item label { font-size: 0.7rem; } }
+        @media (max-width: 500px) { header { padding: 0.4rem 0.8rem; } .site-logo-img { width: 35px; } .site-info h1 { font-size: 0.9rem; } .site-info p { font-size: 0.6rem; } .upload-grid { gap: 4px; } .upload-area { min-height: 50px; padding: 4px; } .upload-area .up-label { font-size: 1rem; } .previews-wrapper { gap: 6px; padding: 6px; } .preview-label { font-size: 0.6rem; } .preview-controls .btn { font-size: 0.55rem; } .ctrl-btn { height: 28px; font-size: 0.8rem; } .section-title { font-size: 0.8rem; } .qty-item label { font-size: 0.7rem; } }
     </style>
 </head>
 <body>
@@ -87,7 +93,7 @@
         <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
         <div class="site-info">
             <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <p>Susun Pintar &amp; Hemat Kertas</p>
+            <p>Pas Foto Cepat, Hasil Tepat</p>
         </div>
     </div>
     <button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
@@ -97,15 +103,15 @@
     <section class="card">
         <div class="section-title">Upload Foto Portrait</div>
         <div class="upload-grid">
-            <div class="upload-area"><input type="file" id="img2x3" accept="image/*"><div class="up-label">2x3</div><div class="file-name" id="fn2x3"></div></div>
-            <div class="upload-area"><input type="file" id="img3x4" accept="image/*"><div class="up-label">3x4</div><div class="file-name" id="fn3x4"></div></div>
-            <div class="upload-area"><input type="file" id="img4x6" accept="image/*"><div class="up-label">4x6</div><div class="file-name" id="fn4x6"></div></div>
+            <div class="upload-area"><input type="file" id="img2x3" accept="image/*"><div class="up-label">2X3</div><div class="file-name" id="fn2x3"></div></div>
+            <div class="upload-area"><input type="file" id="img3x4" accept="image/*"><div class="up-label">3X4</div><div class="file-name" id="fn3x4"></div></div>
+            <div class="upload-area"><input type="file" id="img4x6" accept="image/*"><div class="up-label">4X6</div><div class="file-name" id="fn4x6"></div></div>
         </div>
         <div class="section-title">Upload Foto Landscape</div>
         <div class="upload-grid">
-            <div class="upload-area"><input type="file" id="img2x3L" accept="image/*"><div class="up-label">2x3</div><div class="file-name" id="fn2x3L"></div></div>
-            <div class="upload-area"><input type="file" id="img3x4L" accept="image/*"><div class="up-label">3x4</div><div class="file-name" id="fn3x4L"></div></div>
-            <div class="upload-area"><input type="file" id="img4x6L" accept="image/*"><div class="up-label">4x6</div><div class="file-name" id="fn4x6L"></div></div>
+            <div class="upload-area"><input type="file" id="img2x3L" accept="image/*"><div class="up-label">2X3</div><div class="file-name" id="fn2x3L"></div></div>
+            <div class="upload-area"><input type="file" id="img3x4L" accept="image/*"><div class="up-label">3X4</div><div class="file-name" id="fn3x4L"></div></div>
+            <div class="upload-area"><input type="file" id="img4x6L" accept="image/*"><div class="up-label">4X6</div><div class="file-name" id="fn4x6L"></div></div>
         </div>
         <div class="section-title">Jumlah Cetak (A4)</div>
         <div class="qty-grid">
@@ -115,31 +121,85 @@
         </div>
         <div class="btn-group">
             <button class="btn secondary" id="resetAllBtn" disabled>Reset Posisi Crop</button>
-            <button class="btn btn-gold" id="previewA4Btn" disabled>PREVIEW SUSUN A4</button>
+            <button class="btn btn-gold" id="previewA4Btn" disabled>PREVIEW CETAK A4</button>
         </div>
     </section>
 
     <section class="card">
         <div class="section-title">Hasil Crop (Portrait)</div>
         <div class="previews-wrapper">
-            <div class="preview-card"><canvas id="canvas2x3"></canvas><div class="preview-label">2x3</div><div class="preview-controls"><input type="range" id="zoom2x3" class="mini-slider" disabled min="0.5" max="3" step="0.05"><button class="btn btn-gold" id="btnDl2x3" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas3x4"></canvas><div class="preview-label">3x4</div><div class="preview-controls"><input type="range" id="zoom3x4" class="mini-slider" disabled min="0.5" max="3" step="0.05"><button class="btn btn-gold" id="btnDl3x4" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas4x6"></canvas><div class="preview-label">4x6</div><div class="preview-controls"><input type="range" id="zoom4x6" class="mini-slider" disabled min="0.5" max="3" step="0.05"><button class="btn btn-gold" id="btnDl4x6" disabled>DOWNLOAD</button></div></div>
+            <div class="preview-card">
+                <canvas id="canvas2x3"></canvas><div class="preview-label">2X3</div>
+                <div class="preview-controls">
+                    <div class="dpad-container">
+                        <button class="ctrl-btn empty"></button><button class="ctrl-btn" data-key="2x3" data-action="move-up">▲</button><button class="ctrl-btn empty"></button>
+                        <button class="ctrl-btn" data-key="2x3" data-action="move-left">◀</button><button class="ctrl-btn" data-key="2x3" data-action="move-down">▼</button><button class="ctrl-btn" data-key="2x3" data-action="move-right">▶</button>
+                    </div>
+                    <button class="btn btn-gold" id="btnDl2x3" disabled>DOWNLOAD</button>
+                </div>
+            </div>
+            <div class="preview-card">
+                <canvas id="canvas3x4"></canvas><div class="preview-label">3X4</div>
+                <div class="preview-controls">
+                    <div class="dpad-container">
+                        <button class="ctrl-btn empty"></button><button class="ctrl-btn" data-key="3x4" data-action="move-up">▲</button><button class="ctrl-btn empty"></button>
+                        <button class="ctrl-btn" data-key="3x4" data-action="move-left">◀</button><button class="ctrl-btn" data-key="3x4" data-action="move-down">▼</button><button class="ctrl-btn" data-key="3x4" data-action="move-right">▶</button>
+                    </div>
+                    <button class="btn btn-gold" id="btnDl3x4" disabled>DOWNLOAD</button>
+                </div>
+            </div>
+            <div class="preview-card">
+                <canvas id="canvas4x6"></canvas><div class="preview-label">4X6</div>
+                <div class="preview-controls">
+                    <div class="dpad-container">
+                        <button class="ctrl-btn empty"></button><button class="ctrl-btn" data-key="4x6" data-action="move-up">▲</button><button class="ctrl-btn empty"></button>
+                        <button class="ctrl-btn" data-key="4x6" data-action="move-left">◀</button><button class="ctrl-btn" data-key="4x6" data-action="move-down">▼</button><button class="ctrl-btn" data-key="4x6" data-action="move-right">▶</button>
+                    </div>
+                    <button class="btn btn-gold" id="btnDl4x6" disabled>DOWNLOAD</button>
+                </div>
+            </div>
         </div>
         <div class="section-title" style="margin-top: 0.3rem;">Hasil Crop (Landscape)</div>
         <div class="previews-wrapper">
-            <div class="preview-card"><canvas id="canvas2x3L"></canvas><div class="preview-label">2x3</div><div class="preview-controls"><input type="range" id="zoom2x3L" class="mini-slider" disabled min="0.5" max="3" step="0.05"><button class="btn btn-gold" id="btnDl2x3L" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas3x4L"></canvas><div class="preview-label">3x4</div><div class="preview-controls"><input type="range" id="zoom3x4L" class="mini-slider" disabled min="0.5" max="3" step="0.05"><button class="btn btn-gold" id="btnDl3x4L" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas4x6L"></canvas><div class="preview-label">4x6</div><div class="preview-controls"><input type="range" id="zoom4x6L" class="mini-slider" disabled min="0.5" max="3" step="0.05"><button class="btn btn-gold" id="btnDl4x6L" disabled>DOWNLOAD</button></div></div>
+            <div class="preview-card">
+                <canvas id="canvas2x3L"></canvas><div class="preview-label">2X3</div>
+                <div class="preview-controls">
+                    <div class="dpad-container">
+                        <button class="ctrl-btn empty"></button><button class="ctrl-btn" data-key="2x3L" data-action="move-up">▲</button><button class="ctrl-btn empty"></button>
+                        <button class="ctrl-btn" data-key="2x3L" data-action="move-left">◀</button><button class="ctrl-btn" data-key="2x3L" data-action="move-down">▼</button><button class="ctrl-btn" data-key="2x3L" data-action="move-right">▶</button>
+                    </div>
+                    <button class="btn btn-gold" id="btnDl2x3L" disabled>DOWNLOAD</button>
+                </div>
+            </div>
+            <div class="preview-card">
+                <canvas id="canvas3x4L"></canvas><div class="preview-label">3X4</div>
+                <div class="preview-controls">
+                    <div class="dpad-container">
+                        <button class="ctrl-btn empty"></button><button class="ctrl-btn" data-key="3x4L" data-action="move-up">▲</button><button class="ctrl-btn empty"></button>
+                        <button class="ctrl-btn" data-key="3x4L" data-action="move-left">◀</button><button class="ctrl-btn" data-key="3x4L" data-action="move-down">▼</button><button class="ctrl-btn" data-key="3x4L" data-action="move-right">▶</button>
+                    </div>
+                    <button class="btn btn-gold" id="btnDl3x4L" disabled>DOWNLOAD</button>
+                </div>
+            </div>
+            <div class="preview-card">
+                <canvas id="canvas4x6L"></canvas><div class="preview-label">4X6</div>
+                <div class="preview-controls">
+                    <div class="dpad-container">
+                        <button class="ctrl-btn empty"></button><button class="ctrl-btn" data-key="4x6L" data-action="move-up">▲</button><button class="ctrl-btn empty"></button>
+                        <button class="ctrl-btn" data-key="4x6L" data-action="move-left">◀</button><button class="ctrl-btn" data-key="4x6L" data-action="move-down">▼</button><button class="ctrl-btn" data-key="4x6L" data-action="move-right">▶</button>
+                    </div>
+                    <button class="btn btn-gold" id="btnDl4x6L" disabled>DOWNLOAD</button>
+                </div>
+            </div>
         </div>
-        <p style="font-size: 0.65rem; color: var(--text-muted); text-align: center;">Geser foto untuk sesuaikan posisi crop</p>
+        <p style="font-size: 0.65rem; color: var(--text-muted); text-align: center;">Geser foto / gunakan tombol arah untuk sesuaikan posisi crop</p>
     </section>
 </main>
 <footer><p>&copy; 2026 Karya Abadi Pas Foto</p></footer>
 
 <div id="a4Modal" class="modal">
     <div class="modal-content">
-        <div class="modal-header"><h2>PREVIEW SUSUN A4 PINTAR</h2><span class="close" id="closeModal">&times;</span></div>
+        <div class="modal-header"><h2>PREVIEW A4</h2><span class="close" id="closeModal">&times;</span></div>
         <div class="modal-body">
             <div id="portraitContainer" class="a4-version-section"><div class="version-title">VERSI PORTRAIT <span class="util-badge" id="utilP">-</span></div><div class="a4-page-grid" id="portraitPagesGrid"></div></div>
             <div id="landscapeContainer" class="a4-version-section"><div class="version-title">VERSI LANDSCAPE <span class="util-badge" id="utilL">-</span></div><div class="a4-page-grid" id="landscapePagesGrid"></div></div>
@@ -154,20 +214,28 @@
 <div id="toast">Pesan notifikasi</div>
 
 <script>
-    const MM_TO_PX = 10, CUT_LINE_WIDTH = 1, A4_MARGIN_PX = 50; 
+    // Konversi standar: 100 pixels/centimeter (100 PPCM) = 10 pixels/millimeter
+    const MM_TO_PX = 10; 
+    const CUT_LINE_WIDTH = 1, A4_MARGIN_PX = 50; 
+    
+    // Ukuran A4: 21cm x 29.7cm = 210mm x 297mm
+    // Dalam 100 PPCM (10 px/mm): 2100px x 2970px
+    const A4_W = 2100; 
+    const A4_H = 2970;
+
     const PRESETS = {
         "2x3":  { w: 216, h: 279, ratio: 216/279, border_mm: 1 }, "3x4":  { w: 279, h: 381, ratio: 279/381, border_mm: 1 },
         "4x6":  { w: 381, h: 559, ratio: 381/559, border_mm: 1 }, "2x3L": { w: 279, h: 216, ratio: 279/216, border_mm: 1 },
         "3x4L": { w: 381, h: 279, ratio: 381/279, border_mm: 1 }, "4x6L": { w: 559, h: 381, ratio: 559/381, border_mm: 1 }
     };
-    const A4_W = 2100, A4_H = 2970;
+    
     const uploadedImages = {};
     let portraitPagesData = [], landscapePagesData = [];
     const previewStates = {}, refs = {};
 
     Object.keys(PRESETS).forEach(key => {
         previewStates[key] = { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 };
-        refs[key] = { canvas: document.getElementById(`canvas${key}`), slider: document.getElementById(`zoom${key}`), btn: document.getElementById(`btnDl${key}`), input: document.getElementById(`img${key}`), fileName: document.getElementById(`fn${key}`) };
+        refs[key] = { canvas: document.getElementById(`canvas${key}`), btn: document.getElementById(`btnDl${key}`), input: document.getElementById(`img${key}`), fileName: document.getElementById(`fn${key}`) };
     });
 
     const resetAllBtn = document.getElementById('resetAllBtn'), previewA4Btn = document.getElementById('previewA4Btn');
@@ -179,21 +247,38 @@
 
     themeToggle.addEventListener('click', () => { const l = document.documentElement.getAttribute('data-theme') === 'light'; document.documentElement.setAttribute('data-theme', l ? 'dark' : 'light'); themeToggle.textContent = l ? '\u2600\uFE0F' : '\uD83C\uDF19'; });
     Object.keys(PRESETS).forEach(key => { refs[key].input.addEventListener('change', (e) => handleImageUpload(e, key)); setupInteractions(key); refs[key].btn.addEventListener('click', () => downloadSingle(key)); });
+    
+    // Event listener for Directional Buttons Only
+    document.querySelectorAll('.ctrl-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const k = btn.dataset.key;
+            const action = btn.dataset.action;
+            const s = previewStates[k];
+            if (!uploadedImages[k]) return;
+            
+            if(action === 'move-up') { s.offsetY -= 15; drawPreview(k); }
+            else if(action === 'move-down') { s.offsetY += 15; drawPreview(k); }
+            else if(action === 'move-left') { s.offsetX -= 15; drawPreview(k); }
+            else if(action === 'move-right') { s.offsetX += 15; drawPreview(k); }
+        });
+    });
+
     resetAllBtn.addEventListener('click', resetAll); previewA4Btn.addEventListener('click', generateA4Preview);
     closeModal.addEventListener('click', () => modal.style.display = 'none'); window.addEventListener('click', (e) => { if (e.target === modal) modal.style.display = 'none'; });
     downloadA4Btn.addEventListener('click', () => downloadPages([...portraitPagesData, ...landscapePagesData]));
     dlPortraitBtn.addEventListener('click', () => downloadPages(portraitPagesData)); dlLandscapeBtn.addEventListener('click', () => downloadPages(landscapePagesData));
 
     function handleImageUpload(e, key) { const f = e.target.files[0]; if (!f) return; refs[key].fileName.textContent = f.name; const r = new FileReader(); r.onload = (ev) => { const i = new Image(); i.onload = () => { uploadedImages[key] = i; enableControls(); initSingleCanvas(key); resetSingle(key); showToast(`Foto ${key} berhasil diupload`); }; i.src = ev.target.result; }; r.readAsDataURL(f); }
-    function enableControls() { resetAllBtn.disabled = false; previewA4Btn.disabled = Object.keys(uploadedImages).length === 0; Object.keys(refs).forEach(k => { if (uploadedImages[k]) { refs[k].slider.disabled = false; refs[k].btn.disabled = false; } }); }
+    function enableControls() { resetAllBtn.disabled = false; previewA4Btn.disabled = Object.keys(uploadedImages).length === 0; Object.keys(refs).forEach(k => { if (uploadedImages[k]) { refs[k].btn.disabled = false; } }); }
     function initSingleCanvas(k) { const p = PRESETS[k], c = refs[k].canvas, e = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2); c.width = p.w + e; c.height = p.h + e; }
     function resetAll() { Object.keys(PRESETS).forEach(k => { if(uploadedImages[k]) resetSingle(k); }); }
-    function resetSingle(k) { const p = PRESETS[k], s = previewStates[k], i = uploadedImages[k]; if (!i) return; s.scale = Math.max(p.w / i.width, p.h / i.height) * 1.1; refs[k].slider.value = s.scale; const e = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2); s.offsetX = ((p.w + e) - i.width * s.scale) / 2; s.offsetY = ((p.h + e) - i.height * s.scale) / 2; drawPreview(k); }
+    function resetSingle(k) { const p = PRESETS[k], s = previewStates[k], i = uploadedImages[k]; if (!i) return; s.scale = Math.max(p.w / i.width, p.h / i.height) * 1.1; const e = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2); s.offsetX = ((p.w + e) - i.width * s.scale) / 2; s.offsetY = ((p.h + e) - i.height * s.scale) / 2; drawPreview(k); }
     function getCanvasCoords(c, e) { const r = c.getBoundingClientRect(); return { x: (e.clientX - r.left) * (c.width / r.width), y: (e.clientY - r.top) * (c.height / r.height) }; }
-    function setupInteractions(k) { const c = refs[k].canvas, s = previewStates[k], sl = refs[k].slider; sl.addEventListener('input', (e) => { s.scale = parseFloat(e.target.value); drawPreview(k); }); c.addEventListener('mousedown', (e) => startDrag(e, s, k)); c.addEventListener('mousemove', (e) => doDrag(e, s, k)); c.addEventListener('mouseup', () => endDrag(s)); c.addEventListener('mouseleave', () => endDrag(s)); c.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; startDrag({ clientX: t.clientX, clientY: t.clientY }, s, k); }, { passive: false }); c.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; doDrag({ clientX: t.clientX, clientY: t.clientY }, s, k); }, { passive: false }); c.addEventListener('touchend', () => endDrag(s)); }
+    function setupInteractions(k) { const c = refs[k].canvas, s = previewStates[k]; c.addEventListener('mousedown', (e) => startDrag(e, s, k)); c.addEventListener('mousemove', (e) => doDrag(e, s, k)); c.addEventListener('mouseup', () => endDrag(s)); c.addEventListener('mouseleave', () => endDrag(s)); c.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; startDrag({ clientX: t.clientX, clientY: t.clientY }, s, k); }, { passive: false }); c.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; doDrag({ clientX: t.clientX, clientY: t.clientY }, s, k); }, { passive: false }); c.addEventListener('touchend', () => endDrag(s)); }
     function startDrag(e, s, k) { if (!uploadedImages[k]) return; s.isDragging = true; const c = getCanvasCoords(refs[k].canvas, e); s.startX = c.x - s.offsetX; s.startY = c.y - s.offsetY; }
     function doDrag(e, s, k) { if (!s.isDragging) return; const c = getCanvasCoords(refs[k].canvas, e); s.offsetX = c.x - s.startX; s.offsetY = c.y - s.startY; drawPreview(k); }
     function endDrag(s) { s.isDragging = false; }
+    
     function drawBaseImage(ctx, k, i) { const p = PRESETS[k], w = ctx.canvas.width, h = ctx.canvas.height, s = previewStates[k]; ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h); const ins = (p.border_mm * MM_TO_PX) + CUT_LINE_WIDTH; ctx.save(); ctx.beginPath(); ctx.rect(ins, ins, p.w, p.h); ctx.clip(); ctx.drawImage(i, s.offsetX, s.offsetY, i.width * s.scale, i.height * s.scale); ctx.restore(); ctx.strokeStyle = '#000000'; ctx.lineWidth = CUT_LINE_WIDTH; ctx.strokeRect(CUT_LINE_WIDTH / 2, CUT_LINE_WIDTH / 2, w - CUT_LINE_WIDTH, h - CUT_LINE_WIDTH); }
     function drawPreview(k) { const i = uploadedImages[k]; if (!i) return; const ctx = refs[k].canvas.getContext('2d'); drawBaseImage(ctx, k, i); const p = PRESETS[k], ins = (p.border_mm * MM_TO_PX) + CUT_LINE_WIDTH; const cx = Math.round(ins + (p.w / 2)), cy = Math.round(ins + (p.h / 2)); ctx.save(); ctx.strokeStyle = '#00FF00'; ctx.lineWidth = 2; ctx.setLineDash([4, 4]); ctx.beginPath(); ctx.moveTo(cx, ins); ctx.lineTo(cx, ins + p.h); ctx.stroke(); ctx.beginPath(); ctx.moveTo(ins, cy); ctx.lineTo(ins + p.w, cy); ctx.stroke(); ctx.restore(); }
     function getCleanCanvas(k, i) { if (!i) return null; const c = document.createElement('canvas'), p = PRESETS[k], e = (p.border_mm * MM_TO_PX * 2) + (CUT_LINE_WIDTH * 2); c.width = p.w + e; c.height = p.h + e; drawBaseImage(c.getContext('2d'), k, i); return c; }
@@ -210,115 +295,78 @@
         if (uploadedImages["2x3L"] && q2 > 0) { const s = getCleanCanvas("2x3L", uploadedImages["2x3L"]); for(let i=0;i<q2;i++) lJ.push({source:s, w:s.width, h:s.height}); }
         if (uploadedImages["3x4L"] && q3 > 0) { const s = getCleanCanvas("3x4L", uploadedImages["3x4L"]); for(let i=0;i<q3;i++) lJ.push({source:s, w:s.width, h:s.height}); }
         if (uploadedImages["4x6L"] && q4 > 0) { const s = getCleanCanvas("4x6L", uploadedImages["4x6L"]); for(let i=0;i<q4;i++) lJ.push({source:s, w:s.width, h:s.height}); }
-        portraitPagesData = packA4(pJ, A4_W, A4_H, 'Foto-Portrait'); landscapePagesData = packA4(lJ, A4_W, A4_H, 'Foto-Landscape');
+        
+        portraitPagesData = packA4(pJ, A4_W, A4_H, 'Foto-Portrait'); 
+        landscapePagesData = packA4(lJ, A4_W, A4_H, 'Foto-Landscape');
         renderA4Modal(); modal.style.display = "block"; showToast(`${portraitPagesData.length + landscapePagesData.length} Halaman A4 siap`);
     }
 
-    // ================= LOGIKA SUSUN PINTAR (KOLOM RAPI) =================
-    function buildColumns(items, maxH) {
-        let columns = [];
-        items.sort((a, b) => b.w - a.w || b.h - a.h); // Sort by width desc
-        
-        for (let item of items) {
-            let bestColIdx = -1;
-            let useRot = false;
-            let foundMatch = false;
-            
-            // Urutkan kolom dari yang terpendek dulu untuk menyeimbangkan tinggi
-            columns.sort((a, b) => a.h - b.h);
-
-            for (let i = 0; i < columns.length; i++) {
-                let col = columns[i];
-                // Coba cocokkan lebar tanpa rotasi
-                if (item.w === col.w && col.h + item.h <= maxH) {
-                    bestColIdx = i; useRot = false; foundMatch = true; break;
-                }
-                // Coba cocokkan lebar dengan rotasi
-                if (item.h === col.w && col.h + item.w <= maxH) {
-                    bestColIdx = i; useRot = true; foundMatch = true; break;
-                }
-            }
-
-            if (foundMatch) {
-                let col = columns[bestColIdx];
-                let iW = useRot ? item.h : item.w;
-                let iH = useRot ? item.w : item.h;
-                col.items.push({source: item.source, w: iW, h: iH, y: col.h, rot: useRot, origW: item.w, origH: item.h});
-                col.h += iH;
-            } else {
-                // Buat kolom baru. Prioritaskan rotasi jika lebar rotasi cocok dengan kolom yang ada (untuk jadi satu blok)
-                let rotMatchesExisting = false;
-                for (let i = 0; i < columns.length; i++) {
-                    if (item.h === columns[i].w) {
-                        columns.push({w: columns[i].w, h: item.w, items: [{source: item.source, w: item.h, h: item.w, y: 0, rot: true, origW: item.w, origH: item.h}]});
-                        rotMatchesExisting = true; break;
-                    }
-                }
-                if (!rotMatchesExisting) {
-                    columns.push({w: item.w, h: item.h, items: [{source: item.source, w: item.w, h: item.h, y: 0, rot: false, origW: item.w, origH: item.h}]});
-                }
-            }
-        }
-        return columns;
-    }
-
+    // ================= LOGIKA SUSUN PINTAR (MAXRECTS BEST FIT - RAPIH ATAS KE BAWAH) =================
     function packA4(jobs, a4W, a4H, type) {
         if (jobs.length === 0) return [];
-        const m = A4_MARGIN_PX, mW = a4W - 2 * m, mH = a4H - 2 * m; 
+        const m = A4_MARGIN_PX, mW = a4W - 2 * m, mH = a4H - 2 * m;
         let pages = [];
         
-        // 1. Kelompokkan menjadi Kolom Vertikal Rapi
-        let columns = buildColumns(jobs, mH);
+        // Urutkan berdasarkan tinggi lalu lebar menurun agar item besar diletakkan terlebih dahulu
+        jobs.sort((a, b) => b.h - a.h || b.w - a.w);
+        let remainingJobs = [...jobs];
 
-        // 2. Susun Kolom ke Kertas A4 dengan MaxRects
-        while (columns.length > 0) {
+        while (remainingJobs.length > 0) {
             let a4C = document.createElement('canvas'); a4C.width = a4W; a4C.height = a4H;
             let ctx = a4C.getContext('2d'); ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, a4W, a4H);
-            let fR = [{x: m, y: m, w: mW, h: mH}], maxYU = m;
-            let colsToPlace = [...columns];
+            let fR = [{x: m, y: m, w: mW, h: mH}]; // Free Rectangles
+            let maxYU = m;
+            let unplaced = [];
 
-            while (colsToPlace.length > 0) {
-                let bC = -1, bR = -1, bFW = 0, bFH = 0, bScore = Infinity;
-                for (let i = 0; i < colsToPlace.length; i++) {
-                    let col = colsToPlace[i];
-                    for (let r = 0; r < fR.length; r++) {
-                        let fr = fR[r];
-                        if (col.w <= fr.w && col.h <= fr.h) {
-                            let lH = fr.w - col.w, lV = fr.h - col.h, sL = Math.min(lH, lV), lL = Math.max(lH, lV);
-                            let score = fr.y * 1000 + fr.x + sL * 100 + lL;
-                            if (score < bScore) { bScore = score; bC = i; bR = r; bFW = col.w; bFH = col.h; }
+            for (let job of remainingJobs) {
+                let bestRect = null;
+                let bestScore = Infinity;
+
+                // Cari celah terbaik: Prioritaskan paling Atas, lalu paling Kiri, lalu paling pas (rapat)
+                for (let fr of fR) {
+                    if (job.w <= fr.w && job.h <= fr.h) {
+                        let leftoverH = fr.w - job.w;
+                        let leftoverV = fr.h - job.h;
+                        let shortSide = Math.min(leftoverH, leftoverV);
+                        
+                        // Skor: Y * 1000000 (paling atas) + X * 1000 (paling kiri) + sisa rapat
+                        let score = fr.y * 1000000 + fr.x * 1000 + shortSide;
+                        if (score < bestScore) {
+                            bestScore = score;
+                            bestRect = fr;
                         }
                     }
                 }
 
-                if (bC !== -1) {
-                    let col = colsToPlace[bC], fr = fR[bR], px = fr.x, py = fr.y;
-                    
-                    // Gambar seluruh foto di dalam kolom
-                    for (let item of col.items) {
-                        ctx.save();
-                        if (item.rot) {
-                            ctx.translate(px + item.w / 2, py + item.y + item.h / 2); ctx.rotate(Math.PI / 2);
-                            ctx.drawImage(item.source, -item.origW / 2, -item.origH / 2, item.origW, item.origH);
+                if (bestRect) {
+                    let px = bestRect.x, py = bestRect.y;
+                    ctx.drawImage(job.source, px, py, job.w, job.h);
+                    ctx.strokeStyle = '#cccccc'; ctx.lineWidth = 2; ctx.strokeRect(px, py, job.w, job.h);
+
+                    if (py + job.h > maxYU) maxYU = py + job.h;
+
+                    // MaxRects Split
+                    let pR = {x: px, y: py, w: job.w, h: job.h};
+                    let nFR = [];
+                    for (let j=0; j<fR.length; j++) {
+                        let cF = fR[j];
+                        if (intersects(cF, pR)) {
+                            if (pR.y > cF.y) nFR.push({x: cF.x, y: cF.y, w: cF.w, h: pR.y - cF.y});
+                            if (pR.y + pR.h < cF.y + cF.h) nFR.push({x: cF.x, y: pR.y + pR.h, w: cF.w, h: (cF.y + cF.h) - (pR.y + pR.h)});
+                            if (pR.x > cF.x) nFR.push({x: cF.x, y: cF.y, w: pR.x - cF.x, h: cF.h});
+                            if (pR.x + pR.w < cF.x + cF.w) nFR.push({x: pR.x + pR.w, y: cF.y, w: (cF.x + cF.w) - (pR.x + pR.w), h: cF.h});
                         } else {
-                            ctx.drawImage(item.source, px, py + item.y, item.origW, item.origH);
+                            nFR.push(cF);
                         }
-                        ctx.restore();
-                        ctx.strokeStyle = '#cccccc'; ctx.lineWidth = 2; ctx.strokeRect(px, py + item.y, item.w, item.h);
                     }
-
-                    if (py + bFH > maxYU) maxYU = py + bFH;
-
-                    // MaxRects split untuk blok kolom
-                    let pR = {x: px, y: py, w: bFW, h: bFH}, nFR = [];
-                    for (let j=0; j<fR.length; j++) { let cF = fR[j]; if (intersects(cF, pR)) { if (pR.y > cF.y) nFR.push({x: cF.x, y: cF.y, w: cF.w, h: pR.y - cF.y}); if (pR.y + pR.h < cF.y + cF.h) nFR.push({x: cF.x, y: pR.y + pR.h, w: cF.w, h: (cF.y + cF.h) - (pR.y + pR.h)}); if (pR.x > cF.x) nFR.push({x: cF.x, y: cF.y, w: pR.x - cF.x, h: cF.h}); if (pR.x + pR.w < cF.x + cF.w) nFR.push({x: pR.x + pR.w, y: cF.y, w: (cF.x + cF.w) - (pR.x + pR.w), h: cF.h}); } else { nFR.push(cF); } }
+                    // Prune (hapus Free Rectangles yang berada di dalam Free Rectangle lain)
                     fR = nFR.filter((f1, idx, arr) => !arr.some((f2, oIdx) => idx !== oIdx && isContained(f1, f2)));
-                    
-                    colsToPlace.splice(bC, 1);
-                } else { break; }
+                } else {
+                    unplaced.push(job); // Pindahkan ke halaman berikutnya
+                }
             }
 
-            columns = colsToPlace; 
+            remainingJobs = unplaced; 
             let pU = Math.round(((maxYU - m) / mH) * 100); 
             pages.push({ url: a4C.toDataURL('image/jpeg', 1.0), type: type, efficiency: Math.min(pU, 100) });
         }
@@ -327,7 +375,25 @@
 
     function intersects(r1, r2) { return r1.x < r2.x + r2.w && r1.x + r1.w > r2.x && r1.y < r2.y + r2.h && r1.y + r1.h > r2.y; }
     function isContained(inner, outer) { return inner.x >= outer.x && inner.y >= outer.y && inner.x + inner.w <= outer.x + outer.w && inner.y + inner.h <= outer.y + outer.h; }
-    function renderA4Modal() { portraitPagesGrid.innerHTML = ''; landscapePagesGrid.innerHTML = ''; const rG = (d, g, b, l) => { if (d.length > 0) { let a = Math.round(d.reduce((s, p) => s + p.efficiency, 0) / d.length); b.textContent = `Efisiensi ~${a}%`; d.forEach((p, i) => { const lb = document.createElement('div'); lb.className = 'page-label'; lb.innerText = `${l} ${i + 1} (Terpakai ~${p.efficiency}%)`; g.appendChild(lb); const im = document.createElement('img'); im.src = p.url; g.appendChild(im); }); } else { b.textContent = ''; g.innerHTML = `<div style="color:#888; padding:15px; font-size:0.8rem;">Tidak ada foto ${l.toLowerCase()}</div>`; } }; rG(portraitPagesData, portraitPagesGrid, utilP, 'Versi Portrait'); rG(landscapePagesData, landscapePagesGrid, utilL, 'Versi Landscape'); downloadA4Btn.innerText = `DOWNLOAD SEMUA (${portraitPagesData.length + landscapePagesData.length} HALAMAN)`; }
+    
+    function renderA4Modal() { 
+        portraitPagesGrid.innerHTML = ''; landscapePagesGrid.innerHTML = ''; 
+        const rG = (d, g, b, l) => { 
+            if (d.length > 0) { 
+                let a = Math.round(d.reduce((s, p) => s + p.efficiency, 0) / d.length); 
+                b.textContent = `Efisiensi ~${a}%`; 
+                d.forEach((p, i) => { 
+                    const lb = document.createElement('div'); lb.className = 'page-label'; lb.innerText = `${l} ${i + 1} (Terpakai ~${p.efficiency}%)`; g.appendChild(lb); 
+                    const im = document.createElement('img'); im.src = p.url; g.appendChild(im); 
+                }); 
+            } else { 
+                b.textContent = ''; g.innerHTML = `<div style="color:#888; padding:15px; font-size:0.8rem;">Tidak ada foto ${l.toLowerCase()}</div>`; 
+            } 
+        }; 
+        rG(portraitPagesData, portraitPagesGrid, utilP, 'Versi Portrait'); rG(landscapePagesData, landscapePagesGrid, utilL, 'Versi Landscape'); 
+        downloadA4Btn.innerText = `DOWNLOAD SEMUA (${portraitPagesData.length + landscapePagesData.length} HALAMAN)`; 
+    }
+    
     function downloadPages(pA) { if (pA.length === 0) return; showToast(`${pA.length} file A4 sedang diunduh...`); pA.forEach((pD, i) => { setTimeout(() => { const l = document.createElement('a'); l.download = `KARYA-ABADI-A4-${pD.type}-Hal${i + 1}-${Date.now()}.jpg`; l.href = pD.url; document.body.appendChild(l); l.click(); document.body.removeChild(l); }, 500 * i); }); }
     function showToast(m) { toastEl.textContent = m; toastEl.className = "show"; setTimeout(() => { toastEl.className = toastEl.className.replace("show", ""); }, 3000); }
 </script>
