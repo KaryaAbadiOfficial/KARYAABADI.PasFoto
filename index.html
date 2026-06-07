@@ -25,30 +25,27 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .left-panel::-webkit-scrollbar{width:5px}
 .left-panel::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:5px}
 .right-panel{min-height:60vh}
-.section-title{font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:var(--accent-red);text-transform:uppercase;letter-spacing:.5px}
-.section-title.blue{color:var(--blue)}
+.stitle{font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:var(--accent-red);text-transform:uppercase;letter-spacing:.5px}
+.stitle.blue{color:var(--blue)}
 .sep{height:1px;background:var(--border-color);margin:1px 0}
-/* Upload Dropzone */
 .dropzone{border:2px dashed var(--border-color);border-radius:10px;padding:1.2rem .8rem;text-align:center;cursor:pointer;position:relative;background:var(--bg-input);transition:all .2s}
 .dropzone:hover,.dropzone.over{border-color:var(--accent-red);background:rgba(211,47,47,.08)}
-.dropzone.over{animation:dzPulse 1s infinite}
-@keyframes dzPulse{0%,100%{box-shadow:0 0 0 0 rgba(211,47,47,.3)}50%{box-shadow:0 0 0 8px rgba(211,47,47,0)}}
+.dropzone.over{animation:dzP 1s infinite}
+@keyframes dzP{0%,100%{box-shadow:0 0 0 0 rgba(211,47,47,.3)}50%{box-shadow:0 0 0 8px rgba(211,47,47,0)}}
 .dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.dropzone .dz-icon{font-size:1.6rem;color:var(--accent-red);margin-bottom:.3rem}
-.dropzone .dz-text{font-size:.8rem;font-weight:700}
-.dropzone .dz-hint{font-size:.65rem;color:var(--text-muted);margin-top:.2rem}
+.dz-icon{font-size:1.6rem;color:var(--accent-red);margin-bottom:.3rem}
+.dz-text{font-size:.8rem;font-weight:700}
+.dz-hint{font-size:.65rem;color:var(--text-muted);margin-top:.2rem}
 .counter-row{display:flex;align-items:center;justify-content:space-between;font-size:.78rem}
 .counter-row .count{font-weight:800;color:var(--gold)}
 .btn-text{background:none;border:none;color:var(--accent-red);cursor:pointer;font-size:.72rem;font-weight:600;text-decoration:underline}
 .btn-text:hover{color:#b71c1c}
-/* Size Buttons */
 .size-label{font-size:.68rem;color:var(--text-muted);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 .size-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .size-btn{padding:7px 4px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-input);color:var(--text-main);cursor:pointer;font-size:.78rem;font-weight:700;text-align:center;transition:all .15s}
 .size-btn:hover{border-color:var(--accent-red)}
 .size-btn.active{background:var(--accent-red);color:#fff;border-color:var(--accent-red)}
 .size-btn:disabled{opacity:.35;cursor:not-allowed}
-/* Toggles */
 .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
 .toggle-row label.lbl{flex:1;font-size:.8rem;font-weight:500;color:var(--text-muted)}
 .toggle-switch{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0}
@@ -65,8 +62,15 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .font-row{display:flex;gap:6px;align-items:center}
 .font-row label{flex:1;font-size:.7rem;color:var(--text-muted);white-space:nowrap}
 .font-row input{width:60px!important;text-align:center}
-/* Buttons */
-.btn{background:var(--accent-red);color:#fff;border:none;cursor:pointer;font-weight:700;display:flex;justify-content:center;align-items:center;text-transform:uppercase;padding:.55rem;border-radius:6px;font-size:.78rem;gap:5px}
+/* Referensi / Acuan */
+.ref-section{background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.25);border-radius:8px;padding:.5rem .6rem;display:flex;flex-direction:column;gap:5px;margin-top:2px}
+.ref-info{display:flex;align-items:center;gap:6px;font-size:.75rem;color:var(--gold);font-weight:700}
+.ref-info i{font-size:.9rem}
+.btn-ref-apply{background:var(--gold)!important;color:#000!important;border:none!important;font-weight:800;font-size:.7rem!important;padding:.4rem!important;cursor:pointer;border-radius:6px;display:flex;align-items:center;justify-content:center;gap:4px;text-transform:uppercase}
+.btn-ref-apply:hover{background:#ffcc00!important;transform:translateY(-1px)}
+.btn-ref-apply:disabled{opacity:.4;cursor:not-allowed;transform:none}
+/* Tombol umum */
+.btn{background:var(--accent-red);color:#fff;border:none;cursor:pointer;font-weight:700;display:flex;justify-content:center;align-items:center;text-transform:uppercase;padding:.55rem;border-radius:6px;font-size:.78rem;gap:5px;transition:all .15s}
 .btn:hover{background:#b71c1c;transform:translateY(-1px)}
 .btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
 .btn.secondary{background:transparent;color:var(--text-main);border:1px solid var(--border-color)}
@@ -74,24 +78,22 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .btn-gold{background:var(--gold)!important;color:#000!important;border:none!important;font-weight:800}
 .btn-gold:hover{background:#ffcc00!important}
 .btn-group{display:flex;flex-direction:column;gap:6px}
-/* Info Box */
 .info-box{background:var(--bg-input);border-radius:8px;padding:.6rem .8rem;display:flex;flex-direction:column;gap:3px}
 .info-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted)}
 .info-row strong{color:var(--text-main)}
-/* Photo Grid */
 .grid-header{display:flex;justify-content:space-between;align-items:center}
 .grid-header .total{font-size:.78rem;color:var(--gold);font-weight:700}
 .photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
 .empty-state{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--text-muted)}
 .empty-state i{font-size:3rem;margin-bottom:.8rem;display:block;opacity:.3}
 .empty-state p{font-size:.85rem}
-/* Photo Card */
-.photo-card{background:var(--bg-input);border-radius:8px;overflow:hidden;border:1px solid var(--border-color);display:flex;flex-direction:column;animation:cardIn .3s ease-out}
+.photo-card{background:var(--bg-input);border-radius:8px;overflow:hidden;border:2px solid var(--border-color);display:flex;flex-direction:column;animation:cardIn .3s ease-out;transition:border-color .3s,box-shadow .3s}
 @keyframes cardIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.photo-card.is-ref{border-color:var(--gold)!important;box-shadow:0 0 0 2px var(--gold),0 0 16px rgba(255,215,0,.25)}
 .card-head{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:rgba(0,0,0,.15)}
 .card-num{font-size:.7rem;font-weight:800}
-.card-size{font-size:.6rem;color:var(--gold);font-weight:600;background:rgba(255,215,0,.12);padding:1px 6px;border-radius:10px}
-.card-remove{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1rem;line-height:1;padding:0 2px}
+.card-size{font-size:.58rem;color:var(--gold);font-weight:600;background:rgba(255,215,0,.12);padding:1px 6px;border-radius:10px}
+.card-remove{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1.1rem;line-height:1;padding:0 2px}
 .card-remove:hover{color:var(--accent-red)}
 .card-qty{display:flex;align-items:center;gap:6px;padding:4px 8px;font-size:.68rem;color:var(--text-muted)}
 .card-qty input{width:48px;padding:3px;text-align:center;border-radius:4px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-main);font-size:.75rem;font-weight:700}
@@ -100,10 +102,13 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .canvas-wrap canvas:active{cursor:grabbing}
 .card-ctrl{padding:4px 8px;display:flex;flex-direction:column;gap:3px;align-items:center}
 .dpad{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%;max-width:160px}
-.cb{background:var(--bg-card);color:var(--text-main);border:1px solid var(--border-color);border-radius:4px;cursor:pointer;font-size:.8rem;width:100%;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;user-select:none;padding:0}
+.cb{background:var(--bg-card);color:var(--text-main);border:1px solid var(--border-color);border-radius:4px;cursor:pointer;font-size:.8rem;width:100%;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;user-select:none;padding:0;transition:all .1s}
 .cb:hover{background:var(--accent-red);color:#fff}
 .cb:active{transform:scale(.9)}
 .cb.zm{font-size:.72rem;letter-spacing:-1px}
+.btn-acuan{background:transparent!important;color:var(--gold)!important;border:1px dashed var(--gold)!important;font-size:.55rem!important;padding:.25rem!important;width:100%;max-width:160px;border-radius:4px!important;cursor:pointer;font-weight:700;text-transform:uppercase;transition:all .15s}
+.btn-acuan:hover{background:rgba(255,215,0,.1)!important}
+.btn-acuan.active{background:var(--gold)!important;color:#000!important;border:1px solid var(--gold)!important;border-style:solid!important;cursor:default}
 .card-dl{width:100%;max-width:160px;font-size:.6rem;padding:.3rem}
 /* Modal */
 .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.92);backdrop-filter:blur(5px)}
@@ -117,17 +122,16 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .badge{font-size:.62rem;background:var(--green);color:#fff;padding:2px 7px;border-radius:20px;font-weight:700}
 .a4-grid{display:flex;flex-direction:column;gap:15px;align-items:center;width:100%}
 .a4-grid img{max-width:100%;height:auto;border:2px solid #555;border-radius:4px}
-.page-lbl{color:#aaa;font-size:.72rem;margin-bottom:-8px}
 .close{color:var(--text-muted);font-size:26px;font-weight:bold;cursor:pointer;line-height:1}
 .close:hover{color:var(--accent-red)}
-#toast{visibility:hidden;min-width:200px;background:var(--toast-bg);color:#fff;text-align:center;border-radius:6px;padding:12px 20px;position:fixed;z-index:3000;left:50%;bottom:20px;transform:translateX(-50%);font-size:.82rem;border:1px solid var(--accent-red);box-shadow:0 4px 20px rgba(0,0,0,.5)}
-#toast.show{visibility:visible;animation:fadein .4s,fadeout .4s 2.5s}
-@keyframes fadein{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
-@keyframes fadeout{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
+#toast{visibility:hidden;min-width:220px;background:var(--toast-bg);color:#fff;text-align:center;border-radius:6px;padding:12px 20px;position:fixed;z-index:3000;left:50%;bottom:20px;transform:translateX(-50%);font-size:.82rem;border:1px solid var(--accent-red);box-shadow:0 4px 20px rgba(0,0,0,.5)}
+#toast.show{visibility:visible;animation:fi .4s,fo .4s 2.5s}
+@keyframes fi{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
+@keyframes fo{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
 footer{background:#000;border-top:1px solid #333;padding:.7rem;text-align:center;margin-top:auto}
 footer p{color:#e0e0e0;font-size:.72rem}
 @media(max-width:1000px){main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}.left-panel{max-height:none;position:static;order:-1}}
-@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.size-grid{grid-template-columns:repeat(3,1fr)}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}}
+@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.size-grid{grid-template-columns:repeat(3,1fr)}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}}
 </style>
 </head>
 <body>
@@ -144,24 +148,23 @@ footer p{color:#e0e0e0;font-size:.72rem}
 </header>
 
 <main>
-<!-- ========== PANEL KIRI ========== -->
 <aside class="card left-panel" id="leftPanel">
 
-<div class="section-title"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Foto</div>
+<div class="stitle"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Foto</div>
 <div class="dropzone" id="dropzone">
 <input type="file" id="fileInput" accept="image/*" multiple>
 <div class="dz-icon"><i class="fa-solid fa-images"></i></div>
 <div class="dz-text">Klik atau Seret Foto ke Sini</div>
-<div class="dz-hint">JPG / PNG &mdash; Maksimal 50 foto sekaligus</div>
+<div class="dz-hint">JPG / PNG &mdash; Maksimal 50 foto</div>
 </div>
 <div class="counter-row">
-<span><span class="count" id="cntNum">0</span> / 50 foto terupload</span>
+<span><span class="count" id="cntNum">0</span> / 50 foto</span>
 <button class="btn-text" id="clearAllBtn" style="display:none">Hapus Semua</button>
 </div>
 
 <div class="sep"></div>
 
-<div class="section-title"><i class="fa-solid fa-crop-simple"></i> Ukuran Output</div>
+<div class="stitle"><i class="fa-solid fa-crop-simple"></i> Ukuran Output</div>
 <div class="size-label">Portrait</div>
 <div class="size-grid" id="sizeGridP">
 <button class="size-btn" data-size="2x3">2x3</button>
@@ -178,7 +181,7 @@ footer p{color:#e0e0e0;font-size:.72rem}
 
 <div class="sep"></div>
 
-<div class="section-title"><i class="fa-solid fa-sliders"></i> Pengaturan Mode</div>
+<div class="stitle"><i class="fa-solid fa-sliders"></i> Pengaturan Mode</div>
 <div class="toggle-row">
 <label class="lbl">Hitam Putih (Reguler)</label>
 <label class="toggle-switch"><input type="checkbox" id="bwToggle"><span class="toggle-slider"></span></label>
@@ -199,11 +202,16 @@ footer p{color:#e0e0e0;font-size:.72rem}
 <label class="lbl" style="font-size:.72rem">Ijazah Hitam Putih</label>
 <label class="toggle-switch"><input type="checkbox" id="ijazahBWToggle"><span class="toggle-slider"></span></label>
 </div>
+<!-- Bagian Acuan Ijazah -->
+<div class="ref-section" id="refSection" style="display:none">
+<div class="ref-info"><i class="fa-solid fa-crosshairs"></i><span>Foto #<strong id="refNum">-</strong> dijadikan acuan</span></div>
+<button class="btn-ref-apply" id="applyRefBtn"><i class="fa-solid fa-copy"></i> Terapkan ke Semua Ijazah</button>
+</div>
 </div>
 
 <div class="sep"></div>
 
-<div class="section-title"><i class="fa-solid fa-bolt"></i> Aksi</div>
+<div class="stitle"><i class="fa-solid fa-bolt"></i> Aksi</div>
 <div class="btn-group">
 <button class="btn secondary" id="resetAllBtn" disabled><i class="fa-solid fa-arrows-rotate"></i> Reset Semua Posisi</button>
 <button class="btn btn-gold" id="arrangeBtn" disabled><i class="fa-solid fa-table-cells"></i> Susun Pintar di A4</button>
@@ -212,20 +220,18 @@ footer p{color:#e0e0e0;font-size:.72rem}
 
 <div class="sep"></div>
 
-<div class="section-title blue"><i class="fa-solid fa-circle-info"></i> Informasi</div>
+<div class="stitle blue"><i class="fa-solid fa-circle-info"></i> Informasi</div>
 <div class="info-box">
 <div class="info-row"><span>Ukuran aktif upload:</span><strong id="infoSize">3x4</strong></div>
 <div class="info-row"><span>Total foto:</span><strong id="infoCount">0</strong></div>
-<div class="info-row"><span>Total cetak (dengan jumlah):</span><strong id="infoTotal">0</strong></div>
+<div class="info-row"><span>Total cetak:</span><strong id="infoTotal">0</strong></div>
 <div class="info-row"><span>Estimasi halaman A4:</span><strong id="infoPages">0</strong></div>
 </div>
-
 </aside>
 
-<!-- ========== PANEL KANAN ========== -->
 <section class="card right-panel" id="rightPanel">
 <div class="grid-header">
-<div class="section-title"><i class="fa-solid fa-eye"></i> Preview &amp; Atur Posisi</div>
+<div class="stitle"><i class="fa-solid fa-eye"></i> Preview &amp; Atur Posisi</div>
 <div class="total" id="gridTotal"></div>
 </div>
 <div class="photo-grid" id="photoGrid">
@@ -237,7 +243,6 @@ footer p{color:#e0e0e0;font-size:.72rem}
 </section>
 </main>
 
-<!-- Modal A4 -->
 <div id="a4Modal" class="modal">
 <div class="modal-content">
 <div class="modal-header"><h2><i class="fa-solid fa-file-image"></i> PREVIEW CETAK A4</h2><span class="close" id="closeModal">&times;</span></div>
@@ -253,28 +258,27 @@ footer p{color:#e0e0e0;font-size:.72rem}
 
 <script>
 /* ===== KONSTANTA ===== */
-const MM_PX=10,CUT_W=1,A4_W=2100,A4_H=2970,A4_M=50,MOVE=5,ZOOM_D=0.01,MAX=50;
+const MM_PX=10,CUT_W=1,A4_W=2100,A4_H=2970,A4_M=50,MOVE=5,ZOOM_D=0.01,MAX=50,BAND_H=30;
 const SIZES={
     '2x3':{w:216,h:279},'3x4':{w:279,h:381},'4x6':{w:381,h:559},'5x5':{w:500,h:500},
     '2x3L':{w:279,h:216},'3x4L':{w:381,h:279},'4x6L':{w:559,h:381}
 };
-const BAND_H=30; // tinggi band ijazah dalam px canvas
 
 /* ===== STATE ===== */
-let photos=[],nextId=1,selectedSize='3x4';
-let a4PagesData=[];
+let photos=[],nextId=1,selectedSize='3x4',a4PagesData=[];
+let referenceSettings=null; // {relZoom, shiftXpx, shiftYpx, sourceId}
 
 /* ===== DOM ===== */
 const $=id=>document.getElementById(id);
 const dropzone=$('dropzone'),fileInput=$('fileInput'),cntNum=$('cntNum'),clearAllBtn=$('clearAllBtn');
-const sizeGridP=$('sizeGridP'),sizeGridL=$('sizeGridL');
 const bwToggle=$('bwToggle'),ijazahToggle=$('ijazahToggle'),ijazahBox=$('ijazahBox');
 const schoolName=$('schoolName'),fontSize=$('fontSize'),ijazahBWToggle=$('ijazahBWToggle');
 const resetAllBtn=$('resetAllBtn'),arrangeBtn=$('arrangeBtn'),dlAllBtn=$('dlAllBtn');
 const infoSize=$('infoSize'),infoCount=$('infoCount'),infoTotal=$('infoTotal'),infoPages=$('infoPages');
 const photoGrid=$('photoGrid'),emptyState=$('emptyState'),gridTotal=$('gridTotal');
-const modal=$('a4Modal'),closeModal=$('closeModal'),modalBody=$('modalBody'),dlA4Btn=$('dlA4Btn');
+const modal=$('a4Modal'),closeModalEl=$('closeModal'),modalBody=$('modalBody'),dlA4Btn=$('dlA4Btn');
 const themeToggle=$('themeToggle'),toastEl=$('toast');
+const refSection=$('refSection'),refNum=$('refNum'),applyRefBtn=$('applyRefBtn');
 
 /* ===== TEMA ===== */
 themeToggle.onclick=()=>{
@@ -285,32 +289,17 @@ themeToggle.onclick=()=>{
 
 /* ===== UKURAN ===== */
 document.querySelectorAll('.size-btn').forEach(b=>{
-    b.onclick=()=>{
-        if(b.disabled)return;
-        document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));
-        b.classList.add('active');
-        selectedSize=b.dataset.size;
-        infoSize.textContent=selectedSize.replace('L',' Landscape');
-    };
+    b.onclick=()=>{if(b.disabled)return;document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');selectedSize=b.dataset.size;infoSize.textContent=selectedSize.replace('L',' Landscape');};
 });
 function lockSizes(lock){
     document.querySelectorAll('.size-btn').forEach(b=>{
-        if(lock){
-            b.disabled=b.dataset.size!=='3x4';
-            if(b.dataset.size==='3x4'){b.classList.add('active');b.disabled=false;}
-            else b.classList.remove('active');
-            selectedSize='3x4';infoSize.textContent='3x4 (Ijazah)';
-        }else{b.disabled=false;}
+        if(lock){b.disabled=b.dataset.size!=='3x4';if(b.dataset.size==='3x4'){b.classList.add('active');b.disabled=false;}else b.classList.remove('active');selectedSize='3x4';infoSize.textContent='3x4 (Ijazah)';}
+        else b.disabled=false;
     });
 }
 
 /* ===== IJAZAH TOGGLE ===== */
-ijazahToggle.onchange=()=>{
-    const on=ijazahToggle.checked;
-    ijazahBox.style.display=on?'flex':'none';
-    lockSizes(on);
-    if(on)bwToggle.checked=false; // ijazah punya BW sendiri
-};
+ijazahToggle.onchange=()=>{const on=ijazahToggle.checked;ijazahBox.style.display=on?'flex':'none';lockSizes(on);if(on)bwToggle.checked=false;};
 
 /* ===== UPLOAD ===== */
 dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('over');});
@@ -325,11 +314,7 @@ function handleFiles(files){
     let loaded=0;
     toLoad.forEach(f=>{
         const r=new FileReader();
-        r.onload=ev=>{
-            const img=new Image();
-            img.onload=()=>{addPhoto(img);loaded++;if(loaded===toLoad.length)showToast(loaded+' foto berhasil diupload');};
-            img.src=ev.target.result;
-        };
+        r.onload=ev=>{const img=new Image();img.onload=()=>{addPhoto(img);loaded++;if(loaded===toLoad.length)showToast(loaded+' foto berhasil diupload');};img.src=ev.target.result;};
         r.readAsDataURL(f);
     });
     fileInput.value='';
@@ -342,41 +327,32 @@ function addPhoto(img){
     const sz=SIZES[sizeKey];
     const isBW=isIj?ijazahBWToggle.checked:bwToggle.checked;
     const e=MM_PX*2+CUT_W*2;
-    const photo={
-        id:nextId++,img,sizeKey,sz:sz,isBW,isIjazah:isIj,quantity:1,
+    const photo={id:nextId++,img,sizeKey,sz,isBW,isIjazah:isIj,quantity:1,
         state:{scale:1,offsetX:0,offsetY:0,isDragging:false,startX:0,startY:0},
-        canvas:null,card:null
-    };
-    /* Buat canvas */
-    const c=document.createElement('canvas');
-    c.width=sz.w+e;c.height=sz.h+e;
+        canvas:null,card:null};
+    const c=document.createElement('canvas');c.width=sz.w+e;c.height=sz.h+e;
     photo.canvas=c;
-    /* Buat card DOM */
-    const card=buildCard(photo);
-    photo.card=card;
+    const card=buildCard(photo);photo.card=card;
     photos.push(photo);
     resetSingle(photo);
     photoGrid.appendChild(card);
     updateUI();
-    /* Scroll ke bawah */
     card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
 function buildCard(p){
-    const card=document.createElement('div');
-    card.className='photo-card';card.id='card-'+p.id;
-    const sizeLabel=p.sizeKey.replace('L',' Land');
-    const modeLabel=p.isIjazah?' Ijazah'+(p.isBW?' BW':''):(p.isBW?' BW':'');
+    const card=document.createElement('div');card.className='photo-card';card.id='card-'+p.id;
+    const sl=p.sizeKey.replace('L',' Land');
+    const ml=p.isIjazah?' Ijazah'+(p.isBW?' BW':''):(p.isBW?' BW':'');
+    /* Tombol acuan hanya untuk foto Ijazah */
+    const acuanHtml=p.isIjazah?`<button class="btn-acuan" data-id="${p.id}">JADIKAN ACUAN</button>`:'';
     card.innerHTML=`
         <div class="card-head">
             <span class="card-num">Foto #${photos.length+1}</span>
-            <span class="card-size">${sizeLabel}${modeLabel}</span>
+            <span class="card-size">${sl}${ml}</span>
             <button class="card-remove" data-id="${p.id}" title="Hapus">&times;</button>
         </div>
-        <div class="card-qty">
-            <label>Jumlah cetak:</label>
-            <input type="number" min="1" max="200" value="1" data-id="${p.id}" class="qty-inp">
-        </div>
+        <div class="card-qty"><label>Jumlah cetak:</label><input type="number" min="1" max="200" value="1" data-id="${p.id}" class="qty-inp"></div>
         <div class="canvas-wrap"></div>
         <div class="card-ctrl">
             <div class="dpad">
@@ -387,6 +363,7 @@ function buildCard(p){
                 <button class="cb" data-id="${p.id}" data-act="md">&#9660;</button>
                 <button class="cb" data-id="${p.id}" data-act="mr">&#9654;</button>
             </div>
+            ${acuanHtml}
             <button class="btn btn-gold card-dl" data-id="${p.id}"><i class="fa-solid fa-download"></i> DOWNLOAD</button>
         </div>`;
     card.querySelector('.canvas-wrap').appendChild(p.canvas);
@@ -399,47 +376,35 @@ function drawPhoto(p,guides){
     const sz=p.sz,s=p.state,ins=MM_PX+CUT_W;
     ctx.clearRect(0,0,w,h);ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
     if(p.isIjazah){
-        /* Gambar ijazah */
-        const visH=sz.h-BAND_H;
         ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();
         ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
         if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
-        /* Band putih */
+        /* Band putih nama sekolah */
         const bL=CUT_W/2,bW=w-CUT_W,bB=h-CUT_W/2,bT=bB-BAND_H;
         ctx.fillStyle='#fff';ctx.fillRect(bL,bT,bW,BAND_H);
-        /* Teks sekolah */
         const sn=(schoolName.value||'NAMA SEKOLAH / UNIVERSITAS').toUpperCase();
         const mfs=parseInt(fontSize.value)||0;
         ctx.fillStyle='#000';ctx.textAlign='center';ctx.textBaseline='middle';
-        let fs=mfs>0?Math.min(mfs,40):20;
-        ctx.font='bold '+fs+'px Arial,sans-serif';
+        let fs=mfs>0?Math.min(mfs,40):20;ctx.font='bold '+fs+'px Arial,sans-serif';
         while(ctx.measureText(sn).width>bW-14&&fs>6){fs--;ctx.font='bold '+fs+'px Arial,sans-serif';}
         ctx.fillText(sn,w/2,bT+BAND_H/2);
     }else{
-        /* Gambar reguler */
         ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();
         ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
         if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
     }
-    /* Cut line */
+    /* Cut line hitam */
     ctx.strokeStyle='#000';ctx.lineWidth=CUT_W;ctx.strokeRect(CUT_W/2,CUT_W/2,w-CUT_W,h-CUT_W);
-    /* Guide lines */
+    /* Garis panduan hijau */
     if(guides){
-        let gT=ins,gH=sz.h;
-        if(p.isIjazah)gH=sz.h-BAND_H;
+        let gT=ins,gH=sz.h;if(p.isIjazah)gH=sz.h-BAND_H;
         const cx=Math.round(ins+sz.w/2),cy=Math.round(gT+gH/2);
         ctx.save();ctx.strokeStyle='#00FF00';ctx.lineWidth=2;ctx.setLineDash([4,4]);
         ctx.beginPath();ctx.moveTo(cx,gT);ctx.lineTo(cx,gT+gH);ctx.stroke();
-        ctx.beginPath();ctx.moveTo(ins,cy);ctx.lineTo(ins+sz.w,cy);ctx.stroke();
-        ctx.restore();
+        ctx.beginPath();ctx.moveTo(ins,cy);ctx.lineTo(ins+sz.w,cy);ctx.stroke();ctx.restore();
     }
 }
-
-function applyGS(ctx,x,y,w,h){
-    const id=ctx.getImageData(x,y,w,h),d=id.data;
-    for(let i=0;i<d.length;i+=4){const g=d[i]*.299+d[i+1]*.587+d[i+2]*.114;d[i]=d[i+1]=d[i+2]=g;}
-    ctx.putImageData(id,x,y);
-}
+function applyGS(ctx,x,y,w,h){const id=ctx.getImageData(x,y,w,h),d=id.data;for(let i=0;i<d.length;i+=4){const g=d[i]*.299+d[i+1]*.587+d[i+2]*.114;d[i]=d[i+1]=d[i+2]=g;}ctx.putImageData(id,x,y);}
 
 /* ===== RESET & ZOOM ===== */
 function resetSingle(p){
@@ -459,133 +424,186 @@ function zoomPhoto(p,d){
     drawPhoto(p,true);
 }
 
-/* ===== INTERAKSI: EVENT DELEGATION ===== */
-/* Klik kontrol */
-photoGrid.addEventListener('click',e=>{
-    const rm=e.target.closest('.card-remove');
-    if(rm){removePhoto(+rm.dataset.id);return;}
-    const dl=e.target.closest('.card-dl');
-    if(dl){downloadSingle(+dl.dataset.id);return;}
-    const cb=e.target.closest('.cb');
-    if(cb){handleCtrl(+cb.dataset.id,cb.dataset.act);return;}
-});
-/* Quantity change */
-photoGrid.addEventListener('change',e=>{
-    if(e.target.classList.contains('qty-inp')){
-        const p=photos.find(x=>x.id===+e.target.dataset.id);
-        if(p){p.quantity=Math.max(1,parseInt(e.target.value)||1);updateInfo();}
+/* ===== FITUR ACUAN / REFERENSI ===== */
+function setReference(id){
+    const p=photos.find(x=>x.id===id);
+    if(!p||!p.isIjazah)return;
+    const s=p.state,sz=p.sz,ins=MM_PX+CUT_W;
+    const visH=sz.h-BAND_H;
+    /* Hitung scale awal foto ini */
+    const initScale=Math.max(sz.w/p.img.width,sz.h/p.img.height)*1.1;
+    /* Zoom relatif terhadap posisi awal */
+    const relZoom=s.scale/initScale;
+    /* Pergeseran pusat crop dari pusat gambar (dalam piksel gambar asli) */
+    const centerCropX=ins+sz.w/2, centerCropY=ins+visH/2;
+    const centerImgX=s.offsetX+p.img.width*s.scale/2, centerImgY=s.offsetY+p.img.height*s.scale/2;
+    const shiftXpx=(centerCropX-centerImgX)/s.scale;
+    const shiftYpx=(centerCropY-centerImgY)/s.scale;
+    referenceSettings={relZoom,shiftXpx,shiftYpx,sourceId:id};
+    updateRefUI();
+    showToast('Foto #'+getPhotoIndex(id)+' dijadikan acuan');
+}
+function applyReferenceToAll(){
+    if(!referenceSettings)return;
+    const{relZoom,shiftXpx,shiftYpx,sourceId}=referenceSettings;
+    let count=0;
+    photos.forEach(p=>{
+        if(p.id===sourceId||!p.isIjazah)return;
+        const sz=p.sz,ins=MM_PX+CUT_W,visH=sz.h-BAND_H;
+        const initScale=Math.max(sz.w/p.img.width,sz.h/p.img.height)*1.1;
+        p.state.scale=initScale*relZoom;
+        const cx=ins+sz.w/2, cy=ins+visH/2;
+        const cix=cx-shiftXpx*p.state.scale, ciy=cy-shiftYpx*p.state.scale;
+        p.state.offsetX=cix-p.img.width*p.state.scale/2;
+        p.state.offsetY=ciy-p.img.height*p.state.scale/2;
+        drawPhoto(p,true);count++;
+    });
+    showToast('Acuan diterapkan ke '+count+' foto Ijazah lainnya');
+}
+function clearReference(){
+    referenceSettings=null;updateRefUI();
+}
+function updateRefUI(){
+    if(referenceSettings){
+        refSection.style.display='flex';
+        refNum.textContent=getPhotoIndex(referenceSettings.sourceId);
+        /* Highlight card acuan */
+        photos.forEach(p=>{p.card.classList.toggle('is-ref',p.id===referenceSettings.sourceId);});
+        /* Update tombol acuan di setiap card */
+        photos.forEach(p=>{
+            if(!p.isIjazah)return;
+            const btn=p.card.querySelector('.btn-acuan');
+            if(!btn)return;
+            if(p.id===referenceSettings.sourceId){
+                btn.textContent='ACUAN AKTIF';btn.classList.add('active');btn.disabled=true;
+            }else{
+                btn.textContent='JADIKAN ACUAN';btn.classList.remove('active');btn.disabled=false;
+            }
+        });
+    }else{
+        refSection.style.display='none';
+        photos.forEach(p=>{p.card.classList.remove('is-ref');const btn=p.card.querySelector('.btn-acuan');if(btn){btn.textContent='JADIKAN ACUAN';btn.classList.remove('active');btn.disabled=false;}});
     }
+}
+function getPhotoIndex(id){const i=photos.findIndex(x=>x.id===id);return i>=0?i+1:'?';}
+applyRefBtn.onclick=applyReferenceToAll;
+
+/* ===== EVENT DELEGATION ===== */
+photoGrid.addEventListener('click',e=>{
+    const rm=e.target.closest('.card-remove');if(rm){removePhoto(+rm.dataset.id);return;}
+    const dl=e.target.closest('.card-dl');if(dl){downloadSingle(+dl.dataset.id);return;}
+    const ac=e.target.closest('.btn-acuan');if(ac&&!ac.disabled){setReference(+ac.dataset.id);return;}
+    const cb=e.target.closest('.cb');if(cb){handleCtrl(+cb.dataset.id,cb.dataset.act);return;}
 });
-/* Scroll zoom */
+photoGrid.addEventListener('change',e=>{
+    if(e.target.classList.contains('qty-inp')){const p=photos.find(x=>x.id===+e.target.dataset.id);if(p){p.quantity=Math.max(1,parseInt(e.target.value)||1);updateInfo();}}
+});
 photoGrid.addEventListener('wheel',e=>{
-    const cv=e.target.closest('canvas');if(!cv)return;
-    e.preventDefault();
-    const card=cv.closest('.photo-card');
-    const p=photos.find(x=>x.id===+card.id.replace('card-',''));
+    const cv=e.target.closest('canvas');if(!cv)return;e.preventDefault();
+    const card=cv.closest('.photo-card');const p=photos.find(x=>x.id===+card.id.replace('card-',''));
     if(p)zoomPhoto(p,e.deltaY<0?ZOOM_D:-ZOOM_D);
 },{passive:false});
 
 /* Drag mouse */
+let dragPhoto=null;
 photoGrid.addEventListener('mousedown',e=>{
     const cv=e.target.closest('canvas');if(!cv)return;
-    const card=cv.closest('.photo-card');
-    const p=photos.find(x=>x.id===+card.id.replace('card-',''));
-    if(!p)return;
-    const s=p.state;const c=getCoords(cv,e);
+    const card=cv.closest('.photo-card');const p=photos.find(x=>x.id===+card.id.replace('card-',''));
+    if(!p)return;dragPhoto=p;const s=p.state;const c=getCoords(cv,e);
     s.isDragging=true;s.startX=c.x-s.offsetX;s.startY=c.y-s.offsetY;e.preventDefault();
 });
-document.addEventListener('mousemove',e=>{
-    photos.forEach(p=>{if(!p.state.isDragging)return;const c=getCoords(p.canvas,e);p.state.offsetX=c.x-p.state.startX;p.state.offsetY=c.y-p.state.startY;drawPhoto(p,true);});
-});
-document.addEventListener('mouseup',()=>{photos.forEach(p=>p.state.isDragging=false);});
-
+document.addEventListener('mousemove',e=>{if(!dragPhoto||!dragPhoto.state.isDragging)return;const c=getCoords(dragPhoto.canvas,e);dragPhoto.state.offsetX=c.x-dragPhoto.state.startX;dragPhoto.state.offsetY=c.y-dragPhoto.state.startY;drawPhoto(dragPhoto,true);});
+document.addEventListener('mouseup',()=>{if(dragPhoto){dragPhoto.state.isDragging=false;dragPhoto=null;}});
 /* Drag touch */
 photoGrid.addEventListener('touchstart',e=>{
     const cv=e.target.closest('canvas');if(!cv)return;
-    const card=cv.closest('.photo-card');
-    const p=photos.find(x=>x.id===+card.id.replace('card-',''));
-    if(!p)return;
-    const s=p.state;const c=getCoords(cv,e.touches[0]);
+    const card=cv.closest('.photo-card');const p=photos.find(x=>x.id===+card.id.replace('card-',''));
+    if(!p)return;dragPhoto=p;const s=p.state;const c=getCoords(cv,e.touches[0]);
     s.isDragging=true;s.startX=c.x-s.offsetX;s.startY=c.y-s.offsetY;e.preventDefault();
 },{passive:false});
-document.addEventListener('touchmove',e=>{
-    photos.forEach(p=>{if(!p.state.isDragging)return;const c=getCoords(p.canvas,e.touches[0]);p.state.offsetX=c.x-p.state.startX;p.state.offsetY=c.y-p.state.startY;drawPhoto(p,true);});
-},{passive:false});
-document.addEventListener('touchend',()=>{photos.forEach(p=>p.state.isDragging=false);});
+document.addEventListener('touchmove',e=>{if(!dragPhoto||!dragPhoto.state.isDragging)return;const c=getCoords(dragPhoto.canvas,e.touches[0]);dragPhoto.state.offsetX=c.x-dragPhoto.state.startX;dragPhoto.state.offsetY=c.y-dragPhoto.state.startY;drawPhoto(dragPhoto,true);},{passive:false});
+document.addEventListener('touchend',()=>{if(dragPhoto){dragPhoto.state.isDragging=false;dragPhoto=null;}});
 
 function getCoords(cv,e){const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*(cv.width/r.width),y:(e.clientY-r.top)*(cv.height/r.height)};}
-
 function handleCtrl(id,act){
     const p=photos.find(x=>x.id===id);if(!p)return;const s=p.state;
-    switch(act){
-        case'mu':s.offsetY-=MOVE;drawPhoto(p,true);break;
-        case'md':s.offsetY+=MOVE;drawPhoto(p,true);break;
-        case'ml':s.offsetX-=MOVE;drawPhoto(p,true);break;
-        case'mr':s.offsetX+=MOVE;drawPhoto(p,true);break;
-        case'zi':zoomPhoto(p,ZOOM_D);break;
-        case'zo':zoomPhoto(p,-ZOOM_D);break;
-    }
+    switch(act){case'mu':s.offsetY-=MOVE;drawPhoto(p,true);break;case'md':s.offsetY+=MOVE;drawPhoto(p,true);break;case'ml':s.offsetX-=MOVE;drawPhoto(p,true);break;case'mr':s.offsetX+=MOVE;drawPhoto(p,true);break;case'zi':zoomPhoto(p,ZOOM_D);break;case'zo':zoomPhoto(p,-ZOOM_D);break;}
 }
 
-/* ===== HAPUS FOTO ===== */
+/* ===== HAPUS ===== */
 function removePhoto(id){
+    if(referenceSettings&&referenceSettings.sourceId===id)clearReference();
     const idx=photos.findIndex(x=>x.id===id);if(idx<0)return;
-    photos[idx].card.remove();photos.splice(idx,1);
-    renumber();updateUI();showToast('Foto dihapus');
+    photos[idx].card.remove();photos.splice(idx,1);renumber();updateUI();showToast('Foto dihapus');
 }
-function renumber(){photos.forEach((p,i)=>{p.card.querySelector('.card-num').textContent='Foto #'+(i+1);});}
+function renumber(){photos.forEach((p,i)=>{p.card.querySelector('.card-num').textContent='Foto #'+(i+1);});if(referenceSettings)refNum.textContent=getPhotoIndex(referenceSettings.sourceId);}
 
 /* ===== UPDATE UI ===== */
 function updateUI(){
-    const n=photos.length;
-    cntNum.textContent=n;
-    clearAllBtn.style.display=n?'inline':'none';
-    emptyState.style.display=n?'none':'block';
-    resetAllBtn.disabled=!n;arrangeBtn.disabled=!n;dlAllBtn.disabled=!n;
-    gridTotal.textContent=n?'('+n+' foto)':'';
-    updateInfo();
+    const n=photos.length;cntNum.textContent=n;clearAllBtn.style.display=n?'inline':'none';
+    emptyState.style.display=n?'none':'block';resetAllBtn.disabled=!n;arrangeBtn.disabled=!n;dlAllBtn.disabled=!n;
+    gridTotal.textContent=n?'('+n+' foto)':'';updateInfo();
 }
 function updateInfo(){
-    const n=photos.length;
-    const total=photos.reduce((s,p)=>s+p.quantity,0);
+    const n=photos.length;const total=photos.reduce((s,p)=>s+p.quantity,0);
     infoCount.textContent=n;infoTotal.textContent=total;
-    /* Estimasi halaman A4 */
     if(!n){infoPages.textContent='0';return;}
-    const mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;
-    let area=0;
-    photos.forEach(p=>{area+=(p.sz.w+MM_PX*2+CUT_W*2)*(p.sz.h+MM_PX*2+CUT_W*2)*p.quantity;});
-    const pageArea=mW*mH;
-    infoPages.textContent=Math.ceil(area/pageArea)||'1';
+    /* Hitung per jenis */
+    let ijCount=0,regCount=0;
+    photos.forEach(p=>{if(p.isIjazah)ijCount+=p.quantity;else regCount+=p.quantity;});
+    let pages=0;
+    if(ijCount)pages+=Math.ceil(ijCount/getIjazahPerPage());
+    if(regCount){const mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;let area=0;photos.filter(p=>!p.isIjazah).forEach(p=>{const e=MM_PX*2+CUT_W*2;area+=(p.sz.w+e)*(p.sz.h+e)*p.quantity;});pages+=Math.ceil(area/(mW*mH));}
+    infoPages.textContent=pages||'1';
+}
+function getIjazahPerPage(){
+    const e=MM_PX*2+CUT_W*2,pw=SIZES['3x4'].w+e,ph=SIZES['3x4'].h+e;
+    const cols=Math.floor((A4_W-2*A4_M)/pw),rows=Math.floor((A4_H-2*A4_M)/ph);
+    return cols*rows;
 }
 
 /* ===== RESET SEMUA ===== */
-resetAllBtn.onclick=()=>{photos.forEach(p=>resetSingle(p));showToast('Semua posisi direset');};
+resetAllBtn.onclick=()=>{photos.forEach(p=>resetSingle(p));clearReference();showToast('Semua posisi direset');};
+clearAllBtn.onclick=()=>{photos.forEach(p=>p.card.remove());photos=[];clearReference();updateUI();showToast('Semua foto dihapus');};
 
-/* ===== HAPUS SEMUA ===== */
-clearAllBtn.onclick=()=>{photos.forEach(p=>p.card.remove());photos=[];updateUI();showToast('Semua foto dihapus');};
-
-/* ===== IJAZAH SETTING LIVE UPDATE ===== */
+/* ===== IJAZAH LIVE UPDATE ===== */
 schoolName.oninput=()=>{photos.forEach(p=>{if(p.isIjazah)drawPhoto(p,true);});};
 fontSize.oninput=()=>{photos.forEach(p=>{if(p.isIjazah)drawPhoto(p,true);});};
 ijazahBWToggle.onchange=()=>{photos.forEach(p=>{if(p.isIjazah){p.isBW=ijazahBWToggle.checked;drawPhoto(p,true);}});};
 
-/* ===== DOWNLOAD SATU FOTO ===== */
+/* ===== DOWNLOAD ===== */
 function getClean(p){
     const c=document.createElement('canvas');c.width=p.canvas.width;c.height=p.canvas.height;
-    drawPhoto(p,false);c.getContext('2d').drawImage(p.canvas,0,0);drawPhoto(p,true);
+    /* Gambar versi bersih (tanpa garis panduan) */
+    const ctx=c.getContext('2d');const w=c.width,h=c.height;const sz=p.sz,s=p.state,ins=MM_PX+CUT_W;
+    ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
+    if(p.isIjazah){
+        ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();
+        ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
+        if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
+        const bL=CUT_W/2,bW=w-CUT_W,bB=h-CUT_W/2,bT=bB-BAND_H;
+        ctx.fillStyle='#fff';ctx.fillRect(bL,bT,bW,BAND_H);
+        const sn=(schoolName.value||'NAMA SEKOLAH / UNIVERSITAS').toUpperCase();
+        const mfs=parseInt(fontSize.value)||0;
+        ctx.fillStyle='#000';ctx.textAlign='center';ctx.textBaseline='middle';
+        let fs=mfs>0?Math.min(mfs,40):20;ctx.font='bold '+fs+'px Arial,sans-serif';
+        while(ctx.measureText(sn).width>bW-14&&fs>6){fs--;ctx.font='bold '+fs+'px Arial,sans-serif';}
+        ctx.fillText(sn,w/2,bT+BAND_H/2);
+    }else{
+        ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();
+        ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
+        if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
+    }
+    ctx.strokeStyle='#000';ctx.lineWidth=CUT_W;ctx.strokeRect(CUT_W/2,CUT_W/2,w-CUT_W,h-CUT_W);
     return c;
 }
 function downloadSingle(id){
     const p=photos.find(x=>x.id===id);if(!p)return;
     const c=getClean(p);let url=patchJFIF(c.toDataURL('image/jpeg',.95),100,2);
-    const a=document.createElement('a');a.download='KARYA-ABADI-'+p.sizeKey+'-Foto'+p.id+'.jpg';a.href=url;
+    const a=document.createElement('a');a.download='KARYA-ABADI-'+p.sizeKey+'-Foto'+getPhotoIndex(id)+'.jpg';a.href=url;
     document.body.appendChild(a);a.click();document.body.removeChild(a);
 }
-/* Download semua foto individual */
-dlAllBtn.onclick=()=>{
-    if(!photos.length)return;showToast('Mengunduh '+photos.length+' foto...');
-    photos.forEach((p,i)=>{setTimeout(()=>downloadSingle(p.id),300*i);});
-};
+dlAllBtn.onclick=()=>{if(!photos.length)return;showToast('Mengunduh '+photos.length+' foto...');photos.forEach((p,i)=>{setTimeout(()=>downloadSingle(p.id),300*i);});};
 
 /* ===== JFIF RESOLUTION PATCH ===== */
 function patchJFIF(url,res,unit){
@@ -601,87 +619,111 @@ function patchJFIF(url,res,unit){
 /* ===== SUSUN PINTAR A4 ===== */
 arrangeBtn.onclick=()=>{
     if(!photos.length)return showToast('Upload foto dulu!');
-    const jobs=[];
-    photos.forEach(p=>{
-        const c=getClean(p);
-        for(let i=0;i<p.quantity;i++)jobs.push({source:c,w:c.width,h:c.height,label:'Foto #'+(photos.indexOf(p)+1)});
+    const ijJobs=[],regJobs=[];
+    photos.forEach((p,idx)=>{
+        const c=getClean(p);const label='Foto #'+(idx+1);
+        for(let q=0;q<p.quantity;q++){
+            if(p.isIjazah)ijJobs.push({source:c,w:c.width,h:c.height});
+            else regJobs.push({source:c,w:c.width,h:c.height,label});
+        }
     });
-    if(!jobs.length)return showToast('Atur jumlah cetak minimal 1!');
-    a4PagesData=packA4(jobs);
+    if(!ijJobs.length&&!regJobs.length)return showToast('Atur jumlah cetak minimal 1!');
+    a4PagesData=[];
+    /* Ijazah: grid rapat dari atas */
+    if(ijJobs.length)a4PagesData.push(...packIjazahGrid(ijJobs));
+    /* Reguler: bin-packing */
+    if(regJobs.length)a4PagesData.push(...packBinPack(regJobs));
     renderModal();modal.style.display='block';
     showToast(a4PagesData.length+' halaman A4 siap');
 };
 
-function packA4(jobs){
+/* --- Grid rapat khusus Ijazah --- */
+function packIjazahGrid(jobs){
+    if(!jobs.length)return[];
+    const j0=jobs[0],pw=j0.w,ph=j0.h;
+    const mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;
+    const cols=Math.floor(mW/pw),rows=Math.floor(mH/ph);
+    const perPage=cols*rows;
+    const pages=[];
+    for(let i=0;i<jobs.length;i+=perPage){
+        const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;
+        const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);
+        const batch=jobs.slice(i,i+perPage);
+        const actualRows=Math.ceil(batch.length/cols);
+        /* Posisi: rata tengah horizontal, mulai dari atas */
+        const totalW=cols*pw,startX=A4_M+Math.floor((mW-totalW)/2),startY=A4_M;
+        batch.forEach((job,idx)=>{
+            const col=idx%cols,row=Math.floor(idx/cols);
+            ctx.drawImage(job.source,startX+col*pw,startY+row*ph,pw,ph);
+        });
+        const usedH=actualRows*ph;
+        const eff=Math.min(Math.round((usedH/mH)*100),100);
+        const url=patchJFIF(cv.toDataURL('image/jpeg',1),100,2);
+        pages.push({url,eff,count:batch.length,ijazah:true});
+    }
+    return pages;
+}
+
+/* --- Bin-packing untuk reguler --- */
+function packBinPack(jobs){
     const m=A4_M,mW=A4_W-2*m,mH=A4_H-2*m;
-    let pages=[],rem=[...jobs];
-    rem.sort((a,b)=>b.h-a.h||b.w-a.w);
+    let pages=[],rem=[...jobs];rem.sort((a,b)=>b.h-a.h||b.w-a.w);
     while(rem.length){
         const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;
         const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);
         let freeR=[{x:m,y:m,w:mW,h:mH}],maxY=m,unplaced=[];
         for(const j of rem){
             let best=null,bestS=Infinity;
-            for(const fr of freeR){
-                if(j.w<=fr.w&&j.h<=fr.h){
-                    const sc=fr.y*1e6+fr.x*1e3+Math.min(fr.w-j.w,fr.h-j.h);
-                    if(sc<bestS){bestS=sc;best=fr;}
-                }
-            }
+            for(const fr of freeR){if(j.w<=fr.w&&j.h<=fr.h){const sc=fr.y*1e6+fr.x*1e3+Math.min(fr.w-j.w,fr.h-j.h);if(sc<bestS){bestS=sc;best=fr;}}}
             if(best){
                 ctx.drawImage(j.source,best.x,best.y,j.w,j.h);
                 ctx.strokeStyle='#ccc';ctx.lineWidth=2;ctx.strokeRect(best.x,best.y,j.w,j.h);
-                /* Label kecil */
                 ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(best.x,best.y,Math.min(j.w,60),14);
                 ctx.fillStyle='#fff';ctx.font='bold 9px Arial';ctx.textAlign='left';ctx.textBaseline='top';
                 ctx.fillText(j.label,best.x+3,best.y+2);
                 if(best.y+j.h>maxY)maxY=best.y+j.h;
-                const placed={x:best.x,y:best.y,w:j.w,h:j.h};
-                let nfr=[];
+                const placed={x:best.x,y:best.y,w:j.w,h:j.h};let nfr=[];
                 for(const f of freeR){
                     if(intersects(f,placed)){
                         if(placed.y>f.y)nfr.push({x:f.x,y:f.y,w:f.w,h:placed.y-f.y});
                         if(placed.y+placed.h<f.y+f.h)nfr.push({x:f.x,y:placed.y+placed.h,w:f.w,h:(f.y+f.h)-(placed.y+placed.h)});
                         if(placed.x>f.x)nfr.push({x:f.x,y:f.y,w:placed.x-f.x,h:f.h});
                         if(placed.x+placed.w<f.x+f.w)nfr.push({x:placed.x+placed.w,y:f.y,w:(f.x+f.w)-(placed.x+placed.w),h:f.h});
-                    }else{nfr.push(f);}
+                    }else nfr.push(f);
                 }
                 freeR=nfr.filter((a,i,arr)=>!arr.some((b,j)=>i!==j&&isContained(a,b)));
-            }else{unplaced.push(j);}
+            }else unplaced.push(j);
         }
         rem=unplaced;
         const eff=Math.min(Math.round(((maxY-m)/mH)*100),100);
-        const url=patchJFIF(cv.toDataURL('image/jpeg',1),100,2);
-        pages.push({url,eff,count:jobs.length-unplaced.length});
+        pages.push({url:patchJFIF(cv.toDataURL('image/jpeg',1),100,2),eff,count:jobs.length-unplaced.length,ijazah:false});
     }
     return pages;
 }
 function intersects(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
 function isContained(i,o){return i.x>=o.x&&i.y>=o.y&&i.x+i.w<=o.x+o.w&&i.y+i.h<=o.y+o.h;}
 
-/* ===== MODAL A4 ===== */
+/* ===== MODAL ===== */
 function renderModal(){
-    modalBody.innerHTML='';
-    if(!a4PagesData.length){modalBody.innerHTML='<div style="color:#888;padding:20px">Tidak ada halaman</div>';return;}
+    modalBody.innerHTML='';if(!a4PagesData.length){modalBody.innerHTML='<div style="color:#888;padding:20px">Tidak ada halaman</div>';return;}
+    let ijPageNum=0,regPageNum=0;
     a4PagesData.forEach((pg,i)=>{
         const sec=document.createElement('div');sec.className='a4-section';
         const title=document.createElement('div');title.className='a4-title';
-        title.innerHTML='HALAMAN '+(i+1)+' <span class="badge">'+pg.count+' foto &bull; Efisiensi ~'+pg.eff+'%</span>';
+        if(pg.ijazah){ijPageNum++;title.innerHTML='HALAMAN IJAZAH '+ijPageNum+' <span class="badge">'+pg.count+' foto &bull; ~'+pg.eff+'% terisi</span>';}
+        else{regPageNum++;title.innerHTML='HALAMAN REGULER '+regPageNum+' <span class="badge">'+pg.count+' foto &bull; ~'+pg.eff+'% terisi</span>';}
         sec.appendChild(title);
         const img=document.createElement('img');img.src=pg.url;sec.appendChild(img);
         modalBody.appendChild(sec);
     });
     dlA4Btn.innerHTML='<i class="fa-solid fa-download"></i> Download Semua ('+a4PagesData.length+' Halaman)';
 }
-closeModal.onclick=()=>modal.style.display='none';
+closeModalEl.onclick=()=>modal.style.display='none';
 window.addEventListener('click',e=>{if(e.target===modal)modal.style.display='none';});
 dlA4Btn.onclick=()=>{
     if(!a4PagesData.length)return;showToast('Mengunduh '+a4PagesData.length+' halaman...');
     a4PagesData.forEach((pg,i)=>{
-        setTimeout(()=>{
-            const a=document.createElement('a');a.download='KARYA-ABADI-A4-Hal'+(i+1)+'-'+Date.now()+'.jpg';a.href=pg.url;
-            document.body.appendChild(a);a.click();document.body.removeChild(a);
-        },600*i);
+        setTimeout(()=>{const a=document.createElement('a');a.download='KARYA-ABADI-A4-Hal'+(i+1)+'-'+Date.now()+'.jpg';a.href=pg.url;document.body.appendChild(a);a.click();document.body.removeChild(a);},600*i);
     });
 };
 
