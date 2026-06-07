@@ -1,623 +1,695 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KARYA ABADI PAS FOTO - PRO</title>
-    <link rel="icon" type="image/png" href="favicon.png">
-    <style>
-        :root{--bg-body:#121212;--bg-card:#1e1e1e;--bg-input:#2d2d2d;--text-main:#fff;--text-muted:#b0b0b0;--accent-red:#D32F2F;--border-color:#444;--input-bg:#333;--shadow:0 4px 6px rgba(0,0,0,.3);--toast-bg:#333}
-        [data-theme="light"]{--bg-body:#f0f2f5;--bg-card:#fff;--bg-input:#f7f7f7;--text-main:#1a1a1a;--text-muted:#666;--accent-red:#D32F2F;--border-color:#ddd;--input-bg:#fff;--shadow:0 4px 12px rgba(0,0,0,.1);--toast-bg:#333}
-        *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif;transition:background-color .3s,color .3s}
-        body{background:var(--bg-body);color:var(--text-main);line-height:1.6;display:flex;flex-direction:column;min-height:100vh}
-        header{background:#000;border-bottom:2px solid var(--accent-red);padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.5);z-index:10}
-        .logo-container{display:flex;align-items:center;gap:.8rem}
-        .site-logo-img{width:45px;height:auto;max-height:45px;object-fit:contain}
-        .site-info h1{font-size:1.2rem;color:#fff;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:1.2}
-        .site-info h1 span{color:var(--accent-red)}
-        .site-info p{font-size:.7rem;color:#FFD700;letter-spacing:1px}
-        .theme-toggle{background:rgba(255,255,255,.1);border:1px solid #555;color:#fff;padding:.4rem;border-radius:50%;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-        .theme-toggle:hover{background:rgba(255,255,255,.2)}
-        main{flex:1;padding:1rem;max-width:1500px;margin:0 auto;width:100%;display:grid;grid-template-columns:400px 1fr;gap:1rem}
-        .card{background:var(--bg-card);border-radius:12px;padding:1rem;box-shadow:var(--shadow);border:1px solid var(--border-color);display:flex;flex-direction:column;gap:.8rem;overflow-y:auto;max-height:93vh}
-        .section-title{font-size:.9rem;font-weight:600;display:flex;align-items:center;gap:.5rem;color:var(--accent-red)}
-        .section-title.ijazah-title{color:#1565C0}
-        .upload-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-        .upload-area{border:2px dashed var(--border-color);border-radius:6px;padding:6px;text-align:center;cursor:pointer;position:relative;background:var(--bg-input);font-size:.7rem;display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:55px}
-        .upload-area:hover{border-color:var(--accent-red);background:rgba(211,47,47,.08)}
-        .upload-area input{position:absolute;width:100%;height:100%;top:0;left:0;opacity:0;cursor:pointer}
-        .upload-area .up-label{font-weight:800;color:var(--text-main);pointer-events:none;font-size:1rem}
-        .upload-area .up-label.small{font-size:.7rem}
-        .upload-area .file-name{color:#4CAF50;font-weight:600;font-size:.55rem;margin-top:2px;word-break:break-all;width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-        label.lbl{font-weight:500;font-size:.8rem;color:var(--text-muted)}
-        input[type="number"],input[type="text"]{padding:.45rem .5rem;border-radius:6px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-main);width:100%;font-size:.85rem}
-        input[type="text"]{text-transform:uppercase;letter-spacing:.5px}
-        .qty-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
-        .qty-item label{font-size:.72rem;text-align:center;display:block;margin-bottom:2px;color:var(--text-muted)}
-        .btn{background:var(--accent-red);color:#fff;border:none;cursor:pointer;font-weight:700;display:flex;justify-content:center;align-items:center;text-transform:uppercase;padding:.5rem;border-radius:6px;font-size:.75rem;gap:4px;white-space:normal;word-break:break-word}
-        .btn:hover{background:#b71c1c;transform:translateY(-1px)}
-        .btn.secondary{background:transparent;color:var(--text-main);border:1px solid var(--border-color)}
-        .btn.secondary:hover{background:var(--bg-input);border-color:var(--text-main);transform:none}
-        .btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
-        .btn-gold{background:#FFD700!important;color:#000!important;border:none!important;font-weight:800}
-        .btn-gold:hover{background:#ffcc00!important}
-        .btn-group{display:flex;flex-direction:column;gap:6px}
-        canvas{box-shadow:0 0 8px rgba(0,0,0,.15);display:block}
-        .previews-wrapper{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:var(--bg-input);padding:8px;border-radius:8px;align-items:stretch}
-        .preview-card{display:flex;flex-direction:column;align-items:center;gap:4px;height:100%}
-        .preview-card canvas{border:1px solid var(--border-color);background:#fff;cursor:move;width:100%;height:auto}
-        .preview-label{font-weight:700;font-size:.65rem;text-transform:uppercase;letter-spacing:.5px;color:var(--text-muted)}
-        .preview-label.ijazah{color:#1565C0}
-        .preview-controls{width:100%;display:flex;flex-direction:column;gap:3px;margin-top:auto;align-items:center}
-        .preview-controls .btn{width:100%;font-size:.55rem;padding:.25rem;line-height:1.2}
-        .ctrl-btn{background:var(--input-bg);color:var(--text-main);border:1px solid var(--border-color);border-radius:5px;cursor:pointer;font-size:.9rem;width:100%;height:28px;display:flex;align-items:center;justify-content:center;font-weight:bold;user-select:none;padding:0}
-        .ctrl-btn:hover{background:var(--accent-red);color:#fff}
-        .ctrl-btn:active{transform:scale(.93)}
-        .ctrl-btn.zoom-btn{font-size:.75rem;letter-spacing:-1px}
-        .dpad-container{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%}
-        .toggle-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-        .toggle-row label.lbl{flex:1}
-        .toggle-switch{position:relative;display:inline-block;width:44px;height:24px;flex-shrink:0}
-        .toggle-switch input{opacity:0;width:0;height:0}
-        .toggle-slider{position:absolute;cursor:pointer;inset:0;background:var(--border-color);border-radius:24px;transition:.3s}
-        .toggle-slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
-        .toggle-switch input:checked+.toggle-slider{background:var(--accent-red)}
-        .toggle-switch input:checked+.toggle-slider:before{transform:translateX(20px)}
-        .school-input-wrap{display:flex;flex-direction:column;gap:4px}
-        .school-input-wrap .hint{font-size:.6rem;color:var(--text-muted);font-style:italic}
-        .font-size-row{display:flex;gap:6px;align-items:center}
-        .font-size-row label{flex:1;font-size:.72rem;color:var(--text-muted);white-space:nowrap}
-        .font-size-row input{width:60px;text-align:center;padding:.35rem}
-        footer{background:#000;border-top:1px solid #333;padding:.8rem;text-align:center;margin-top:auto}
-        footer p{color:#e0e0e0;font-size:.75rem}
-        #toast{visibility:hidden;min-width:200px;background:var(--toast-bg);color:#fff;text-align:center;border-radius:4px;padding:12px;position:fixed;z-index:1000;left:50%;bottom:20px;transform:translateX(-50%);font-size:.85rem;border:1px solid var(--accent-red)}
-        #toast.show{visibility:visible;animation:fadein .5s,fadeout .5s 2.5s}
-        @keyframes fadein{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
-        @keyframes fadeout{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
-        .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.92);backdrop-filter:blur(5px)}
-        .modal-content{background:var(--bg-card);margin:2% auto;padding:15px;border:1px solid var(--accent-red);width:96%;max-width:1200px;height:96vh;display:flex;flex-direction:column;border-radius:10px;color:var(--text-main)}
-        .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border-color)}
-        .modal-header h2{font-size:1rem}
-        .modal-body{flex:1;overflow:auto;background:#111;display:flex;flex-direction:column;padding:1rem;gap:40px}
-        .modal-footer{padding-top:.8rem;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap}
-        .a4-version-section{display:flex;flex-direction:column;gap:15px;align-items:center;width:100%}
-        .version-title{color:#fff;font-size:1rem;font-weight:bold;border-bottom:2px solid var(--accent-red);padding-bottom:5px;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
-        .version-title .util-badge{font-size:.65rem;background:#4CAF50;color:#fff;padding:2px 6px;border-radius:20px}
-        .a4-page-grid{display:flex;flex-direction:column;gap:15px;align-items:center;width:100%}
-        .a4-page-grid img{max-width:100%;height:auto;border:2px solid #555;border-radius:4px}
-        .page-label{color:#aaa;font-size:.75rem;margin-bottom:-8px}
-        .close{color:var(--text-muted);font-size:24px;font-weight:bold;cursor:pointer;line-height:1}
-        .close:hover{color:var(--accent-red)}
-        .sep-line{height:1px;background:var(--border-color);margin:2px 0}
-        @media(max-width:1000px){main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}.card{max-height:none;padding:.8rem;gap:.6rem}}
-        @media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:35px}.site-info h1{font-size:.9rem}.site-info p{font-size:.6rem}.upload-grid{gap:4px}.upload-area{min-height:48px;padding:4px}.upload-area .up-label{font-size:.85rem}.upload-area .up-label.small{font-size:.6rem}.previews-wrapper{gap:5px;padding:5px}.preview-label{font-size:.55rem}.preview-controls .btn{font-size:.5rem;padding:.2rem}.ctrl-btn{height:25px;font-size:.75rem}.ctrl-btn.zoom-btn{font-size:.65rem}.section-title{font-size:.8rem}.qty-item label{font-size:.65rem}.qty-grid{gap:5px}}
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KARYA ABADI PAS FOTO - PRO</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+:root{--bg-body:#121212;--bg-card:#1e1e1e;--bg-input:#2d2d2d;--text-main:#fff;--text-muted:#b0b0b0;--accent-red:#D32F2F;--border-color:#444;--input-bg:#333;--shadow:0 4px 6px rgba(0,0,0,.3);--toast-bg:#333;--gold:#FFD700;--blue:#1565C0;--green:#4CAF50}
+[data-theme="light"]{--bg-body:#f0f2f5;--bg-card:#fff;--bg-input:#f7f7f7;--text-main:#1a1a1a;--text-muted:#666;--accent-red:#D32F2F;--border-color:#ddd;--input-bg:#fff;--shadow:0 4px 12px rgba(0,0,0,.1);--toast-bg:#333}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+body{background:var(--bg-body);color:var(--text-main);line-height:1.6;display:flex;flex-direction:column;min-height:100vh}
+header{background:#000;border-bottom:2px solid var(--accent-red);padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.5);z-index:10}
+.logo-container{display:flex;align-items:center;gap:.8rem}
+.site-logo-img{width:45px;height:auto;max-height:45px;object-fit:contain}
+.site-info h1{font-size:1.2rem;color:#fff;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:1.2}
+.site-info h1 span{color:var(--accent-red)}
+.site-info p{font-size:.7rem;color:var(--gold);letter-spacing:1px}
+.theme-toggle{background:rgba(255,255,255,.1);border:1px solid #555;color:#fff;padding:.4rem;border-radius:50%;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.theme-toggle:hover{background:rgba(255,255,255,.2)}
+main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;grid-template-columns:370px 1fr;gap:1rem;align-items:start}
+.card{background:var(--bg-card);border-radius:12px;padding:1rem;box-shadow:var(--shadow);border:1px solid var(--border-color);display:flex;flex-direction:column;gap:.7rem}
+.left-panel{max-height:96vh;overflow-y:auto;position:sticky;top:1rem}
+.left-panel::-webkit-scrollbar{width:5px}
+.left-panel::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:5px}
+.right-panel{min-height:60vh}
+.section-title{font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:var(--accent-red);text-transform:uppercase;letter-spacing:.5px}
+.section-title.blue{color:var(--blue)}
+.sep{height:1px;background:var(--border-color);margin:1px 0}
+/* Upload Dropzone */
+.dropzone{border:2px dashed var(--border-color);border-radius:10px;padding:1.2rem .8rem;text-align:center;cursor:pointer;position:relative;background:var(--bg-input);transition:all .2s}
+.dropzone:hover,.dropzone.over{border-color:var(--accent-red);background:rgba(211,47,47,.08)}
+.dropzone.over{animation:dzPulse 1s infinite}
+@keyframes dzPulse{0%,100%{box-shadow:0 0 0 0 rgba(211,47,47,.3)}50%{box-shadow:0 0 0 8px rgba(211,47,47,0)}}
+.dropzone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.dropzone .dz-icon{font-size:1.6rem;color:var(--accent-red);margin-bottom:.3rem}
+.dropzone .dz-text{font-size:.8rem;font-weight:700}
+.dropzone .dz-hint{font-size:.65rem;color:var(--text-muted);margin-top:.2rem}
+.counter-row{display:flex;align-items:center;justify-content:space-between;font-size:.78rem}
+.counter-row .count{font-weight:800;color:var(--gold)}
+.btn-text{background:none;border:none;color:var(--accent-red);cursor:pointer;font-size:.72rem;font-weight:600;text-decoration:underline}
+.btn-text:hover{color:#b71c1c}
+/* Size Buttons */
+.size-label{font-size:.68rem;color:var(--text-muted);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
+.size-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
+.size-btn{padding:7px 4px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-input);color:var(--text-main);cursor:pointer;font-size:.78rem;font-weight:700;text-align:center;transition:all .15s}
+.size-btn:hover{border-color:var(--accent-red)}
+.size-btn.active{background:var(--accent-red);color:#fff;border-color:var(--accent-red)}
+.size-btn:disabled{opacity:.35;cursor:not-allowed}
+/* Toggles */
+.toggle-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.toggle-row label.lbl{flex:1;font-size:.8rem;font-weight:500;color:var(--text-muted)}
+.toggle-switch{position:relative;display:inline-block;width:42px;height:22px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;cursor:pointer;inset:0;background:var(--border-color);border-radius:22px;transition:.3s}
+.toggle-slider:before{position:absolute;content:"";height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s}
+.toggle-switch input:checked+.toggle-slider{background:var(--accent-red)}
+.toggle-switch input:checked+.toggle-slider:before{transform:translateX(20px)}
+.ijazah-box{display:flex;flex-direction:column;gap:5px;padding-left:8px;border-left:3px solid var(--blue)}
+.ijazah-box label.lbl{font-size:.75rem;font-weight:500;color:var(--text-muted)}
+.ijazah-box input[type="text"],.ijazah-box input[type="number"]{padding:.4rem .5rem;border-radius:6px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-main);font-size:.82rem;width:100%}
+.ijazah-box input[type="text"]{text-transform:uppercase;letter-spacing:.5px}
+.ijazah-box .hint{font-size:.6rem;color:var(--text-muted);font-style:italic}
+.font-row{display:flex;gap:6px;align-items:center}
+.font-row label{flex:1;font-size:.7rem;color:var(--text-muted);white-space:nowrap}
+.font-row input{width:60px!important;text-align:center}
+/* Buttons */
+.btn{background:var(--accent-red);color:#fff;border:none;cursor:pointer;font-weight:700;display:flex;justify-content:center;align-items:center;text-transform:uppercase;padding:.55rem;border-radius:6px;font-size:.78rem;gap:5px}
+.btn:hover{background:#b71c1c;transform:translateY(-1px)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none}
+.btn.secondary{background:transparent;color:var(--text-main);border:1px solid var(--border-color)}
+.btn.secondary:hover{background:var(--bg-input);border-color:var(--text-main);transform:none}
+.btn-gold{background:var(--gold)!important;color:#000!important;border:none!important;font-weight:800}
+.btn-gold:hover{background:#ffcc00!important}
+.btn-group{display:flex;flex-direction:column;gap:6px}
+/* Info Box */
+.info-box{background:var(--bg-input);border-radius:8px;padding:.6rem .8rem;display:flex;flex-direction:column;gap:3px}
+.info-row{display:flex;justify-content:space-between;font-size:.72rem;color:var(--text-muted)}
+.info-row strong{color:var(--text-main)}
+/* Photo Grid */
+.grid-header{display:flex;justify-content:space-between;align-items:center}
+.grid-header .total{font-size:.78rem;color:var(--gold);font-weight:700}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.empty-state{grid-column:1/-1;text-align:center;padding:3rem 1rem;color:var(--text-muted)}
+.empty-state i{font-size:3rem;margin-bottom:.8rem;display:block;opacity:.3}
+.empty-state p{font-size:.85rem}
+/* Photo Card */
+.photo-card{background:var(--bg-input);border-radius:8px;overflow:hidden;border:1px solid var(--border-color);display:flex;flex-direction:column;animation:cardIn .3s ease-out}
+@keyframes cardIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.card-head{display:flex;align-items:center;justify-content:space-between;padding:6px 8px;background:rgba(0,0,0,.15)}
+.card-num{font-size:.7rem;font-weight:800}
+.card-size{font-size:.6rem;color:var(--gold);font-weight:600;background:rgba(255,215,0,.12);padding:1px 6px;border-radius:10px}
+.card-remove{background:none;border:none;color:var(--text-muted);cursor:pointer;font-size:1rem;line-height:1;padding:0 2px}
+.card-remove:hover{color:var(--accent-red)}
+.card-qty{display:flex;align-items:center;gap:6px;padding:4px 8px;font-size:.68rem;color:var(--text-muted)}
+.card-qty input{width:48px;padding:3px;text-align:center;border-radius:4px;border:1px solid var(--border-color);background:var(--input-bg);color:var(--text-main);font-size:.75rem;font-weight:700}
+.canvas-wrap{padding:4px 8px;display:flex;justify-content:center;background:rgba(255,255,255,.03)}
+.canvas-wrap canvas{border:1px solid var(--border-color);background:#fff;cursor:grab;max-width:100%;height:auto;display:block}
+.canvas-wrap canvas:active{cursor:grabbing}
+.card-ctrl{padding:4px 8px;display:flex;flex-direction:column;gap:3px;align-items:center}
+.dpad{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;width:100%;max-width:160px}
+.cb{background:var(--bg-card);color:var(--text-main);border:1px solid var(--border-color);border-radius:4px;cursor:pointer;font-size:.8rem;width:100%;height:26px;display:flex;align-items:center;justify-content:center;font-weight:bold;user-select:none;padding:0}
+.cb:hover{background:var(--accent-red);color:#fff}
+.cb:active{transform:scale(.9)}
+.cb.zm{font-size:.72rem;letter-spacing:-1px}
+.card-dl{width:100%;max-width:160px;font-size:.6rem;padding:.3rem}
+/* Modal */
+.modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.92);backdrop-filter:blur(5px)}
+.modal-content{background:var(--bg-card);margin:2% auto;padding:15px;border:2px solid var(--accent-red);width:96%;max-width:1200px;height:96vh;display:flex;flex-direction:column;border-radius:10px;color:var(--text-main)}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border-color)}
+.modal-header h2{font-size:1rem}
+.modal-body{flex:1;overflow:auto;background:#111;display:flex;flex-direction:column;padding:1rem;gap:30px;align-items:center}
+.modal-footer{padding-top:.8rem;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap}
+.a4-section{display:flex;flex-direction:column;gap:12px;align-items:center;width:100%}
+.a4-title{color:#fff;font-size:.95rem;font-weight:bold;border-bottom:2px solid var(--accent-red);padding-bottom:5px;width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px}
+.badge{font-size:.62rem;background:var(--green);color:#fff;padding:2px 7px;border-radius:20px;font-weight:700}
+.a4-grid{display:flex;flex-direction:column;gap:15px;align-items:center;width:100%}
+.a4-grid img{max-width:100%;height:auto;border:2px solid #555;border-radius:4px}
+.page-lbl{color:#aaa;font-size:.72rem;margin-bottom:-8px}
+.close{color:var(--text-muted);font-size:26px;font-weight:bold;cursor:pointer;line-height:1}
+.close:hover{color:var(--accent-red)}
+#toast{visibility:hidden;min-width:200px;background:var(--toast-bg);color:#fff;text-align:center;border-radius:6px;padding:12px 20px;position:fixed;z-index:3000;left:50%;bottom:20px;transform:translateX(-50%);font-size:.82rem;border:1px solid var(--accent-red);box-shadow:0 4px 20px rgba(0,0,0,.5)}
+#toast.show{visibility:visible;animation:fadein .4s,fadeout .4s 2.5s}
+@keyframes fadein{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
+@keyframes fadeout{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
+footer{background:#000;border-top:1px solid #333;padding:.7rem;text-align:center;margin-top:auto}
+footer p{color:#e0e0e0;font-size:.72rem}
+@media(max-width:1000px){main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}.left-panel{max-height:none;position:static;order:-1}}
+@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.size-grid{grid-template-columns:repeat(3,1fr)}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}}
+</style>
 </head>
 <body>
 
 <header>
-    <div class="logo-container">
-        <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
-        <div class="site-info">
-            <h1>KARYA ABADI <span>PAS FOTO</span></h1>
-            <p>Pas Foto Cepat, Hasil Tepat</p>
-        </div>
-    </div>
-    <button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
+<div class="logo-container">
+<img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
+<div class="site-info">
+<h1>KARYA ABADI <span>PAS FOTO</span></h1>
+<p>Pas Foto Cepat, Hasil Tepat</p>
+</div>
+</div>
+<button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
 </header>
 
 <main>
-    <section class="card">
-        <div class="section-title">Upload Foto Portrait</div>
-        <div class="upload-grid">
-            <div class="upload-area"><input type="file" id="img2x3" accept="image/*"><div class="up-label">2X3</div><div class="file-name" id="fn2x3"></div></div>
-            <div class="upload-area"><input type="file" id="img3x4" accept="image/*"><div class="up-label">3X4</div><div class="file-name" id="fn3x4"></div></div>
-            <div class="upload-area"><input type="file" id="img4x6" accept="image/*"><div class="up-label">4X6</div><div class="file-name" id="fn4x6"></div></div>
-        </div>
-        <div class="section-title">Upload Foto Landscape</div>
-        <div class="upload-grid">
-            <div class="upload-area"><input type="file" id="img2x3L" accept="image/*"><div class="up-label">2X3</div><div class="file-name" id="fn2x3L"></div></div>
-            <div class="upload-area"><input type="file" id="img3x4L" accept="image/*"><div class="up-label">3X4</div><div class="file-name" id="fn3x4L"></div></div>
-            <div class="upload-area"><input type="file" id="img4x6L" accept="image/*"><div class="up-label">4X6</div><div class="file-name" id="fn4x6L"></div></div>
-        </div>
-        <div class="sep-line"></div>
-        <div class="section-title ijazah-title">Upload Foto Ijazah &amp; Khusus</div>
-        <div class="upload-grid">
-            <div class="upload-area"><input type="file" id="img5x5" accept="image/*"><div class="up-label">5X5</div><div class="file-name" id="fn5x5"></div></div>
-            <div class="upload-area"><input type="file" id="imgIjazahW" accept="image/*"><div class="up-label small">IJZ 3X4</div><div class="up-label small" style="color:#4CAF50;font-size:.6rem">WARNA</div><div class="file-name" id="fnIjazahW"></div></div>
-            <div class="upload-area"><input type="file" id="imgIjazahBW" accept="image/*"><div class="up-label small">IJZ 3X4</div><div class="up-label small" style="color:#999;font-size:.6rem">HITAM PT</div><div class="file-name" id="fnIjazahBW"></div></div>
-        </div>
-        <div class="school-input-wrap">
-            <label class="lbl">Nama Sekolah / Universitas (Ijazah)</label>
-            <input type="text" id="schoolNameInput" placeholder="NAMA SEKOLAH/UNIVERSITAS">
-            <div class="font-size-row">
-                <label>Ukuran Font (0 = Auto)</label>
-                <input type="number" id="ijazahFontSize" value="0" min="0" max="40">
-            </div>
-            <div class="hint">Huruf otomatis kapital, rata tengah, font Arial. Kolom nama di bawah dalam foto 3x4.</div>
-        </div>
-        <div class="sep-line"></div>
-        <div class="toggle-row">
-            <label class="lbl">Mode Hitam Putih (Foto Reguler)</label>
-            <label class="toggle-switch"><input type="checkbox" id="bwToggle"><span class="toggle-slider"></span></label>
-        </div>
-        <div class="sep-line"></div>
-        <div class="section-title">Jumlah Cetak (A4)</div>
-        <div class="qty-grid">
-            <div class="qty-item"><label>2X3</label><input type="number" id="qty2x3" value="0" min="0"></div>
-            <div class="qty-item"><label>3X4</label><input type="number" id="qty3x4" value="0" min="0"></div>
-            <div class="qty-item"><label>4X6</label><input type="number" id="qty4x6" value="0" min="0"></div>
-            <div class="qty-item"><label>5X5</label><input type="number" id="qty5x5" value="0" min="0"></div>
-            <div class="qty-item"><label>IJZ WARNA</label><input type="number" id="qtyIjazahW" value="0" min="0"></div>
-            <div class="qty-item"><label>IJZ HITAM PT</label><input type="number" id="qtyIjazahBW" value="0" min="0"></div>
-        </div>
-        <div class="btn-group">
-            <button class="btn secondary" id="resetAllBtn" disabled>Reset Posisi Crop</button>
-            <button class="btn btn-gold" id="previewA4Btn" disabled>PREVIEW CETAK A4</button>
-        </div>
-    </section>
+<!-- ========== PANEL KIRI ========== -->
+<aside class="card left-panel" id="leftPanel">
 
-    <section class="card">
-        <div class="section-title">Hasil Crop (Portrait)</div>
-        <div class="previews-wrapper">
-            <div class="preview-card"><canvas id="canvas2x3"></canvas><div class="preview-label">2X3</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="2x3" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="2x3" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="2x3" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="2x3" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="2x3" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="2x3" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl2x3" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas3x4"></canvas><div class="preview-label">3X4</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="3x4" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="3x4" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="3x4" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="3x4" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="3x4" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="3x4" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl3x4" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas4x6"></canvas><div class="preview-label">4X6</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="4x6" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="4x6" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="4x6" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="4x6" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="4x6" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="4x6" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl4x6" disabled>DOWNLOAD</button></div></div>
-        </div>
-        <div class="section-title" style="margin-top:.2rem">Hasil Crop (Landscape)</div>
-        <div class="previews-wrapper">
-            <div class="preview-card"><canvas id="canvas2x3L"></canvas><div class="preview-label">2X3</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="2x3L" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="2x3L" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="2x3L" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="2x3L" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="2x3L" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="2x3L" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl2x3L" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas3x4L"></canvas><div class="preview-label">3X4</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="3x4L" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="3x4L" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="3x4L" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="3x4L" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="3x4L" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="3x4L" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl3x4L" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvas4x6L"></canvas><div class="preview-label">4X6</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="4x6L" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="4x6L" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="4x6L" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="4x6L" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="4x6L" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="4x6L" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl4x6L" disabled>DOWNLOAD</button></div></div>
-        </div>
-        <div class="section-title ijazah-title" style="margin-top:.2rem">Hasil Crop (Ijazah &amp; Khusus)</div>
-        <div class="previews-wrapper">
-            <div class="preview-card"><canvas id="canvas5x5"></canvas><div class="preview-label">5X5</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="5x5" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="5x5" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="5x5" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="5x5" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="5x5" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="5x5" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDl5x5" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvasIjazahW"></canvas><div class="preview-label ijazah">IJAZAH 3X4 WARNA</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="IjazahW" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="IjazahW" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="IjazahW" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="IjazahW" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="IjazahW" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="IjazahW" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDlIjazahW" disabled>DOWNLOAD</button></div></div>
-            <div class="preview-card"><canvas id="canvasIjazahBW"></canvas><div class="preview-label ijazah">IJAZAH 3X4 HITAM PT</div><div class="preview-controls"><div class="dpad-container"><button class="ctrl-btn zoom-btn" data-key="IjazahBW" data-action="zoom-out">&minus;</button><button class="ctrl-btn" data-key="IjazahBW" data-action="move-up">&#9650;</button><button class="ctrl-btn zoom-btn" data-key="IjazahBW" data-action="zoom-in">+</button><button class="ctrl-btn" data-key="IjazahBW" data-action="move-left">&#9664;</button><button class="ctrl-btn" data-key="IjazahBW" data-action="move-down">&#9660;</button><button class="ctrl-btn" data-key="IjazahBW" data-action="move-right">&#9654;</button></div><button class="btn btn-gold" id="btnDlIjazahBW" disabled>DOWNLOAD</button></div></div>
-        </div>
-        <p style="font-size:.6rem;color:var(--text-muted);text-align:center;margin-top:2px">Geser 0,5mm/klik &bull; Zoom &plusmn;1%/klik terpusat tengah &bull; Scroll wheel = zoom</p>
-    </section>
+<div class="section-title"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Foto</div>
+<div class="dropzone" id="dropzone">
+<input type="file" id="fileInput" accept="image/*" multiple>
+<div class="dz-icon"><i class="fa-solid fa-images"></i></div>
+<div class="dz-text">Klik atau Seret Foto ke Sini</div>
+<div class="dz-hint">JPG / PNG &mdash; Maksimal 50 foto sekaligus</div>
+</div>
+<div class="counter-row">
+<span><span class="count" id="cntNum">0</span> / 50 foto terupload</span>
+<button class="btn-text" id="clearAllBtn" style="display:none">Hapus Semua</button>
+</div>
+
+<div class="sep"></div>
+
+<div class="section-title"><i class="fa-solid fa-crop-simple"></i> Ukuran Output</div>
+<div class="size-label">Portrait</div>
+<div class="size-grid" id="sizeGridP">
+<button class="size-btn" data-size="2x3">2x3</button>
+<button class="size-btn active" data-size="3x4">3x4</button>
+<button class="size-btn" data-size="4x6">4x6</button>
+<button class="size-btn" data-size="5x5">5x5</button>
+</div>
+<div class="size-label" style="margin-top:4px">Landscape</div>
+<div class="size-grid" id="sizeGridL">
+<button class="size-btn" data-size="2x3L">2x3</button>
+<button class="size-btn" data-size="3x4L">3x4</button>
+<button class="size-btn" data-size="4x6L">4x6</button>
+</div>
+
+<div class="sep"></div>
+
+<div class="section-title"><i class="fa-solid fa-sliders"></i> Pengaturan Mode</div>
+<div class="toggle-row">
+<label class="lbl">Hitam Putih (Reguler)</label>
+<label class="toggle-switch"><input type="checkbox" id="bwToggle"><span class="toggle-slider"></span></label>
+</div>
+<div class="toggle-row">
+<label class="lbl">Mode Ijazah</label>
+<label class="toggle-switch"><input type="checkbox" id="ijazahToggle"><span class="toggle-slider"></span></label>
+</div>
+<div class="ijazah-box" id="ijazahBox" style="display:none">
+<label class="lbl">Nama Sekolah / Universitas</label>
+<input type="text" id="schoolName" placeholder="NAMA SEKOLAH / UNIVERSITAS">
+<div class="font-row">
+<label>Ukuran Font (0 = Auto)</label>
+<input type="number" id="fontSize" value="0" min="0" max="40">
+</div>
+<div class="hint">Huruf otomatis kapital, rata tengah, font Arial</div>
+<div class="toggle-row" style="margin-top:4px">
+<label class="lbl" style="font-size:.72rem">Ijazah Hitam Putih</label>
+<label class="toggle-switch"><input type="checkbox" id="ijazahBWToggle"><span class="toggle-slider"></span></label>
+</div>
+</div>
+
+<div class="sep"></div>
+
+<div class="section-title"><i class="fa-solid fa-bolt"></i> Aksi</div>
+<div class="btn-group">
+<button class="btn secondary" id="resetAllBtn" disabled><i class="fa-solid fa-arrows-rotate"></i> Reset Semua Posisi</button>
+<button class="btn btn-gold" id="arrangeBtn" disabled><i class="fa-solid fa-table-cells"></i> Susun Pintar di A4</button>
+<button class="btn secondary" id="dlAllBtn" disabled><i class="fa-solid fa-download"></i> Download Semua Foto</button>
+</div>
+
+<div class="sep"></div>
+
+<div class="section-title blue"><i class="fa-solid fa-circle-info"></i> Informasi</div>
+<div class="info-box">
+<div class="info-row"><span>Ukuran aktif upload:</span><strong id="infoSize">3x4</strong></div>
+<div class="info-row"><span>Total foto:</span><strong id="infoCount">0</strong></div>
+<div class="info-row"><span>Total cetak (dengan jumlah):</span><strong id="infoTotal">0</strong></div>
+<div class="info-row"><span>Estimasi halaman A4:</span><strong id="infoPages">0</strong></div>
+</div>
+
+</aside>
+
+<!-- ========== PANEL KANAN ========== -->
+<section class="card right-panel" id="rightPanel">
+<div class="grid-header">
+<div class="section-title"><i class="fa-solid fa-eye"></i> Preview &amp; Atur Posisi</div>
+<div class="total" id="gridTotal"></div>
+</div>
+<div class="photo-grid" id="photoGrid">
+<div class="empty-state" id="emptyState">
+<i class="fa-regular fa-image"></i>
+<p>Belum ada foto. Upload foto di panel kiri untuk mulai mengatur posisi crop.</p>
+</div>
+</div>
+</section>
 </main>
 
-<footer><p>&copy; 2026 Karya Abadi Pas Foto</p></footer>
-
+<!-- Modal A4 -->
 <div id="a4Modal" class="modal">
-    <div class="modal-content">
-        <div class="modal-header"><h2>PREVIEW A4</h2><span class="close" id="closeModal">&times;</span></div>
-        <div class="modal-body">
-            <div id="portraitContainer" class="a4-version-section"><div class="version-title">VERSI PORTRAIT <span class="util-badge" id="utilP">-</span></div><div class="a4-page-grid" id="portraitPagesGrid"></div></div>
-            <div id="landscapeContainer" class="a4-version-section"><div class="version-title">VERSI LANDSCAPE <span class="util-badge" id="utilL">-</span></div><div class="a4-page-grid" id="landscapePagesGrid"></div></div>
-        </div>
-        <div class="modal-footer">
-            <button class="btn secondary" id="dlPortraitBtn">Download Portrait</button>
-            <button class="btn secondary" id="dlLandscapeBtn">Download Landscape</button>
-            <button class="btn btn-gold" id="downloadA4Btn">DOWNLOAD SEMUA</button>
-        </div>
-    </div>
+<div class="modal-content">
+<div class="modal-header"><h2><i class="fa-solid fa-file-image"></i> PREVIEW CETAK A4</h2><span class="close" id="closeModal">&times;</span></div>
+<div class="modal-body" id="modalBody"></div>
+<div class="modal-footer">
+<button class="btn secondary" id="dlA4Btn"><i class="fa-solid fa-download"></i> Download Semua Halaman</button>
 </div>
+</div>
+</div>
+
 <div id="toast">Pesan</div>
+<footer><p>&copy; 2026 Karya Abadi Pas Foto</p></footer>
 
 <script>
 /* ===== KONSTANTA ===== */
-const MM_TO_PX = 10;
-const CUT_LINE_W = 1;
-const A4_MARGIN = 50;
-const A4_W = 2100, A4_H = 2970;
-const MOVE_PX = 5;
-const ZOOM_DELTA = 0.01;
+const MM_PX=10,CUT_W=1,A4_W=2100,A4_H=2970,A4_M=50,MOVE=5,ZOOM_D=0.01,MAX=50;
+const SIZES={
+    '2x3':{w:216,h:279},'3x4':{w:279,h:381},'4x6':{w:381,h:559},'5x5':{w:500,h:500},
+    '2x3L':{w:279,h:216},'3x4L':{w:381,h:279},'4x6L':{w:559,h:381}
+};
+const BAND_H=30; // tinggi band ijazah dalam px canvas
 
-/* ===== PRESET =====
-   Ijazah: bandH=30px overlay di BAWAH dalam area foto 3x4.
-   Canvas ukuran SAMA PERSIS 3x4 normal. */
-const PRESETS = {
-    "2x3":     { w:216, h:279, type:'normal' },
-    "3x4":     { w:279, h:381, type:'normal' },
-    "4x6":     { w:381, h:559, type:'normal' },
-    "2x3L":    { w:279, h:216, type:'normal' },
-    "3x4L":    { w:381, h:279, type:'normal' },
-    "4x6L":    { w:559, h:381, type:'normal' },
-    "5x5":     { w:500, h:500, type:'normal' },
-    "IjazahW": { w:279, h:381, type:'ijazah', bandH:30, grayscale:false },
-    "IjazahBW":{ w:279, h:381, type:'ijazah', bandH:30, grayscale:true }
+/* ===== STATE ===== */
+let photos=[],nextId=1,selectedSize='3x4';
+let a4PagesData=[];
+
+/* ===== DOM ===== */
+const $=id=>document.getElementById(id);
+const dropzone=$('dropzone'),fileInput=$('fileInput'),cntNum=$('cntNum'),clearAllBtn=$('clearAllBtn');
+const sizeGridP=$('sizeGridP'),sizeGridL=$('sizeGridL');
+const bwToggle=$('bwToggle'),ijazahToggle=$('ijazahToggle'),ijazahBox=$('ijazahBox');
+const schoolName=$('schoolName'),fontSize=$('fontSize'),ijazahBWToggle=$('ijazahBWToggle');
+const resetAllBtn=$('resetAllBtn'),arrangeBtn=$('arrangeBtn'),dlAllBtn=$('dlAllBtn');
+const infoSize=$('infoSize'),infoCount=$('infoCount'),infoTotal=$('infoTotal'),infoPages=$('infoPages');
+const photoGrid=$('photoGrid'),emptyState=$('emptyState'),gridTotal=$('gridTotal');
+const modal=$('a4Modal'),closeModal=$('closeModal'),modalBody=$('modalBody'),dlA4Btn=$('dlA4Btn');
+const themeToggle=$('themeToggle'),toastEl=$('toast');
+
+/* ===== TEMA ===== */
+themeToggle.onclick=()=>{
+    const l=document.documentElement.getAttribute('data-theme')==='light';
+    document.documentElement.setAttribute('data-theme',l?'dark':'light');
+    themeToggle.innerHTML=l?'&#9728;&#65039;':'&#127769;';
 };
 
-const uploadedImages = {};
-const previewStates = {};
-const refs = {};
-let blackWhiteMode = false;
-let portraitPagesData = [], landscapePagesData = [];
-
-Object.keys(PRESETS).forEach(k => {
-    previewStates[k] = { scale:1, offsetX:0, offsetY:0, isDragging:false, startX:0, startY:0 };
-    refs[k] = {
-        canvas: document.getElementById('canvas' + k),
-        btn:    document.getElementById('btnDl' + k),
-        input:  document.getElementById('img' + k),
-        fn:     document.getElementById('fn' + k)
+/* ===== UKURAN ===== */
+document.querySelectorAll('.size-btn').forEach(b=>{
+    b.onclick=()=>{
+        if(b.disabled)return;
+        document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));
+        b.classList.add('active');
+        selectedSize=b.dataset.size;
+        infoSize.textContent=selectedSize.replace('L',' Landscape');
     };
 });
-
-const resetAllBtn    = document.getElementById('resetAllBtn');
-const previewA4Btn   = document.getElementById('previewA4Btn');
-const themeToggle    = document.getElementById('themeToggle');
-const toastEl        = document.getElementById('toast');
-const modal          = document.getElementById('a4Modal');
-const closeModalEl   = document.getElementById('closeModal');
-const portraitGrid   = document.getElementById('portraitPagesGrid');
-const landscapeGrid  = document.getElementById('landscapePagesGrid');
-const downloadA4Btn  = document.getElementById('downloadA4Btn');
-const dlPortraitBtn  = document.getElementById('dlPortraitBtn');
-const dlLandscapeBtn = document.getElementById('dlLandscapeBtn');
-const utilP          = document.getElementById('utilP');
-const utilL          = document.getElementById('utilL');
-const bwToggle       = document.getElementById('bwToggle');
-const schoolInput    = document.getElementById('schoolNameInput');
-const fontSizeInput  = document.getElementById('ijazahFontSize');
-
-/* ===== EVENT ===== */
-themeToggle.addEventListener('click', () => {
-    const l = document.documentElement.getAttribute('data-theme') === 'light';
-    document.documentElement.setAttribute('data-theme', l ? 'dark' : 'light');
-    themeToggle.innerHTML = l ? '&#9728;&#65039;' : '&#127769;';
-});
-
-bwToggle.addEventListener('change', () => {
-    blackWhiteMode = bwToggle.checked;
-    Object.keys(PRESETS).forEach(k => {
-        if (PRESETS[k].type === 'normal' && uploadedImages[k]) drawPreview(k);
+function lockSizes(lock){
+    document.querySelectorAll('.size-btn').forEach(b=>{
+        if(lock){
+            b.disabled=b.dataset.size!=='3x4';
+            if(b.dataset.size==='3x4'){b.classList.add('active');b.disabled=false;}
+            else b.classList.remove('active');
+            selectedSize='3x4';infoSize.textContent='3x4 (Ijazah)';
+        }else{b.disabled=false;}
     });
-    showToast(blackWhiteMode ? 'Mode Hitam Putih AKTIF' : 'Mode Berwarna AKTIF');
-});
-
-schoolInput.addEventListener('input', redrawIjazah);
-fontSizeInput.addEventListener('input', redrawIjazah);
-function redrawIjazah() {
-    ['IjazahW','IjazahBW'].forEach(k => { if (uploadedImages[k]) drawPreview(k); });
 }
 
-Object.keys(PRESETS).forEach(k => {
-    refs[k].input.addEventListener('change', e => handleUpload(e, k));
-    setupInteractions(k);
-    refs[k].btn.addEventListener('click', () => downloadSingle(k));
-});
-
-document.querySelectorAll('.ctrl-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const k = btn.dataset.key, a = btn.dataset.action;
-        if (!uploadedImages[k]) return;
-        const s = previewStates[k];
-        switch(a) {
-            case 'move-up':    s.offsetY -= MOVE_PX; drawPreview(k); break;
-            case 'move-down':  s.offsetY += MOVE_PX; drawPreview(k); break;
-            case 'move-left':  s.offsetX -= MOVE_PX; drawPreview(k); break;
-            case 'move-right': s.offsetX += MOVE_PX; drawPreview(k); break;
-            case 'zoom-in':    zoomPreview(k, ZOOM_DELTA);  break;
-            case 'zoom-out':   zoomPreview(k, -ZOOM_DELTA); break;
-        }
-    });
-});
-
-Object.keys(PRESETS).forEach(k => {
-    refs[k].canvas.addEventListener('wheel', e => {
-        if (!uploadedImages[k]) return;
-        e.preventDefault();
-        zoomPreview(k, e.deltaY < 0 ? ZOOM_DELTA : -ZOOM_DELTA);
-    }, { passive:false });
-});
-
-resetAllBtn.addEventListener('click', resetAll);
-previewA4Btn.addEventListener('click', generateA4Preview);
-closeModalEl.addEventListener('click', () => modal.style.display = 'none');
-window.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-downloadA4Btn.addEventListener('click', () => downloadPages([...portraitPagesData, ...landscapePagesData]));
-dlPortraitBtn.addEventListener('click', () => downloadPages(portraitPagesData));
-dlLandscapeBtn.addEventListener('click', () => downloadPages(landscapePagesData));
+/* ===== IJAZAH TOGGLE ===== */
+ijazahToggle.onchange=()=>{
+    const on=ijazahToggle.checked;
+    ijazahBox.style.display=on?'flex':'none';
+    lockSizes(on);
+    if(on)bwToggle.checked=false; // ijazah punya BW sendiri
+};
 
 /* ===== UPLOAD ===== */
-function handleUpload(e, k) {
-    const f = e.target.files[0]; if (!f) return;
-    refs[k].fn.textContent = f.name;
-    const r = new FileReader();
-    r.onload = ev => {
-        const img = new Image();
-        img.onload = () => { uploadedImages[k] = img; enableControls(); initCanvas(k); resetSingle(k); showToast('Foto ' + k + ' berhasil diupload'); };
-        img.src = ev.target.result;
+dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('over');});
+dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('over'));
+dropzone.addEventListener('drop',e=>{e.preventDefault();dropzone.classList.remove('over');handleFiles(e.dataTransfer.files);});
+fileInput.onchange=e=>handleFiles(e.target.files);
+
+function handleFiles(files){
+    if(photos.length>=MAX)return showToast('Maksimal '+MAX+' foto!');
+    let toLoad=[...files].slice(0,MAX-photos.length);
+    if(toLoad.length<files.length)showToast('Hanya '+toLoad.length+' foto ditambahkan (maks '+MAX+')');
+    let loaded=0;
+    toLoad.forEach(f=>{
+        const r=new FileReader();
+        r.onload=ev=>{
+            const img=new Image();
+            img.onload=()=>{addPhoto(img);loaded++;if(loaded===toLoad.length)showToast(loaded+' foto berhasil diupload');};
+            img.src=ev.target.result;
+        };
+        r.readAsDataURL(f);
+    });
+    fileInput.value='';
+}
+
+/* ===== TAMBAH FOTO ===== */
+function addPhoto(img){
+    const isIj=ijazahToggle.checked;
+    const sizeKey=isIj?'3x4':selectedSize;
+    const sz=SIZES[sizeKey];
+    const isBW=isIj?ijazahBWToggle.checked:bwToggle.checked;
+    const e=MM_PX*2+CUT_W*2;
+    const photo={
+        id:nextId++,img,sizeKey,sz:sz,isBW,isIjazah:isIj,quantity:1,
+        state:{scale:1,offsetX:0,offsetY:0,isDragging:false,startX:0,startY:0},
+        canvas:null,card:null
     };
-    r.readAsDataURL(f);
-}
-function enableControls() {
-    resetAllBtn.disabled = false;
-    previewA4Btn.disabled = !Object.keys(uploadedImages).length;
-    Object.keys(refs).forEach(k => { refs[k].btn.disabled = !uploadedImages[k]; });
+    /* Buat canvas */
+    const c=document.createElement('canvas');
+    c.width=sz.w+e;c.height=sz.h+e;
+    photo.canvas=c;
+    /* Buat card DOM */
+    const card=buildCard(photo);
+    photo.card=card;
+    photos.push(photo);
+    resetSingle(photo);
+    photoGrid.appendChild(card);
+    updateUI();
+    /* Scroll ke bawah */
+    card.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-/* ===== CANVAS — ukuran sama persis 3x4 normal ===== */
-function initCanvas(k) {
-    const p = PRESETS[k], c = refs[k].canvas;
-    const e = MM_TO_PX * 2 + CUT_LINE_W * 2;
-    c.width  = p.w + e;
-    c.height = p.h + e;
+function buildCard(p){
+    const card=document.createElement('div');
+    card.className='photo-card';card.id='card-'+p.id;
+    const sizeLabel=p.sizeKey.replace('L',' Land');
+    const modeLabel=p.isIjazah?' Ijazah'+(p.isBW?' BW':''):(p.isBW?' BW':'');
+    card.innerHTML=`
+        <div class="card-head">
+            <span class="card-num">Foto #${photos.length+1}</span>
+            <span class="card-size">${sizeLabel}${modeLabel}</span>
+            <button class="card-remove" data-id="${p.id}" title="Hapus">&times;</button>
+        </div>
+        <div class="card-qty">
+            <label>Jumlah cetak:</label>
+            <input type="number" min="1" max="200" value="1" data-id="${p.id}" class="qty-inp">
+        </div>
+        <div class="canvas-wrap"></div>
+        <div class="card-ctrl">
+            <div class="dpad">
+                <button class="cb zm" data-id="${p.id}" data-act="zo">&minus;</button>
+                <button class="cb" data-id="${p.id}" data-act="mu">&#9650;</button>
+                <button class="cb zm" data-id="${p.id}" data-act="zi">+</button>
+                <button class="cb" data-id="${p.id}" data-act="ml">&#9664;</button>
+                <button class="cb" data-id="${p.id}" data-act="md">&#9660;</button>
+                <button class="cb" data-id="${p.id}" data-act="mr">&#9654;</button>
+            </div>
+            <button class="btn btn-gold card-dl" data-id="${p.id}"><i class="fa-solid fa-download"></i> DOWNLOAD</button>
+        </div>`;
+    card.querySelector('.canvas-wrap').appendChild(p.canvas);
+    return card;
 }
 
-/* ===== RESET — ijazah dipusatkan di area tampak (atas, di atas kolom nama) ===== */
-function resetSingle(k) {
-    const p = PRESETS[k], s = previewStates[k], img = uploadedImages[k];
-    if (!img) return;
-    s.scale = Math.max(p.w / img.width, p.h / img.height) * 1.1;
-    const e = MM_TO_PX * 2 + CUT_LINE_W * 2;
-    s.offsetX = (e + p.w - img.width * s.scale) / 2;
-    if (p.type === 'ijazah') {
-        /* Pusatkan di area tampak (bagian atas, sebelum kolom nama bawah) */
-        const visH = p.h - p.bandH;
-        s.offsetY = (e + visH - img.height * s.scale) / 2;
-    } else {
-        s.offsetY = (e + p.h - img.height * s.scale) / 2;
+/* ===== GAMBAR CANVAS ===== */
+function drawPhoto(p,guides){
+    const ctx=p.canvas.getContext('2d'),w=p.canvas.width,h=p.canvas.height;
+    const sz=p.sz,s=p.state,ins=MM_PX+CUT_W;
+    ctx.clearRect(0,0,w,h);ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
+    if(p.isIjazah){
+        /* Gambar ijazah */
+        const visH=sz.h-BAND_H;
+        ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();
+        ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
+        if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
+        /* Band putih */
+        const bL=CUT_W/2,bW=w-CUT_W,bB=h-CUT_W/2,bT=bB-BAND_H;
+        ctx.fillStyle='#fff';ctx.fillRect(bL,bT,bW,BAND_H);
+        /* Teks sekolah */
+        const sn=(schoolName.value||'NAMA SEKOLAH / UNIVERSITAS').toUpperCase();
+        const mfs=parseInt(fontSize.value)||0;
+        ctx.fillStyle='#000';ctx.textAlign='center';ctx.textBaseline='middle';
+        let fs=mfs>0?Math.min(mfs,40):20;
+        ctx.font='bold '+fs+'px Arial,sans-serif';
+        while(ctx.measureText(sn).width>bW-14&&fs>6){fs--;ctx.font='bold '+fs+'px Arial,sans-serif';}
+        ctx.fillText(sn,w/2,bT+BAND_H/2);
+    }else{
+        /* Gambar reguler */
+        ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();
+        ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
+        if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
     }
-    drawPreview(k);
-}
-function resetAll() {
-    Object.keys(PRESETS).forEach(k => { if (uploadedImages[k]) resetSingle(k); });
-    showToast('Semua posisi crop direset');
-}
-
-/* ===== ZOOM — ijazah terpusat di area tampak (atas) ===== */
-function zoomPreview(k, delta) {
-    const s = previewStates[k], p = PRESETS[k];
-    const e = MM_TO_PX * 2 + CUT_LINE_W * 2;
-    const cx = e / 2 + p.w / 2;
-    let cy;
-    if (p.type === 'ijazah') {
-        const visH = p.h - p.bandH;
-        cy = e / 2 + visH / 2;
-    } else {
-        cy = e / 2 + p.h / 2;
-    }
-    const imgX = (cx - s.offsetX) / s.scale;
-    const imgY = (cy - s.offsetY) / s.scale;
-    s.scale = Math.max(0.01, s.scale + delta);
-    s.offsetX = cx - imgX * s.scale;
-    s.offsetY = cy - imgY * s.scale;
-    drawPreview(k);
-}
-
-/* ===== DRAG ===== */
-function setupInteractions(k) {
-    const c = refs[k].canvas, s = previewStates[k];
-    c.addEventListener('mousedown',  e => startDrag(e, s, k));
-    c.addEventListener('mousemove',  e => doDrag(e, s, k));
-    c.addEventListener('mouseup',    () => endDrag(s));
-    c.addEventListener('mouseleave', () => endDrag(s));
-    c.addEventListener('touchstart', e => { e.preventDefault(); startDrag(e.touches[0], s, k); }, { passive:false });
-    c.addEventListener('touchmove',  e => { e.preventDefault(); doDrag(e.touches[0], s, k); }, { passive:false });
-    c.addEventListener('touchend',   () => endDrag(s));
-}
-function getCoords(c, e) { const r = c.getBoundingClientRect(); return { x:(e.clientX-r.left)*(c.width/r.width), y:(e.clientY-r.top)*(c.height/r.height) }; }
-function startDrag(e, s, k) { if (!uploadedImages[k]) return; s.isDragging = true; const c = getCoords(refs[k].canvas, e); s.startX = c.x - s.offsetX; s.startY = c.y - s.offsetY; }
-function doDrag(e, s, k) { if (!s.isDragging) return; const c = getCoords(refs[k].canvas, e); s.offsetX = c.x - s.startX; s.offsetY = c.y - s.startY; drawPreview(k); }
-function endDrag(s) { s.isDragging = false; }
-
-/* ===== GRAYSCALE ===== */
-function applyGrayscale(ctx, x, y, w, h) {
-    const id = ctx.getImageData(x, y, w, h), d = id.data;
-    for (let i = 0; i < d.length; i += 4) { const g = d[i]*.299+d[i+1]*.587+d[i+2]*.114; d[i]=d[i+1]=d[i+2]=g; }
-    ctx.putImageData(id, x, y);
-}
-
-/* ====================================================================
-   GAMBAR DASAR (bersih)
-
-   Untuk IJAZAH — kolom nama di BAWAH, di dalam area foto:
-   ┌──────────────────────────┐  ← cut line
-   │  border putih 1mm        │
-   │ ┌──────────────────────┐ │
-   │ │                      │ │
-   │ │   FOTO TAMPAK        │ │  ← 279 x 351 (area tampak)
-   │ │                      │ │
-   │ ├──────────────────────┤ │  ← garis pemisah
-   │ │ NAMA SEKOLAH/UNIV    │ │  ← 30px overlay putih di BAWAH
-   │ └──────────────────────┘ │
-   │  border putih 1mm        │
-   └──────────────────────────┘  ← cut line
-   ==================================================================== */
-function drawBaseImage(ctx, k, img) {
-    const p = PRESETS[k], w = ctx.canvas.width, h = ctx.canvas.height, s = previewStates[k];
-    const ins = MM_TO_PX + CUT_LINE_W; // 11px
-
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(0, 0, w, h);
-
-    if (p.type === 'ijazah') {
-        /* 1) Gambar foto di area 279x381 penuh */
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(ins, ins, p.w, p.h);
-        ctx.clip();
-        ctx.drawImage(img, s.offsetX, s.offsetY, img.width * s.scale, img.height * s.scale);
+    /* Cut line */
+    ctx.strokeStyle='#000';ctx.lineWidth=CUT_W;ctx.strokeRect(CUT_W/2,CUT_W/2,w-CUT_W,h-CUT_W);
+    /* Guide lines */
+    if(guides){
+        let gT=ins,gH=sz.h;
+        if(p.isIjazah)gH=sz.h-BAND_H;
+        const cx=Math.round(ins+sz.w/2),cy=Math.round(gT+gH/2);
+        ctx.save();ctx.strokeStyle='#00FF00';ctx.lineWidth=2;ctx.setLineDash([4,4]);
+        ctx.beginPath();ctx.moveTo(cx,gT);ctx.lineTo(cx,gT+gH);ctx.stroke();
+        ctx.beginPath();ctx.moveTo(ins,cy);ctx.lineTo(ins+sz.w,cy);ctx.stroke();
         ctx.restore();
-
-        /* 2) Grayscale jika Hitam Putih */
-        if (p.grayscale) applyGrayscale(ctx, ins, ins, p.w, p.h);
-
-        /* 3) Overlay putih 30px di BAWAH area foto */
-        const bandY = ins + p.h - p.bandH;
-        ctx.fillStyle = '#ffffff';
-        ctx.fillRect(ins, bandY, p.w, p.bandH);
-
-        /* 4) Garis pemisah di atas kolom nama */
-        ctx.strokeStyle = '#000000';
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(ins, bandY);
-        ctx.lineTo(ins + p.w, bandY);
-        ctx.stroke();
-
-        /* 5) Teks nama sekolah — rata tengah di kolom putih bawah */
-        const name = (schoolInput.value || 'NAMA SEKOLAH/UNIVERSITAS').toUpperCase();
-        ctx.fillStyle = '#000000';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-
-        const manualFs = parseInt(fontSizeInput.value) || 0;
-        let fs = (manualFs > 0) ? Math.min(manualFs, 40) : 20;
-        ctx.font = 'bold ' + fs + 'px Arial, sans-serif';
-        while (ctx.measureText(name).width > p.w - 14 && fs > 6) {
-            fs--;
-            ctx.font = 'bold ' + fs + 'px Arial, sans-serif';
-        }
-        ctx.fillText(name, ins + p.w / 2, bandY + p.bandH / 2);
-
-    } else {
-        /* FOTO NORMAL */
-        ctx.save();
-        ctx.beginPath();
-        ctx.rect(ins, ins, p.w, p.h);
-        ctx.clip();
-        ctx.drawImage(img, s.offsetX, s.offsetY, img.width * s.scale, img.height * s.scale);
-        ctx.restore();
-        if (blackWhiteMode) applyGrayscale(ctx, ins, ins, p.w, p.h);
     }
-
-    /* Garis potong sekeliling */
-    ctx.strokeStyle = '#000000';
-    ctx.lineWidth = CUT_LINE_W;
-    ctx.strokeRect(CUT_LINE_W / 2, CUT_LINE_W / 2, w - CUT_LINE_W, h - CUT_LINE_W);
 }
 
-/* ===== PREVIEW — panduan hijau di area tampak (atas, sebelum kolom bawah) ===== */
-function drawPreview(k) {
-    const img = uploadedImages[k]; if (!img) return;
-    const ctx = refs[k].canvas.getContext('2d');
-    drawBaseImage(ctx, k, img);
-
-    const p = PRESETS[k], ins = MM_TO_PX + CUT_LINE_W;
-    let guideTop, guideH;
-    if (p.type === 'ijazah') {
-        guideTop = ins;
-        guideH = p.h - p.bandH; // area tampak di atas
-    } else {
-        guideTop = ins;
-        guideH = p.h;
-    }
-    const cx = Math.round(ins + p.w / 2);
-    const cy = Math.round(guideTop + guideH / 2);
-
-    ctx.save();
-    ctx.strokeStyle = '#00FF00';
-    ctx.lineWidth = 2;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath(); ctx.moveTo(cx, guideTop); ctx.lineTo(cx, guideTop + guideH); ctx.stroke();
-    ctx.beginPath(); ctx.moveTo(ins, cy); ctx.lineTo(ins + p.w, cy); ctx.stroke();
-    ctx.restore();
+function applyGS(ctx,x,y,w,h){
+    const id=ctx.getImageData(x,y,w,h),d=id.data;
+    for(let i=0;i<d.length;i+=4){const g=d[i]*.299+d[i+1]*.587+d[i+2]*.114;d[i]=d[i+1]=d[i+2]=g;}
+    ctx.putImageData(id,x,y);
 }
 
-/* ===== CANVAS BERSIH ===== */
-function getCleanCanvas(k, img) {
-    if (!img) return null;
-    const c = document.createElement('canvas'), p = PRESETS[k];
-    const e = MM_TO_PX * 2 + CUT_LINE_W * 2;
-    c.width = p.w + e; c.height = p.h + e;
-    drawBaseImage(c.getContext('2d'), k, img);
+/* ===== RESET & ZOOM ===== */
+function resetSingle(p){
+    const s=p.state,sz=p.sz,e=MM_PX*2+CUT_W*2;
+    s.scale=Math.max(sz.w/p.img.width,sz.h/p.img.height)*1.1;
+    const visH=p.isIjazah?sz.h-BAND_H:sz.h;
+    s.offsetX=(e+sz.w-p.img.width*s.scale)/2;
+    s.offsetY=(e+visH-p.img.height*s.scale)/2;
+    drawPhoto(p,true);
+}
+function zoomPhoto(p,d){
+    const s=p.state,sz=p.sz,e=MM_PX*2+CUT_W*2;
+    const cx=e/2+sz.w/2,cy=e/2+(p.isIjazah?(sz.h-BAND_H)/2:sz.h/2);
+    const ix=(cx-s.offsetX)/s.scale,iy=(cy-s.offsetY)/s.scale;
+    s.scale=Math.max(.01,s.scale+d);
+    s.offsetX=cx-ix*s.scale;s.offsetY=cy-iy*s.scale;
+    drawPhoto(p,true);
+}
+
+/* ===== INTERAKSI: EVENT DELEGATION ===== */
+/* Klik kontrol */
+photoGrid.addEventListener('click',e=>{
+    const rm=e.target.closest('.card-remove');
+    if(rm){removePhoto(+rm.dataset.id);return;}
+    const dl=e.target.closest('.card-dl');
+    if(dl){downloadSingle(+dl.dataset.id);return;}
+    const cb=e.target.closest('.cb');
+    if(cb){handleCtrl(+cb.dataset.id,cb.dataset.act);return;}
+});
+/* Quantity change */
+photoGrid.addEventListener('change',e=>{
+    if(e.target.classList.contains('qty-inp')){
+        const p=photos.find(x=>x.id===+e.target.dataset.id);
+        if(p){p.quantity=Math.max(1,parseInt(e.target.value)||1);updateInfo();}
+    }
+});
+/* Scroll zoom */
+photoGrid.addEventListener('wheel',e=>{
+    const cv=e.target.closest('canvas');if(!cv)return;
+    e.preventDefault();
+    const card=cv.closest('.photo-card');
+    const p=photos.find(x=>x.id===+card.id.replace('card-',''));
+    if(p)zoomPhoto(p,e.deltaY<0?ZOOM_D:-ZOOM_D);
+},{passive:false});
+
+/* Drag mouse */
+photoGrid.addEventListener('mousedown',e=>{
+    const cv=e.target.closest('canvas');if(!cv)return;
+    const card=cv.closest('.photo-card');
+    const p=photos.find(x=>x.id===+card.id.replace('card-',''));
+    if(!p)return;
+    const s=p.state;const c=getCoords(cv,e);
+    s.isDragging=true;s.startX=c.x-s.offsetX;s.startY=c.y-s.offsetY;e.preventDefault();
+});
+document.addEventListener('mousemove',e=>{
+    photos.forEach(p=>{if(!p.state.isDragging)return;const c=getCoords(p.canvas,e);p.state.offsetX=c.x-p.state.startX;p.state.offsetY=c.y-p.state.startY;drawPhoto(p,true);});
+});
+document.addEventListener('mouseup',()=>{photos.forEach(p=>p.state.isDragging=false);});
+
+/* Drag touch */
+photoGrid.addEventListener('touchstart',e=>{
+    const cv=e.target.closest('canvas');if(!cv)return;
+    const card=cv.closest('.photo-card');
+    const p=photos.find(x=>x.id===+card.id.replace('card-',''));
+    if(!p)return;
+    const s=p.state;const c=getCoords(cv,e.touches[0]);
+    s.isDragging=true;s.startX=c.x-s.offsetX;s.startY=c.y-s.offsetY;e.preventDefault();
+},{passive:false});
+document.addEventListener('touchmove',e=>{
+    photos.forEach(p=>{if(!p.state.isDragging)return;const c=getCoords(p.canvas,e.touches[0]);p.state.offsetX=c.x-p.state.startX;p.state.offsetY=c.y-p.state.startY;drawPhoto(p,true);});
+},{passive:false});
+document.addEventListener('touchend',()=>{photos.forEach(p=>p.state.isDragging=false);});
+
+function getCoords(cv,e){const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*(cv.width/r.width),y:(e.clientY-r.top)*(cv.height/r.height)};}
+
+function handleCtrl(id,act){
+    const p=photos.find(x=>x.id===id);if(!p)return;const s=p.state;
+    switch(act){
+        case'mu':s.offsetY-=MOVE;drawPhoto(p,true);break;
+        case'md':s.offsetY+=MOVE;drawPhoto(p,true);break;
+        case'ml':s.offsetX-=MOVE;drawPhoto(p,true);break;
+        case'mr':s.offsetX+=MOVE;drawPhoto(p,true);break;
+        case'zi':zoomPhoto(p,ZOOM_D);break;
+        case'zo':zoomPhoto(p,-ZOOM_D);break;
+    }
+}
+
+/* ===== HAPUS FOTO ===== */
+function removePhoto(id){
+    const idx=photos.findIndex(x=>x.id===id);if(idx<0)return;
+    photos[idx].card.remove();photos.splice(idx,1);
+    renumber();updateUI();showToast('Foto dihapus');
+}
+function renumber(){photos.forEach((p,i)=>{p.card.querySelector('.card-num').textContent='Foto #'+(i+1);});}
+
+/* ===== UPDATE UI ===== */
+function updateUI(){
+    const n=photos.length;
+    cntNum.textContent=n;
+    clearAllBtn.style.display=n?'inline':'none';
+    emptyState.style.display=n?'none':'block';
+    resetAllBtn.disabled=!n;arrangeBtn.disabled=!n;dlAllBtn.disabled=!n;
+    gridTotal.textContent=n?'('+n+' foto)':'';
+    updateInfo();
+}
+function updateInfo(){
+    const n=photos.length;
+    const total=photos.reduce((s,p)=>s+p.quantity,0);
+    infoCount.textContent=n;infoTotal.textContent=total;
+    /* Estimasi halaman A4 */
+    if(!n){infoPages.textContent='0';return;}
+    const mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;
+    let area=0;
+    photos.forEach(p=>{area+=(p.sz.w+MM_PX*2+CUT_W*2)*(p.sz.h+MM_PX*2+CUT_W*2)*p.quantity;});
+    const pageArea=mW*mH;
+    infoPages.textContent=Math.ceil(area/pageArea)||'1';
+}
+
+/* ===== RESET SEMUA ===== */
+resetAllBtn.onclick=()=>{photos.forEach(p=>resetSingle(p));showToast('Semua posisi direset');};
+
+/* ===== HAPUS SEMUA ===== */
+clearAllBtn.onclick=()=>{photos.forEach(p=>p.card.remove());photos=[];updateUI();showToast('Semua foto dihapus');};
+
+/* ===== IJAZAH SETTING LIVE UPDATE ===== */
+schoolName.oninput=()=>{photos.forEach(p=>{if(p.isIjazah)drawPhoto(p,true);});};
+fontSize.oninput=()=>{photos.forEach(p=>{if(p.isIjazah)drawPhoto(p,true);});};
+ijazahBWToggle.onchange=()=>{photos.forEach(p=>{if(p.isIjazah){p.isBW=ijazahBWToggle.checked;drawPhoto(p,true);}});};
+
+/* ===== DOWNLOAD SATU FOTO ===== */
+function getClean(p){
+    const c=document.createElement('canvas');c.width=p.canvas.width;c.height=p.canvas.height;
+    drawPhoto(p,false);c.getContext('2d').drawImage(p.canvas,0,0);drawPhoto(p,true);
     return c;
 }
+function downloadSingle(id){
+    const p=photos.find(x=>x.id===id);if(!p)return;
+    const c=getClean(p);let url=patchJFIF(c.toDataURL('image/jpeg',.95),100,2);
+    const a=document.createElement('a');a.download='KARYA-ABADI-'+p.sizeKey+'-Foto'+p.id+'.jpg';a.href=url;
+    document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+/* Download semua foto individual */
+dlAllBtn.onclick=()=>{
+    if(!photos.length)return;showToast('Mengunduh '+photos.length+' foto...');
+    photos.forEach((p,i)=>{setTimeout(()=>downloadSingle(p.id),300*i);});
+};
 
-/* ===== INJEKSI RESOLUSI JPEG ===== */
-function applyJpegResolution(dataUrl, res, unit) {
-    const hdr = 'data:image/jpeg;base64,';
-    if (!dataUrl.startsWith(hdr)) return dataUrl;
-    const bs = atob(dataUrl.substring(hdr.length));
-    const ia = new Uint8Array(bs.length);
-    for (let i = 0; i < bs.length; i++) ia[i] = bs.charCodeAt(i);
-    if (ia[0]===0xFF&&ia[1]===0xD8&&ia[2]===0xFF&&ia[3]===0xE0&&String.fromCharCode(ia[6],ia[7],ia[8],ia[9],ia[10])==='JFIF\0') {
-        ia[13]=unit; ia[14]=(res>>8)&0xFF; ia[15]=res&0xFF; ia[16]=(res>>8)&0xFF; ia[17]=res&0xFF;
-        let bin=''; for(let i=0;i<ia.length;i++) bin+=String.fromCharCode(ia[i]);
-        return hdr+btoa(bin);
-    }
-    return dataUrl;
+/* ===== JFIF RESOLUTION PATCH ===== */
+function patchJFIF(url,res,unit){
+    const h='data:image/jpeg;base64,';if(!url.startsWith(h))return url;
+    const bs=atob(url.substring(h.length)),ia=new Uint8Array(bs.length);
+    for(let i=0;i<bs.length;i++)ia[i]=bs.charCodeAt(i);
+    if(ia[0]===0xFF&&ia[1]===0xD8&&ia[2]===0xFF&&ia[3]===0xE0&&String.fromCharCode(ia[6],ia[7],ia[8],ia[9],ia[10])==='JFIF\0'){
+        ia[13]=unit;ia[14]=(res>>8)&0xFF;ia[15]=res&0xFF;ia[16]=(res>>8)&0xFF;ia[17]=res&0xFF;
+        let bin='';for(let i=0;i<ia.length;i++)bin+=String.fromCharCode(ia[i]);return h+btoa(bin);
+    }return url;
 }
 
-/* ===== DOWNLOAD SATU ===== */
-function downloadSingle(k) {
-    const img = uploadedImages[k]; if (!img) return;
-    const c = getCleanCanvas(k, img);
-    let url = applyJpegResolution(c.toDataURL('image/jpeg', 0.95), 100, 2);
-    const a = document.createElement('a'); a.download = 'KARYA-ABADI-'+k+'-'+Date.now()+'.jpg'; a.href = url;
-    document.body.appendChild(a); a.click(); document.body.removeChild(a);
-}
+/* ===== SUSUN PINTAR A4 ===== */
+arrangeBtn.onclick=()=>{
+    if(!photos.length)return showToast('Upload foto dulu!');
+    const jobs=[];
+    photos.forEach(p=>{
+        const c=getClean(p);
+        for(let i=0;i<p.quantity;i++)jobs.push({source:c,w:c.width,h:c.height,label:'Foto #'+(photos.indexOf(p)+1)});
+    });
+    if(!jobs.length)return showToast('Atur jumlah cetak minimal 1!');
+    a4PagesData=packA4(jobs);
+    renderModal();modal.style.display='block';
+    showToast(a4PagesData.length+' halaman A4 siap');
+};
 
-/* ===== A4 ===== */
-function generateA4Preview() {
-    if (!Object.keys(uploadedImages).length) return showToast('Upload minimal 1 foto!');
-    const q2=+(document.getElementById('qty2x3').value)||0, q3=+(document.getElementById('qty3x4').value)||0,
-          q4=+(document.getElementById('qty4x6').value)||0, q5=+(document.getElementById('qty5x5').value)||0,
-          qIW=+(document.getElementById('qtyIjazahW').value)||0, qIBW=+(document.getElementById('qtyIjazahBW').value)||0;
-    if (!q2+q3+q4+q5+qIW+qIBW) return showToast('Masukkan jumlah cetak minimal 1!');
-    let pJ=[], lJ=[];
-    const addJ=(k,q,arr)=>{ if(!uploadedImages[k]||!q)return; const s=getCleanCanvas(k,uploadedImages[k]); for(let i=0;i<q;i++) arr.push({source:s,w:s.width,h:s.height}); };
-    addJ('2x3',q2,pJ); addJ('3x4',q3,pJ); addJ('4x6',q4,pJ); addJ('5x5',q5,pJ); addJ('IjazahW',qIW,pJ); addJ('IjazahBW',qIBW,pJ);
-    addJ('2x3L',q2,lJ); addJ('3x4L',q3,lJ); addJ('4x6L',q4,lJ);
-    portraitPagesData=packA4(pJ,A4_W,A4_H,'Foto-Portrait');
-    landscapePagesData=packA4(lJ,A4_W,A4_H,'Foto-Landscape');
-    renderA4Modal(); modal.style.display='block';
-    showToast((portraitPagesData.length+landscapePagesData.length)+' Halaman A4 siap');
-}
-
-function packA4(jobs,a4W,a4H,type){
-    if(!jobs.length)return[];
-    const m=A4_MARGIN,mW=a4W-2*m,mH=a4H-2*m;
-    let pages=[],remaining=[...jobs]; remaining.sort((a,b)=>b.h-a.h||b.w-a.w);
-    while(remaining.length>0){
-        const a4C=document.createElement('canvas');a4C.width=a4W;a4C.height=a4H;
-        const ctx=a4C.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,a4W,a4H);
-        let fR=[{x:m,y:m,w:mW,h:mH}],maxYU=m,unplaced=[];
-        for(const job of remaining){
+function packA4(jobs){
+    const m=A4_M,mW=A4_W-2*m,mH=A4_H-2*m;
+    let pages=[],rem=[...jobs];
+    rem.sort((a,b)=>b.h-a.h||b.w-a.w);
+    while(rem.length){
+        const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;
+        const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);
+        let freeR=[{x:m,y:m,w:mW,h:mH}],maxY=m,unplaced=[];
+        for(const j of rem){
             let best=null,bestS=Infinity;
-            for(const fr of fR){ if(job.w<=fr.w&&job.h<=fr.h){const sc=fr.y*1e6+fr.x*1e3+Math.min(fr.w-job.w,fr.h-job.h);if(sc<bestS){bestS=sc;best=fr;}} }
-            if(best){
-                ctx.drawImage(job.source,best.x,best.y,job.w,job.h);
-                ctx.strokeStyle='#ccc';ctx.lineWidth=2;ctx.strokeRect(best.x,best.y,job.w,job.h);
-                if(best.y+job.h>maxYU)maxYU=best.y+job.h;
-                const pR={x:best.x,y:best.y,w:job.w,h:job.h}; let nFR=[];
-                for(const cf of fR){
-                    if(intersects(cf,pR)){
-                        if(pR.y>cf.y)nFR.push({x:cf.x,y:cf.y,w:cf.w,h:pR.y-cf.y});
-                        if(pR.y+pR.h<cf.y+cf.h)nFR.push({x:cf.x,y:pR.y+pR.h,w:cf.w,h:(cf.y+cf.h)-(pR.y+pR.h)});
-                        if(pR.x>cf.x)nFR.push({x:cf.x,y:cf.y,w:pR.x-cf.x,h:cf.h});
-                        if(pR.x+pR.w<cf.x+cf.w)nFR.push({x:pR.x+pR.w,y:cf.y,w:(cf.x+cf.w)-(pR.x+pR.w),h:cf.h});
-                    }else{nFR.push(cf);}
+            for(const fr of freeR){
+                if(j.w<=fr.w&&j.h<=fr.h){
+                    const sc=fr.y*1e6+fr.x*1e3+Math.min(fr.w-j.w,fr.h-j.h);
+                    if(sc<bestS){bestS=sc;best=fr;}
                 }
-                fR=nFR.filter((f1,i,a)=>!a.some((f2,j)=>i!==j&&isContained(f1,f2)));
-            }else{unplaced.push(job);}
+            }
+            if(best){
+                ctx.drawImage(j.source,best.x,best.y,j.w,j.h);
+                ctx.strokeStyle='#ccc';ctx.lineWidth=2;ctx.strokeRect(best.x,best.y,j.w,j.h);
+                /* Label kecil */
+                ctx.fillStyle='rgba(0,0,0,0.5)';ctx.fillRect(best.x,best.y,Math.min(j.w,60),14);
+                ctx.fillStyle='#fff';ctx.font='bold 9px Arial';ctx.textAlign='left';ctx.textBaseline='top';
+                ctx.fillText(j.label,best.x+3,best.y+2);
+                if(best.y+j.h>maxY)maxY=best.y+j.h;
+                const placed={x:best.x,y:best.y,w:j.w,h:j.h};
+                let nfr=[];
+                for(const f of freeR){
+                    if(intersects(f,placed)){
+                        if(placed.y>f.y)nfr.push({x:f.x,y:f.y,w:f.w,h:placed.y-f.y});
+                        if(placed.y+placed.h<f.y+f.h)nfr.push({x:f.x,y:placed.y+placed.h,w:f.w,h:(f.y+f.h)-(placed.y+placed.h)});
+                        if(placed.x>f.x)nfr.push({x:f.x,y:f.y,w:placed.x-f.x,h:f.h});
+                        if(placed.x+placed.w<f.x+f.w)nfr.push({x:placed.x+placed.w,y:f.y,w:(f.x+f.w)-(placed.x+placed.w),h:f.h});
+                    }else{nfr.push(f);}
+                }
+                freeR=nfr.filter((a,i,arr)=>!arr.some((b,j)=>i!==j&&isContained(a,b)));
+            }else{unplaced.push(j);}
         }
-        remaining=unplaced;
-        let url=applyJpegResolution(a4C.toDataURL('image/jpeg',1.0),100,2);
-        pages.push({url,type,efficiency:Math.min(Math.round(((maxYU-m)/mH)*100),100)});
+        rem=unplaced;
+        const eff=Math.min(Math.round(((maxY-m)/mH)*100),100);
+        const url=patchJFIF(cv.toDataURL('image/jpeg',1),100,2);
+        pages.push({url,eff,count:jobs.length-unplaced.length});
     }
     return pages;
 }
-function intersects(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y}
-function isContained(i,o){return i.x>=o.x&&i.y>=o.y&&i.x+i.w<=o.x+o.w&&i.y+i.h<=o.y+o.h}
+function intersects(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
+function isContained(i,o){return i.x>=o.x&&i.y>=o.y&&i.x+i.w<=o.x+o.w&&i.y+i.h<=o.y+o.h;}
 
-function renderA4Modal(){
-    portraitGrid.innerHTML='';landscapeGrid.innerHTML='';
-    const render=(data,grid,badge,label)=>{
-        if(data.length){
-            badge.textContent='Efisiensi ~'+Math.round(data.reduce((s,p)=>s+p.efficiency,0)/data.length)+'%';
-            data.forEach((p,i)=>{const lb=document.createElement('div');lb.className='page-label';lb.innerText=label+' '+(i+1);grid.appendChild(lb);const im=document.createElement('img');im.src=p.url;grid.appendChild(im);});
-        }else{badge.textContent='';grid.innerHTML='<div style="color:#888;padding:15px;font-size:.8rem">Tidak ada</div>';}
-    };
-    render(portraitPagesData,portraitGrid,utilP,'Versi Portrait');
-    render(landscapePagesData,landscapeGrid,utilL,'Versi Landscape');
-    downloadA4Btn.innerText='DOWNLOAD SEMUA ('+(portraitPagesData.length+landscapePagesData.length)+' HALAMAN)';
+/* ===== MODAL A4 ===== */
+function renderModal(){
+    modalBody.innerHTML='';
+    if(!a4PagesData.length){modalBody.innerHTML='<div style="color:#888;padding:20px">Tidak ada halaman</div>';return;}
+    a4PagesData.forEach((pg,i)=>{
+        const sec=document.createElement('div');sec.className='a4-section';
+        const title=document.createElement('div');title.className='a4-title';
+        title.innerHTML='HALAMAN '+(i+1)+' <span class="badge">'+pg.count+' foto &bull; Efisiensi ~'+pg.eff+'%</span>';
+        sec.appendChild(title);
+        const img=document.createElement('img');img.src=pg.url;sec.appendChild(img);
+        modalBody.appendChild(sec);
+    });
+    dlA4Btn.innerHTML='<i class="fa-solid fa-download"></i> Download Semua ('+a4PagesData.length+' Halaman)';
 }
+closeModal.onclick=()=>modal.style.display='none';
+window.addEventListener('click',e=>{if(e.target===modal)modal.style.display='none';});
+dlA4Btn.onclick=()=>{
+    if(!a4PagesData.length)return;showToast('Mengunduh '+a4PagesData.length+' halaman...');
+    a4PagesData.forEach((pg,i)=>{
+        setTimeout(()=>{
+            const a=document.createElement('a');a.download='KARYA-ABADI-A4-Hal'+(i+1)+'-'+Date.now()+'.jpg';a.href=pg.url;
+            document.body.appendChild(a);a.click();document.body.removeChild(a);
+        },600*i);
+    });
+};
 
-function downloadPages(arr){
-    if(!arr.length)return; showToast(arr.length+' file A4 sedang diunduh...');
-    arr.forEach((p,i)=>{setTimeout(()=>{const a=document.createElement('a');a.download='KARYA-ABADI-A4-'+p.type+'-Hal'+(i+1)+'-'+Date.now()+'.jpg';a.href=p.url;document.body.appendChild(a);a.click();document.body.removeChild(a);},500*i);});
-}
+/* ===== TOAST ===== */
+function showToast(msg){toastEl.textContent=msg;toastEl.className='show';setTimeout(()=>toastEl.className=toastEl.className.replace('show',''),3000);}
 
-function showToast(msg){toastEl.textContent=msg;toastEl.className='show';setTimeout(()=>{toastEl.className=toastEl.className.replace('show','');},3000);}
+/* ===== INIT ===== */
+updateUI();
 </script>
 </body>
 </html>
