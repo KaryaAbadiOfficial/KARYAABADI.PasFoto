@@ -19,7 +19,6 @@ header{background:#000;border-bottom:2px solid var(--accent-red);padding:.5rem 1
 .site-logo-img{width:45px;height:auto;max-height:45px;object-fit:contain}
 .site-info h1{font-size:1.2rem;color:#fff;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:1.2}
 .site-info h1 span{color:var(--accent-red)}
-.site-info p{font-size:.7rem;color:var(--gold);letter-spacing:1px}
 .theme-toggle{background:rgba(255,255,255,.1);border:1px solid #555;color:#fff;padding:.4rem;border-radius:50%;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .theme-toggle:hover{background:rgba(255,255,255,.2)}
 main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;grid-template-columns:370px 1fr;gap:1rem;align-items:start}
@@ -131,12 +130,14 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 @keyframes fi{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
 @keyframes fo{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
 .site-footer{background:#000;border-top:1px solid #333;padding:0}
-.footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:0;border-bottom:1px solid #222}
-.footer-links a{color:#888;font-size:.75rem;padding:.65rem 1rem;cursor:pointer;transition:color .2s;text-decoration:none}
-.footer-links a:hover{color:#ccc}
-.footer-copy{text-align:center;padding:.55rem 1rem;color:#555;font-size:.68rem}
+.footer-links{display:flex;justify-content:center;align-items:center;border-bottom:1px solid #222;white-space:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.footer-links::-webkit-scrollbar{display:none}
+.footer-links a{color:#fff;font-weight:700;font-size:.78rem;padding:.75rem 1.1rem;cursor:pointer;transition:color .2s;text-decoration:none;letter-spacing:.3px;flex-shrink:0}
+.footer-links a:hover{color:var(--accent-red)}
+.footer-copy{text-align:center;padding:.6rem 1rem;color:#555;font-size:.68rem}
 @media(max-width:1000px){main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}.left-panel{max-height:none;position:static;order:-1}}
-@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}.footer-links a{font-size:.68rem;padding:.5rem .6rem}.a4-grid img{max-height:calc(100vh - 220px)}}
+@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}.footer-links a{font-size:.6rem;padding:.55rem .5rem}.a4-grid img{max-height:calc(100vh - 220px)}}
+@media(max-width:380px){.footer-links a{font-size:.52rem;padding:.45rem .35rem}}
 </style>
 </head>
 <body>
@@ -261,8 +262,6 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 <div id="toast">Pesan</div>
 
 <script>
-/* ====== KONSTANTA ====== */
-/* MM_PX=10 → stroke putih ~3mm, CUT_W=1.5 → garis potong 0,5mm warna abu */
 const MM_PX=10,CUT_W=1.5,CUT_COLOR='#999999',A4_W=2100,A4_H=2970,A4_M=50,MOVE=5,ZOOM_D=0.01,MAX=50,BAND_H=30,BAND_TEXT_Y=3;
 const PHI=1.618033988749895,GR1=1/(PHI*PHI),GR2=1/PHI;
 const SIZES={'2X3':{w:216,h:279},'3X4':{w:279,h:381},'4X6':{w:381,h:559},'5X5':{w:500,h:500},'2X3L':{w:279,h:216},'3X4L':{w:381,h:279},'4X6L':{w:559,h:381}};
@@ -278,15 +277,11 @@ const modal=$('a4Modal'),closeModalEl=$('closeModal'),modalBody=$('modalBody'),d
 const themeToggle=$('themeToggle'),toastEl=$('toast');
 const refSection=$('refSection'),refNum=$('refNum'),refSizeLabel=$('refSizeLabel'),applyRefBtn=$('applyRefBtn');
 
-/* ====== TEMA ====== */
 themeToggle.onclick=()=>{const l=document.documentElement.getAttribute('data-theme')==='light';document.documentElement.setAttribute('data-theme',l?'dark':'light');themeToggle.innerHTML=l?'&#9728;&#65039;':'&#127769;';};
-
-/* ====== UKURAN OUTPUT ====== */
 document.querySelectorAll('.size-btn').forEach(b=>{b.onclick=()=>{if(b.disabled)return;document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');selectedSize=b.dataset.size;infoSize.textContent=selectedSize.replace('L',' Landscape');};});
 function lockSizes(lock){document.querySelectorAll('.size-btn').forEach(b=>{if(lock){b.disabled=b.dataset.size!=='3X4';if(b.dataset.size==='3X4'){b.classList.add('active');b.disabled=false;}else b.classList.remove('active');selectedSize='3X4';infoSize.textContent='3X4 (Ijazah)';}else b.disabled=false;});}
 ijazahToggle.onchange=()=>{const on=ijazahToggle.checked;ijazahBox.style.display=on?'flex':'none';lockSizes(on);if(on)bwToggle.checked=false;};
 
-/* ====== UPLOAD ====== */
 dropzone.addEventListener('dragover',e=>{e.preventDefault();dropzone.classList.add('over');});
 dropzone.addEventListener('dragleave',()=>dropzone.classList.remove('over'));
 dropzone.addEventListener('drop',e=>{e.preventDefault();dropzone.classList.remove('over');handleFiles(e.dataTransfer.files);});
@@ -300,7 +295,6 @@ function handleFiles(files){
     fileInput.value='';
 }
 
-/* ====== TAMBAH FOTO ====== */
 function addPhoto(img){
     const isIj=ijazahToggle.checked,sizeKey=isIj?'3X4':selectedSize,sz=SIZES[sizeKey];
     const isBW=isIj?ijazahBWToggle.checked:bwToggle.checked,e=MM_PX*2+CUT_W*2;
@@ -317,7 +311,6 @@ function buildCard(p){
     card.querySelector('.canvas-wrap').appendChild(p.canvas);return card;
 }
 
-/* ====== GAMBAR BAND IJAZAH ====== */
 function drawIjazahBand(ctx,w,h,sn,mfs){
     const bL=CUT_W/2,bW=w-CUT_W,bB=h-CUT_W/2,bT=bB-BAND_H;
     ctx.fillStyle='#fff';ctx.fillRect(bL,bT,bW,BAND_H);
@@ -327,11 +320,8 @@ function drawIjazahBand(ctx,w,h,sn,mfs){
     ctx.fillText(sn,w/2,bT+BAND_H/2+BAND_TEXT_Y);
 }
 
-/* ====== GARIS PANDUAN GOLDEN RASIO ====== */
 function drawGoldenGuides(ctx,x,y,w,h){
-    ctx.save();
-    ctx.strokeStyle='#00DD44';
-    ctx.lineWidth=1;
+    ctx.save();ctx.strokeStyle='#00DD44';ctx.lineWidth=1;
     const vx1=Math.round(x+w*GR1),vx2=Math.round(x+w*GR2);
     ctx.beginPath();ctx.moveTo(vx1,y);ctx.lineTo(vx1,y+h);ctx.stroke();
     ctx.beginPath();ctx.moveTo(vx2,y);ctx.lineTo(vx2,y+h);ctx.stroke();
@@ -341,7 +331,6 @@ function drawGoldenGuides(ctx,x,y,w,h){
     ctx.restore();
 }
 
-/* ====== GAMBAR FOTO DI CANVAS ====== */
 function drawPhoto(p,guides){
     const ctx=p.canvas.getContext('2d'),w=p.canvas.width,h=p.canvas.height,sz=p.sz,s=p.state,ins=MM_PX+CUT_W;
     ctx.clearRect(0,0,w,h);ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
@@ -353,31 +342,17 @@ function drawPhoto(p,guides){
         ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
         if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
     }
-    /* Garis potong warna abu-abu 0,5mm */
     ctx.strokeStyle=CUT_COLOR;ctx.lineWidth=CUT_W;ctx.strokeRect(CUT_W/2,CUT_W/2,w-CUT_W,h-CUT_W);
-    /* Garis panduan golden ratio */
-    if(guides){
-        let gT=ins,gH=sz.h;
-        if(p.isIjazah)gH=sz.h-BAND_H;
-        drawGoldenGuides(ctx,ins,gT,sz.w,gH);
-    }
+    if(guides){let gT=ins,gH=sz.h;if(p.isIjazah)gH=sz.h-BAND_H;drawGoldenGuides(ctx,ins,gT,sz.w,gH);}
 }
 function applyGS(ctx,x,y,w,h){const id=ctx.getImageData(x,y,w,h),d=id.data;for(let i=0;i<d.length;i+=4){const g=d[i]*.299+d[i+1]*.587+d[i+2]*.114;d[i]=d[i+1]=d[i+2]=g;}ctx.putImageData(id,x,y);}
 
-/* ====== RESET & ZOOM ====== */
 function resetSingle(p){const s=p.state,sz=p.sz,e=MM_PX*2+CUT_W*2;s.scale=Math.max(sz.w/p.img.width,sz.h/p.img.height)*1.1;const visH=p.isIjazah?sz.h-BAND_H:sz.h;s.offsetX=(e+sz.w-p.img.width*s.scale)/2;s.offsetY=(e+visH-p.img.height*s.scale)/2;drawPhoto(p,true);}
 function zoomPhoto(p,d){const s=p.state,sz=p.sz,e=MM_PX*2+CUT_W*2;const cx=e/2+sz.w/2,cy=e/2+(p.isIjazah?(sz.h-BAND_H)/2:sz.h/2);const ix=(cx-s.offsetX)/s.scale,iy=(cy-s.offsetY)/s.scale;s.scale=Math.max(.01,s.scale+d);s.offsetX=cx-ix*s.scale;s.offsetY=cy-iy*s.scale;drawPhoto(p,true);}
 
-/* ====== ACUAN (SEMUA UKURAN) ====== */
 function updateAcuanButtons(){
-    const sizeCounts={};
-    photos.forEach(p=>{sizeCounts[p.sizeKey]=(sizeCounts[p.sizeKey]||0)+1;});
-    photos.forEach(p=>{
-        const btn=p.card.querySelector('.btn-acuan');
-        if(!btn)return;
-        const show=(sizeCounts[p.sizeKey]||0)>1;
-        btn.style.display=show?'block':'none';
-    });
+    const sizeCounts={};photos.forEach(p=>{sizeCounts[p.sizeKey]=(sizeCounts[p.sizeKey]||0)+1;});
+    photos.forEach(p=>{const btn=p.card.querySelector('.btn-acuan');if(!btn)return;btn.style.display=(sizeCounts[p.sizeKey]||0)>1?'block':'none';});
 }
 function setReference(id){
     const p=photos.find(x=>x.id===id);if(!p)return;
@@ -391,54 +366,22 @@ function setReference(id){
     updateRefUI();showToast('Foto #'+getIdx(id)+' ('+p.sizeKey+') dijadikan acuan');
 }
 function applyReferenceToAll(){
-    if(!referenceSettings)return;
-    const{relZoom,shiftXpx,shiftYpx,sourceId,sizeKey}=referenceSettings;
-    let count=0;
-    photos.forEach(p=>{
-        if(p.id===sourceId||p.sizeKey!==sizeKey)return;
-        const sz=p.sz,ins=MM_PX+CUT_W,visH=p.isIjazah?sz.h-BAND_H:sz.h;
-        const initScale=Math.max(sz.w/p.img.width,sz.h/p.img.height)*1.1;
-        p.state.scale=initScale*relZoom;
-        const cx=ins+sz.w/2,cy=ins+visH/2;
-        const cix=cx-shiftXpx*p.state.scale,ciy=cy-shiftYpx*p.state.scale;
-        p.state.offsetX=cix-p.img.width*p.state.scale/2;
-        p.state.offsetY=ciy-p.img.height*p.state.scale/2;
-        drawPhoto(p,true);count++;
-    });
+    if(!referenceSettings)return;const{relZoom,shiftXpx,shiftYpx,sourceId,sizeKey}=referenceSettings;let count=0;
+    photos.forEach(p=>{if(p.id===sourceId||p.sizeKey!==sizeKey)return;const sz=p.sz,ins=MM_PX+CUT_W,visH=p.isIjazah?sz.h-BAND_H:sz.h;const initScale=Math.max(sz.w/p.img.width,sz.h/p.img.height)*1.1;p.state.scale=initScale*relZoom;const cx=ins+sz.w/2,cy=ins+visH/2;const cix=cx-shiftXpx*p.state.scale,ciy=cy-shiftYpx*p.state.scale;p.state.offsetX=cix-p.img.width*p.state.scale/2;p.state.offsetY=ciy-p.img.height*p.state.scale/2;drawPhoto(p,true);count++;});
     showToast('Acuan diterapkan ke '+count+' foto '+sizeKey+' lainnya');
 }
 function clearReference(){referenceSettings=null;updateRefUI();}
 function updateRefUI(){
-    if(referenceSettings){
-        refSection.style.display='flex';
-        refNum.textContent=getIdx(referenceSettings.sourceId);
-        refSizeLabel.textContent='('+referenceSettings.sizeKey+')';
-        applyRefBtn.innerHTML='<i class="fa-solid fa-copy"></i> Terapkan ke Semua Foto '+referenceSettings.sizeKey;
-        photos.forEach(p=>{p.card.classList.toggle('is-ref',p.id===referenceSettings.sourceId);});
-        photos.forEach(p=>{
-            const btn=p.card.querySelector('.btn-acuan');if(!btn)return;
-            if(p.id===referenceSettings.sourceId){btn.textContent='ACUAN AKTIF';btn.classList.add('active');btn.disabled=true;}
-            else{btn.textContent='JADIKAN ACUAN';btn.classList.remove('active');btn.disabled=false;}
-        });
-    }else{
-        refSection.style.display='none';
-        photos.forEach(p=>{p.card.classList.remove('is-ref');const btn=p.card.querySelector('.btn-acuan');if(btn){btn.textContent='JADIKAN ACUAN';btn.classList.remove('active');btn.disabled=false;}});
-    }
+    if(referenceSettings){refSection.style.display='flex';refNum.textContent=getIdx(referenceSettings.sourceId);refSizeLabel.textContent='('+referenceSettings.sizeKey+')';applyRefBtn.innerHTML='<i class="fa-solid fa-copy"></i> Terapkan ke Semua Foto '+referenceSettings.sizeKey;photos.forEach(p=>{p.card.classList.toggle('is-ref',p.id===referenceSettings.sourceId);});photos.forEach(p=>{const btn=p.card.querySelector('.btn-acuan');if(!btn)return;if(p.id===referenceSettings.sourceId){btn.textContent='ACUAN AKTIF';btn.classList.add('active');btn.disabled=true;}else{btn.textContent='JADIKAN ACUAN';btn.classList.remove('active');btn.disabled=false;}});}
+    else{refSection.style.display='none';photos.forEach(p=>{p.card.classList.remove('is-ref');const btn=p.card.querySelector('.btn-acuan');if(btn){btn.textContent='JADIKAN ACUAN';btn.classList.remove('active');btn.disabled=false;}});}
 }
 function getIdx(id){const i=photos.findIndex(x=>x.id===id);return i>=0?i+1:'?';}
 applyRefBtn.onclick=applyReferenceToAll;
 
-/* ====== EVENT PHOTO GRID ====== */
-photoGrid.addEventListener('click',e=>{
-    const rm=e.target.closest('.card-remove');if(rm){removePhoto(+rm.dataset.id);return;}
-    const dl=e.target.closest('.card-dl');if(dl){downloadSingle(+dl.dataset.id);return;}
-    const ac=e.target.closest('.btn-acuan');if(ac&&!ac.disabled){setReference(+ac.dataset.id);return;}
-    const cb=e.target.closest('.cb');if(cb){handleCtrl(+cb.dataset.id,cb.dataset.act);return;}
-});
+photoGrid.addEventListener('click',e=>{const rm=e.target.closest('.card-remove');if(rm){removePhoto(+rm.dataset.id);return;}const dl=e.target.closest('.card-dl');if(dl){downloadSingle(+dl.dataset.id);return;}const ac=e.target.closest('.btn-acuan');if(ac&&!ac.disabled){setReference(+ac.dataset.id);return;}const cb=e.target.closest('.cb');if(cb){handleCtrl(+cb.dataset.id,cb.dataset.act);return;}});
 photoGrid.addEventListener('change',e=>{if(e.target.classList.contains('qty-inp')){const p=photos.find(x=>x.id===+e.target.dataset.id);if(p){p.quantity=Math.max(1,parseInt(e.target.value)||1);updateInfo();}}});
 photoGrid.addEventListener('wheel',e=>{const cv=e.target.closest('canvas');if(!cv)return;e.preventDefault();const card=cv.closest('.photo-card');const p=photos.find(x=>x.id===+card.id.replace('card-',''));if(p)zoomPhoto(p,e.deltaY<0?ZOOM_D:-ZOOM_D);},{passive:false});
 
-/* ====== DRAG (MOUSE & TOUCH) ====== */
 photoGrid.addEventListener('mousedown',e=>{const cv=e.target.closest('canvas');if(!cv)return;const card=cv.closest('.photo-card');const p=photos.find(x=>x.id===+card.id.replace('card-',''));if(!p)return;dragPhoto=p;const s=p.state;const c=getCoords(cv,e);s.isDragging=true;s.startX=c.x-s.offsetX;s.startY=c.y-s.offsetY;e.preventDefault();});
 document.addEventListener('mousemove',e=>{if(!dragPhoto||!dragPhoto.state.isDragging)return;const c=getCoords(dragPhoto.canvas,e);dragPhoto.state.offsetX=c.x-dragPhoto.state.startX;dragPhoto.state.offsetY=c.y-dragPhoto.state.startY;drawPhoto(dragPhoto,true);});
 document.addEventListener('mouseup',()=>{if(dragPhoto){dragPhoto.state.isDragging=false;dragPhoto=null;}});
@@ -449,133 +392,69 @@ document.addEventListener('touchend',()=>{if(dragPhoto){dragPhoto.state.isDraggi
 function getCoords(cv,e){const r=cv.getBoundingClientRect();return{x:(e.clientX-r.left)*(cv.width/r.width),y:(e.clientY-r.top)*(cv.height/r.height)};}
 function handleCtrl(id,act){const p=photos.find(x=>x.id===id);if(!p)return;const s=p.state;switch(act){case'mu':s.offsetY-=MOVE;drawPhoto(p,true);break;case'md':s.offsetY+=MOVE;drawPhoto(p,true);break;case'ml':s.offsetX-=MOVE;drawPhoto(p,true);break;case'mr':s.offsetX+=MOVE;drawPhoto(p,true);break;case'zi':zoomPhoto(p,ZOOM_D);break;case'zo':zoomPhoto(p,-ZOOM_D);break;}}
 
-/* ====== HAPUS FOTO ====== */
 function removePhoto(id){if(referenceSettings&&referenceSettings.sourceId===id)clearReference();const idx=photos.findIndex(x=>x.id===id);if(idx<0)return;photos[idx].card.remove();photos.splice(idx,1);renumber();updateUI();updateAcuanButtons();showToast('Foto dihapus');}
 function renumber(){photos.forEach((p,i)=>{p.card.querySelector('.card-num').textContent='Foto #'+(i+1);});if(referenceSettings)refNum.textContent=getIdx(referenceSettings.sourceId);}
 
-/* ====== UPDATE UI ====== */
 function updateUI(){const n=photos.length;cntNum.textContent=n;clearAllBtn.style.display=n?'inline':'none';emptyState.style.display=n?'none':'block';resetAllBtn.disabled=!n;arrangeBtn.disabled=!n;dlAllBtn.disabled=!n;gridTotal.textContent=n?'('+n+' foto)':'';updateInfo();}
 function updateInfo(){
     const n=photos.length,total=photos.reduce((s,p)=>s+p.quantity,0);infoCount.textContent=n;infoTotal.textContent=total;
     if(!n){infoPages.textContent='0';return;}
-    const groups={};
-    photos.forEach(p=>{if(!groups[p.sizeKey])groups[p.sizeKey]=[];groups[p.sizeKey].push(p);});
+    const groups={};photos.forEach(p=>{if(!groups[p.sizeKey])groups[p.sizeKey]=[];groups[p.sizeKey].push(p);});
     let pages=0;
-    Object.keys(groups).forEach(sk=>{
-        const grp=groups[sk],sz=SIZES[sk],e=MM_PX*2+CUT_W*2,pw=sz.w+e,ph=sz.h+e;
-        const mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;
-        const totalQty=grp.reduce((s,p)=>s+p.quantity,0);
-        if(grp[0].isIjazah){
-            const cols=Math.floor(mW/pw),rows=Math.floor(mH/ph),perPage=Math.max(1,cols*rows);
-            pages+=Math.ceil(totalQty/perPage);
-        }else{
-            let area=pw*ph*totalQty;
-            pages+=Math.ceil(area/(mW*mH));
-        }
-    });
+    Object.keys(groups).forEach(sk=>{const grp=groups[sk],sz=SIZES[sk],e=MM_PX*2+CUT_W*2,pw=sz.w+e,ph=sz.h+e;const mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;const totalQty=grp.reduce((s,p)=>s+p.quantity,0);if(grp[0].isIjazah){const cols=Math.floor(mW/pw),rows=Math.floor(mH/ph),perPage=Math.max(1,cols*rows);pages+=Math.ceil(totalQty/perPage);}else{let area=pw*ph*totalQty;pages+=Math.ceil(area/(mW*mH));}});
     infoPages.textContent=pages||'1';
 }
 
-/* ====== TOMBOL AKSI ====== */
 resetAllBtn.onclick=()=>{photos.forEach(p=>resetSingle(p));clearReference();showToast('Semua posisi direset');};
 clearAllBtn.onclick=()=>{photos.forEach(p=>p.card.remove());photos=[];clearReference();updateUI();updateAcuanButtons();showToast('Semua foto dihapus');};
 schoolName.oninput=()=>{photos.forEach(p=>{if(p.isIjazah)drawPhoto(p,true);});};
 fontSize.oninput=()=>{photos.forEach(p=>{if(p.isIjazah)drawPhoto(p,true);});};
 ijazahBWToggle.onchange=()=>{photos.forEach(p=>{if(p.isIjazah){p.isBW=ijazahBWToggle.checked;drawPhoto(p,true);}});};
 
-/* ====== DOWNLOAD SATU FOTO ====== */
 function getClean(p){
     const c=document.createElement('canvas');c.width=p.canvas.width;c.height=p.canvas.height;
     const ctx=c.getContext('2d'),w=c.width,h=c.height,sz=p.sz,s=p.state,ins=MM_PX+CUT_W;
     ctx.fillStyle='#fff';ctx.fillRect(0,0,w,h);
-    if(p.isIjazah){
-        ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();
-        if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);
-        drawIjazahBand(ctx,w,h,(schoolName.value||'NAMA SEKOLAH / UNIVERSITAS').toUpperCase(),parseInt(fontSize.value)||0);
-    }else{ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);}
-    /* Garis potong warna abu-abu 0,5mm */
-    ctx.strokeStyle=CUT_COLOR;ctx.lineWidth=CUT_W;ctx.strokeRect(CUT_W/2,CUT_W/2,w-CUT_W,h-CUT_W);
-    return c;
+    if(p.isIjazah){ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);drawIjazahBand(ctx,w,h,(schoolName.value||'NAMA SEKOLAH / UNIVERSITAS').toUpperCase(),parseInt(fontSize.value)||0);}
+    else{ctx.save();ctx.beginPath();ctx.rect(ins,ins,sz.w,sz.h);ctx.clip();ctx.drawImage(p.img,s.offsetX,s.offsetY,p.img.width*s.scale,p.img.height*s.scale);ctx.restore();if(p.isBW)applyGS(ctx,ins,ins,sz.w,sz.h);}
+    ctx.strokeStyle=CUT_COLOR;ctx.lineWidth=CUT_W;ctx.strokeRect(CUT_W/2,CUT_W/2,w-CUT_W,h-CUT_W);return c;
 }
 function downloadSingle(id){const p=photos.find(x=>x.id===id);if(!p)return;const c=getClean(p);let url=patchJFIF(c.toDataURL('image/jpeg',.95),100,2);const a=document.createElement('a');a.download='KARYA-ABADI-'+p.sizeKey+'-Foto'+getIdx(id)+'.jpg';a.href=url;document.body.appendChild(a);a.click();document.body.removeChild(a);}
 dlAllBtn.onclick=()=>{if(!photos.length)return;showToast('Mengunduh '+photos.length+' foto...');photos.forEach((p,i)=>{setTimeout(()=>downloadSingle(p.id),300*i);});};
 function patchJFIF(url,res,unit){const h='data:image/jpeg;base64,';if(!url.startsWith(h))return url;const bs=atob(url.substring(h.length)),ia=new Uint8Array(bs.length);for(let i=0;i<bs.length;i++)ia[i]=bs.charCodeAt(i);if(ia[0]===0xFF&&ia[1]===0xD8&&ia[2]===0xFF&&ia[3]===0xE0&&String.fromCharCode(ia[6],ia[7],ia[8],ia[9],ia[10])==='JFIF\0'){ia[13]=unit;ia[14]=(res>>8)&0xFF;ia[15]=res&0xFF;ia[16]=(res>>8)&0xFF;ia[17]=res&0xFF;let bin='';for(let i=0;i<ia.length;i++)bin+=String.fromCharCode(ia[i]);return h+btoa(bin);}return url;}
 
-/* ====== SUSUN PINTAR DI A4 ====== */
 arrangeBtn.onclick=()=>{
     if(!photos.length)return showToast('Upload foto dulu!');
-    const groups={};
-    photos.forEach((p,idx)=>{if(!groups[p.sizeKey])groups[p.sizeKey]=[];groups[p.sizeKey].push({photo:p,idx});});
+    const groups={};photos.forEach((p,idx)=>{if(!groups[p.sizeKey])groups[p.sizeKey]=[];groups[p.sizeKey].push({photo:p,idx});});
     a4PagesData=[];
-    Object.keys(groups).forEach(sk=>{
-        const grp=groups[sk],jobs=[];
-        grp.forEach(item=>{const c=getClean(item.photo);const label='Foto #'+(item.idx+1);for(let q=0;q<item.photo.quantity;q++)jobs.push({source:c,w:c.width,h:c.height,label});});
-        if(!jobs.length)return;
-        const isIj=grp[0].photo.isIjazah;
-        if(isIj)a4PagesData.push(...packGrid(jobs,sk));
-        else a4PagesData.push(...packBinPack(jobs,sk));
-    });
+    Object.keys(groups).forEach(sk=>{const grp=groups[sk],jobs=[];grp.forEach(item=>{const c=getClean(item.photo);for(let q=0;q<item.photo.quantity;q++)jobs.push({source:c,w:c.width,h:c.height});});if(!jobs.length)return;const isIj=grp[0].photo.isIjazah;if(isIj)a4PagesData.push(...packGrid(jobs,sk));else a4PagesData.push(...packBinPack(jobs,sk));});
     renderModal();modal.style.display='block';showToast(a4PagesData.length+' halaman A4 siap');
 };
-
 function packGrid(jobs,sizeKey){
-    if(!jobs.length)return[];const j0=jobs[0],pw=j0.w,ph=j0.h,mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;
-    const cols=Math.floor(mW/pw),rows=Math.floor(mH/ph),perPage=Math.max(1,cols*rows),pages=[];
-    for(let i=0;i<jobs.length;i+=perPage){
-        const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);
-        const batch=jobs.slice(i,i+perPage),actualRows=Math.ceil(batch.length/cols);const totalW=cols*pw,startX=A4_M+Math.floor((mW-totalW)/2),startY=A4_M;
-        batch.forEach((job,idx)=>{const col=idx%cols,row=Math.floor(idx/cols);ctx.drawImage(job.source,startX+col*pw,startY+row*ph,pw,ph);});
-        const usedH=actualRows*ph,eff=Math.min(Math.round((usedH/mH)*100),100);
-        pages.push({url:patchJFIF(cv.toDataURL('image/jpeg',1),100,2),eff,count:batch.length,sizeKey,ijazah:true});
-    }return pages;
+    if(!jobs.length)return[];const j0=jobs[0],pw=j0.w,ph=j0.h,mW=A4_W-2*A4_M,mH=A4_H-2*A4_M;const cols=Math.floor(mW/pw),rows=Math.floor(mH/ph),perPage=Math.max(1,cols*rows),pages=[];
+    for(let i=0;i<jobs.length;i+=perPage){const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);const batch=jobs.slice(i,i+perPage),actualRows=Math.ceil(batch.length/cols);const totalW=cols*pw,startX=A4_M+Math.floor((mW-totalW)/2),startY=A4_M;batch.forEach((job,idx)=>{const col=idx%cols,row=Math.floor(idx/cols);ctx.drawImage(job.source,startX+col*pw,startY+row*ph,pw,ph);});const usedH=actualRows*ph,eff=Math.min(Math.round((usedH/mH)*100),100);pages.push({url:patchJFIF(cv.toDataURL('image/jpeg',1),100,2),eff,count:batch.length,sizeKey,ijazah:true});}return pages;
 }
-
 function packBinPack(jobs,sizeKey){
     const m=A4_M,mW=A4_W-2*m,mH=A4_H-2*m;let pages=[],rem=[...jobs];rem.sort((a,b)=>b.h-a.h||b.w-a.w);
-    while(rem.length){
-        const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);
-        let freeR=[{x:m,y:m,w:mW,h:mH}],maxY=m,unplaced=[];
-        for(const j of rem){
-            let best=null,bestS=Infinity;for(const fr of freeR){if(j.w<=fr.w&&j.h<=fr.h){const sc=fr.y*1e6+fr.x*1e3+Math.min(fr.w-j.w,fr.h-j.h);if(sc<bestS){bestS=sc;best=fr;}}}
-            if(best){
-                ctx.drawImage(j.source,best.x,best.y,j.w,j.h);
-                if(best.y+j.h>maxY)maxY=best.y+j.h;const placed={x:best.x,y:best.y,w:j.w,h:j.h};let nfr=[];
-                for(const f of freeR){if(intersects(f,placed)){if(placed.y>f.y)nfr.push({x:f.x,y:f.y,w:f.w,h:placed.y-f.y});if(placed.y+placed.h<f.y+f.h)nfr.push({x:f.x,y:placed.y+placed.h,w:f.w,h:(f.y+f.h)-(placed.y+placed.h)});if(placed.x>f.x)nfr.push({x:f.x,y:f.y,w:placed.x-f.x,h:f.h});if(placed.x+placed.w<f.x+f.w)nfr.push({x:placed.x+placed.w,y:f.y,w:(f.x+f.w)-(placed.x+placed.w),h:f.h});}else nfr.push(f);}
-                freeR=nfr.filter((a,i,arr)=>!arr.some((b,j)=>i!==j&&isContained(a,b)));
-            }else unplaced.push(j);
-        }
-        rem=unplaced;const eff=Math.min(Math.round(((maxY-m)/mH)*100),100);
-        pages.push({url:patchJFIF(cv.toDataURL('image/jpeg',1),100,2),eff,count:jobs.length-unplaced.length,sizeKey,ijazah:false});
-    }return pages;
+    while(rem.length){const cv=document.createElement('canvas');cv.width=A4_W;cv.height=A4_H;const ctx=cv.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,A4_W,A4_H);let freeR=[{x:m,y:m,w:mW,h:mH}],maxY=m,unplaced=[];
+    for(const j of rem){let best=null,bestS=Infinity;for(const fr of freeR){if(j.w<=fr.w&&j.h<=fr.h){const sc=fr.y*1e6+fr.x*1e3+Math.min(fr.w-j.w,fr.h-j.h);if(sc<bestS){bestS=sc;best=fr;}}}if(best){ctx.drawImage(j.source,best.x,best.y,j.w,j.h);if(best.y+j.h>maxY)maxY=best.y+j.h;const placed={x:best.x,y:best.y,w:j.w,h:j.h};let nfr=[];for(const f of freeR){if(intersects(f,placed)){if(placed.y>f.y)nfr.push({x:f.x,y:f.y,w:f.w,h:placed.y-f.y});if(placed.y+placed.h<f.y+f.h)nfr.push({x:f.x,y:placed.y+placed.h,w:f.w,h:(f.y+f.h)-(placed.y+placed.h)});if(placed.x>f.x)nfr.push({x:f.x,y:f.y,w:placed.x-f.x,h:f.h});if(placed.x+placed.w<f.x+f.w)nfr.push({x:placed.x+placed.w,y:f.y,w:(f.x+f.w)-(placed.x+placed.w),h:f.h});}else nfr.push(f);}freeR=nfr.filter((a,i,arr)=>!arr.some((b,j)=>i!==j&&isContained(a,b)));}else unplaced.push(j);}
+    rem=unplaced;const eff=Math.min(Math.round(((maxY-m)/mH)*100),100);pages.push({url:patchJFIF(cv.toDataURL('image/jpeg',1),100,2),eff,count:jobs.length-unplaced.length,sizeKey,ijazah:false});}return pages;
 }
 function intersects(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
 function isContained(i,o){return i.x>=o.x&&i.y>=o.y&&i.x+i.w<=o.x+o.w&&i.y+i.h<=o.y+o.h;}
 
-/* ====== RENDER MODAL A4 ====== */
 function renderModal(){
     modalBody.innerHTML='';if(!a4PagesData.length){modalBody.innerHTML='<div style="color:#888;padding:20px">Tidak ada halaman</div>';return;}
-    const grouped={};
-    a4PagesData.forEach((pg,i)=>{if(!grouped[pg.sizeKey])grouped[pg.sizeKey]=[];grouped[pg.sizeKey].push({...pg,globalIdx:i});});
-    let html='';
-    Object.keys(grouped).forEach(sk=>{
-        const pages=grouped[sk];
-        const isIj=pages[0].ijazah;
-        const typeLabel=isIj?'IJAZAH':'REGULER';
-        pages.forEach((pg,i)=>{
-            html+=`<div class="a4-section"><div class="a4-title">${typeLabel} ${sk} — Halaman ${i+1} <span class="badge">${pg.count} foto &bull; ~${pg.eff}% terisi</span></div><div class="a4-grid"><img src="${pg.url}" alt="Halaman A4"></div></div>`;
-        });
-    });
-    modalBody.innerHTML=html;
-    dlA4Btn.innerHTML='<i class="fa-solid fa-download"></i> Download Semua ('+a4PagesData.length+' Halaman)';
+    const grouped={};a4PagesData.forEach((pg,i)=>{if(!grouped[pg.sizeKey])grouped[pg.sizeKey]=[];grouped[pg.sizeKey].push({...pg,globalIdx:i});});
+    let html='';Object.keys(grouped).forEach(sk=>{const pages=grouped[sk];const isIj=pages[0].ijazah;const typeLabel=isIj?'IJAZAH':'REGULER';pages.forEach((pg,i)=>{html+=`<div class="a4-section"><div class="a4-title">${typeLabel} ${sk} — Halaman ${i+1} <span class="badge">${pg.count} foto &bull; ~${pg.eff}% terisi</span></div><div class="a4-grid"><img src="${pg.url}" alt="Halaman A4"></div></div>`;});});
+    modalBody.innerHTML=html;dlA4Btn.innerHTML='<i class="fa-solid fa-download"></i> Download Semua ('+a4PagesData.length+' Halaman)';
 }
 closeModalEl.onclick=()=>modal.style.display='none';
 window.addEventListener('click',e=>{if(e.target===modal)modal.style.display='none';});
 dlA4Btn.onclick=()=>{if(!a4PagesData.length)return;showToast('Mengunduh '+a4PagesData.length+' halaman...');a4PagesData.forEach((pg,i)=>{setTimeout(()=>{const a=document.createElement('a');a.download='KARYA-ABADI-A4-'+pg.sizeKey+'-Hal'+(i+1)+'-'+Date.now()+'.jpg';a.href=pg.url;document.body.appendChild(a);a.click();document.body.removeChild(a);},600*i);});};
 
-/* ====== TOAST ====== */
 function showToast(msg){toastEl.textContent=msg;toastEl.className='show';setTimeout(()=>toastEl.className=toastEl.className.replace('show',''),3000);}
 
-/* ====== HALAMAN INFO ====== */
 const INFO_PAGES={
     about:{title:'About',body:'<p>Karya Abadi Pas Foto adalah platform layanan pembuatan pas foto online yang dapat digunakan oleh semua pengguna untuk berbagai kebutuhan seperti KTP, ijazah, lamaran kerja, dan dokumen resmi lainnya. Platform ini dirancang agar mudah digunakan, cepat, dan menghasilkan foto yang rapi serta sesuai standar.</p>'},
     contact:{title:'Contact',body:'<div style="display:flex;flex-direction:column;gap:1rem;margin-top:.5rem"><div style="background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:1rem 1.2rem"><strong style="display:block;margin-bottom:2px;font-size:.9rem">Email</strong><span style="color:#ccc;font-size:.95rem">karyaabadi24434@gmail.com</span></div><div style="background:#1a1a1a;border:1px solid #333;border-radius:8px;padding:1rem 1.2rem"><strong style="display:block;margin-bottom:2px;font-size:.9rem">WhatsApp</strong><span style="color:#ccc;font-size:.95rem">082117325061</span></div></div>'},
