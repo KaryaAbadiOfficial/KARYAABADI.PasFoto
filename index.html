@@ -1,41 +1,88 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y9DK47RW26"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-Y9DK47RW26');
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KARYA ABADI PAS FOTO</title>
+<title>KARYA ABADI PAS FOTO - Buat Pas Foto Online Gratis</title>
 <link rel="icon" type="image/png" href="favicon.png">
 <meta name="google-adsense-account" content="ca-pub-2272135901889807">
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2272135901889807"
-crossorigin="anonymous"></script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2272135901889807" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-:root{--bg-body:#121212;--bg-card:#1e1e1e;--bg-input:#2d2d2d;--text-main:#fff;--text-muted:#b0b0b0;--accent-red:#D32F2F;--border-color:#444;--input-bg:#333;--shadow:0 4px 6px rgba(0,0,0,.3);--toast-bg:#333;--gold:#FFD700;--blue:#1565C0;--green:#4CAF50}
-[data-theme="light"]{--bg-body:#f0f2f5;--bg-card:#fff;--bg-input:#f7f7f7;--text-main:#1a1a1a;--text-muted:#666;--accent-red:#D32F2F;--border-color:#ddd;--input-bg:#fff;--shadow:0 4px 12px rgba(0,0,0,.1);--toast-bg:#333}
+:root{--bg-body:#0a0a0a;--bg-card:#1e1e1e;--bg-input:#2d2d2d;--text-main:#fff;--text-muted:#b0b0b0;--accent-red:#D32F2F;--accent-red-dark:#b71c1c;--border-color:#444;--input-bg:#333;--shadow:0 4px 6px rgba(0,0,0,.3);--toast-bg:#333;--gold:#FFD700;--blue:#1565C0;--green:#4CAF50;--bg-hero:#0d0d0d}
+[data-theme="light"]{--bg-body:#f0f2f5;--bg-card:#fff;--bg-input:#f7f7f7;--text-main:#1a1a1a;--text-muted:#666;--border-color:#ddd;--input-bg:#fff;--shadow:0 4px 12px rgba(0,0,0,.1);--toast-bg:#333;--bg-hero:#f8f9fa}
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+html{scroll-behavior:smooth}
 body{background:var(--bg-body);color:var(--text-main);line-height:1.6;display:flex;flex-direction:column;min-height:100vh}
-header{background:#000;border-bottom:2px solid var(--accent-red);padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.5);z-index:10}
-.logo-container{display:flex;align-items:center;gap:.8rem}
+
+/* ===== HEADER NAV ===== */
+header{background:#000;border-bottom:2px solid var(--accent-red);padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.5);z-index:1000;position:sticky;top:0}
+.logo-container{display:flex;align-items:center;gap:.8rem;cursor:pointer}
 .site-logo-img{width:45px;height:auto;max-height:45px;object-fit:contain}
 .site-info h1{font-size:1.2rem;color:#fff;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:1.2}
 .site-info h1 span{color:var(--accent-red)}
+.nav-menu{display:flex;gap:.3rem;align-items:center}
+.nav-menu a{color:#fff;font-weight:600;font-size:.82rem;padding:.5rem .9rem;cursor:pointer;transition:color .2s;text-decoration:none;border-radius:6px}
+.nav-menu a:hover{color:var(--accent-red);background:rgba(255,255,255,.05)}
+.header-right{display:flex;align-items:center;gap:.8rem}
 .theme-toggle{background:rgba(255,255,255,.1);border:1px solid #555;color:#fff;padding:.4rem;border-radius:50%;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
 .theme-toggle:hover{background:rgba(255,255,255,.2)}
-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;grid-template-columns:370px 1fr;gap:1rem;align-items:start}
+.mobile-toggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+
+/* ===== HERO BANNER ===== */
+.hero{background:linear-gradient(135deg,#000 0%,#1a0505 50%,#000 100%);padding:5rem 1.5rem;position:relative;overflow:hidden;border-bottom:1px solid #222}
+[data-theme="light"] .hero{background:linear-gradient(135deg,#f8f9fa 0%,#ffe5e5 50%,#f8f9fa 100%)}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(211,47,47,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,215,0,.08) 0%,transparent 50%)}
+.hero-inner{max-width:1200px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
+.hero-text h2{font-size:2.8rem;color:#fff;font-weight:900;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px}
+[data-theme="light"] .hero-text h2{color:#1a1a1a}
+.hero-text h2 span{color:var(--accent-red);display:block}
+.hero-text p{color:#ccc;font-size:1.05rem;margin-bottom:2rem;max-width:540px}
+[data-theme="light"] .hero-text p{color:#555}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent-red);color:#fff;border:none;padding:.9rem 1.8rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+.btn-primary:hover{background:var(--accent-red-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(211,47,47,.4)}
+.btn-outline{background:transparent;color:#fff;border:2px solid #fff;padding:.9rem 1.8rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
+[data-theme="light"] .btn-outline{color:#1a1a1a;border-color:#1a1a1a}
+.btn-outline:hover{background:#fff;color:#000}
+[data-theme="light"] .btn-outline:hover{background:#1a1a1a;color:#fff}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
+.hero-stat .num{font-size:1.8rem;color:var(--gold);font-weight:900}
+.hero-stat .lbl{font-size:.78rem;color:#999;text-transform:uppercase;letter-spacing:1px}
+[data-theme="light"] .hero-stat .lbl{color:#666}
+.hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
+.hero-card-stack{position:relative;width:280px;height:360px}
+.hero-card-stack .ph{position:absolute;background:#fff;border:3px solid var(--accent-red);border-radius:8px;box-shadow:0 20px 50px rgba(0,0,0,.5);overflow:hidden}
+.hero-card-stack .ph1{width:200px;height:260px;top:20px;left:0;transform:rotate(-8deg);animation:float1 5s ease-in-out infinite}
+.hero-card-stack .ph2{width:180px;height:240px;top:50px;left:90px;transform:rotate(5deg);animation:float2 6s ease-in-out infinite}
+.hero-card-stack .ph1::after,.hero-card-stack .ph2::after{content:"";position:absolute;inset:0;background:linear-gradient(135deg,#d4a574 0%,#8b6f47 100%);opacity:.7}
+.hero-card-stack .ph1::before{content:"\f007";font-family:"Font Awesome 6 Free";font-weight:900;position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;color:#fff;z-index:2;opacity:.4}
+@keyframes float1{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-8deg) translateY(-12px)}}
+@keyframes float2{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(5deg) translateY(8px)}}
+
+/* ===== SECTION GENERIC ===== */
+.section{padding:4rem 1.5rem;max-width:1200px;margin:0 auto}
+.section-head{text-align:center;margin-bottom:3rem}
+.section-tag{display:inline-block;background:rgba(211,47,47,.15);color:var(--accent-red);font-size:.78rem;font-weight:700;padding:.3rem .9rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:.8rem}
+.section-head h3{font-size:2.2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px}
+.section-head h3 span{color:var(--accent-red)}
+.section-head p{color:var(--text-muted);font-size:1rem;max-width:640px;margin:0 auto}
+
+/* ===== TOOL SECTION ===== */
+.tool-section{background:var(--bg-body);padding:2rem 1rem}
+main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;grid-template-columns:370px 1fr;gap:1rem;align-items:start}
 .card{background:var(--bg-card);border-radius:12px;padding:1rem;box-shadow:var(--shadow);border:1px solid var(--border-color);display:flex;flex-direction:column;gap:.7rem}
-.left-panel{max-height:96vh;overflow-y:auto;position:sticky;top:1rem}
+.left-panel{max-height:96vh;overflow-y:auto;position:sticky;top:5rem}
 .left-panel::-webkit-scrollbar{width:5px}
 .left-panel::-webkit-scrollbar-thumb{background:var(--border-color);border-radius:5px}
-.right-panel{min-height:60vh}
+.right-panel{min-height:96vh}
 .stitle{font-size:.85rem;font-weight:700;display:flex;align-items:center;gap:.5rem;color:var(--accent-red);text-transform:uppercase;letter-spacing:.5px}
 .stitle.blue{color:var(--blue)}
 .sep{height:1px;background:var(--border-color);margin:1px 0}
@@ -53,8 +100,8 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .btn-text:hover{color:#b71c1c}
 .size-label{font-size:.68rem;color:var(--text-muted);font-weight:600;margin-top:2px;text-transform:uppercase;letter-spacing:.5px}
 .size-grid{display:grid;gap:5px}
-#sizeGridP{grid-template-columns:1fr}
-#sizeGridL{grid-template-columns:1fr}
+#sizeGridP{grid-template-columns:1fr 1fr 1fr 1fr}
+#sizeGridL{grid-template-columns:1fr 1fr 1fr}
 .size-btn{padding:7px 4px;border:1px solid var(--border-color);border-radius:6px;background:var(--bg-input);color:var(--text-main);cursor:pointer;font-size:.78rem;font-weight:700;text-align:center;transition:all .15s}
 .size-btn:hover{border-color:var(--accent-red)}
 .size-btn.active{background:var(--accent-red);color:#fff;border-color:var(--accent-red)}
@@ -121,6 +168,8 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .btn-acuan:hover{background:rgba(255,215,0,.1)!important}
 .btn-acuan.active{background:var(--gold)!important;color:#000!important;border:1px solid var(--gold)!important;border-style:solid!important;cursor:default}
 .card-dl{width:100%;max-width:160px;font-size:.6rem;padding:.3rem}
+
+/* ===== MODAL ===== */
 .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.92);backdrop-filter:blur(5px)}
 .modal-content{background:var(--bg-card);margin:0 auto;padding:15px;border:2px solid var(--accent-red);width:100%;max-width:1200px;height:100vh;display:flex;flex-direction:column;border-radius:10px;color:var(--text-main)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border-color);flex-shrink:0}
@@ -134,34 +183,143 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 .a4-grid img{max-width:100%;height:auto;max-height:calc(100vh - 200px);object-fit:contain;border:1px solid #333}
 .close{color:var(--text-muted);font-size:26px;font-weight:bold;cursor:pointer;line-height:1}
 .close:hover{color:var(--accent-red)}
+
+/* ===== TOAST ===== */
 #toast{visibility:hidden;min-width:220px;background:var(--toast-bg);color:#fff;text-align:center;border-radius:6px;padding:12px 20px;position:fixed;z-index:3000;left:50%;bottom:20px;transform:translateX(-50%);font-size:.82rem;border:1px solid var(--accent-red);box-shadow:0 4px 20px rgba(0,0,0,.5)}
 #toast.show{visibility:visible;animation:fi .4s,fo .4s 2.5s}
 @keyframes fi{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
 @keyframes fo{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
-.site-footer{background:#000;border-top:1px solid #333;padding:0}
-.footer-links{display:flex;justify-content:center;align-items:center;border-bottom:1px solid #222;white-space:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch}
-.footer-links::-webkit-scrollbar{display:none}
-.footer-links a{color:#fff;font-weight:700;font-size:.78rem;padding:.75rem 1.1rem;cursor:pointer;transition:color .2s;text-decoration:none;letter-spacing:.3px;flex-shrink:0}
-.footer-links a:hover{color:var(--accent-red)}
-.footer-copy{text-align:center;padding:.6rem 1rem;color:#555;font-size:.68rem}
-@media(max-width:1000px){main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}.left-panel{max-height:none;position:static;order:-1}}
-@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}.footer-links a{font-size:.6rem;padding:.55rem .5rem}.a4-grid img{max-height:calc(100vh - 220px)}}
-@media(max-width:380px){.footer-links a{font-size:.52rem;padding:.45rem .35rem}}
+
+/* ===== PANDUAN SECTION ===== */
+.guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem}
+.guide-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:2rem 1.2rem;position:relative;transition:all .3s;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
+.guide-card:hover{transform:translateY(-5px);border-color:var(--accent-red);box-shadow:0 12px 30px rgba(211,47,47,.2)}
+.guide-num{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--accent-red);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem}
+.guide-icon{font-size:2.5rem;color:var(--accent-red);margin-bottom:1rem;margin-top:.5rem;width:70px;height:70px;display:flex;align-items:center;justify-content:center;background:rgba(211,47,47,.1);border-radius:50%}
+.guide-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.guide-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
+
+/* ===== TIPS & CONTOH SECTION ===== */
+.tips-section{background:var(--bg-card);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}
+.tips-wrapper{max-width:1200px;margin:0 auto;padding:4rem 1.5rem}
+.tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
+.tip-card{background:var(--bg-input);border-radius:12px;overflow:hidden;border:1px solid var(--border-color);transition:all .3s;display:flex;flex-direction:column}
+.tip-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.tip-img{height:160px;background:linear-gradient(135deg,#444,#222);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--gold);position:relative}
+.tip-img.good::after{content:"\f00c";position:absolute;top:10px;right:10px;background:var(--green);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900}
+.tip-img.bad::after{content:"\f00d";position:absolute;top:10px;right:10px;background:var(--accent-red);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900}
+.tip-body{padding:1.5rem 1.2rem;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
+.tip-body h4{font-size:1rem;font-weight:700;margin-bottom:.5rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;justify-content:center;text-align:center}
+.tip-body p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.tip-good{color:var(--green)}
+.tip-bad{color:var(--accent-red)}
+
+/* ===== FAQ SECTION ===== */
+.faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
+.faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;overflow:hidden;transition:border-color .3s}
+.faq-item.active{border-color:var(--accent-red)}
+.faq-q{padding:1.1rem 1.3rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.95rem;gap:1rem}
+.faq-q i{transition:transform .3s;color:var(--accent-red);flex-shrink:0}
+.faq-item.active .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 1.3rem}
+.faq-item.active .faq-a{max-height:300px;padding:0 1.3rem 1.1rem}
+.faq-a p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+
+/* ===== TENTANG SECTION ===== */
+.about-section{background:var(--bg-card);border-top:1px solid var(--border-color)}
+.about-wrapper{max-width:1200px;margin:0 auto;padding:4rem 1.5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.about-text h3{font-size:2rem;font-weight:900;margin-bottom:1rem}
+.about-text h3 span{color:var(--accent-red)}
+.about-text p{color:var(--text-muted);margin-bottom:1rem;font-size:.95rem}
+.about-features{list-style:none;margin-top:1.5rem}
+.about-features li{display:flex;align-items:center;gap:.7rem;margin-bottom:.7rem;font-size:.92rem}
+.about-features li i{color:var(--green);font-size:1.1rem;width:24px}
+.about-visual{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.about-visual .av-card{background:var(--bg-input);border-radius:10px;padding:1.5rem 1rem;text-align:center;border:1px solid var(--border-color)}
+.about-visual .av-card i{font-size:2rem;color:var(--accent-red);margin-bottom:.5rem;display:block}
+.about-visual .av-card .n{font-size:1.6rem;font-weight:900;color:var(--gold)}
+.about-visual .av-card .l{font-size:.75rem;color:var(--text-muted)}
+
+/* ===== CTA SECTION ===== */
+.cta-section{padding:4rem 1.5rem;text-align:center;background:linear-gradient(135deg,var(--accent-red) 0%,#b71c1c 100%);margin:2rem auto;max-width:1200px;border-radius:16px}
+.cta-section h3{color:#fff;font-size:2rem;font-weight:900;margin-bottom:.8rem}
+.cta-section p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;font-size:1rem}
+.cta-section .btn-outline{border-color:#fff;color:#fff}
+.cta-section .btn-outline:hover{background:#fff;color:var(--accent-red)}
+
+/* ===== FOOTER ===== */
+.site-footer{background:#000;border-top:2px solid var(--accent-red);padding:0;margin-top:auto}
+.footer-top{max-width:1200px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem}
+.footer-brand h4{color:#fff;font-size:1.1rem;font-weight:800;letter-spacing:1px;margin-bottom:.8rem;text-transform:uppercase}
+.footer-brand h4 span{color:var(--accent-red)}
+.footer-brand p{color:#888;font-size:.85rem;margin-bottom:1rem;max-width:300px}
+.footer-col h5{color:#fff;font-size:.9rem;font-weight:700;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
+.footer-col a{display:block;color:#999;font-size:.85rem;margin-bottom:.5rem;cursor:pointer;text-decoration:none;transition:color .2s}
+.footer-col a:hover{color:var(--accent-red)}
+.footer-copy{text-align:center;padding:1.5rem 1rem;color:#555;font-size:.72rem;border-top:1px solid #222}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1000px){.nav-menu{display:none}.mobile-toggle{display:block}.hero-inner{grid-template-columns:1fr;text-align:center}.hero-text p{margin-left:auto;margin-right:auto}.hero-cta,.hero-stats{justify-content:center}.hero-visual{display:none}main.app-main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}.left-panel{max-height:none;position:static;order:-1}.right-panel{min-height:60vh}.about-wrapper{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr 1fr}.guide-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}}
+@media(max-width:768px){.nav-menu.open{display:flex;position:absolute;top:100%;left:0;right:0;background:#000;flex-direction:column;padding:1rem;gap:.2rem;border-bottom:2px solid var(--accent-red)}.nav-menu.open a{padding:.7rem 1rem;width:100%;border-radius:6px}.nav-menu.open a:hover{background:rgba(211,47,47,.15)}.hero-text h2{font-size:2rem}.section-head h3{font-size:1.6rem}.footer-top{grid-template-columns:1fr}}
+@media(max-width:500px){header{padding:.4rem .8rem}.site-logo-img{width:32px}.site-info h1{font-size:.9rem}.photo-grid{grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:6px}.cb{height:24px;font-size:.7rem}.a4-grid img{max-height:calc(100vh - 220px)}#sizeGridP{grid-template-columns:1fr 1fr}.section{padding:3rem 1rem}.cta-section{padding:3rem 1.5rem}.cta-section h3{font-size:1.5rem}.guide-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <header>
-<div class="logo-container">
+<div class="logo-container" onclick="scrollToSection('beranda')">
 <img src="https://z-cdn-media.chatglm.cn/files/7036c9c2-b59a-4db0-916c-f8e802d0017c.png?auth_key=1877865703-8be2c7d3241c46139790e19708a62afe-0-28c4d05614f7e4de61d8f5814228fbfc" alt="Logo" class="site-logo-img">
 <div class="site-info">
 <h1>KARYA ABADI <span>PAS FOTO</span></h1>
 </div>
 </div>
+<nav class="nav-menu" id="navMenu">
+<a onclick="scrollToSection('beranda')">Beranda</a>
+<a onclick="scrollToSection('tool')">Buat Pas Foto</a>
+<a onclick="scrollToSection('panduan')">Panduan</a>
+<a onclick="scrollToSection('tips')">Tips & Contoh</a>
+<a onclick="scrollToSection('faq')">FAQ</a>
+<a onclick="scrollToSection('tentang')">About</a>
+</nav>
+<div class="header-right">
 <button class="theme-toggle" id="themeToggle">&#9728;&#65039;</button>
+<button class="mobile-toggle" id="mobileToggle"><i class="fa-solid fa-bars"></i></button>
+</div>
 </header>
 
-<main>
+<!-- ===== HERO BANNER ===== -->
+<section class="hero" id="beranda">
+<div class="hero-inner">
+<div class="hero-text">
+<h2>Buat Pas Foto<br><span>Online & Gratis</span></h2>
+<p>Tool pembuat pas foto online terlengkap. Dukung berbagai ukuran (2x3, 3x4, 4x6, 5x5), mode ijazah dengan nama sekolah, hitam putih, hingga cetak pintar di A4. Semua dilakukan di browser tanpa upload ke server.</p>
+<div class="hero-cta">
+<a class="btn-primary" onclick="scrollToSection('tool')"><i class="fa-solid fa-camera-retro"></i> Mulai Buat Pas Foto</a>
+<a class="btn-outline" onclick="scrollToSection('panduan')"><i class="fa-solid fa-book-open"></i> Lihat Panduan</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><div class="num">7+</div><div class="lbl">Ukuran Foto</div></div>
+<div class="hero-stat"><div class="num">50</div><div class="lbl">Foto / Sesi</div></div>
+<div class="hero-stat"><div class="num">100%</div><div class="lbl">Gratis & Aman</div></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-card-stack">
+<div class="ph ph1"></div>
+<div class="ph ph2"></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== TOOL SECTION ===== -->
+<section class="tool-section" id="tool">
+<div class="section-head">
+<span class="section-tag">Tool Utama</span>
+<h3>Buat <span>Pas Foto</span> Anda</h3>
+<p>Upload foto, atur posisi crop, pilih ukuran, lalu susun pintar untuk dicetak di kertas A4.</p>
+</div>
+<main class="app-main">
 <aside class="card left-panel" id="leftPanel">
 <div class="stitle"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Foto</div>
 <div class="dropzone" id="dropzone">
@@ -238,6 +396,7 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 <div class="stitle"><i class="fa-solid fa-eye"></i> Preview &amp; Atur Posisi</div>
 <div class="total" id="gridTotal"></div>
 </div>
+<div class="sep"></div>
 <div class="photo-grid" id="photoGrid">
 <div class="empty-state" id="emptyState">
 <i class="fa-regular fa-image"></i>
@@ -246,6 +405,179 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 </div>
 </section>
 </main>
+</section>
+
+<!-- ===== PANDUAN SECTION ===== -->
+<section class="section" id="panduan">
+<div class="section-head">
+<span class="section-tag">Panduan</span>
+<h3>Cara <span>Membuat Pas Foto</span></h3>
+<p>Ikuti 5 langkah mudah berikut untuk menghasilkan pas foto yang sesuai standar.</p>
+</div>
+<div class="guide-grid">
+<div class="guide-card">
+<div class="guide-num">1</div>
+<div class="guide-icon"><i class="fa-solid fa-upload"></i></div>
+<h4>Upload Foto</h4>
+<p>Klik area upload atau seret foto langsung ke dalam dropzone. Anda dapat mengunggah hingga 50 foto sekaligus dalam format JPG atau PNG.</p>
+</div>
+<div class="guide-card">
+<div class="guide-num">2</div>
+<div class="guide-icon"><i class="fa-solid fa-crop"></i></div>
+<h4>Pilih Ukuran</h4>
+<p>Tentukan ukuran pas foto yang dibutuhkan seperti 2x3, 3x4, 4x6, atau 5x5. Tersedia mode Portrait dan Landscape sesuai dengan keperluan.</p>
+</div>
+<div class="guide-card">
+<div class="guide-num">3</div>
+<div class="guide-icon"><i class="fa-solid fa-arrows-up-down-left-right"></i></div>
+<h4>Atur Posisi Crop</h4>
+<p>Seret foto untuk mengatur posisi, gunakan tombol panah untuk pergerakan halus, dan zoom menggunakan scroll mouse atau tombol plus minus.</p>
+</div>
+<div class="guide-card">
+<div class="guide-num">4</div>
+<div class="guide-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+<h4>Aktifkan Mode (Opsional)</h4>
+<p>Gunakan mode Hitam Putih untuk foto reguler, atau aktifkan Mode Ijazah untuk menambahkan nama sekolah secara otomatis di bagian bawah foto.</p>
+</div>
+<div class="guide-card">
+<div class="guide-num">5</div>
+<div class="guide-icon"><i class="fa-solid fa-print"></i></div>
+<h4>Susun & Cetak A4</h4>
+<p>Klik tombol Susun Pintar di A4 untuk menata semua foto secara otomatis. Lalu download dan cetak menggunakan kertas foto.</p>
+</div>
+</div>
+</section>
+
+<!-- ===== TIPS & CONTOH SECTION ===== -->
+<section class="tips-section" id="tips">
+<div class="tips-wrapper">
+<div class="section-head">
+<span class="section-tag">Tips & Contoh</span>
+<h3>Tips <span>Foto yang Baik</span></h3>
+<p>Perhatikan contoh berikut agar hasil pas foto Anda maksimal dan sesuai standar.</p>
+</div>
+<div class="tips-grid">
+<div class="tip-card">
+<div class="tip-img good"><i class="fa-solid fa-user-check"></i></div>
+<div class="tip-body">
+<h4 class="tip-good"><i class="fa-solid fa-thumbs-up"></i> Pencahayaan Merata</h4>
+<p>Ambil foto di ruangan dengan cahaya terang dan merata, idealnya dekat jendela atau menggunakan lampu tambahan. Hindari bayangan pada wajah.</p>
+</div>
+</div>
+<div class="tip-card">
+<div class="tip-img bad"><i class="fa-solid fa-user-xmark"></i></div>
+<div class="tip-body">
+<h4 class="tip-bad"><i class="fa-solid fa-triangle-exclamation"></i> Bayangan & Gelap</h4>
+<p>Hindari foto dengan pencahayaan tidak merata, sumber cahaya dari satu sisi, atau ruangan yang terlalu gelap. Wajah akan tampak tidak jelas.</p>
+</div>
+</div>
+<div class="tip-card">
+<div class="tip-img good"><i class="fa-solid fa-face-smile"></i></div>
+<div class="tip-body">
+<h4 class="tip-good"><i class="fa-solid fa-thumbs-up"></i> Background Polos</h4>
+<p>Gunakan latar belakang berwarna polos seperti putih, biru, atau merah. Pastikan tidak ada objek lain yang mengganggu di belakang.</p>
+</div>
+</div>
+<div class="tip-card">
+<div class="tip-img bad"><i class="fa-solid fa-image"></i></div>
+<div class="tip-body">
+<h4 class="tip-bad"><i class="fa-solid fa-triangle-exclamation"></i> Background Berisik</h4>
+<p>Hindari background dengan banyak objek, pola yang rumit, atau warna mencolok. Hal ini akan menyulitkan proses crop dan hasil tidak rapi.</p>
+</div>
+</div>
+<div class="tip-card">
+<div class="tip-img good"><i class="fa-solid fa-person"></i></div>
+<div class="tip-body">
+<h4 class="tip-good"><i class="fa-solid fa-thumbs-up"></i> Posisi Tegak</h4>
+<p>Berdiri atau duduk dengan tegak menghadap kamera, pandangan lurus ke depan, dan bahu rileks. Wajah harus berada di tengah frame.</p>
+</div>
+</div>
+<div class="tip-card">
+<div class="tip-img bad"><i class="fa-solid fa-person-falling"></i></div>
+<div class="tip-body">
+<h4 class="tip-bad"><i class="fa-solid fa-triangle-exclamation"></i> Pose Miring</h4>
+<p>Hindari posisi kepala miring, mata tertutup, atau ekspresi yang tidak netral. Pas foto resmi membutuhkan pose tegak dan wajah netral.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- ===== CTA SECTION ===== -->
+<section class="cta-section">
+<h3>Siap Membuat Pas Foto Anda?</h3>
+<p>Cepat, gratis, dan langsung jadi. Tidak perlu install aplikasi, semua proses aman di browser Anda.</p>
+<a class="btn-outline" onclick="scrollToSection('tool')"><i class="fa-solid fa-rocket"></i> Mulai Sekarang</a>
+</section>
+
+<!-- ===== FAQ SECTION ===== -->
+<section class="section" id="faq">
+<div class="section-head">
+<span class="section-tag">FAQ</span>
+<h3>Pertanyaan <span>Umum</span></h3>
+<p>Pertanyaan yang sering ditanyakan seputar penggunaan tool Karya Abadi Pas Foto.</p>
+</div>
+<div class="faq-list">
+<div class="faq-item">
+<div class="faq-q"><span>Apakah tool ini benar-benar gratis?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Ya, 100% gratis. Tidak ada biaya tersembunyi, tidak perlu registrasi, dan tidak ada batas jumlah penggunaan. Anda bisa membuat pas foto sebanyak yang dibutuhkan tanpa biaya apapun.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Apakah foto saya diupload ke server?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Tidak. Semua proses dilakukan langsung di browser Anda (client-side). Foto tidak pernah dikirim ke server kami, sehingga privasi dan keamanan data Anda terjamin.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Ukuran pas foto apa saja yang didukung?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Kami mendukung ukuran 2x3, 3x4, 4x6, dan 5x5 dalam mode Portrait maupun Landscape. Ukuran 3x4 adalah yang paling umum digunakan untuk KTP, SIM, dan dokumen resmi lainnya.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Apa itu Mode Ijazah?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Mode Ijazah menambahkan pita putih di bagian bawah foto berisi nama sekolah/universitas. Ini cocok untuk pas foto yang akan ditempel pada ijazah. Anda bisa mengatur nama institusi dan ukuran font sesuai kebutuhan.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Bagaimana cara mencetak hasil pas foto?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Setelah mengatur foto, klik tombol "Susun Pintar di A4" untuk menata semua foto otomatis di kertas A4. Kemudian download file JPG dan cetak menggunakan printer dengan kertas foto glossy atau semi-glossy untuk hasil terbaik.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Berapa maksimal foto yang bisa diproses sekaligus?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Anda dapat mengunggah hingga 50 foto dalam satu sesi. Setiap foto bisa diatur jumlah cetaknya hingga 200 lembar. Sistem akan otomatis menghitung estimasi jumlah halaman A4 yang dibutuhkan.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Apa fungsi fitur "Jadikan Acuan"?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Fitur ini memungkinkan Anda mengatur posisi crop pada satu foto, lalu menerapkannya ke semua foto berukuran sama. Sangat berguna ketika Anda memiliki banyak foto dengan komposisi serupa dan ingin hasil crop yang konsisten.</p></div>
+</div>
+<div class="faq-item">
+<div class="faq-q"><span>Apakah bisa membuat pas foto hitam putih?</span><i class="fa-solid fa-chevron-down"></i></div>
+<div class="faq-a"><p>Bisa. Aktifkan toggle "Hitam Putih (Reguler)" untuk mengubah foto berwarna menjadi hitam putih. Untuk Mode Ijazah, tersedia toggle terpisah "Ijazah Hitam Putih" jika Anda ingin foto ijazah dalam format monokrom.</p></div>
+</div>
+</div>
+</section>
+
+<!-- ===== TENTANG SECTION ===== -->
+<section class="about-section" id="tentang">
+<div class="about-wrapper">
+<div class="about-text">
+<span class="section-tag">Tentang Kami</span>
+<h3>Tentang <span>Karya Abadi</span> Pas Foto</h3>
+<p>Karya Abadi Pas Foto adalah platform layanan pembuatan pas foto online gratis yang dapat digunakan oleh siapa saja untuk berbagai kebutuhan seperti KTP, ijazah, lamaran kerja, paspor, dan dokumen resmi lainnya.</p>
+<p>Platform ini dirancang agar mudah digunakan, cepat, dan menghasilkan foto yang rapi serta sesuai standar. Semua proses dilakukan di browser tanpa mengirim data ke server, sehingga aman dan privat.</p>
+<ul class="about-features">
+<li><i class="fa-solid fa-check-circle"></i> Gratis tanpa registrasi</li>
+<li><i class="fa-solid fa-check-circle"></i> Privasi terjaga (client-side)</li>
+<li><i class="fa-solid fa-check-circle"></i> Berbagai ukuran foto didukung</li>
+<li><i class="fa-solid fa-check-circle"></i> Mode Ijazah dengan nama sekolah</li>
+<li><i class="fa-solid fa-check-circle"></i> Penyusunan otomatis di A4</li>
+<li><i class="fa-solid fa-check-circle"></i> Bisa digunakan di semua perangkat</li>
+</ul>
+</div>
+<div class="about-visual">
+<div class="av-card"><i class="fa-solid fa-users"></i><div class="n">10K+</div><div class="l">Pengguna</div></div>
+<div class="av-card"><i class="fa-solid fa-camera"></i><div class="n">100K+</div><div class="l">Foto Dibuat</div></div>
+<div class="av-card"><i class="fa-solid fa-ruler-combined"></i><div class="n">7+</div><div class="l">Ukuran Tersedia</div></div>
+<div class="av-card"><i class="fa-solid fa-star"></i><div class="n">4.9</div><div class="l">Rating Pengguna</div></div>
+</div>
+</div>
+</section>
 
 <div id="a4Modal" class="modal">
 <div class="modal-content">
@@ -258,12 +590,22 @@ main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;
 </div>
 
 <footer class="site-footer">
-<div class="footer-links">
-    <a onclick="openInfoPage('about')">About</a>
-    <a onclick="openInfoPage('contact')">Contact</a>
-    <a onclick="openInfoPage('privacy')">Privacy Policy</a>
-    <a onclick="openInfoPage('terms')">Terms of Service</a>
-    <a onclick="openInfoPage('disclaimer')">Disclaimer</a>
+<div class="footer-top">
+<div class="footer-brand">
+<h4>KARYA ABADI <span>PAS FOTO</span></h4>
+<p>Platform gratis untuk membuat pas foto online dengan berbagai ukuran, mode ijazah, dan penyusunan otomatis di A4.</p>
+</div>
+<div class="footer-col">
+<h5>Hubungi Kami</h5>
+<a onclick="openInfoPage('contact')">Kontak</a>
+<a onclick="openInfoPage('disclaimer')">Disclaimer</a>
+</div>
+<div class="footer-col">
+<h5>Informasi & Legal</h5>
+<a onclick="openInfoPage('about')">About</a>
+<a onclick="openInfoPage('privacy')">Kebijakan Privasi</a>
+<a onclick="openInfoPage('terms')">Syarat & Ketentuan</a>
+</div>
 </div>
 <div class="footer-copy">&copy; 2026 Karya Abadi Pas Foto. All Rights Reserved.</div>
 </footer>
@@ -286,7 +628,14 @@ const modal=$('a4Modal'),closeModalEl=$('closeModal'),modalBody=$('modalBody'),d
 const themeToggle=$('themeToggle'),toastEl=$('toast');
 const refSection=$('refSection'),refNum=$('refNum'),refSizeLabel=$('refSizeLabel'),applyRefBtn=$('applyRefBtn');
 
+// Navigation
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:'smooth'});
+document.getElementById('navMenu').classList.remove('open');
+}
 themeToggle.onclick=()=>{const l=document.documentElement.getAttribute('data-theme')==='light';document.documentElement.setAttribute('data-theme',l?'dark':'light');themeToggle.innerHTML=l?'&#9728;&#65039;':'&#127769;';};
+ $('mobileToggle').onclick=()=>$('navMenu').classList.toggle('open');
+document.querySelectorAll('.faq-item').forEach(item=>{item.querySelector('.faq-q').onclick=()=>{item.classList.toggle('active');};});
 document.querySelectorAll('.size-btn').forEach(b=>{b.onclick=()=>{if(b.disabled)return;document.querySelectorAll('.size-btn').forEach(x=>x.classList.remove('active'));b.classList.add('active');selectedSize=b.dataset.size;infoSize.textContent=selectedSize.replace('L',' Landscape');};});
 function lockSizes(lock){document.querySelectorAll('.size-btn').forEach(b=>{if(lock){b.disabled=b.dataset.size!=='3X4';if(b.dataset.size==='3X4'){b.classList.add('active');b.disabled=false;}else b.classList.remove('active');selectedSize='3X4';infoSize.textContent='3X4 (Ijazah)';}else b.disabled=false;});}
 ijazahToggle.onchange=()=>{const on=ijazahToggle.checked;ijazahBox.style.display=on?'flex':'none';lockSizes(on);if(on)bwToggle.checked=false;};
