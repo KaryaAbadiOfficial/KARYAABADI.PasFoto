@@ -204,9 +204,10 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
 .tip-card{background:var(--bg-input);border-radius:12px;overflow:hidden;border:1px solid var(--border-color);transition:all .3s;display:flex;flex-direction:column}
 .tip-card:hover{transform:translateY(-3px);border-color:var(--gold)}
-.tip-img{height:160px;background:linear-gradient(135deg,#444,#222);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--gold);position:relative}
-.tip-img.good::after{content:"\f00c";position:absolute;top:10px;right:10px;background:var(--green);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900}
-.tip-img.bad::after{content:"\f00d";position:absolute;top:10px;right:10px;background:var(--accent-red);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900}
+.tip-img{height:300px;background:linear-gradient(135deg,#2a2a2a,#111);display:flex;align-items:center;justify-content:center;font-size:3rem;color:var(--gold);position:relative;overflow:hidden;padding:10px}
+.tip-img img{max-width:100%;max-height:100%;object-fit:contain;display:block}
+.tip-img.good::after{content:"\f00c";position:absolute;top:10px;right:10px;background:var(--green);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900;z-index:2}
+.tip-img.bad::after{content:"\f00d";position:absolute;top:10px;right:10px;background:var(--accent-red);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900;z-index:2}
 .tip-body{padding:1.5rem 1.2rem;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
 .tip-body h4{font-size:1rem;font-weight:700;margin-bottom:.5rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;justify-content:center;text-align:center}
 .tip-body p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
@@ -459,44 +460,50 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 <h3>Tips <span>Foto yang Baik</span></h3>
 <p>Perhatikan contoh berikut agar hasil pas foto Anda maksimal dan sesuai standar.</p>
 </div>
+
+<div style="margin-bottom: 2.5rem; background: rgba(211, 47, 47, 0.08); border: 2px solid var(--accent-red); border-radius: 12px; padding: 1.5rem; text-align: center;">
+<h4 style="color: var(--accent-red); margin-bottom: 0.8rem; font-size: 1.2rem; font-weight: 800;"><i class="fa-solid fa-circle-exclamation"></i> ATURAN KETERANGAN PAS FOTO</h4>
+<p style="color: var(--text-main); margin: 0; font-size: 1.1rem; font-weight: 700; line-height: 1.6;">Tidak boleh memakai <strong style="color: var(--gold); font-weight: 900;">kaca mata</strong> dan <strong style="color: var(--gold); font-weight: 900;">soft lens</strong> saat mengambil pas foto. Pastikan untuk melepasnya sebelum melakukan pemotretan.</p>
+</div>
+
 <div class="tips-grid">
 <div class="tip-card">
-<div class="tip-img good"><i class="fa-solid fa-user-check"></i></div>
+<div class="tip-img good"><img src="https://z-cdn-media.chatglm.cn/files/638280ac-8430-47db-8f7d-c76fe0caf362.png?auth_key=1885566437-26476b86376f4b34ad681c6dbf6a21f3-0-f0f8d54c16a63a9025bd4336c1ea533a" alt="Pencahayaan Merata"></div>
 <div class="tip-body">
 <h4 class="tip-good"><i class="fa-solid fa-thumbs-up"></i> Pencahayaan Merata</h4>
 <p>Ambil foto di ruangan dengan cahaya terang dan merata, idealnya dekat jendela atau menggunakan lampu tambahan. Hindari bayangan pada wajah.</p>
 </div>
 </div>
 <div class="tip-card">
-<div class="tip-img bad"><i class="fa-solid fa-user-xmark"></i></div>
+<div class="tip-img bad"><img src="https://z-cdn-media.chatglm.cn/files/8bec4d24-8591-43c2-84a9-db82af54746f.png?auth_key=1885566437-2d996b935d404cf595318ce8cbb3612d-0-cf4a5fb13fc0321c4dc47cc6493254ff" alt="Bayangan & Gelap"></div>
 <div class="tip-body">
 <h4 class="tip-bad"><i class="fa-solid fa-triangle-exclamation"></i> Bayangan & Gelap</h4>
 <p>Hindari foto dengan pencahayaan tidak merata, sumber cahaya dari satu sisi, atau ruangan yang terlalu gelap. Wajah akan tampak tidak jelas.</p>
 </div>
 </div>
 <div class="tip-card">
-<div class="tip-img good"><i class="fa-solid fa-face-smile"></i></div>
+<div class="tip-img good"><img src="https://z-cdn-media.chatglm.cn/files/881879e0-ae0e-486f-a8ac-11df870a7b3b.png?auth_key=1885566437-cd2cae199c4a4715b9b242925136fc55-0-ca0ff9682c135ff74cad49976b5eaf27" alt="Background Polos"></div>
 <div class="tip-body">
 <h4 class="tip-good"><i class="fa-solid fa-thumbs-up"></i> Background Polos</h4>
 <p>Gunakan latar belakang berwarna polos seperti putih, biru, atau merah. Pastikan tidak ada objek lain yang mengganggu di belakang.</p>
 </div>
 </div>
 <div class="tip-card">
-<div class="tip-img bad"><i class="fa-solid fa-image"></i></div>
+<div class="tip-img bad"><img src="https://z-cdn-media.chatglm.cn/files/3688dd63-b2c7-454c-b4a5-422b76c7c45a.png?auth_key=1885566437-a87f3152c87d41459195d2543fbe8234-0-681307b13c78b72e965adf065337ff0f" alt="Background Berisik"></div>
 <div class="tip-body">
 <h4 class="tip-bad"><i class="fa-solid fa-triangle-exclamation"></i> Background Berisik</h4>
 <p>Hindari background dengan banyak objek, pola yang rumit, atau warna mencolok. Hal ini akan menyulitkan proses crop dan hasil tidak rapi.</p>
 </div>
 </div>
 <div class="tip-card">
-<div class="tip-img good"><i class="fa-solid fa-person"></i></div>
+<div class="tip-img good"><img src="https://z-cdn-media.chatglm.cn/files/440a3e04-5ed7-45fe-b563-7ad7d15a4fe0.png?auth_key=1885566437-0991e4e1cf0d4cf0bbd894c45490b251-0-d33159b6207cd8a58310d3edfa661b31" alt="Posisi Tegak"></div>
 <div class="tip-body">
 <h4 class="tip-good"><i class="fa-solid fa-thumbs-up"></i> Posisi Tegak</h4>
 <p>Berdiri atau duduk dengan tegak menghadap kamera, pandangan lurus ke depan, dan bahu rileks. Wajah harus berada di tengah frame.</p>
 </div>
 </div>
 <div class="tip-card">
-<div class="tip-img bad"><i class="fa-solid fa-person-falling"></i></div>
+<div class="tip-img bad"><img src="https://z-cdn-media.chatglm.cn/files/48fdca72-4abe-42f2-b7d6-86ca86184792.png?auth_key=1885566437-72659afb7ac44b7caeafd630ffdbd988-0-7f9f049388c544a2496d6b652c4f99cd" alt="Pose Miring"></div>
 <div class="tip-body">
 <h4 class="tip-bad"><i class="fa-solid fa-triangle-exclamation"></i> Pose Miring</h4>
 <p>Hindari posisi kepala miring, mata tertutup, atau ekspresi yang tidak netral. Pas foto resmi membutuhkan pose tegak dan wajah netral.</p>
