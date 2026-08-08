@@ -257,7 +257,7 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 
 /* ===== FOOTER ===== */
 .site-footer{background:#000;border-top:2px solid var(--accent-red);padding:0;margin-top:auto}
-.footer-top{max-width:1200px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem}
+.footer-top{max-width:1200px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
 .footer-brand h4{color:#fff;font-size:1.1rem;font-weight:800;letter-spacing:1px;margin-bottom:.8rem;text-transform:uppercase}
 .footer-brand h4 span{color:var(--accent-red)}
 .footer-brand p{color:#888;font-size:.85rem;margin-bottom:1rem;max-width:300px}
@@ -937,18 +937,24 @@ header{padding:.4rem .8rem}
 </div>
 <div class="footer-col">
 <h5>Navigasi</h5>
-<a onclick="navigate('about')">Tentang Kami</a>
-<a onclick="navigate('contact')">Kontak</a>
+<a onclick="navigate('home')">Beranda</a>
+<a onclick="navigate('tool')">Buat Pas Foto</a>
+<a onclick="navigate('guides')">Panduan & Artikel</a>
 <a onclick="navigate('faq')">FAQ</a>
 </div>
 <div class="footer-col">
-<h5>Informasi & Legal</h5>
+<h5>Informasi Perusahaan</h5>
+<a onclick="navigate('about')">Tentang Kami</a>
+<a onclick="navigate('contact')">Kontak</a>
+</div>
+<div class="footer-col">
+<h5>Legal & Keamanan</h5>
 <a onclick="navigate('privacy')">Kebijakan Privasi</a>
 <a onclick="navigate('terms')">Syarat & Ketentuan</a>
 <a onclick="navigate('disclaimer')">Disclaimer</a>
 </div>
 </div>
-<div class="footer-copy">&copy; 2026 Karya Abadi Pas Foto. All Rights Reserved.</div>
+<div class="footer-copy">&copy; <span id="currentYear">2024</span> Karya Abadi Pas Foto. All Rights Reserved.</div>
 </footer>
 
 <div id="toast">Pesan</div>
@@ -1796,6 +1802,12 @@ document.addEventListener('DOMContentLoaded', function() {
     renderGuides();
     initTool();
     navigate('home');
+    
+    // Auto update tahun di footer
+    const yearSpan = document.getElementById('currentYear');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
 });
 </script>
 </body>
