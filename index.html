@@ -1122,7 +1122,10 @@ function syncSize(size) {
 function handleIjazahToggle(on) {
     if($('ijazahBox')) $('ijazahBox').style.display = on ? 'flex' : 'none';
     lockSizes(on);
-    if(on) handleBwToggle(false);
+    if(on) {
+        if($('bwToggle')) $('bwToggle').checked = false; // Perbaikan: Uncheck UI Hitam Putih
+        handleBwToggle(false);
+    }
 }
 
 function handleBwToggle(on) {
@@ -1710,11 +1713,20 @@ function packBinPack(jobs, sizeKey) {
                 const placed = { x: best.x, y: best.y, w: j.w, h: j.h };
                 let nfr = [];
                 for(const f of freeR) {
-                    if(intersects(f, placed)) {
-                        if(placed.y > f.y) nfr.push({ x: f.x, y: f.y, w: f.w, h: placed.y - f.y });
-                        if(placed.y + placed.h < f.y + f.h) nfr.push({ x: f.x, y: placed.y + placed.h, w: f.w, h: (f.y + f.h) - (placed.y + placed.h) });
-                        if(placed.x > f.x) nfr.push({ x: f.x, y: f.y, w: placed.x - f.x, h: f.h });
-                        if(placed.x + placed.w < f.x + f.w) nfr.push({ x: placed.x + placed.w, y: f.y, w: (f.x + f.w) - (placed.x + placed.w), h: f.h });
+                    if (intersects(f, placed)) {
+                        // Perbaikan: Guillotine Split agar tidak tumpang tindih
+                        if (placed.y > f.y) {
+                            nfr.push({ x: f.x, y: f.y, w: f.w, h: placed.y - f.y });
+                        }
+                        if (placed.y + placed.h < f.y + f.h) {
+                            nfr.push({ x: f.x, y: placed.y + placed.h, w: f.w, h: (f.y + f.h) - (placed.y + placed.h) });
+                        }
+                        if (placed.x > f.x) {
+                            nfr.push({ x: f.x, y: placed.y, w: placed.x - f.x, h: placed.h });
+                        }
+                        if (placed.x + placed.w < f.x + f.w) {
+                            nfr.push({ x: placed.x + placed.w, y: placed.y, w: (f.x + f.w) - (placed.x + placed.w), h: placed.h });
+                        }
                     } else {
                         nfr.push(f);
                     }
@@ -1781,12 +1793,14 @@ function downloadA4Pages() {
     });
 }
 
+let toastTimer; // Perbaikan: Variabel global untuk timeout toast
 function showToast(msg) {
     const toastEl = $('toast');
     if(!toastEl) return;
     toastEl.textContent = msg;
     toastEl.className = 'show';
-    setTimeout(() => toastEl.className = toastEl.className.replace('show', ''), 3000);
+    clearTimeout(toastTimer); // Perbaikan: Bersihkan timer sebelumnya
+    toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
 }
 
 // ===== INIT =====
