@@ -205,7 +205,6 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 @keyframes fo{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
 
 .guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem}
-/* CSS Khusus untuk Layout 3x3 (3 Kolom) */
 .guide-grid.grid-3x3{grid-template-columns:repeat(3,1fr)}
 .guide-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:2rem 1.2rem;position:relative;transition:all .3s;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .guide-card:hover{transform:translateY(-5px);border-color:var(--accent-red);box-shadow:0 12px 30px rgba(211,47,47,.2)}
@@ -280,7 +279,6 @@ main.app-main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}
 .right-panel{min-height:60vh}
 .footer-top{grid-template-columns:1fr 1fr}
 .guide-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-/* Tablete: 3x3 berubah jadi 2 kolom */
 .guide-grid.grid-3x3{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
@@ -303,7 +301,6 @@ header{padding:.4rem .8rem}
 .cta-section{padding:3rem 1.5rem}
 .cta-section h3{font-size:1.5rem}
 .guide-grid{grid-template-columns:1fr}
-/* Mobile: 3x3 berubah jadi 1 kolom */
 .guide-grid.grid-3x3{grid-template-columns:1fr}
 .tips-grid{grid-template-columns:1fr}
 .hero{padding:3rem 1rem}
@@ -414,7 +411,6 @@ header{padding:.4rem .8rem}
 <h3>Mengapa Pilih <span>Karya Abadi</span>?</h3>
 <p>Kami menyediakan layanan pembuatan pas foto online yang lengkap, gratis, dan ramah pengguna untuk berbagai kebutuhan administrasi.</p>
 </div>
-<!-- Menggunakan class grid-3x3 agar tersusun rapi 3 kolom x 3 baris (9 item) -->
 <div class="guide-grid grid-3x3">
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-bolt"></i></div><h4>Proses Cepat</h4><p>Hasil pas foto siap dalam hitungan detik. Tidak perlu antri di studio foto atau menunggu lama.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Aman & Privat</h4><p>Seluruh proses pengolahan foto dilakukan di browser Anda. Foto tidak pernah dikirim ke server kami.</p></div>
@@ -665,7 +661,6 @@ header{padding:.4rem .8rem}
     </main>
   </section>
 
-  <!-- Penempatan Iklan AdSense yang Aman -->
   <!--
   <div style="max-width: 900px; margin: 2rem auto; text-align: center; min-height: 100px;">
     <ins class="adsbygoogle" style="display:block; height: 100px;" data-ad-client="ca-pub-2272135901889807" data-ad-slot="XXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
@@ -1863,38 +1858,17 @@ function renderArticle(id) {
         'panduan-paspor': `
         <p>Paspor adalah dokumen perjalanan internasional yang wajib dimiliki setiap warga negara Indonesia yang ingin bepergian ke luar negeri. Dalam proses pembuatan atau perpanjangan paspor, salah satu syarat utama yang harus dipenuhi adalah pas foto dengan ukuran dan kualitas tertentu. Banyak pengunjung kantor imigrasi terpaksa pulang dan datang kembali karena pas foto yang dibawa tidak memenuhi standar yang ditetapkan. Oleh karena itu, memahami persyaratan pas foto paspor sejak awal akan menghemat waktu, tenaga, dan biaya Anda secara signifikan.</p>
         
-        <div style="margin:2rem 0; padding:2.5rem; background:linear-gradient(135deg, var(--bg-card), var(--bg-input)); border:1px solid var(--border-color); border-radius:12px; text-align:center;">
-        <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:rgba(211,47,47,.1); border-radius:50%; margin-bottom:1rem;">
-        <i class="fa-solid fa-passport" style="font-size:2.5rem; color:var(--accent-red);"></i>
-        </div>
-        <p style="color:var(--text-muted); font-size:.85rem; margin:0;"><strong style="color:var(--text-main);">Ilustrasi:</strong> Paspor Indonesia memerlukan pas foto 4x6 cm dengan background putih polos</p>
-        </div>
-        
         <p>Sesuai dengan ketentuan dari Direktorat Jenderal Imigrasi, ukuran pas foto untuk paspor Indonesia adalah 4x6 sentimeter dengan mode portrait atau tegak. Ukuran ini berbeda dengan pas foto 3x4 yang umum digunakan untuk KTP atau SIM. Dalam konversi pixel pada resolusi 300 DPI, ukuran 4x6 setara dengan 450x660 pixel. Pastikan foto yang Anda bawa benar-benar memiliki ukuran yang tepat karena petugas imigrasi akan melakukan verifikasi secara presisi menggunakan alat ukur khusus. Anda dapat menggunakan tool online Karya Abadi Pas Foto untuk memastikan ukuran foto Anda sudah sesuai standar resmi.</p>
         
         <p>Background putih adalah syarat mutlak untuk pas foto paspor di Indonesia. Warna putih dipilih karena memberikan kontras tertinggi dengan wajah subjek, sehingga sistem pengenalan wajah biometrik dapat bekerja dengan akurat. Jika Anda mengambil foto sendiri di rumah, pastikan background benar-benar putih murni, bukan putih keabu-abuan atau putih kekuningan. Hindari juga adanya bayangan yang jatuh di background, karena ini akan langsung ditolak oleh petugas imigrasi. Gunakan kertas putih tebal atau dinding yang baru dicat putih sebagai backdrop untuk hasil yang paling optimal.</p>
         
         <p>Kualitas pencahayaan menentukan keberhasilan pas foto paspor Anda. Foto harus terang merata di seluruh bagian wajah tanpa ada bayangan di hidung, pipi, atau dahi. Idealnya, gunakan dua sumber cahaya yang ditempatkan di sisi kiri dan kanan dengan jarak dan intensitas yang sama. Jika Anda mengambil foto di dekat jendela, pastikan cahaya mengenai wajah secara langsung, bukan dari belakang. Hindari penggunaan flash kamera secara langsung karena dapat menyebabkan pantulan di wajah yang merusak hasil foto. Pencahayaan yang baik juga memastikan warna kulit tampak natural dan tidak pucat atau terlalu gelap.</p>
         
-        <div style="margin:2rem 0; padding:2.5rem; background:linear-gradient(135deg, var(--bg-card), var(--bg-input)); border:1px solid var(--border-color); border-radius:12px; text-align:center;">
-        <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:rgba(255,215,0,.1); border-radius:50%; margin-bottom:1rem;">
-        <i class="fa-solid fa-camera" style="font-size:2.5rem; color:var(--gold);"></i>
-        </div>
-        <p style="color:var(--text-muted); font-size:.85rem; margin:0;"><strong style="color:var(--text-main);">Ilustrasi:</strong> Pengaturan pencahayaan dua arah untuk hasil foto paspor yang merata tanpa bayangan</p>
-        </div>
-        
         <p>Untuk pas foto paspor, pakaian yang dikenakan harus formal dan sopan. Bagi pria, disarankan menggunakan kemeja berkerah dengan warna gelap seperti hitam, navy, atau biru tua, dipadukan dengan jas jika memungkinkan. Bagi wanita, gunakan blazer atau kemeja formal dengan warna yang kontras terhadap background putih. Hindari pakaian berwarna putih karena akan menyatu dengan background dan menyulitkan proses pemotongan tepi. Pakaian harus bersih, rapi, dan tidak berkerutan. Jangan gunakan kaos oblong, pakaian berpola ramai, atau pakaian dengan warna mencolok seperti merah, kuning, atau oranye neon.</p>
         
         <p>Salah satu aturan ketat untuk pas foto paspor adalah larangan penggunaan kacamata. Meskipun Anda menggunakan kacamata dalam kehidupan sehari-hari, Anda wajib melepasnya saat pengambilan foto paspor. Hal ini dikarenakan kacamata dapat memantulkan cahaya dan menyembunyikan mata, yang akan mengganggu proses verifikasi biometrik di bandara. Selain kacamata, softlens atau lensa kontak juga dilarang karena dapat mengubah warna mata dan mengganggu identifikasi. Aksesoris seperti anting besar, kalung, topi, atau penutup kepala juga harus dilepas, kecuali untuk wanita berhijab yang tetap diperbolehkan asalkan wajah terlihat jelas tanpa ada bagian yang tertutup.</p>
         
         <p>Ekspresi wajah untuk pas foto paspor harus netral, tidak tersenyum, dan tidak menyering. Pandangan mata harus lurus ke depan menghadap kamera dengan kepala dalam posisi tegak lurus. Jangan memiringkan kepala ke kiri atau ke kanan karena ini akan menyebabkan penolakan otomatis. Bibir harus tertutup rapat, dan mata harus terbuka jelas tanpa mengedip. Jika Anda memiliki rambut panjang, pastikan rambut tidak menutupi dahi, alis, atau telinga. Telinga harus terlihat karena merupakan salah satu titik referensi biometrik yang penting dalam sistem pengenalan wajah modern yang digunakan di bandara internasional.</p>
-        
-        <div style="margin:2rem 0; padding:2.5rem; background:linear-gradient(135deg, var(--bg-card), var(--bg-input)); border:1px solid var(--border-color); border-radius:12px; text-align:center;">
-        <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:rgba(76,175,80,.1); border-radius:50%; margin-bottom:1rem;">
-        <i class="fa-solid fa-user-check" style="font-size:2.5rem; color:var(--green);"></i>
-        </div>
-        <p style="color:var(--text-muted); font-size:.85rem; margin:0;"><strong style="color:var(--text-main);">Ilustrasi:</strong> Posisi tegak dengan ekspresi netral, telinga terlihat, dan pandangan lurus ke kamera</p>
-        </div>
         
         <p>Jika Anda ingin menghemat biaya, mengambil foto paspor sendiri di rumah adalah pilihan yang sangat memungkinkan. Persiapkan dinding putih yang bersih sebagai backdrop, atau tempel kertas putih tebal di dinding. Atur pencahayaan dengan menggunakan dua lampu meja dari sisi kiri dan kanan, atau manfaatkan cahaya alami dari jendela pada pagi hari antara pukul 07:00 hingga 10:00. Gunakan kamera HP dengan resolusi minimal 8 megapiksel dan jaga jarak sekitar 1,5 hingga 2 meter dari subjek. Setelah foto diambil, gunakan tool online Karya Abadi Pas Foto untuk memotong dan menyesuaikan ukuran menjadi 4x6 dengan presisi yang akurat.</p>
         
