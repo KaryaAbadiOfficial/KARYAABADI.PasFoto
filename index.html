@@ -561,104 +561,156 @@ header{padding:.4rem .8rem}
 
 <!-- ===== VIEW: TOOL ===== -->
 <div class="view" id="view-tool">
-<div class="page-container">
-<h1>Buat Pas Foto Online</h1>
-<p>Gunakan alat ini untuk menyesuaikan foto sesuai ukuran pas foto yang Anda perlukan. Pastikan Anda telah menyiapkan foto dengan resolusi yang cukup dan pencahayaan yang baik sebelum diupload.</p>
-<ul>
-<li><strong>Format foto:</strong> JPG atau PNG.</li>
-<li><strong>Ukuran:</strong> Pilih dari standar 2x3, 3x4, 4x6, atau 5x5.</li>
-<li><strong>Background:</strong> Sesuaikan background foto asli sebelum upload (merah, biru, atau putih) karena alat ini berfungsi untuk memotong dan menyusun, bukan mengganti background.</li>
-<li><strong>Kualitas hasil:</strong> Gambar akan diproses dengan resolusi tinggi agar tajam saat dicetak.</li>
-</ul>
-</div>
-<section class="tool-section" style="padding-top:0;">
-<main class="app-main">
-<aside class="card left-panel" id="leftPanel">
-<div class="stitle"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Foto</div>
-<div class="dropzone" id="dropzone">
-<input type="file" id="fileInput" accept="image/*" multiple>
-<div class="dz-icon"><i class="fa-solid fa-images"></i></div>
-<div class="dz-text">Klik atau Seret Foto ke Sini</div>
-<div class="dz-hint">JPG / PNG &mdash; Maksimal 50 foto</div>
-</div>
-<div class="counter-row">
-<span><span class="count" id="cntNum">0</span> / 50 foto</span>
-<button class="btn-text" id="clearAllBtn" style="display:none">Hapus Semua</button>
-</div>
-<div class="sep"></div>
-<div class="stitle"><i class="fa-solid fa-crop-simple"></i> Ukuran Output</div>
-<div class="size-label">Portrait</div>
-<div class="size-grid" id="sizeGridP">
-<button class="size-btn" data-size="2X3">2X3</button>
-<button class="size-btn active" data-size="3X4">3X4</button>
-<button class="size-btn" data-size="4X6">4X6</button>
-<button class="size-btn" data-size="5X5">5X5</button>
-</div>
-<div class="size-label" style="margin-top:4px">Landscape</div>
-<div class="size-grid" id="sizeGridL">
-<button class="size-btn" data-size="2X3L">2X3</button>
-<button class="size-btn" data-size="3X4L">3X4</button>
-<button class="size-btn" data-size="4X6L">4X6</button>
-</div>
-<div class="sep"></div>
-<div class="stitle"><i class="fa-solid fa-sliders"></i> Pengaturan Mode</div>
-<div class="toggle-row">
-<label class="lbl">Hitam Putih (Reguler)</label>
-<label class="toggle-switch"><input type="checkbox" id="bwToggle"><span class="toggle-slider"></span></label>
-</div>
-<div class="toggle-row">
-<label class="lbl">Mode Ijazah</label>
-<label class="toggle-switch"><input type="checkbox" id="ijazahToggle"><span class="toggle-slider"></span></label>
-</div>
-<div class="ijazah-box" id="ijazahBox" style="display:none">
-<label class="lbl">Nama Sekolah / Universitas</label>
-<input type="text" id="schoolName" placeholder="NAMA SEKOLAH / UNIVERSITAS">
-<div class="font-row">
-<label>Ukuran Font (0 = Auto)</label>
-<input type="number" id="fontSize" value="0" min="0" max="40">
-</div>
-<div class="hint">Huruf otomatis kapital, rata tengah, font Arial</div>
-<div class="toggle-row" style="margin-top:4px">
-<label class="lbl" style="font-size:.72rem">Ijazah Hitam Putih</label>
-<label class="toggle-switch"><input type="checkbox" id="ijazahBWToggle"><span class="toggle-slider"></span></label>
-</div>
-</div>
-<div class="ref-section" id="refSection" style="display:none">
-<div class="ref-info"><i class="fa-solid fa-crosshairs"></i><span>Foto #<strong id="refNum">-</strong> <span id="refSizeLabel"></span> dijadikan acuan</span></div>
-<button class="btn-ref-apply" id="applyRefBtn"><i class="fa-solid fa-copy"></i> Terapkan ke Semua Foto Ukuran Sama</button>
-</div>
-<div class="sep"></div>
-<div class="stitle"><i class="fa-solid fa-bolt"></i> Aksi</div>
-<div class="btn-group">
-<button class="btn secondary" id="resetAllBtn" disabled><i class="fa-solid fa-arrows-rotate"></i> Reset Semua Posisi</button>
-<button class="btn btn-gold" id="arrangeBtn" disabled><i class="fa-solid fa-table-cells"></i> Susun Pintar di A4</button>
-<button class="btn secondary" id="dlAllBtn" disabled><i class="fa-solid fa-download"></i> Download Semua Foto</button>
-</div>
-<div class="sep"></div>
-<div class="stitle blue"><i class="fa-solid fa-circle-info"></i> Informasi</div>
-<div class="info-box">
-<div class="info-row"><span>Ukuran aktif upload:</span><strong id="infoSize">3X4</strong></div>
-<div class="info-row"><span>Total foto:</span><strong id="infoCount">0</strong></div>
-<div class="info-row"><span>Total cetak:</span><strong id="infoTotal">0</strong></div>
-<div class="info-row"><span>Estimasi halaman A4:</span><strong id="infoPages">0</strong></div>
-</div>
-</aside>
+  <!-- 2. AREA KONTEN PENGANTAR (DI ATAS LIPATAN) -->
+  <div class="page-container" style="padding-bottom: 1rem; padding-top: 2rem;">
+    <h1>Karya Abadi Pas Foto Online</h1>
+    <p>Karya Abadi Pas Foto adalah alat online gratis untuk membuat pas foto 2x3, 3x4, dan 4x6 secara otomatis. Unggah foto Anda, atur posisi crop dengan presisi, dan susun pintar di kertas A4. Semua proses aman dilakukan langsung di perangkat Anda tanpa mengurangi kualitas.</p>
+  </div>
 
-<section class="card right-panel" id="rightPanel">
-<div class="grid-header">
-<div class="stitle"><i class="fa-solid fa-eye"></i> Preview &amp; Atur Posisi</div>
-<div class="total" id="gridTotal"></div>
-</div>
-<div class="sep"></div>
-<div class="photo-grid" id="photoGrid">
-<div class="empty-state" id="emptyState">
-<i class="fa-regular fa-image"></i>
-<p>Belum ada foto. Upload foto di panel kiri untuk mulai mengatur posisi crop.</p>
-</div>
-</div>
-</section>
-</main>
-</section>
+  <!-- 3. UTAMA / CORE WEBTOOL INTERFACE -->
+  <section class="tool-section" style="padding-top:0;">
+    <main class="app-main">
+      <aside class="card left-panel" id="leftPanel">
+      <div class="stitle"><i class="fa-solid fa-cloud-arrow-up"></i> Upload Foto</div>
+      <div class="dropzone" id="dropzone">
+      <input type="file" id="fileInput" accept="image/*" multiple>
+      <div class="dz-icon"><i class="fa-solid fa-images"></i></div>
+      <div class="dz-text">Klik atau Seret Foto ke Sini</div>
+      <div class="dz-hint">JPG / PNG &mdash; Maksimal 50 foto</div>
+      </div>
+      <div class="counter-row">
+      <span><span class="count" id="cntNum">0</span> / 50 foto</span>
+      <button class="btn-text" id="clearAllBtn" style="display:none">Hapus Semua</button>
+      </div>
+      <div class="sep"></div>
+      <div class="stitle"><i class="fa-solid fa-crop-simple"></i> Ukuran Output</div>
+      <div class="size-label">Portrait</div>
+      <div class="size-grid" id="sizeGridP">
+      <button class="size-btn" data-size="2X3">2X3</button>
+      <button class="size-btn active" data-size="3X4">3X4</button>
+      <button class="size-btn" data-size="4X6">4X6</button>
+      <button class="size-btn" data-size="5X5">5X5</button>
+      </div>
+      <div class="size-label" style="margin-top:4px">Landscape</div>
+      <div class="size-grid" id="sizeGridL">
+      <button class="size-btn" data-size="2X3L">2X3</button>
+      <button class="size-btn" data-size="3X4L">3X4</button>
+      <button class="size-btn" data-size="4X6L">4X6</button>
+      </div>
+      <div class="sep"></div>
+      <div class="stitle"><i class="fa-solid fa-sliders"></i> Pengaturan Mode</div>
+      <div class="toggle-row">
+      <label class="lbl">Hitam Putih (Reguler)</label>
+      <label class="toggle-switch"><input type="checkbox" id="bwToggle"><span class="toggle-slider"></span></label>
+      </div>
+      <div class="toggle-row">
+      <label class="lbl">Mode Ijazah</label>
+      <label class="toggle-switch"><input type="checkbox" id="ijazahToggle"><span class="toggle-slider"></span></label>
+      </div>
+      <div class="ijazah-box" id="ijazahBox" style="display:none">
+      <label class="lbl">Nama Sekolah / Universitas</label>
+      <input type="text" id="schoolName" placeholder="NAMA SEKOLAH / UNIVERSITAS">
+      <div class="font-row">
+      <label>Ukuran Font (0 = Auto)</label>
+      <input type="number" id="fontSize" value="0" min="0" max="40">
+      </div>
+      <div class="hint">Huruf otomatis kapital, rata tengah, font Arial</div>
+      <div class="toggle-row" style="margin-top:4px">
+      <label class="lbl" style="font-size:.72rem">Ijazah Hitam Putih</label>
+      <label class="toggle-switch"><input type="checkbox" id="ijazahBWToggle"><span class="toggle-slider"></span></label>
+      </div>
+      </div>
+      <div class="ref-section" id="refSection" style="display:none">
+      <div class="ref-info"><i class="fa-solid fa-crosshairs"></i><span>Foto #<strong id="refNum">-</strong> <span id="refSizeLabel"></span> dijadikan acuan</span></div>
+      <button class="btn-ref-apply" id="applyRefBtn"><i class="fa-solid fa-copy"></i> Terapkan ke Semua Foto Ukuran Sama</button>
+      </div>
+      <div class="sep"></div>
+      <div class="stitle"><i class="fa-solid fa-bolt"></i> Aksi</div>
+      <div class="btn-group">
+      <button class="btn secondary" id="resetAllBtn" disabled><i class="fa-solid fa-arrows-rotate"></i> Reset Semua Posisi</button>
+      <button class="btn btn-gold" id="arrangeBtn" disabled><i class="fa-solid fa-table-cells"></i> Susun Pintar di A4</button>
+      <button class="btn secondary" id="dlAllBtn" disabled><i class="fa-solid fa-download"></i> Download Semua Foto</button>
+      </div>
+      <div class="sep"></div>
+      <div class="stitle blue"><i class="fa-solid fa-circle-info"></i> Informasi</div>
+      <div class="info-box">
+      <div class="info-row"><span>Ukuran aktif upload:</span><strong id="infoSize">3X4</strong></div>
+      <div class="info-row"><span>Total foto:</span><strong id="infoCount">0</strong></div>
+      <div class="info-row"><span>Total cetak:</span><strong id="infoTotal">0</strong></div>
+      <div class="info-row"><span>Estimasi halaman A4:</span><strong id="infoPages">0</strong></div>
+      </div>
+      </aside>
+
+      <section class="card right-panel" id="rightPanel">
+      <div class="grid-header">
+      <div class="stitle"><i class="fa-solid fa-eye"></i> Preview &amp; Atur Posisi</div>
+      <div class="total" id="gridTotal"></div>
+      </div>
+      <div class="sep"></div>
+      <div class="photo-grid" id="photoGrid">
+      <div class="empty-state" id="emptyState">
+      <i class="fa-regular fa-image"></i>
+      <p>Belum ada foto. Upload foto di panel kiri untuk mulai mengatur posisi crop.</p>
+      </div>
+      </div>
+      </section>
+    </main>
+  </section>
+
+  <!-- 
+    KRITERIA TEKNIS ADSENSE:
+    Penempatan Slot Iklan Aman (AdSense Safe Ad Slot)
+    Ditempatkan jauh dari tombol interaktif (tombol Download/Susun Pintar) 
+    untuk menghindari invalid clicks / klik tidak sah.
+  -->
+  <!-- 
+  <div style="max-width: 900px; margin: 2rem auto; text-align: center; min-height: 100px;">
+    <ins class="adsbygoogle"
+         style="display:block; height: 100px;"
+         data-ad-client="ca-pub-2272135901889807"
+         data-ad-slot="XXXXXXX"
+         data-ad-format="auto"
+         data-full-width-responsive="true"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div> 
+  -->
+
+  <!-- 4. AREA KONTEN EDUKATIF & PENDUKUNG (DI BAWAH TOOL / BELOW THE FOLD) -->
+  <section class="section" id="tool-info" style="padding-top: 2rem;">
+    <div class="page-container" style="padding: 0 1rem; max-width: 900px;">
+      
+      <h2>Cara Menggunakan Karya Abadi Pas Foto</h2>
+      <ol>
+        <li><strong>Unggah Foto:</strong> Klik area dropzone di panel kiri atau seret file foto (JPG/PNG) Anda langsung ke area tersebut. Anda dapat mengunggah hingga 50 foto sekaligus.</li>
+        <li><strong>Pilih Ukuran:</strong> Tentukan ukuran pas foto yang dibutuhkan, seperti 2x3, 3x4, 4x6, atau 5x5. Tersedia mode Portrait dan Landscape sesuai kebutuhan dokumen Anda.</li>
+        <li><strong>Atur Posisi Crop:</strong> Seret foto pada area kanvas untuk menggeser posisi, gunakan tombol panah untuk pergerakan halus, dan zoom menggunakan scroll mouse atau tombol plus/minus agar wajah pas diposisikan tengah.</li>
+        <li><strong>Pilih Mode (Opsional):</strong> Aktifkan Mode Hitam Putih untuk efek klasik, atau Mode Ijazah untuk menambahkan nama sekolah/universitas di bagian bawah foto secara otomatis.</li>
+        <li><strong>Susun & Download:</strong> Klik tombol "Susun Pintar di A4" untuk menata semua foto otomatis dalam satu halaman A4. Preview akan muncul, dan Anda bisa langsung mendownload hasilnya untuk dicetak.</li>
+      </ol>
+
+      <h2>Rumus / Cara Kerja di Balik Tool Pas Foto Online</h2>
+      <p>Tool ini bekerja dengan memanfaatkan teknologi HTML5 Canvas API yang diproses sepenuhnya di sisi klien (client-side) menggunakan browser Anda. Saat Anda mengunggah foto, file tidak dikirimkan ke server eksternal, melainkan diproses langsung di memori perangkat. Sistem membaca resolusi piksel gambar asli, lalu menerapkan rasio crop presisi sesuai standar DPI (Dots Per Inch) yang umum digunakan untuk pencetakan (300 DPI). Misalnya, ukuran 3x4 cm dikonversi menjadi 330x450 piksel. Pengguna dapat memanipulasi matriks transformasi (skala dan translasi) untuk menentukan area crop yang ideal. Setelah dipotong, algoritma bin packing akan menata potongan-potongan foto tersebut secara optimal ke dalam kanvas berukuran A4 (2100x2970 piksel) untuk meminimalkan ruang kosong dan menghemat kertas saat dicetak.</p>
+
+      <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
+      <div class="faq-list" style="max-width: 100%;">
+        <div class="faq-item active">
+          <div class="faq-q"><span>Apakah foto saya aman dan tidak disimpan di server?</span><i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Keamanan dan privasi Anda adalah prioritas kami. Seluruh proses pengolahan foto dilakukan di browser Anda (client-side). Foto tidak pernah diunggah ke server kami, sehingga sangat aman dan privat.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Bagaimana cara mencetak pas foto agar ukurannya presisi?</span><i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Setelah mengunduh hasil susunan pintar A4, buka file tersebut di aplikasi printer mana pun. Pastikan pengaturan skala cetak diatur ke 100% (Actual Size) dan matikan opsi "Fit to Page" agar ukuran pas foto tidak berubah saat dicetak.</p></div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q"><span>Apakah tool ini bisa digunakan di HP Android atau iPhone?</span><i class="fa-solid fa-chevron-down"></i></div>
+          <div class="faq-a"><p>Ya, tool ini dirancang responsif dan mendukung perangkat sentuh. Anda bisa mengunggah foto dari galeri HP, mengatur crop dengan jari (pinch to zoom), dan mengunduh hasilnya langsung ke smartphone Anda tanpa aplikasi tambahan.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
 </div>
 
 <!-- ===== VIEW: SIZES ===== -->
@@ -929,6 +981,7 @@ header{padding:.4rem .8rem}
 </div>
 </div>
 
+<!-- 5. FOOTER & HALAMAN KEBIJAKAN WAJIB -->
 <footer class="site-footer">
 <div class="footer-top">
 <div class="footer-brand">
