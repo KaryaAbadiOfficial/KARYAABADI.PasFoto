@@ -33,7 +33,7 @@ body{background:var(--bg-body);color:var(--text-main);line-height:1.6;display:fl
 header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.5);z-index:1000;position:sticky;top:0}
 .logo-container{display:flex;align-items:center;gap:.8rem;cursor:pointer}
 .site-logo-img{width:45px;height:auto;max-height:45px;object-fit:contain}
-.site-info h1{font-size:1.2rem;color:#fff;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:1.2}
+.site-info h1{font-size:1.2rem;color:#fff;font-weight:800;letter-spacing:1px;text-transform:uppercase;line-height:1.2;text-align:left}
 .site-info h1 span{color:var(--accent-red)}
 .nav-menu{display:flex;gap:.3rem;align-items:center}
 .nav-menu a{color:#fff;font-weight:600;font-size:.82rem;padding:.5rem .9rem;cursor:pointer;transition:color .2s;text-decoration:none;border-radius:6px}
@@ -46,35 +46,35 @@ header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;just
 .view{display:none}
 .view.active{display:block}
 .page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem;min-height:60vh}
-.page-container h1{font-size:2.2rem;font-weight:900;margin-bottom:1.5rem;color:var(--text-main)}
+.page-container h1{font-size:2.2rem;font-weight:900;margin-bottom:1.5rem;color:var(--text-main);text-align:center}
 [data-theme="light"] .page-container h1{color:#1a1a1a}
-.page-container h2{font-size:1.5rem;font-weight:800;margin:2rem 0 1rem;color:var(--text-main)}
+.page-container h2{font-size:1.5rem;font-weight:800;margin:2rem 0 1rem;color:var(--text-main);text-align:center}
 [data-theme="light"] .page-container h2{color:#1a1a1a}
-.page-container h3{font-size:1.2rem;font-weight:700;margin:1.5rem 0 .8rem;color:var(--accent-red)}
-.page-container p{margin-bottom:1rem;color:var(--text-muted);line-height:1.8}
-.page-container ul, .page-container ol{margin-left:1.5rem;margin-bottom:1.5rem;color:var(--text-muted)}
-.page-container li{margin-bottom:.5rem}
+.page-container h3{font-size:1.2rem;font-weight:700;margin:1.5rem 0 .8rem;color:var(--accent-red);text-align:center}
+.page-container p{margin-bottom:1rem;color:var(--text-muted);line-height:1.5;text-align:justify;hyphens:auto}
+.page-container ul, .page-container ol{margin-left:1.5rem;margin-bottom:1.5rem;color:var(--text-muted);line-height:1.5;text-align:justify}
+.page-container li{margin-bottom:.5rem;text-align:justify}
 .page-container a{color:var(--accent-red);text-decoration:underline;cursor:pointer}
 
 .hero{background:linear-gradient(135deg,#000 0%,#1a0505 50%,#000 100%);padding:5rem 1.5rem;position:relative;overflow:hidden;border-bottom:1px solid #222}
 [data-theme="light"] .hero{background:linear-gradient(135deg,#f8f9fa 0%,#ffe5e5 50%,#f8f9fa 100%)}
 .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(211,47,47,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,215,0,.08) 0%,transparent 50%)}
 .hero-inner{max-width:1200px;margin:0 auto;position:relative;display:grid;grid-template-columns:1.2fr .8fr;gap:3rem;align-items:center}
-.hero-text h2{font-size:2.8rem;color:#fff;font-weight:900;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px}
+.hero-text h2{font-size:2.8rem;color:#fff;font-weight:900;line-height:1.1;margin-bottom:1rem;letter-spacing:-1px;text-align:center}
 [data-theme="light"] .hero-text h2{color:#1a1a1a}
 .hero-text h2 span{color:var(--accent-red);display:block}
-.hero-text p{color:#ccc;font-size:1.05rem;margin-bottom:2rem;max-width:560px;text-align:justify}
+.hero-text p{color:#ccc;font-size:1.05rem;margin-bottom:2rem;max-width:560px;text-align:justify;line-height:1.5;hyphens:auto;margin-left:auto;margin-right:auto}
 [data-theme="light"] .hero-text p{color:#444}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
 .btn-primary{background:var(--accent-red);color:#fff;border:none;padding:.9rem 1.8rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
 .btn-primary:hover{background:var(--accent-red-dark);transform:translateY(-2px);box-shadow:0 8px 20px rgba(211,47,47,.4)}
 .btn-outline{background:transparent;color:#fff;border:2px solid #fff;padding:.9rem 1.8rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.95rem;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s}
 [data-theme="light"] .btn-outline{color:#1a1a1a;border-color:#1a1a1a}
 .btn-outline:hover{background:#fff;color:#000}
 [data-theme="light"] .btn-outline:hover{background:#1a1a1a;color:#fff}
-.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
-.hero-stat .num{font-size:1.8rem;color:var(--gold);font-weight:900}
-.hero-stat .lbl{font-size:.78rem;color:#999;text-transform:uppercase;letter-spacing:1px}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap;justify-content:center}
+.hero-stat .num{font-size:1.8rem;color:var(--gold);font-weight:900;text-align:center}
+.hero-stat .lbl{font-size:.78rem;color:#999;text-transform:uppercase;letter-spacing:1px;text-align:center}
 [data-theme="light"] .hero-stat .lbl{color:#666}
 .hero-visual{display:flex;justify-content:center;align-items:center;position:relative}
 .hero-card-stack{position:relative;width:300px;height:380px;max-width:100%}
@@ -88,9 +88,9 @@ header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;just
 .section{padding:4rem 1.5rem;max-width:1200px;margin:0 auto}
 .section-head{text-align:center;margin-bottom:3rem}
 .section-tag{display:inline-block;background:rgba(211,47,47,.15);color:var(--accent-red);font-size:.78rem;font-weight:700;padding:.3rem .9rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:.8rem}
-.section-head h3{font-size:2.2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px}
+.section-head h3{font-size:2.2rem;font-weight:900;margin-bottom:.6rem;letter-spacing:-.5px;text-align:center}
 .section-head h3 span{color:var(--accent-red)}
-.section-head p{color:var(--text-muted);font-size:1rem;max-width:640px;margin:0 auto}
+.section-head p{color:var(--text-muted);font-size:1rem;max-width:640px;margin:0 auto;text-align:justify;line-height:1.5;hyphens:auto}
 
 .tool-section{background:var(--bg-body);padding:2rem 1rem}
 main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;grid-template-columns:370px 1fr;gap:1rem;align-items:start}
@@ -188,7 +188,7 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.92);backdrop-filter:blur(5px)}
 .modal-content{background:var(--bg-card);margin:0 auto;padding:15px;border:2px solid var(--accent-red);width:100%;max-width:1200px;height:100vh;display:flex;flex-direction:column;border-radius:10px;color:var(--text-main)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border-color);flex-shrink:0}
-.modal-header h2{font-size:1rem}
+.modal-header h2{font-size:1rem;text-align:center}
 .modal-body{flex:1;overflow:auto;background:#111;display:flex;flex-direction:column;padding:1rem;gap:20px;align-items:center}
 .modal-footer{padding-top:.8rem;border-top:1px solid var(--border-color);display:flex;justify-content:flex-end;gap:.5rem;flex-wrap:wrap;flex-shrink:0}
 .a4-section{display:flex;flex-direction:column;gap:10px;align-items:center;width:100%}
@@ -205,12 +205,14 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 @keyframes fo{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
 
 .guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem}
+/* CSS Khusus untuk Layout 3x3 (3 Kolom) */
+.guide-grid.grid-3x3{grid-template-columns:repeat(3,1fr)}
 .guide-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:2rem 1.2rem;position:relative;transition:all .3s;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .guide-card:hover{transform:translateY(-5px);border-color:var(--accent-red);box-shadow:0 12px 30px rgba(211,47,47,.2)}
 .guide-num{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--accent-red);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.1rem}
 .guide-icon{font-size:2.5rem;color:var(--accent-red);margin-bottom:1rem;margin-top:.5rem;width:70px;height:70px;display:flex;align-items:center;justify-content:center;background:rgba(211,47,47,.1);border-radius:50%}
-.guide-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
-.guide-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.guide-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;text-align:center}
+.guide-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5;text-align:justify;hyphens:auto}
 
 .tips-section{background:var(--bg-card);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}
 .tips-wrapper{max-width:1200px;margin:0 auto;padding:4rem 1.5rem}
@@ -223,48 +225,48 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .tip-img.bad::after{content:"\f00d";position:absolute;top:10px;right:10px;background:var(--accent-red);color:#fff;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;font-family:"Font Awesome 6 Free";font-weight:900;z-index:2}
 .tip-body{padding:1.5rem 1.2rem;text-align:center;flex:1;display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
 .tip-body h4{font-size:1rem;font-weight:700;margin-bottom:.5rem;display:flex;flex-direction:column;align-items:center;gap:.5rem;justify-content:center;text-align:center}
-.tip-body p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
+.tip-body p{font-size:.85rem;color:var(--text-muted);line-height:1.5;text-align:justify;hyphens:auto}
 .tip-good{color:var(--green)}
 .tip-bad{color:var(--accent-red)}
 
 .faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
 .faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;overflow:hidden;transition:border-color .3s}
 .faq-item.active{border-color:var(--accent-red)}
-.faq-q{padding:1.1rem 1.3rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.95rem;gap:1rem}
+.faq-q{padding:1.1rem 1.3rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:.95rem;gap:1rem;text-align:center}
 .faq-q i{transition:transform .3s;color:var(--accent-red);flex-shrink:0}
 .faq-item.active .faq-q i{transform:rotate(180deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease;padding:0 1.3rem}
 .faq-item.active .faq-a{max-height:300px;padding:0 1.3rem 1.1rem}
-.faq-a p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
+.faq-a p{font-size:.88rem;color:var(--text-muted);line-height:1.5;text-align:justify;hyphens:auto}
 
 .cta-section{padding:4rem 1.5rem;text-align:center;background:linear-gradient(135deg,var(--accent-red) 0%,#b71c1c 100%);margin:2rem auto;max-width:1200px;border-radius:16px}
-.cta-section h3{color:#fff;font-size:2rem;font-weight:900;margin-bottom:.8rem}
-.cta-section p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;font-size:1rem}
+.cta-section h3{color:#fff;font-size:2rem;font-weight:900;margin-bottom:.8rem;text-align:center}
+.cta-section p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;font-size:1rem;text-align:justify;line-height:1.5;max-width:600px;margin-left:auto;margin-right:auto;hyphens:auto}
 .cta-section .btn-outline{border-color:#fff;color:#fff}
 .cta-section .btn-outline:hover{background:#fff;color:var(--accent-red)}
 
 .site-footer{background:#000;border-top:2px solid var(--accent-red);padding:0;margin-top:auto}
 .footer-top{max-width:1200px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
-.footer-brand h4{color:#fff;font-size:1.1rem;font-weight:800;letter-spacing:1px;margin-bottom:.8rem;text-transform:uppercase}
+.footer-brand h4{color:#fff;font-size:1.1rem;font-weight:800;letter-spacing:1px;margin-bottom:.8rem;text-transform:uppercase;text-align:center}
 .footer-brand h4 span{color:var(--accent-red)}
-.footer-brand p{color:#888;font-size:.85rem;margin-bottom:1rem;max-width:300px}
-.footer-col h5{color:#fff;font-size:.9rem;font-weight:700;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px}
-.footer-col a{display:block;color:#999;font-size:.85rem;margin-bottom:.5rem;cursor:pointer;text-decoration:none;transition:color .2s}
+.footer-brand p{color:#888;font-size:.85rem;margin-bottom:1rem;max-width:300px;text-align:justify;line-height:1.5;hyphens:auto}
+.footer-col h5{color:#fff;font-size:.9rem;font-weight:700;margin-bottom:1rem;text-transform:uppercase;letter-spacing:.5px;text-align:center}
+.footer-col a{display:block;color:#999;font-size:.85rem;margin-bottom:.5rem;cursor:pointer;text-decoration:none;transition:color .2s;text-align:center}
 .footer-col a:hover{color:var(--accent-red)}
 .footer-copy{text-align:center;padding:1.5rem 1rem;color:#555;font-size:.72rem;border-top:1px solid #222}
 
 .size-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--bg-card);border-radius:8px;overflow:hidden}
 .size-table th, .size-table td{padding:1rem;text-align:left;border-bottom:1px solid var(--border-color)}
-.size-table th{background:var(--bg-input);color:var(--text-main);font-weight:700}
+.size-table th{background:var(--bg-input);color:var(--text-main);font-weight:700;text-align:center}
 .size-table tr:last-child td{border-bottom:none}
 .size-table td[rowspan]{font-weight:800;color:var(--accent-red);vertical-align:middle;text-align:center}
 
 .article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
 .article-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;transition:all .3s;cursor:pointer;text-decoration:none;color:var(--text-main);display:flex;flex-direction:column;gap:.5rem}
 .article-card:hover{transform:translateY(-3px);border-color:var(--accent-red);box-shadow:0 8px 20px rgba(0,0,0,.2)}
-.article-card i{font-size:1.5rem;color:var(--accent-red);margin-bottom:.5rem}
-.article-card h3{font-size:1.1rem;font-weight:700;color:var(--text-main)}
-.article-card p{font-size:.85rem;color:var(--text-muted)}
+.article-card i{font-size:1.5rem;color:var(--accent-red);margin-bottom:.5rem;text-align:center}
+.article-card h3{font-size:1.1rem;font-weight:700;color:var(--text-main);text-align:center}
+.article-card p{font-size:.85rem;color:var(--text-muted);text-align:justify;line-height:1.5;hyphens:auto}
 
 @media(max-width:1000px){
 .nav-menu{display:none}
@@ -278,10 +280,12 @@ main.app-main{grid-template-columns:1fr;padding:.5rem;gap:.5rem}
 .right-panel{min-height:60vh}
 .footer-top{grid-template-columns:1fr 1fr}
 .guide-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+/* Tablete: 3x3 berubah jadi 2 kolom */
+.guide-grid.grid-3x3{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:768px){
 .nav-menu.open{display:flex;position:absolute;top:100%;left:0;right:0;background:#000;flex-direction:column;padding:1rem;gap:.2rem;border-bottom:2px solid var(--accent-red)}
-.nav-menu.open a{padding:.7rem 1rem;width:100%;border-radius:6px}
+.nav-menu.open a{padding:.7rem 1rem;width:100%;border-radius:6px;text-align:center}
 .nav-menu.open a:hover{background:rgba(211,47,47,.15)}
 .hero-text h2{font-size:2rem}
 .section-head h3{font-size:1.6rem}
@@ -299,6 +303,8 @@ header{padding:.4rem .8rem}
 .cta-section{padding:3rem 1.5rem}
 .cta-section h3{font-size:1.5rem}
 .guide-grid{grid-template-columns:1fr}
+/* Mobile: 3x3 berubah jadi 1 kolom */
+.guide-grid.grid-3x3{grid-template-columns:1fr}
 .tips-grid{grid-template-columns:1fr}
 .hero{padding:3rem 1rem}
 .hero-card-stack{transform:scale(0.85)}
@@ -352,7 +358,7 @@ header{padding:.4rem .8rem}
 <div class="hero-inner">
 <div class="hero-text">
 <h2>Buat Pas Foto<br><span>Online dengan Mudah</span></h2>
-<p>Sesuaikan ukuran pas foto, background, dan kebutuhan dokumen secara praktis melalui Karya Abadi Pas Foto. Mendukung berbagai ukuran standar (2x3, 3x4, 4x6, 5x5), mode ijazah dengan nama sekolah, efek hitam putih klasik, hingga cetak pintar otomatis di kertas A4.</p>
+<p>Sesuaikan berbagai ukuran pas foto, background, dan kebutuhan dokumen administrasi Anda secara praktis melalui Karya Abadi Pas Foto. Platform ini mendukung berbagai ukuran standar (2x3, 3x4, 4x6, 5x5), mode ijazah dengan nama sekolah, efek hitam putih klasik elegan, hingga cetak pintar otomatis di kertas A4.</p>
 <div class="hero-cta">
 <a class="btn-primary" onclick="navigate('tool')"><i class="fa-solid fa-camera-retro"></i> Buat Pas Foto Sekarang</a>
 <a class="btn-outline" onclick="navigate('guides')"><i class="fa-solid fa-book-open"></i> Lihat Panduan</a>
@@ -380,10 +386,10 @@ header{padding:.4rem .8rem}
 <div class="section-head">
 <span class="section-tag">Informasi</span>
 <h3>Manfaat & Jenis <span>Kebutuhan</span></h3>
-<p>Platform kami dirancang untuk membantu Anda menghasilkan pas foto yang sesuai standar untuk berbagai keperluan.</p>
+<p>Platform kami dirancang khusus untuk membantu Anda menghasilkan pas foto yang sesuai standar resmi untuk berbagai keperluan administratif.</p>
 </div>
 <div class="guide-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: 2rem;">
-<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-briefcase"></i></div><h4>Lamaran Kerja</h4><p>Pas foto profesional dengan background merah atau biru sesuai standar HRD perusahaan.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-briefcase"></i></div><h4>Lamaran Kerja</h4><p>Pas foto profesional dengan background merah atau biru sesuai standar HRD perusahaan terpercaya.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-user-tie"></i></div><h4>CPNS</h4><p>Pas foto resmi dengan aturan background merah sesuai persyaratan pendaftaran ASN.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-school"></i></div><h4>Sekolah & Kuliah</h4><p>Kebutuhan administrasi siswa, mahasiswa, hingga pas foto ijazah dengan pita nama.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-id-card"></i></div><h4>Administrasi</h4><p>Pembuatan KTP, SIM, paspor, dan dokumen resmi lainnya dengan ukuran presisi.</p></div>
@@ -408,13 +414,17 @@ header{padding:.4rem .8rem}
 <h3>Mengapa Pilih <span>Karya Abadi</span>?</h3>
 <p>Kami menyediakan layanan pembuatan pas foto online yang lengkap, gratis, dan ramah pengguna untuk berbagai kebutuhan administrasi.</p>
 </div>
-<div class="guide-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+<!-- Menggunakan class grid-3x3 agar tersusun rapi 3 kolom x 3 baris (9 item) -->
+<div class="guide-grid grid-3x3">
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-bolt"></i></div><h4>Proses Cepat</h4><p>Hasil pas foto siap dalam hitungan detik. Tidak perlu antri di studio foto atau menunggu lama.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Aman & Privat</h4><p>Seluruh proses pengolahan foto dilakukan di browser Anda. Foto tidak pernah dikirim ke server kami.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-gift"></i></div><h4>100% Gratis</h4><p>Tanpa biaya tersembunyi, tanpa registrasi, tanpa batas penggunaan. Buat pas foto sebanyak yang Anda butuhkan.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-mobile-screen"></i></div><h4>Multidevice</h4><p>Dapat diakses dari HP, tablet, atau komputer. Hasil sama rapi di semua perangkat.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-table-cells-large"></i></div><h4>Susun Pintar A4</h4><p>Otomatis menata beberapa pas foto dalam 1 halaman A4 untuk menghemat kertas saat cetak.</p></div>
 <div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-school"></i></div><h4>Mode Ijazah</h4><p>Tambahkan nama sekolah/universitas di bawah foto secara otomatis untuk keperluan ijazah.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-droplet-slash"></i></div><h4>Tanpa Watermark</h4><p>Hasil foto yang Anda unduh bersih tanpa watermark atau logo mengganggu di bagian gambar.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-bullseye"></i></div><h4>Presisi Tinggi</h4><p>Sistem crop otomatis membantu menyesuaikan rasio wajah sesuai standar golden ratio dengan presisi tinggi.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-expand"></i></div><h4>Resolusi HD</h4><p>Hasil pas foto dihasilkan dalam resolusi tinggi 300 DPI agar tidak pecah saat dicetak di percetakan.</p></div>
 </div>
 </section>
 
@@ -473,7 +483,7 @@ header{padding:.4rem .8rem}
 <h4 style="color: var(--accent-red); margin-bottom: 1rem; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: 0.5px;">
 <i class="fa-solid fa-circle-exclamation"></i> KETENTUAN PAS FOTO
 </h4>
-<p style="color: var(--text-main); margin: 0; font-size: 1.1rem; font-weight: 700; line-height: 1.8;">
+<p style="color: var(--text-main); margin: 0; font-size: 1.1rem; font-weight: 700; line-height: 1.8; text-align: center;">
 <span style="display: block; margin-bottom: 0.5rem;">Peserta wajib melepas <strong style="color: var(--gold); font-weight: 900;">kacamata</strong> dan <strong style="color: var(--gold); font-weight: 900;">softlens (lensa kontak)</strong> sebelum pengambilan pas foto.</span>
 <span style="display: block;">Hal ini dikarenakan wajah dan mata harus terlihat dengan jelas untuk keperluan verifikasi dan identifikasi.</span>
 </p>
@@ -528,7 +538,7 @@ header{padding:.4rem .8rem}
 
 <section class="cta-section">
 <h3>Siap Membuat Pas Foto Anda?</h3>
-<p>Cepat, gratis, dan langsung jadi. Tidak perlu install aplikasi, semua proses aman di browser Anda.</p>
+<p>Cepat, gratis, dan langsung jadi. Tidak perlu install aplikasi tambahan, semua proses aman dikerjakan langsung di browser Anda.</p>
 <a class="btn-outline" onclick="navigate('tool')"><i class="fa-solid fa-rocket"></i> Mulai Sekarang</a>
 </section>
 
@@ -561,13 +571,11 @@ header{padding:.4rem .8rem}
 
 <!-- ===== VIEW: TOOL ===== -->
 <div class="view" id="view-tool">
-  <!-- 2. AREA KONTEN PENGANTAR (DI ATAS LIPATAN) -->
   <div class="page-container" style="padding-bottom: 1rem; padding-top: 2rem;">
     <h1>Karya Abadi Pas Foto Online</h1>
-    <p>Karya Abadi Pas Foto adalah alat online gratis untuk membuat pas foto 2x3, 3x4, dan 4x6 secara otomatis. Unggah foto Anda, atur posisi crop dengan presisi, dan susun pintar di kertas A4. Semua proses aman dilakukan langsung di perangkat Anda tanpa mengurangi kualitas.</p>
+    <p>Karya Abadi Pas Foto merupakan solusi alat online gratis yang sangat praktis untuk membuat pas foto ukuran 2x3, 3x4, dan 4x6 secara otomatis. Unggah foto terbaik Anda, atur posisi crop dengan presisi tingkat tinggi, dan susun pintar secara otomatis di kertas A4. Seluruh proses administratif ini sangat aman, cepat tanggap, dan dilakukan langsung di perangkat Anda tanpa mengurangi kualitas resolusi gambar sedikitpun.</p>
   </div>
 
-  <!-- 3. UTAMA / CORE WEBTOOL INTERFACE -->
   <section class="tool-section" style="padding-top:0;">
     <main class="app-main">
       <aside class="card left-panel" id="leftPanel">
@@ -657,47 +665,34 @@ header{padding:.4rem .8rem}
     </main>
   </section>
 
-  <!-- 
-    KRITERIA TEKNIS ADSENSE:
-    Penempatan Slot Iklan Aman (AdSense Safe Ad Slot)
-    Ditempatkan jauh dari tombol interaktif (tombol Download/Susun Pintar) 
-    untuk menghindari invalid clicks / klik tidak sah.
-  -->
-  <!-- 
+  <!-- Penempatan Iklan AdSense yang Aman -->
+  <!--
   <div style="max-width: 900px; margin: 2rem auto; text-align: center; min-height: 100px;">
-    <ins class="adsbygoogle"
-         style="display:block; height: 100px;"
-         data-ad-client="ca-pub-2272135901889807"
-         data-ad-slot="XXXXXXX"
-         data-ad-format="auto"
-         data-full-width-responsive="true"></ins>
-    <script>
-         (adsbygoogle = window.adsbygoogle || []).push({});
-    </script>
+    <ins class="adsbygoogle" style="display:block; height: 100px;" data-ad-client="ca-pub-2272135901889807" data-ad-slot="XXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
   </div> 
   -->
 
-  <!-- 4. AREA KONTEN EDUKATIF & PENDUKUNG (DI BAWAH TOOL / BELOW THE FOLD) -->
   <section class="section" id="tool-info" style="padding-top: 2rem;">
     <div class="page-container" style="padding: 0 1rem; max-width: 900px;">
       
       <h2>Cara Menggunakan Karya Abadi Pas Foto</h2>
       <ol>
-        <li><strong>Unggah Foto:</strong> Klik area dropzone di panel kiri atau seret file foto (JPG/PNG) Anda langsung ke area tersebut. Anda dapat mengunggah hingga 50 foto sekaligus.</li>
-        <li><strong>Pilih Ukuran:</strong> Tentukan ukuran pas foto yang dibutuhkan, seperti 2x3, 3x4, 4x6, atau 5x5. Tersedia mode Portrait dan Landscape sesuai kebutuhan dokumen Anda.</li>
-        <li><strong>Atur Posisi Crop:</strong> Seret foto pada area kanvas untuk menggeser posisi, gunakan tombol panah untuk pergerakan halus, dan zoom menggunakan scroll mouse atau tombol plus/minus agar wajah pas diposisikan tengah.</li>
-        <li><strong>Pilih Mode (Opsional):</strong> Aktifkan Mode Hitam Putih untuk efek klasik, atau Mode Ijazah untuk menambahkan nama sekolah/universitas di bagian bawah foto secara otomatis.</li>
-        <li><strong>Susun & Download:</strong> Klik tombol "Susun Pintar di A4" untuk menata semua foto otomatis dalam satu halaman A4. Preview akan muncul, dan Anda bisa langsung mendownload hasilnya untuk dicetak.</li>
+        <li><strong>Unggah Foto:</strong> Klik area dropzone khusus di panel sebelah kiri atau seret langsung file foto (JPG/PNG) Anda ke area tersebut. Anda dapat mengunggah hingga 50 foto sekaligus untuk efisiensi waktu.</li>
+        <li><strong>Pilih Ukuran:</strong> Tentukan ukuran pas foto spesifik yang dibutuhkan, seperti 2x3, 3x4, 4x6, atau 5x5. Tersedia mode Portrait dan Landscape vertikal sesuai kebutuhan dokumen administrasi Anda.</li>
+        <li><strong>Atur Posisi Crop:</strong> Seret foto pada area kanvas interaktif untuk menggeser posisi, gunakan tombol panah navigasi untuk pergerakan halus, dan zoom menggunakan scroll mouse atau tombol plus/minus agar wajah pas diposisikan tengah secara presisi.</li>
+        <li><strong>Pilih Mode (Opsional):</strong> Aktifkan Mode Hitam Putih untuk efek klasik elegan, atau Mode Ijazah untuk menambahkan nama sekolah/universitas di bagian bawah foto secara otomatis rapi.</li>
+        <li><strong>Susun & Download:</strong> Klik tombol "Susun Pintar di A4" untuk menata semua foto otomatis dalam satu halaman A4. Preview detail akan muncul, dan Anda bisa langsung mendownload hasilnya untuk dicetak.</li>
       </ol>
 
       <h2>Rumus / Cara Kerja di Balik Tool Pas Foto Online</h2>
-      <p>Tool ini bekerja dengan memanfaatkan teknologi HTML5 Canvas API yang diproses sepenuhnya di sisi klien (client-side) menggunakan browser Anda. Saat Anda mengunggah foto, file tidak dikirimkan ke server eksternal, melainkan diproses langsung di memori perangkat. Sistem membaca resolusi piksel gambar asli, lalu menerapkan rasio crop presisi sesuai standar DPI (Dots Per Inch) yang umum digunakan untuk pencetakan (300 DPI). Misalnya, ukuran 3x4 cm dikonversi menjadi 330x450 piksel. Pengguna dapat memanipulasi matriks transformasi (skala dan translasi) untuk menentukan area crop yang ideal. Setelah dipotong, algoritma bin packing akan menata potongan-potongan foto tersebut secara optimal ke dalam kanvas berukuran A4 (2100x2970 piksel) untuk meminimalkan ruang kosong dan menghemat kertas saat dicetak.</p>
+      <p>Tool aplikasi ini bekerja dengan memanfaatkan teknologi HTML5 Canvas API tingkat lanjut yang diproses sepenuhnya di sisi klien (client-side) menggunakan memori browser Anda. Saat Anda mengunggah foto, file tidak akan dikirimkan ke server eksternal manapun, melainkan diproses langsung secara lokal di perangkat Anda. Sistem membaca resolusi piksel gambar asli, lalu menerapkan rasio crop presisi matematis sesuai standar DPI (Dots Per Inch) yang umum digunakan untuk pencetakan profesional (300 DPI). Misalnya, ukuran 3x4 cm dikonversi menjadi 330x450 piksel. Pengguna dapat memanipulasi matriks transformasi (skala dan translasi) untuk menentukan area crop yang paling ideal. Setelah dipotong, algoritma bin packing canggih akan menata potongan-potongan foto tersebut secara optimal ke dalam kanvas berukuran A4 (2100x2970 piksel) untuk meminimalkan ruang kosong dan menghemat kertas cetak secara signifikan.</p>
 
       <h2>Pertanyaan yang Sering Diajukan (FAQ)</h2>
       <div class="faq-list" style="max-width: 100%;">
         <div class="faq-item active">
           <div class="faq-q"><span>Apakah foto saya aman dan tidak disimpan di server?</span><i class="fa-solid fa-chevron-down"></i></div>
-          <div class="faq-a"><p>Keamanan dan privasi Anda adalah prioritas kami. Seluruh proses pengolahan foto dilakukan di browser Anda (client-side). Foto tidak pernah diunggah ke server kami, sehingga sangat aman dan privat.</p></div>
+          <div class="faq-a"><p>Keamanan dan privasi data Anda adalah prioritas utama kami. Seluruh proses pengolahan foto dilakukan sepenuhnya di browser Anda (client-side). Foto tidak pernah diunggah ke server kami, sehingga sangat aman dan terjamin privasinya.</p></div>
         </div>
         <div class="faq-item">
           <div class="faq-q"><span>Bagaimana cara mencetak pas foto agar ukurannya presisi?</span><i class="fa-solid fa-chevron-down"></i></div>
@@ -705,7 +700,7 @@ header{padding:.4rem .8rem}
         </div>
         <div class="faq-item">
           <div class="faq-q"><span>Apakah tool ini bisa digunakan di HP Android atau iPhone?</span><i class="fa-solid fa-chevron-down"></i></div>
-          <div class="faq-a"><p>Ya, tool ini dirancang responsif dan mendukung perangkat sentuh. Anda bisa mengunggah foto dari galeri HP, mengatur crop dengan jari (pinch to zoom), dan mengunduh hasilnya langsung ke smartphone Anda tanpa aplikasi tambahan.</p></div>
+          <div class="faq-a"><p>Ya, tool ini dirancang dengan tampilan responsif dan mendukung penuh perangkat sentuh. Anda bisa mengunggah foto dari galeri HP, mengatur crop dengan jari (pinch to zoom), dan mengunduh hasilnya langsung ke smartphone Anda tanpa aplikasi tambahan.</p></div>
         </div>
       </div>
 
@@ -981,7 +976,6 @@ header{padding:.4rem .8rem}
 </div>
 </div>
 
-<!-- 5. FOOTER & HALAMAN KEBIJAKAN WAJIB -->
 <footer class="site-footer">
 <div class="footer-top">
 <div class="footer-brand">
@@ -1066,7 +1060,7 @@ function renderArticle(id) {
     const content = document.getElementById('articleContent');
     
     let html = `<h1>${article.title}</h1>`;
-    html += `<p style="color:var(--text-muted); font-size:.85rem; margin-bottom:1.5rem; font-style:italic;">Dipublikasi oleh Tim Karya Abadi Pas Foto &bull; Panduan Edukasi</p>`;
+    html += `<p style="color:var(--text-muted); font-size:.85rem; margin-bottom:1.5rem; font-style:italic; text-align:center;">Dipublikasi oleh Tim Karya Abadi Pas Foto &bull; Panduan Edukasi</p>`;
     
     const articlesContent = {
         'ukuran-2x3-3x4-4x6': `
@@ -1146,7 +1140,7 @@ function renderArticle(id) {
         <li>Ruangan yang terlalu redup</li>
         </ul>
         <h2>5. Aksesoris dan Rambut</h2>
-        <p>Ikat rambut ke belakang agar tidak menutupi wajah. Lepas kacamata jika terlalu memantul cahaya, atau pastikan lensa tidak menyebabkan refleksi. Jangan gunakan topi, masker, atau aksesoris berlebihan.</p>
+        <p>Ikat rambut ke belakang agar tidak menutupi wajah. Lepas kacamata jika terlalu memantul cahaya, or pastikan lensa tidak menyebabkan refleksi. Jangan gunakan topi, masker, atau aksesoris berlebihan.</p>
         <h2>6. Format File untuk Lamaran Online</h2>
         <p>Untuk lamaran online via email atau portal rekrutmen, simpan foto dalam format JPG dengan resolusi minimal 300 DPI. Ukuran file idealnya 100-500 KB agar cukup jelas tetapi tidak terlalu besar untuk diupload.</p>
         <p>Setelah foto siap, langsung proses di <a onclick="navigate('tool')">tool pembuat pas foto</a> kami untuk mendapat hasil dengan ukuran presisi.</p>`,
@@ -1251,7 +1245,7 @@ function renderArticle(id) {
         <h3>Langkah 4: Posisi Subjek</h3>
         <p>Duduk atau berdiri dengan punggung tegak, jarak ke background minimal 50 cm. Posisikan kamera sejajar dengan hidung.</p>
         <h3>Langkah 5: Ambil Banyak Foto</h3>
-        <p>Jangan puas dengan 1 jepretan. Ambil 10-15 foto dengan berbagai ekspresi sedikit berbeda, lalu pilih yang terbaik.</p>
+        <p>Jangan puas dengan 1 jepretan. Ambil 10-15 foto dengan berbagai ekspresi sedikit berbede, lalu pilih yang terbaik.</p>
         <h2>Kegunaan Pas Foto Background Biru</h2>
         <table class="size-table">
         <thead><tr><th>Kebutuhan</th><th>Ukuran Umum</th></tr></thead>
@@ -1347,7 +1341,7 @@ function renderArticle(id) {
         </ul>
         <h3>Pengaturan Kamera HP</h3>
         <ul>
-        <li>Gunakan mode Portrait untuk background blur</li>
+        <li>Use mode Portrait untuk background blur</li>
         <li>Tap di wajah untuk set fokus</li>
         <li>Naikkan exposure sedikit agar wajah terang</li>
         <li>Gunakan timer 3 detik untuk menghindari goyangan</li>
@@ -1435,7 +1429,7 @@ function renderArticle(id) {
         <h2>Kesalahan #1: Background Tidak Sesuai</h2>
         <p>Menggunakan background yang salah adalah penyebab penolakan paling sering. Misalnya, pas foto CPNS harus background merah, tetapi Anda pakai biru. <strong>Solusi:</strong> Baca pengumuman resmi sebelum foto.</p>
         <h2>Kesalahan #2: Masih Memakai Kacamata</h2>
-        <p>Banyak instansi melarang pemakaian kacamata, terutama CPNS, paspor, dan visa. Kacamata bisa memantulkan cahaya dan menyembunyikan mata. <strong>Solusi:</strong> Lepas kacamata saat foto, atau gunakan kacamata tanpa pantulan (anti-reflective coating).</p>
+        <p>Banyak instansi melarang pemakaian kacamata, terutanya CPNS, paspor, dan visa. Kacamata bisa memantulkan cahaya dan menyembunyikan mata. <strong>Solusi:</strong> Lepas kacamata saat foto, atau gunakan kacamata tanpa pantulan (anti-reflective coating).</p>
         <h2>Kesalahan #3: Wajah Tersenyum Terlalu Lebar</h2>
         <p>Untuk dokumen resmi, senyum lebar bisa membuat foto ditolak. Instansi menginginkan ekspresi netral agar verifikasi biometrik akurat. <strong>Solusi:</strong> Senyum tipis atau tidak tersenyum sama sekali.</p>
         <h2>Kesalahan #4: Kepala Miring</h2>
@@ -1696,7 +1690,7 @@ function renderArticle(id) {
         <h3>7. Tentukan Ukuran Foto</h3>
         <p>Ukuran umum untuk lamaran kerja adalah <strong>3x4 cm</strong> atau <strong>4x6 cm</strong>. Jika tidak disebut, 3x4 adalah pilihan aman.</p>
         <h3>8. Ambil Banyak Foto</h3>
-        <p>Jangan puas dengan 1-2 foto. Ambil 10-15 foto dengan berbagai variasi ekspresi sedikit berbeda, lalu pilih yang terbaik.</p>
+        <p>Jangan puas dengan 1-2 foto. Ambil 10-15 foto dengan berbagai variasi ekspresi sedikit berbede, lalu pilih yang terbaik.</p>
         <h3>9. Cek Kualitas Foto</h3>
         <p>Sebelum upload ke tool kami, pastikan foto:</p>
         <ul>
