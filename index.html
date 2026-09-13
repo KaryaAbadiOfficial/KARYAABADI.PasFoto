@@ -30,7 +30,6 @@
 html{scroll-behavior:smooth}
 body{background:var(--bg-body);color:var(--text-main);line-height:1.6;display:flex;flex-direction:column;min-height:100vh;overflow-x:hidden}
 
-/* ===== HEADER NAV ===== */
 header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:0 4px 10px rgba(0,0,0,.5);z-index:1000;position:sticky;top:0}
 .logo-container{display:flex;align-items:center;gap:.8rem;cursor:pointer}
 .site-logo-img{width:45px;height:auto;max-height:45px;object-fit:contain}
@@ -44,7 +43,6 @@ header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;just
 .theme-toggle:hover{background:rgba(255,255,255,.2)}
 .mobile-toggle{display:none;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
 
-/* ===== VIEWS & PAGES ===== */
 .view{display:none}
 .view.active{display:block}
 .page-container{max-width:900px;margin:0 auto;padding:3rem 1.5rem;min-height:60vh}
@@ -58,7 +56,6 @@ header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;just
 .page-container li{margin-bottom:.5rem}
 .page-container a{color:var(--accent-red);text-decoration:underline;cursor:pointer}
 
-/* ===== HERO BANNER ===== */
 .hero{background:linear-gradient(135deg,#000 0%,#1a0505 50%,#000 100%);padding:5rem 1.5rem;position:relative;overflow:hidden;border-bottom:1px solid #222}
 [data-theme="light"] .hero{background:linear-gradient(135deg,#f8f9fa 0%,#ffe5e5 50%,#f8f9fa 100%)}
 .hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%,rgba(211,47,47,.15) 0%,transparent 50%),radial-gradient(circle at 80% 80%,rgba(255,215,0,.08) 0%,transparent 50%)}
@@ -88,7 +85,6 @@ header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;just
 @keyframes float1{0%,100%{transform:rotate(-8deg) translateY(0)}50%{transform:rotate(-12deg) translateY(-15px)}}
 @keyframes float2{0%,100%{transform:rotate(5deg) translateY(0)}50%{transform:rotate(9deg) translateY(10px)}}
 
-/* ===== SECTION GENERIC ===== */
 .section{padding:4rem 1.5rem;max-width:1200px;margin:0 auto}
 .section-head{text-align:center;margin-bottom:3rem}
 .section-tag{display:inline-block;background:rgba(211,47,47,.15);color:var(--accent-red);font-size:.78rem;font-weight:700;padding:.3rem .9rem;border-radius:20px;text-transform:uppercase;letter-spacing:1px;margin-bottom:.8rem}
@@ -96,7 +92,6 @@ header{background:#000;border-bottom:none;padding:.5rem 1.5rem;display:flex;just
 .section-head h3 span{color:var(--accent-red)}
 .section-head p{color:var(--text-muted);font-size:1rem;max-width:640px;margin:0 auto}
 
-/* ===== TOOL SECTION ===== */
 .tool-section{background:var(--bg-body);padding:2rem 1rem}
 main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;display:grid;grid-template-columns:370px 1fr;gap:1rem;align-items:start}
 .card{background:var(--bg-card);border-radius:12px;padding:1rem;box-shadow:var(--shadow);border:1px solid var(--border-color);display:flex;flex-direction:column;gap:.7rem}
@@ -190,7 +185,6 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .btn-acuan.active{background:var(--gold)!important;color:#000!important;border:1px solid var(--gold)!important;border-style:solid!important;cursor:default}
 .card-dl{width:100%;max-width:160px;font-size:.6rem;padding:.3rem}
 
-/* ===== MODAL ===== */
 .modal{display:none;position:fixed;z-index:2000;left:0;top:0;width:100%;height:100%;overflow:auto;background:rgba(0,0,0,.92);backdrop-filter:blur(5px)}
 .modal-content{background:var(--bg-card);margin:0 auto;padding:15px;border:2px solid var(--accent-red);width:100%;max-width:1200px;height:100vh;display:flex;flex-direction:column;border-radius:10px;color:var(--text-main)}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:.8rem;padding-bottom:.8rem;border-bottom:1px solid var(--border-color);flex-shrink:0}
@@ -205,13 +199,11 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .close{color:var(--text-muted);font-size:26px;font-weight:bold;cursor:pointer;line-height:1}
 .close:hover{color:var(--accent-red)}
 
-/* ===== TOAST ===== */
 #toast{visibility:hidden;min-width:220px;background:var(--toast-bg);color:#fff;text-align:center;border-radius:6px;padding:12px 20px;position:fixed;z-index:3000;left:50%;bottom:20px;transform:translateX(-50%);font-size:.82rem;border:1px solid var(--accent-red);box-shadow:0 4px 20px rgba(0,0,0,.5)}
 #toast.show{visibility:visible;animation:fi .4s,fo .4s 2.5s}
 @keyframes fi{from{bottom:0;opacity:0}to{bottom:20px;opacity:1}}
 @keyframes fo{from{bottom:20px;opacity:1}to{bottom:0;opacity:0}}
 
-/* ===== PANDUAN SECTION ===== */
 .guide-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.5rem}
 .guide-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:2rem 1.2rem;position:relative;transition:all .3s;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:flex-start}
 .guide-card:hover{transform:translateY(-5px);border-color:var(--accent-red);box-shadow:0 12px 30px rgba(211,47,47,.2)}
@@ -220,7 +212,6 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .guide-card h4{font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
 .guide-card p{font-size:.85rem;color:var(--text-muted);line-height:1.5}
 
-/* ===== TIPS & CONTOH SECTION ===== */
 .tips-section{background:var(--bg-card);border-top:1px solid var(--border-color);border-bottom:1px solid var(--border-color)}
 .tips-wrapper{max-width:1200px;margin:0 auto;padding:4rem 1.5rem}
 .tips-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
@@ -236,7 +227,6 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .tip-good{color:var(--green)}
 .tip-bad{color:var(--accent-red)}
 
-/* ===== FAQ SECTION ===== */
 .faq-list{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
 .faq-item{background:var(--bg-card);border:1px solid var(--border-color);border-radius:10px;overflow:hidden;transition:border-color .3s}
 .faq-item.active{border-color:var(--accent-red)}
@@ -247,14 +237,12 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .faq-item.active .faq-a{max-height:300px;padding:0 1.3rem 1.1rem}
 .faq-a p{font-size:.88rem;color:var(--text-muted);line-height:1.7}
 
-/* ===== CTA SECTION ===== */
 .cta-section{padding:4rem 1.5rem;text-align:center;background:linear-gradient(135deg,var(--accent-red) 0%,#b71c1c 100%);margin:2rem auto;max-width:1200px;border-radius:16px}
 .cta-section h3{color:#fff;font-size:2rem;font-weight:900;margin-bottom:.8rem}
 .cta-section p{color:rgba(255,255,255,.9);margin-bottom:1.5rem;font-size:1rem}
 .cta-section .btn-outline{border-color:#fff;color:#fff}
 .cta-section .btn-outline:hover{background:#fff;color:var(--accent-red)}
 
-/* ===== FOOTER ===== */
 .site-footer{background:#000;border-top:2px solid var(--accent-red);padding:0;margin-top:auto}
 .footer-top{max-width:1200px;margin:0 auto;padding:3rem 1.5rem;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
 .footer-brand h4{color:#fff;font-size:1.1rem;font-weight:800;letter-spacing:1px;margin-bottom:.8rem;text-transform:uppercase}
@@ -265,14 +253,12 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .footer-col a:hover{color:var(--accent-red)}
 .footer-copy{text-align:center;padding:1.5rem 1rem;color:#555;font-size:.72rem;border-top:1px solid #222}
 
-/* ===== TABLE STYLES ===== */
 .size-table{width:100%;border-collapse:collapse;margin:2rem 0;background:var(--bg-card);border-radius:8px;overflow:hidden}
 .size-table th, .size-table td{padding:1rem;text-align:left;border-bottom:1px solid var(--border-color)}
 .size-table th{background:var(--bg-input);color:var(--text-main);font-weight:700}
 .size-table tr:last-child td{border-bottom:none}
 .size-table td[rowspan]{font-weight:800;color:var(--accent-red);vertical-align:middle;text-align:center}
 
-/* ===== ARTICLE LIST ===== */
 .article-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-top:2rem}
 .article-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:12px;padding:1.5rem;transition:all .3s;cursor:pointer;text-decoration:none;color:var(--text-main);display:flex;flex-direction:column;gap:.5rem}
 .article-card:hover{transform:translateY(-3px);border-color:var(--accent-red);box-shadow:0 8px 20px rgba(0,0,0,.2)}
@@ -280,7 +266,6 @@ main.app-main{flex:1;padding:1rem;max-width:1600px;margin:0 auto;width:100%;disp
 .article-card h3{font-size:1.1rem;font-weight:700;color:var(--text-main)}
 .article-card p{font-size:.85rem;color:var(--text-muted)}
 
-/* ===== RESPONSIVE ===== */
 @media(max-width:1000px){
 .nav-menu{display:none}
 .mobile-toggle{display:block}
@@ -414,6 +399,22 @@ header{padding:.4rem .8rem}
 <div class="guide-card"><div class="guide-icon" style="color:#D32F2F; background:rgba(211,47,47,.1);"><i class="fa-solid fa-fill-drip"></i></div><h4>Background Merah</h4><p>Umumnya digunakan untuk pas foto resmi, CPNS, dan dokumen kependudukan.</p></div>
 <div class="guide-card"><div class="guide-icon" style="color:#1565C0; background:rgba(21,101,192,.1);"><i class="fa-solid fa-fill-drip"></i></div><h4>Background Biru</h4><p>Sering diperlukan untuk lamaran kerja swasta, sertifikat, dan keperluan akademik.</p></div>
 <div class="guide-card"><div class="guide-icon" style="color:#e0e0e0; background:rgba(255,255,255,.1);"><i class="fa-solid fa-fill-drip"></i></div><h4>Background Putih</h4><p>Standar untuk paspor, visa, dan dokumen internasional lainnya.</p></div>
+</div>
+</section>
+
+<section class="section" id="keunggulan">
+<div class="section-head">
+<span class="section-tag">Keunggulan</span>
+<h3>Mengapa Pilih <span>Karya Abadi</span>?</h3>
+<p>Kami menyediakan layanan pembuatan pas foto online yang lengkap, gratis, dan ramah pengguna untuk berbagai kebutuhan administrasi.</p>
+</div>
+<div class="guide-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-bolt"></i></div><h4>Proses Cepat</h4><p>Hasil pas foto siap dalam hitungan detik. Tidak perlu antri di studio foto atau menunggu lama.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-shield-halved"></i></div><h4>Aman & Privat</h4><p>Seluruh proses pengolahan foto dilakukan di browser Anda. Foto tidak pernah dikirim ke server kami.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-gift"></i></div><h4>100% Gratis</h4><p>Tanpa biaya tersembunyi, tanpa registrasi, tanpa batas penggunaan. Buat pas foto sebanyak yang Anda butuhkan.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-mobile-screen"></i></div><h4>Multidevice</h4><p>Dapat diakses dari HP, tablet, atau komputer. Hasil sama rapi di semua perangkat.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-table-cells-large"></i></div><h4>Susun Pintar A4</h4><p>Otomatis menata beberapa pas foto dalam 1 halaman A4 untuk menghemat kertas saat cetak.</p></div>
+<div class="guide-card"><div class="guide-icon"><i class="fa-solid fa-school"></i></div><h4>Mode Ijazah</h4><p>Tambahkan nama sekolah/universitas di bawah foto secara otomatis untuk keperluan ijazah.</p></div>
 </div>
 </section>
 
@@ -1013,47 +1014,1003 @@ function renderArticle(id) {
     const content = document.getElementById('articleContent');
     
     let html = `<h1>${article.title}</h1>`;
+    html += `<p style="color:var(--text-muted); font-size:.85rem; margin-bottom:1.5rem; font-style:italic;">Dipublikasi oleh Tim Karya Abadi Pas Foto &bull; Panduan Edukasi</p>`;
     
-    if (id === 'ukuran-2x3-3x4-4x6') {
-        html += `
-        <p>Di Indonesia, terdapat tiga ukuran pas foto yang paling umum digunakan: 2x3, 3x4, dan 4x6. Pemahaman tentang ukuran ini sangat penting agar dokumen Anda tidak ditolak oleh instansi tujuan.</p>
-        <h2>1. Ukuran 2x3 cm</h2>
-        <p>Ukuran 2x3 cm merupakan ukuran pas foto terkecil yang sering digunakan untuk kartu pelajar, tanda masuk acara, atau dokumen kecil lainnya.</p>
-        <h2>2. Ukuran 3x4 cm</h2>
-        <p>Ukuran 3x4 cm adalah ukuran paling standar dan sering diminta untuk pembuatan KTP, SIM, dan formulir lamaran pekerjaan.</p>
-        <h2>3. Ukuran 4x6 cm</h2>
-        <p>Ukuran 4x6 cm seringkali diminta untuk paspor, sertifikat, atau dokumen resmi yang membutuhkan detail wajah lebih besar.</p>
-        <p>Untuk membuatnya, Anda bisa langsung menggunakan tool <a onclick="navigate('tool')">Buat Pas Foto</a> kami.</p>`;
-    } else if (id === 'lamaran-kerja') {
-        html += `
-        <p>Saat melamar kerja, pas foto adalah kesan pertama yang dilihat HRD. Pastikan Anda mengirimkan foto yang profesional.</p>
-        <h2>Background Foto</h2>
-        <p>Sebagian besar perusahaan meminta background berwarna biru atau merah. Pastikan Anda sudah memotret diri dengan background tersebut sebelum diupload ke tool kami.</p>
-        <h2>Pakaian</h2>
-        <p>Gunakan pakaian formal, seperti kemeja putih dan jas hitam. Hindari pakaian berwarna mencolok atau pola yang ramai.</p>
-        <h2>Ekspresi</h2>
-        <p>Tunjukkan ekspresi yang ramah namun profesional. Jangan tersenyum terlalu lebar, pastikan mata terbuka dan melihat lurus ke kamera.</p>
-        <p>Siapkan foto Anda lalu <a onclick="navigate('tool')">klik di sini untuk memotret dan menyusun pas foto</a>.</p>`;
+    const articlesContent = {
+        'ukuran-2x3-3x4-4x6': `
+        <p>Di Indonesia, terdapat tiga ukuran pas foto yang paling umum digunakan untuk berbagai keperluan administrasi: <strong>2x3, 3x4, dan 4x6</strong>. Pemahaman tentang perbedaan ukuran ini sangat penting agar dokumen Anda tidak ditolak oleh instansi tujuan. Banyak orang masih keliru mengira angka 2x3 berarti 2 cm x 3 cm, padahal ukuran sebenarnya berbeda.</p>
+        
+        <h2>Tabel Lengkap Ukuran Pas Foto</h2>
+        <table class="size-table">
+        <thead><tr><th>Ukuran</th><th>Centimeter</th><th>Milimeter</th><th>Pixel (300 DPI)</th></tr></thead>
+        <tbody>
+        <tr><td>2x3</td><td>2.16 x 2.79 cm</td><td>21.6 x 27.9 mm</td><td>255 x 330 px</td></tr>
+        <tr><td>3x4</td><td>2.79 x 3.81 cm</td><td>27.9 x 38.1 mm</td><td>330 x 450 px</td></tr>
+        <tr><td>4x6</td><td>3.81 x 5.59 cm</td><td>38.1 x 55.9 mm</td><td>450 x 660 px</td></tr>
+        </tbody>
+        </table>
+        
+        <h2>1. Ukuran Pas Foto 2x3 cm</h2>
+        <p>Ukuran 2x3 merupakan pas foto terkecil yang umum diminta. Walau disebut "2x3", ukuran sebenarnya adalah 2.16 cm x 2.79 cm. Ukuran ini sering digunakan untuk:</p>
+        <ul>
+        <li>Kartu Pelajar (Kartu Sekolah)</li>
+        <li>Tanda masuk acara seminar atau workshop</li>
+        <li>ID kecil keanggotaan organisasi</li>
+        <li>Bukti pendaftaran event</li>
+        </ul>
+        
+        <h2>2. Ukuran Pas Foto 3x4 cm</h2>
+        <p>Ukuran 3x4 adalah ukuran yang paling sering diminta di Indonesia. Ukuran sebenarnya adalah 2.79 cm x 3.81 cm. Hampir semua dokumen administrasi resmi menggunakan ukuran ini, di antaranya:</p>
+        <ul>
+        <li>Kartu Tanda Penduduk (KTP)</li>
+        <li>Surat Izin Mengemudi (SIM)</li>
+        <li>Formulir pendaftaran sekolah dan kuliah</li>
+        <li>Lamaran pekerjaan di perusahaan swasta</li>
+        <li>Pendaftaran CPNS (sering dikombinasi background merah)</li>
+        <li>Kartu BPJS Kesehatan dan Ketenagakerjaan</li>
+        </ul>
+        
+        <h2>3. Ukuran Pas Foto 4x6 cm</h2>
+        <p>Ukuran 4x6 memiliki dimensi 3.81 cm x 5.59 cm dan menampilkan wajah dengan detail lebih besar. Ukuran ini biasanya digunakan untuk:</p>
+        <ul>
+        <li>Paspor (untuk beberapa jenis paspor lama)</li>
+        <li>Sertifikat resmi</li>
+        <li>Lamaran kerja di instansi tertentu</li>
+        <li>Dokumen visa</li>
+        <li>Ijazah dan transkrip nilai</li>
+        </ul>
+        
+        <h2>Tips Memilih Ukuran yang Tepat</h2>
+        <p>Jika Anda ragu ukuran apa yang dibutuhkan, berikut panduan praktisnya:</p>
+        <ul>
+        <li><strong>Baca pengumuman resmi</strong> dari instansi tujuan. Jangan asumsi sendiri.</li>
+        <li><strong>Ukuran 3x4 adalah aman</strong> jika tidak disebutkan secara spesifik.</li>
+        <li><strong>Perhatikan background</strong>: merah untuk dokumen pemerintah, biru untuk swasta, putih untuk paspor.</li>
+        <li><strong>Siapkan beberapa ukuran</strong> sekaligus untuk berjaga-jaga.</li>
+        </ul>
+        
+        <p>Anda bisa langsung membuat ketiga ukuran di atas menggunakan tool gratis kami di halaman <a onclick="navigate('tool')">Buat Pas Foto</a>.</p>`,
+        
+        'lamaran-kerja': `
+        <p>Pas foto adalah kesan pertama yang dilihat HRD saat menilai pelamar. Foto yang profesional dan rapi menunjukkan keseriusan Anda dalam melamar pekerjaan. Sebaliknya, foto yang asal-asalan bisa membuat aplikasi Anda dianggap remeh, walau kualifikasi akademik Anda bagus.</p>
+        
+        <h2>1. Pilih Background yang Tepat</h2>
+        <p>Mayoritas perusahaan di Indonesia meminta pas foto lamaran kerja dengan <strong>background biru</strong>. Namun, ada juga yang menerima background merah, terutama untuk BUMN atau instansi pemerintah. Hindari background putih kecuali diminta khusus, karena biasanya putih khusus untuk paspor.</p>
+        <p>Pastikan background benar-benar polos, tanpa bayangan, tanpa objek lain, dan tanpa kerutan kain backdrop. Jika Anda tidak punya backdrop, Anda bisa menempel kertas warna di dinding sebagai alternatif.</p>
+        
+        <h2>2. Pakai Pakaian Formal</h2>
+        <p>Untuk laki-laki, gunakan kemeja putih berlengan panjang dipadukan jas hitam atau biru tua. Untuk perempuan, gunakan blazer formal atau kemeja rapi. Hindari pakaian dengan:</p>
+        <ul>
+        <li>Polka dot atau motif ramai</li>
+        <li>Warna mencolok seperti merah, kuning, atau hijau neon</li>
+        <li>Kaos oblong atau pakaian kasual</li>
+        <li>Pakaian kerah rendah yang menampakkan dada</li>
+        </ul>
+        
+        <h2>3. Ekspresi yang Profesional</h2>
+        <p>Tersenyum boleh, tetapi jangan terlalu lebar. Senyum tipis yang natural paling ideal. Pastikan:</p>
+        <ul>
+        <li>Mata terbuka jelas dan melihat lurus ke kamera</li>
+        <li>Tidak mengedip atau menutup mata</li>
+        <li>Dahi rileks, tidak berkerut</li>
+        <li>Bibir tertutup rapat saat tidak tersenyum</li>
+        </ul>
+        
+        <h2>4. Pencahayaan yang Merata</h2>
+        <p>Ambil foto di tempat dengan cahaya alami yang merata, idealnya dekat jendela pada pagi atau sore hari. Hindari:</p>
+        <ul>
+        <li>Cahaya dari satu sisi yang membuat separuh wajah gelap</li>
+        <li>Foto backlight (cahaya di belakang subjek)</li>
+        <li>Ruangan yang terlalu redup</li>
+        </ul>
+        
+        <h2>5. Aksesoris dan Rambut</h2>
+        <p>Ikat rambut ke belakang agar tidak menutupi wajah. Lepas kacamata jika terlalu memantul cahaya, atau pastikan lensa tidak menyebabkan refleksi. Jangan gunakan topi, masker, atau aksesoris berlebihan.</p>
+        
+        <h2>6. Format File untuk Lamaran Online</h2>
+        <p>Untuk lamaran online via email atau portal rekrutmen, simpan foto dalam format JPG dengan resolusi minimal 300 DPI. Ukuran file idealnya 100-500 KB agar cukup jelas tetapi tidak terlalu besar untuk diupload.</p>
+        
+        <p>Setelah foto siap, langsung proses di <a onclick="navigate('tool')">tool pembuat pas foto</a> kami untuk mendapat hasil dengan ukuran presisi.</p>`,
+        
+        'cpns': `
+        <p>Pas foto untuk pendaftaran CPNS (Calon Pegawai Negeri Sipil) memiliki aturan yang ketat. Banyak pendaftar gagal pada tahap verifikasi karena tidak memenuhi persyaratan foto. Berikut panduan resmi berdasarkan ketentuan umum dari panitia ASN.</p>
+        
+        <h2>Spesifikasi Pas Foto CPNS</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 cm (portrait)</li>
+        <li><strong>Background:</strong> Merah polos</li>
+        <li><strong>Format file:</strong> JPG/JPEG</li>
+        <li><strong>Resolusi minimal:</strong> 300 DPI</li>
+        <li><strong>Ukuran file:</strong> umumnya maksimal 200 KB (sesuaikan dengan pengumuman)</li>
+        </ul>
+        
+        <h2>Aturan Tambahan yang Wajib Dipatuhi</h2>
+        <h3>1. Wajib Lepas Kacamata</h3>
+        <p>Peserta wajib melepas kacamata saat pengambilan foto. Hal ini agar wajah dan mata terlihat jelas untuk verifikasi biometrik.</p>
+        
+        <h3>2. Wajib Lepas Softlens</h3>
+        <p>Lensa kontak (softlens) juga dilarang. Jika Anda menggunakan softlens untuk koreksi penglihatan, lepaskan terlebih dahulu sebelum difoto.</p>
+        
+        <h3>3. Tidak Memakai Aksesoris</h3>
+        <p>Hindari anting, kalung, jilbab yang menutupi wajah, atau atribut lain. Untuk peserta wanita berhijab, pastikan hijab tidak menutupi dahi, pipi, dan dagu.</p>
+        
+        <h3>4. Pakaian Formal</h3>
+        <p>Gunakan pakaian formal (kemeja putih dan jas hitam untuk pria, blazer untuk wanita). Hindari pakaian pola ramai atau warna mencolok.</p>
+        
+        <h3>5. Wajah Netral</h3>
+        <p>Wajah harus tampak datar, tidak tersenyum. Pandangan lurus ke depan ke arah kamera.</p>
+        
+        <h2>Cara Membuat Pas Foto CPNS di Rumah</h2>
+        <ol>
+        <li>Siapkan kain merah polos sebagai background. Jemur dulu agar tidak kerutan.</li>
+        <li>Letakkan kain di dinding yang rata, pastikan tidak ada lipatan.</li>
+        <li>Ambil foto menggunakan kamera HP dengan pencahayaan merata.</li>
+        <li>Posisikan wajah di tengah, kepala tegak, pandangan ke depan.</li>
+        <li>Upload ke <a onclick="navigate('tool')">tool kami</a> dan pilih ukuran 3x4.</li>
+        <li>Atur posisi crop agar wajah proporsional sesuai standar.</li>
+        <li>Download hasil dengan kualitas tinggi.</li>
+        </ol>
+        
+        <h2>Kesalahan yang Sering Dilakukan</h2>
+        <ul>
+        <li>Masih memakai kacamata atau softlens</li>
+        <li>Background tidak merah murni (campur warna)</li>
+        <li>Ada bayangan di wajah</li>
+        <li>Wajah tersenyum atau miring</li>
+        <li>File terlalu besar sehingga ditolak sistem</li>
+        </ul>
+        
+        <p>Pastikan Anda membaca pengumuman resmi dari instansi tujuan karena persyaratan bisa berbeda antar tahun. Setiap detail kecil bisa membuat foto Anda diterima atau ditolak.</p>`,
+        
+        'bg-merah': `
+        <p>Background merah adalah warna paling umum untuk pas foto resmi di Indonesia. Background ini dipakai untuk KTP, SIM, CPNS, dan dokumen kependudukan lainnya. Jika Anda ingin membuat pas foto background merah sendiri di rumah, berikut panduan lengkapnya.</p>
+        
+        <h2>Persiapan Background Merah</h2>
+        <p>Ada beberapa cara untuk mendapatkan background merah yang bagus:</p>
+        
+        <h3>Opsi 1: Kain Merah Polos</h3>
+        <ul>
+        <li>Gunakan kain blaco merah atau kain sutra merah polos</li>
+        <li>Warna yang ideal adalah merah cerah (red) bukan merah marun</li>
+        <li>Setrika kain agar tidak ada kerutan</li>
+        <li>Jemur dulu agar tidak lembap</li>
+        </ul>
+        
+        <h3>Opsi 2: Kertas Kado Merah</h3>
+        <p>Jika tidak ada kain, Anda bisa menempel kertas kado warna merah polos di dinding. Pastikan permukaannya rata dan tidak ada lipatan.</p>
+        
+        <h3>Opsi 3: Cat Dinding</h3>
+        <p>Jika ada dinding yang dicat merah, ini adalah opsi paling stabil dan profesional. Pastikan cat dalam kondisi baik, tidak mengelupas atau pudar.</p>
+        
+        <h2>Tips Pengambilan Foto</h2>
+        <ol>
+        <li><strong>Jarak subjek ke background:</strong> minimal 50 cm agar tidak ada bayangan jatuh di background.</li>
+        <li><strong>Pencahayaan:</strong> gunakan 2 lampu dari sisi kiri dan kanan agar merata.</li>
+        <li><strong>Tinggi kamera:</strong> sejajar dengan hidung subjek.</li>
+        <li><strong>Jarak kamera ke subjek:</strong> sekitar 1.5 - 2 meter.</li>
+        <li><strong>Pakaian:</strong> jangan pakai warna merah, agar tidak menyatu dengan background.</li>
+        </ol>
+        
+        <h2>Mengapa Background Merah Digunakan?</h2>
+        <p>Pemilihan warna merah untuk dokumen resmi memiliki alasan teknis dan tradisional:</p>
+        <ul>
+        <li>Kontras tinggi dengan wajah manusia (yang biasanya tidak merah)</li>
+        <li>Mudah dikenali sistem verifikasi biometrik</li>
+        <li>Tradisi administrasi Indonesia sejak lama</li>
+        <li>Membedakan dengan foto informal (yang biasanya pakai background natural)</li>
+        </ul>
+        
+        <h2>Yang Harus Dihindari</h2>
+        <ul>
+        <li>Background merah dengan gradasi atau bayangan</li>
+        <li>Ada objek lain di belakang (kursi, gantungan baju, dll.)</li>
+        <li>Kain kerut atau ada lipatan</li>
+        <li>Warna merah pudar atau terlalu gelap</li>
+        </ul>
+        
+        <p>Setelah foto ber-background merah siap, langsung proses di <a onclick="navigate('tool')">tool kami</a> untuk crop dengan ukuran 3x4 standar CPNS atau KTP.</p>`,
+        
+        'bg-biru': `
+        <p>Background biru adalah pilihan paling populer untuk pas foto lamaran kerja di sektor swasta, sertifikat, dan keperluan akademik. Background biru memberi kesan profesional dan bersih, cocok untuk berbagai jenis dokumen administrasi.</p>
+        
+        <h2>Jenis Warna Biru yang Tepat</h2>
+        <p>Tidak semua biru cocok untuk pas foto. Pilih warna biru yang ideal:</p>
+        <ul>
+        <li><strong>Biru muda (light blue):</strong> umum untuk lamaran kerja</li>
+        <li><strong>Biru langit (sky blue):</strong> paling populer dan sering diminta</li>
+        <li><strong>Biru tua (navy):</strong> kurang disarankan karena kontras rendah dengan pakaian gelap</li>
+        </ul>
+        
+        <h2>Cara Membuat Background Biru di Rumah</h2>
+        <h3>Langkah 1: Siapkan Backdrop</h3>
+        <p>Gunakan kain blaco biru, kertas kado warna biru muda, atau cat dinding biru. Hindari kain dengan pola atau tekstur.</p>
+        
+        <h3>Langkah 2: Setrika dan Rapihkan</h3>
+        <p>Pastikan kain benar-benar rata, tanpa kerutan. Kerutan akan muncul sebagai bayangan yang mengganggu hasil foto.</p>
+        
+        <h3>Langkah 3: Atur Pencahayaan</h3>
+        <p>Pencahayaan merata adalah kunci. Gunakan 2 sumber cahaya dari sisi kiri dan kanan. Hindari flash langsung karena bisa menyebabkan pantulan di wajah.</p>
+        
+        <h3>Langkah 4: Posisi Subjek</h3>
+        <p>Duduk atau berdiri dengan punggung tegak, jarak ke background minimal 50 cm. Posisikan kamera sejajar dengan hidung.</p>
+        
+        <h3>Langkah 5: Ambil Banyak Foto</h3>
+        <p>Jangan puas dengan 1 jepretan. Ambil 10-15 foto dengan berbagai ekspresi sedikit berbeda, lalu pilih yang terbaik.</p>
+        
+        <h2>Kegunaan Pas Foto Background Biru</h2>
+        <table class="size-table">
+        <thead><tr><th>Kebutuhan</th><th>Ukuran Umum</th></tr></thead>
+        <tbody>
+        <tr><td>Lamaran kerja swasta</td><td>3x4 atau 4x6</td></tr>
+        <tr><td>Sertifikat seminar</td><td>3x4</td></tr>
+        <tr><td>Kartu mahasiswa</td><td>2x3 atau 3x4</td></tr>
+        <tr><td>Kartu pegawai swasta</td><td>3x4</td></tr>
+        <tr><td>Pendaftaran kursus</td><td>3x4</td></tr>
+        </tbody>
+        </table>
+        
+        <h2>Tips Tambahan</h2>
+        <ul>
+        <li>Pakai pakaian dengan warna yang kontras dengan biru (misal putih, krem, atau hitam).</li>
+        <li>Jangan pakai baju biru agar tidak menyatu.</li>
+        <li>Pastikan rambut tidak menutupi dahi atau telinga.</li>
+        <li>Jika Anda memakai jilbab, pilih warna yang kontras dengan background.</li>
+        </ul>
+        
+        <p>Setelah foto background biru siap, langsung upload ke <a onclick="navigate('tool')">tool pembuat pas foto</a> kami untuk dipotong dengan ukuran presisi.</p>`,
+        
+        'bg-putih': `
+        <p>Pas foto background putih adalah standar internasional yang dipakai untuk paspor, visa, dan dokumen perjalanan lintas negara. Jika Anda berencana bepergian ke luar negeri, kemungkinan besar akan diminta pas foto dengan background putih polos.</p>
+        
+        <h2>Standar Pas Foto Background Putih</h2>
+        <ul>
+        <li><strong>Background:</strong> Putih murni, tanpa pola atau tekstur</li>
+        <li><strong>Ukuran:</strong> 4x6 cm atau 2x2 inci (untuk visa Amerika)</li>
+        <li><strong>Pencahayaan:</strong> Merata, tanpa bayangan di wajah atau background</li>
+        <li><strong>Ekspresi:</strong> Netral, tidak tersenyum</li>
+        <li><strong>Pakaian:</strong> Formal, hindari putih agar tidak menyatu dengan background</li>
+        </ul>
+        
+        <h2>Persyaratan Khusus Paspor Indonesia</h2>
+        <p>Untuk paspor Indonesia, persyaratan umum pas foto adalah:</p>
+        <ul>
+        <li>Ukuran 4x6 cm</li>
+        <li>Background putih</li>
+        <li>Berwarna (bukan hitam putih)</li>
+        <li>Tampak wajah jelas tanpa kacamata</li>
+        <li>Wajah netral, tidak tersenyum</li>
+        <li>Tidak memakai aksesoris yang menutupi wajah</li>
+        </ul>
+        
+        <h2>Tips Pengambilan Foto Background Putih</h2>
+        
+        <h3>1. Gunakan Backdrop Putih Bersih</h3>
+        <p>Kertas putih atau dinding cat putih yang bersih adalah pilihan ideal. Pastikan tidak ada noda atau bekas.</p>
+        
+        <h3>2. Hindari Bayangan</h3>
+        <p>Bayangan di background adalah masalah paling umum. Atur pencahayaan agar merata. Anda bisa menggunakan lampu ringan (ring light) untuk hasil terbaik.</p>
+        
+        <h3>3. Pakaian Berwarna Gelap</h3>
+        <p>Pakai baju warna gelap (hitam, navy, atau abu-abu tua) agar kontras dengan background putih. Hindari baju putih karena akan menyatu.</p>
+        
+        <h3>4. Rambut Rapi</h3>
+        <p>Ikat rambut ke belakang agar dahi dan telinga terlihat. Untuk wanita berhijab, pastikan hijab berwarna gelap agar kontras.</p>
+        
+        <h2>Standar Visa Internasional</h2>
+        <p>Beberapa negara memiliki standar sendiri:</p>
+        <ul>
+        <li><strong>Visa USA:</strong> 2x2 inci (5.1 x 5.1 cm), background putih</li>
+        <li><strong>Visa Schengen:</strong> 3.5 x 4.5 cm, background putih atau abu-abu muda</li>
+        <li><strong>Visa UK:</strong> 3.5 x 4.5 cm, background putih atau abu-abu muda</li>
+        <li><strong>Visa Jepang:</strong> 4.5 x 4.5 cm, background putih</li>
+        </ul>
+        
+        <h2>Kesalahan yang Sering Terjadi</h2>
+        <ul>
+        <li>Ada bayangan di belakang kepala</li>
+        <li>Background tidak benar-benar putih (keabu-abuan)</li>
+        <li>Memakai baju putih yang menyatu</li>
+        <li>Masih memakai kacamata</li>
+        <li>Wajah tersenyum atau miring</li>
+        </ul>
+        
+        <p>Gunakan <a onclick="navigate('tool')">tool kami</a> untuk memastikan ukuran pas foto background putih Anda sesuai standar.</p>`,
+        
+        'dari-hp': `
+        <p>Membuat pas foto sendiri dari smartphone kini sangat memungkinkan. Dengan kamera HP resolusi tinggi yang banyak beredar, hasil foto bisa setara dengan studio. Berikut panduan lengkap membuat pas foto dari HP Android atau iPhone.</p>
+        
+        <h2>Persiapan Sebelum Foto</h2>
+        <h3>1. Siapkan Background</h3>
+        <p>Tentukan warna background sesuai kebutuhan (merah, biru, atau putih). Gunakan kain polos atau tempel kertas warna di dinding.</p>
+        
+        <h3>2. Atur Pencahayaan</h3>
+        <p>Pencahayaan adalah kunci utama. Tips:</p>
+        <ul>
+        <li>Foto di dekat jendela pada pagi hari (07:00-10:00)</li>
+        <li>Hindari cahaya matahari langsung yang terlalu terang</li>
+        <li>Jika perlu, gunakan 2 lampu meja dari kiri dan kanan</li>
+        <li>Hindari flash HP karena bisa menyebabkan pantulan</li>
+        </ul>
+        
+        <h3>3. Pakaian</h3>
+        <p>Gunakan pakaian formal yang kontras dengan background. Jika background biru, pakai baju putih atau hitam. Jika background putih, pakai baju gelap.</p>
+        
+        <h2>Teknik Pengambilan Foto</h2>
+        <h3>Posisi Kamera</h3>
+        <p>Pegang HP sejajar dengan wajah. Jangan mengambil dari bawah (akan membuat dagu tampak besar) atau dari atas (akan membuat kepala tampak besar).</p>
+        
+        <h3>Posisi Subjek</h3>
+        <ul>
+        <li>Duduk atau berdiri tegak dengan punggung lurus</li>
+        <li>Jarak ke background minimal 50 cm</li>
+        <li>Pandangan lurus ke kamera</li>
+        <li>Bahu rileks, tidak tegang</li>
+        <li>Wajah netral atau senyum tipis</li>
+        </ul>
+        
+        <h3>Pengaturan Kamera HP</h3>
+        <ul>
+        <li>Gunakan mode Portrait untuk background blur</li>
+        <li>Tap di wajah untuk set fokus</li>
+        <li>Naikkan exposure sedikit agar wajah terang</li>
+        <li>Gunakan timer 3 detik untuk menghindari goyangan</li>
+        <li>Pakai tripod HP jika ada</li>
+        </ul>
+        
+        <h2>Langkah-langkah Membuat Pas Foto dari HP</h2>
+        <ol>
+        <li>Buka tool <a onclick="navigate('tool')">Buat Pas Foto</a> di browser HP Anda.</li>
+        <li>Klik tombol Upload, lalu pilih foto dari galeri.</li>
+        <li>Pilih ukuran yang dibutuhkan (3x4 untuk KTP, 4x6 untuk paspor).</li>
+        <li>Seret foto untuk mengatur posisi wajah di tengah.</li>
+        <li>Gunakan tombol panah untuk pergerakan halus.</li>
+        <li>Zoom menggunakan tombol plus minus atau jepit (pinch) langsung di canvas.</li>
+        <li>Klik tombol Susun Pintar di A4 untuk menata otomatis.</li>
+        <li>Download hasil ke galeri HP.</li>
+        </ol>
+        
+        <h2>Tips Tambahan untuk Hasil Maksimal</h2>
+        <ul>
+        <li>Bersihkan lensa kamera HP dengan kain microfiber sebelum foto.</li>
+        <li>Gunakan resolusi tertinggi yang tersedia di kamera HP.</li>
+        <li>Ambil beberapa foto dan pilih yang terbaik.</li>
+        <li>Jangan pakai filter Instagram atau beauty camera, hasilnya tidak natural.</li>
+        <li>Edit di tool kami, bukan di aplikasi editor yang bisa mengubah rasio.</li>
+        </ul>
+        
+        <h2>Mencetak Hasil Pas Foto</h2>
+        <p>Setelah download, kirim file ke printer rumah atau ke percetakan terdekat. Jika dicetak di A4, gunakan fitur <em>Susun Pintar</em> kami untuk menghemat kertas. Atur skala cetak 100% agar ukuran tidak berubah.</p>`,
+        
+        'tips-mengambil-foto': `
+        <p>Mengambil foto untuk pas foto tampak sederhana, tetapi banyak yang gagal karena tidak memperhatikan detail. Hasil foto yang buruk akan menyulitkan proses crop dan menurunkan kualitas cetak. Berikut tips lengkap untuk mengambil foto pas foto yang baik.</p>
+        
+        <h2>1. Pencahayaan yang Merata</h2>
+        <p>Pencahayaan adalah faktor paling penting. Foto yang baik harus terang merata di seluruh wajah tanpa bayangan.</p>
+        
+        <h3>Cara Mendapat Pencahayaan Merata:</h3>
+        <ul>
+        <li>Foto dekat jendela pada pagi hari (07:00-10:00) atau sore (15:00-17:00)</li>
+        <li>Gunakan 2 lampu dari sisi kiri dan kanan dengan jarak sama</li>
+        <li>Hindari flash langsung dari kamera</li>
+        <li>Hindari foto di tengah hari saat matahari terlalu terang</li>
+        </ul>
+        
+        <h2>2. Background Polos</h2>
+        <p>Background harus polos, satu warna, tanpa objek lain. Pilihan warna tergantung kebutuhan dokumen:</p>
+        <ul>
+        <li><strong>Merah:</strong> KTP, CPNS, dokumen pemerintah</li>
+        <li><strong>Biru:</strong> Lamaran kerja swasta, sertifikat</li>
+        <li><strong>Putih:</strong> Paspor, visa, dokumen internasional</li>
+        </ul>
+        
+        <p>Hindari background dengan pola, tekstur, atau banyak objek. Background yang berisik akan menyulitkan proses crop otomatis dan menghasilkan tepi yang tidak rapi.</p>
+        
+        <h2>3. Posisi Tegak dan Netral</h2>
+        <ul>
+        <li>Duduk atau berdiri dengan punggung tegak lurus</li>
+        <li>Pandangan lurus ke arah kamera, sejajar dengan mata</li>
+        <li>Kepala tidak miring ke kiri atau kanan</li>
+        <li>Bahu rileks, tidak terangkat</li>
+        <li>Wajah netral atau senyum tipis natural</li>
+        </ul>
+        
+        <h2>4. Komposisi Wajah dalam Frame</h2>
+        <p>Posisi wajah di dalam frame sangat menentukan hasil akhir. Panduan komposisi:</p>
+        <ul>
+        <li>Kepala mengisi 60-70% dari tinggi frame</li>
+        <li>Dahi terlihat jelas, tidak terpotong</li>
+        <li>Telinga terlihat, tidak tertutup rambut</li>
+        <li>Dada hingga bahu terlihat</li>
+        <li>Ruang atas kepala cukup (jangan terlalu mepet)</li>
+        </ul>
+        
+        <h2>5. Jarak Kamera ke Subjek</h2>
+        <p>Jangan terlalu dekat karena bisa menyebabkan distorsi (wajah terlihat bulat). Jangan juga terlalu jauh karena resolusi wajah rendah. Idealnya 1.5 - 2 meter dari subjek.</p>
+        
+        <h2>6. Resolusi Tinggi</h2>
+        <p>Gunakan kamera minimal 5 Megapiksel. Semakin tinggi resolusi, semakin tajam hasil cetak. Hindari foto dari screenshot atau foto yang sudah dikompres di WhatsApp.</p>
+        
+        <h2>7. Pakaian yang Sesuai</h2>
+        <ul>
+        <li>Formal: kemeja, jas, blazer</li>
+        <li>Warna kontras dengan background</li>
+        <li>Hindari pola ramai (kotak-kotak, garis, bunga)</li>
+        <li>Hindari warna mencolok (kuning, oranye neon)</li>
+        </ul>
+        
+        <h2>8. Rambut Rapi</h2>
+        <p>Ikat rambut ke belakang agar tidak menutupi wajah. Untuk pria, rapikan rambut agar tidak menutupi dahi. Untuk wanita, pastikan rambut tidak menutupi telinga.</p>
+        
+        <h2>9. Hindari Aksesoris Berlebihan</h2>
+        <p>Lepas kacamata jika bisa, karena bisa memantul cahaya dan menyembunyikan mata. Hindari anting yang besar, kalung yang mencolok, atau topi. Untuk wanita berhijab, pastikan hijab tidak menutupi dahi dan pipi.</p>
+        
+        <h2>10. Ekspresi yang Tepat</h2>
+        <p>Untuk dokumen resmi, gunakan ekspresi netral (tidak tersenyum). Untuk lamaran kerja, senyum tipis diperbolehkan. Pastikan mata terbuka jelas dan tidak mengedip.</p>
+        
+        <p>Setelah foto siap, langsung proses di <a onclick="navigate('tool')">tool kami</a> untuk mendapat hasil dengan ukuran presisi.</p>`,
+        
+        'kesalahan': `
+        <p>Banyak pas foto ditolak instansi karena kesalahan kecil yang sebenarnya mudah dihindari. Berikut adalah kesalahan paling umum saat membuat pas foto dan cara menghindarinya.</p>
+        
+        <h2>Kesalahan #1: Background Tidak Sesuai</h2>
+        <p>Menggunakan background yang salah adalah penyebab penolakan paling sering. Misalnya, pas foto CPNS harus background merah, tetapi Anda pakai biru. <strong>Solusi:</strong> Baca pengumuman resmi sebelum foto.</p>
+        
+        <h2>Kesalahan #2: Masih Memakai Kacamata</h2>
+        <p>Banyak instansi melarang pemakaian kacamata, terutama CPNS, paspor, dan visa. Kacamata bisa memantulkan cahaya dan menyembunyikan mata. <strong>Solusi:</strong> Lepas kacamata saat foto, atau gunakan kacamata tanpa pantulan (anti-reflective coating).</p>
+        
+        <h2>Kesalahan #3: Wajah Tersenyum Terlalu Lebar</h2>
+        <p>Untuk dokumen resmi, senyum lebar bisa membuat foto ditolak. Instansi menginginkan ekspresi netral agar verifikasi biometrik akurat. <strong>Solusi:</strong> Senyum tipis atau tidak tersenyum sama sekali.</p>
+        
+        <h2>Kesalahan #4: Kepala Miring</h2>
+        <p>Kepala yang miring ke samping menyulitkan verifikasi wajah. Foto resmi mengharuskan kepala tegak lurus. <strong>Solusi:</strong> Pasang cermin di belakang kamera untuk memastikan kepala tegak.</p>
+        
+        <h2>Kesalahan #5: Bayangan di Wajah</h2>
+        <p>Bayangan di wajah (terutama di hidung atau mata) menurunkan kualitas foto. Ini disebabkan pencahayaan tidak merata. <strong>Solusi:</strong> Gunakan 2 lampu dari kiri dan kanan dengan intensitas sama.</p>
+        
+        <h2>Kesalahan #6: Background Kerutan</h2>
+        <p>Jika menggunakan kain sebagai background, kerutan akan terlihat sebagai garis gelap. <strong>Solusi:</strong> Setrika kain terlebih dahulu dan kencangkan saat dipasang.</p>
+        
+        <h2>Kesalahan #7: Foto Buram</h2>
+        <p>Foto buram biasanya karena kamera goyang atau jarak terlalu dekat. <strong>Solusi:</strong> Gunakan tripod atau timer 3 detik, dan jaga jarak minimal 1.5 meter dari subjek.</p>
+        
+        <h2>Kesalahan #8: Resolusi Terlalu Rendah</h2>
+        <p>Foto dari screenshot WhatsApp atau hasil unduh dari media sosial biasanya resolusinya rendah. <strong>Solusi:</strong> Selalu gunakan foto asli dari kamera, bukan hasil unduhan.</p>
+        
+        <h2>Kesalahan #9: Memakai Softlens</h2>
+        <p>Untuk CPNS, softlens dilarang keras. Softlens bisa mengubah warna mata dan mengganggu verifikasi. <strong>Solusi:</strong> Lepas softlens sebelum foto.</p>
+        
+        <h2>Kesalahan #10: Wajah Terpotong</h2>
+        <p>Crop yang salah bisa memotong dahi, dagu, atau telinga. <strong>Solusi:</strong> Gunakan tool kami yang menampilkan panduan golden ratio agar crop tepat.</p>
+        
+        <h2>Kesalahan #11: File Terlalu Besar</h2>
+        <p>Upload pas foto untuk lamaran online sering ditolak karena file terlalu besar. <strong>Solusi:</strong> Simpan dalam JPG dengan kualitas 80-90% agar file 100-300 KB.</p>
+        
+        <h2>Kesalahan #12: Pakai Filter atau Beauty Camera</h2>
+        <p>Filter Instagram atau aplikasi beauty camera mengubah wajah secara signifikan. Hasilnya tidak natural dan bisa ditolak. <strong>Solusi:</strong> Gunakan foto asli tanpa filter.</p>
+        
+        <h2>Kesalahan #13: Pakaian Tidak Sesuai</h2>
+        <p>Pakaian kasual (kaos oblong) atau warna mencolok (kuning, merah neon) tidak profesional. <strong>Solusi:</strong> Pakai kemeja formal atau jas.</p>
+        
+        <h2>Kesalahan #14: Foto Lama</h2>
+        <p>Menggunakan foto lama (lebih dari 6 bulan) bisa ditolak karena wajah sudah berubah. <strong>Solusi:</strong> Foto ulang setiap 6 bulan untuk dokumen penting.</p>
+        
+        <h2>Kesalahan #15: Ukuran Tidak Sesuai</h2>
+        <p>Mengirim pas foto 3x4 padahal yang diminta 4x6 akan langsung ditolak. <strong>Solusi:</strong> Selalu cek ukuran di pengumuman dan gunakan tool ukuran presisi.</p>
+        
+        <p>Hindari semua kesalahan di atas dan hasilkan pas foto yang berkualitas. Untuk memastikan ukuran presisi, gunakan <a onclick="navigate('tool')">tool kami</a>.</p>`,
+        
+        'cetak-pas-foto': `
+        <p>Setelah berhasil membuat pas foto digital, langkah berikutnya adalah mencetak. Hasil cetak yang baik akan membuat foto terlihat profesional, sementara kesalahan cetak bisa merusak kualitas foto. Berikut panduan lengkap mencetak pas foto.</p>
+        
+        <h2>Persiapan Sebelum Mencetak</h2>
+        <h3>1. Pilih Kertas yang Tepat</h3>
+        <p>Kertas foto khusus adalah pilihan terbaik. Beberapa pilihan:</p>
+        <ul>
+        <li><strong>Kertas glossy:</strong> mengkilap, warna hidup, cocok untuk pas foto resmi</li>
+        <li><strong>Kertas semi-glossy:</strong> sedikit mengkilap, tidak meninggalkan sidik jari</li>
+        <li><strong>Kertas matte:</strong> tidak mengkilap, cocok untuk pas foto ijazah</li>
+        </ul>
+        <p>Hindari kertas HVS biasa karena kualitas cetak rendah dan cepat pudar.</p>
+        
+        <h3>2. Ukuran Kertas</h3>
+        <ul>
+        <li><strong>Kertas 4R (4x6 inci):</strong> untuk 1-4 pas foto</li>
+        <li><strong>Kertas A4:</strong> untuk 8-20 pas foto sekaligus</li>
+        <li><strong>Kertas 3R (3x5 inci):</strong> untuk 1-2 pas foto kecil</li>
+        </ul>
+        
+        <h2>Cara Mencetak Sendiri di Rumah</h2>
+        <h3>Langkah 1: Susun Pas Foto di A4</h3>
+        <p>Gunakan fitur <em>Susun Pintar di A4</em> di <a onclick="navigate('tool')">tool kami</a> untuk menata beberapa pas foto otomatis dalam 1 halaman A4. Ini akan menghemat kertas.</p>
+        
+        <h3>Langkah 2: Download Hasil Susunan</h3>
+        <p>Setelah disusun, download file JPG ke komputer Anda. Pastikan resolusi tinggi (300 DPI).</p>
+        
+        <h3>Langkah 3: Buka di Aplikasi Print</h3>
+        <p>Buka file di aplikasi seperti Windows Photo Viewer, Preview (Mac), atau aplikasi printer bawaan. Atur pengaturan cetak:</p>
+        <ul>
+        <li><strong>Skala:</strong> 100% (Actual Size) - jangan "Fit to Page"</li>
+        <li><strong>Kualitas:</strong> High atau Best</li>
+        <li><strong>Kertas:</strong> Photo Paper</li>
+        <li><strong>Warna:</strong> Color</li>
+        </ul>
+        
+        <h3>Langkah 4: Cetak dan Potong</h3>
+        <p>Setelah cetak, gunakan gunting atau cutter presisi untuk memotong masing-masing pas foto. Gunakan penggaris untuk potongan yang lurus.</p>
+        
+        <h2>Mencetak di Percetakan</h2>
+        <p>Jika tidak punya printer, bawa file ke percetakan atau studio foto terdekat. Tips:</p>
+        <ul>
+        <li>Bawa file di flashdisk atau kirim via email/WhatsApp</li>
+        <li>Sebutkan ukuran pas foto yang diinginkan</li>
+        <li>Minta cetak di kertas foto, bukan HVS</li>
+        <li>Cek hasil cetak sebelum bayar</li>
+        </ul>
+        
+        <h2>Tips Agar Hasil Cetak Maksimal</h2>
+        <ol>
+        <li><strong>Gunakan resolusi 300 DPI</strong> agar tidak pecah saat dicetak.</li>
+        <li><strong>Kalibrasi printer</strong> secara berkala agar warna konsisten.</li>
+        <li><strong>Cetak test page</strong> dulu sebelum cetak banyak.</li>
+        <li><strong>Hindari cetak dalam mode draft</strong> karena kualitas rendah.</li>
+        <li><strong>Simpan kertas foto di tempat kering</strong> agar tidak lembap.</li>
+        </ol>
+        
+        <h2>Perawatan Pas Foto Setelah Cetak</h2>
+        <ul>
+        <li>Simpan di amplop atau kantong plastik agar tidak terkena air</li>
+        <li>Jangan lipat pas foto</li>
+        <li>Hindari paparan sinar matahari langsung (warna bisa pudar)</li>
+        <li>Gunakan lem yang bersih saat menempel di dokumen</li>
+        </ul>
+        
+        <p>Untuk menyusun pas foto otomatis di A4, gunakan tool gratis kami di <a onclick="navigate('tool')">Buat Pas Foto</a>.</p>`,
+        
+        'perbedaan-ukuran': `
+        <p>Banyak orang bingung kapan harus menggunakan pas foto 2x3, 3x4, atau 4x6. Setiap ukuran memiliki kegunaan spesifik. Memilih ukuran yang salah bisa membuat dokumen ditolak. Berikut panduan perbedaan lengkap.</p>
+        
+        <h2>Ukuran 2x3 cm</h2>
+        <h3>Karakteristik:</h3>
+        <ul>
+        <li>Ukuran terkecil (2.16 x 2.79 cm)</li>
+        <li>Wajah tampak kecil tapi cukup untuk identifikasi</li>
+        <li>Tidak cocok untuk dokumen resmi yang serius</li>
+        </ul>
+        
+        <h3>Kegunaan Umum:</h3>
+        <ul>
+        <li>Kartu pelajar</li>
+        <li>Tanda masuk acara</li>
+        <li>Kartu keanggotaan organisasi kecil</li>
+        <li>Bukti pendaftaran event informal</li>
+        </ul>
+        
+        <h2>Ukuran 3x4 cm</h2>
+        <h3>Karakteristik:</h3>
+        <ul>
+        <li>Ukuran medium (2.79 x 3.81 cm)</li>
+        <li>Wajah tampak proporsional</li>
+        <li>Standar paling umum di Indonesia</li>
+        </ul>
+        
+        <h3>Kegunaan Umum:</h3>
+        <ul>
+        <li>KTP (Kartu Tanda Penduduk)</li>
+        <li>SIM (Surat Izin Mengemudi)</li>
+        <li>Lamaran pekerjaan</li>
+        <li>Pendaftaran CPNS</li>
+        <li>Formulir sekolah dan kuliah</li>
+        <li>Kartu BPJS</li>
+        <li>Kartu pegawai</li>
+        </ul>
+        
+        <h2>Ukuran 4x6 cm</h2>
+        <h3>Karakteristik:</h3>
+        <ul>
+        <li>Ukuran terbesar (3.81 x 5.59 cm)</li>
+        <li>Wajah tampak jelas dan detail</li>
+        <li>Cocok untuk dokumen yang membutuhkan verifikasi wajah tingkat tinggi</li>
+        </ul>
+        
+        <h3>Kegunaan Umum:</h3>
+        <ul>
+        <li>Paspor</li>
+        <li>Sertifikat resmi</li>
+        <li>Ijazah</li>
+        <li>Visa internasional</li>
+        <li>Lamaran kerja instansi tertentu</li>
+        </ul>
+        
+        <h2>Tabel Perbandingan Cepat</h2>
+        <table class="size-table">
+        <thead><tr><th>Aspek</th><th>2x3</th><th>3x4</th><th>4x6</th></tr></thead>
+        <tbody>
+        <tr><td>Lebar</td><td>2.16 cm</td><td>2.79 cm</td><td>3.81 cm</td></tr>
+        <tr><td>Tinggi</td><td>2.79 cm</td><td>3.81 cm</td><td>5.59 cm</td></tr>
+        <tr><td>Pixel (300 DPI)</td><td>255x330</td><td>330x450</td><td>450x660</td></tr>
+        <tr><td>Kegunaan</td><td>Event, kartu pelajar</td><td>KTP, SIM, lamaran</td><td>Paspor, ijazah</td></tr>
+        <tr><td>Tingkat Resmi</td><td>Rendah</td><td>Sedang</td><td>Tinggi</td></tr>
+        </tbody>
+        </table>
+        
+        <h2>Kapan Pakai Masing-masing?</h2>
+        <h3>Untuk Lamaran Kerja:</h3>
+        <p>Pakai <strong>3x4 atau 4x6</strong>. Jika tidak disebutkan, 3x4 adalah pilihan aman.</p>
+        
+        <h3>Untuk CPNS:</h3>
+        <p>Pakai <strong>3x4 background merah</strong>. Ini standar resmi.</p>
+        
+        <h3>Untuk Paspor:</h3>
+        <p>Pakai <strong>4x6 background putih</strong>. Standar Imigrasi Indonesia.</p>
+        
+        <h3>Untuk Ijazah:</h3>
+        <p>Pakai <strong>4x6 dengan pita nama</strong>. Bisa dibuat di tool kami dengan Mode Ijazah.</p>
+        
+        <h3>Untuk KTP/SIM:</h3>
+        <p>Pakai <strong>3x4 background merah</strong>.</p>
+        
+        <h3>Untuk Kartu Pelajar:</h3>
+        <p>Pakai <strong>2x3</strong>. Standar sekolah.</p>
+        
+        <p>Untuk membuat ketiga ukuran, langsung gunakan <a onclick="navigate('tool')">tool kami</a>. Lihat juga tabel lengkap di halaman <a onclick="navigate('sizes')">Ukuran Pas Foto</a>.</p>`,
+        
+        'foto-rapi': `
+        <p>Pas foto yang rapi memberi kesan profesional dan menunjukkan keseriusan Anda. Sebaliknya, pas foto yang acak akan mengurangi peluang diterima dokumen Anda. Berikut panduan membuat pas foto yang rapi dari awal sampai akhir.</p>
+        
+        <h2>1. Persiapan Sebelum Foto</h2>
+        <h3>Rapikan Rambut</h3>
+        <p>Ikat rambut ke belakang agar tidak menutupi wajah. Pastikan dahi dan telinga terlihat. Untuk pria, rapikan jenggot dan kumis. Untuk wanita berhijab, atur hijab agar tidak menutupi pipi dan dahi.</p>
+        
+        <h3>Pilih Pakaian yang Tepat</h3>
+        <ul>
+        <li>Pria: kemeja putih + jas hitam atau biru tua</li>
+        <li>Wanita: blazer formal atau kemeja rapi</li>
+        <li>Warna kontras dengan background</li>
+        <li>Setrika agar tidak kusut</li>
+        </ul>
+        
+        <h3>Bersihkan Wajah</h3>
+        <p>Cuci wajah agar tidak mengkilap akibat minyak. Jangan pakai makeup berlebihan. Untuk pria, cukur atau rapikan kumis.</p>
+        
+        <h2>2. Atur Background</h2>
+        <p>Pilih warna background sesuai kebutuhan. Setrika kain backdrop agar tidak kerutan. Pastikan tidak ada objek lain di belakang.</p>
+        
+        <h2>3. Pencahayaan yang Merata</h2>
+        <p>Gunakan 2 lampu dari kiri dan kanan dengan intensitas sama. Hindari cahaya dari satu sisi yang menyebabkan separuh wajah gelap.</p>
+        
+        <h2>4. Posisi yang Benar</h2>
+        <ul>
+        <li>Punggung tegak, tidak membungkuk</li>
+        <li>Bahu rileks, tidak terangkat</li>
+        <li>Kepala tegak, tidak miring</li>
+        <li>Pandangan lurus ke kamera</li>
+        <li>Wajah netral atau senyum tipis</li>
+        </ul>
+        
+        <h2>5. Crop dengan Presisi</h2>
+        <p>Setelah foto diambil, crop dengan proporsi yang tepat:</p>
+        <ul>
+        <li>Mata berada di sepertiga atas frame (rule of thirds)</li>
+        <li>Dahi terlihat jelas</li>
+        <li>Telinga terlihat</li>
+        <li>Dada hingga bahu terlihat</li>
+        <li>Ruang atas kepala cukup</li>
+        </ul>
+        <p>Gunakan tool kami yang menampilkan panduan golden ratio untuk crop yang presisi.</p>
+        
+        <h2>6. Atur Posisi Wajah</h2>
+        <p>Di <a onclick="navigate('tool')">tool kami</a>, Anda bisa:</p>
+        <ul>
+        <li>Seret foto untuk mengatur posisi</li>
+        <li>Gunakan tombol panah untuk pergerakan halus</li>
+        <li>Zoom dengan tombol plus/minus atau scroll</li>
+        <li>Lihat panduan garis hijau (golden ratio) untuk komposisi ideal</li>
+        </ul>
+        
+        <h2>7. Samaikan Posisi Beberapa Foto</h2>
+        <p>Jika Anda mengupload beberapa foto sekaligus (misal untuk ijazah kelas), gunakan fitur <em>Jadikan Acuan</em> di tool kami. Foto yang dijadikan acuan akan diterapkan ke foto-foto lain dengan ukuran sama, sehingga semua foto punya komposisi yang konsisten.</p>
+        
+        <h2>8. Susun Rapi di A4</h2>
+        <p>Gunakan fitur <em>Susun Pintar di A4</em> untuk menata beberapa pas foto otomatis dalam kertas A4. Sistem akan menghitung tata letak optimal agar tidak ada ruang terbuang.</p>
+        
+        <h2>9. Cetak dengan Presisi</h2>
+        <ul>
+        <li>Atur skala cetak 100% (Actual Size)</li>
+        <li>Jangan pakai "Fit to Page" karena bisa mengubah ukuran</li>
+        <li>Gunakan kertas foto glossy untuk hasil terbaik</li>
+        <li>Gunakan kualitas cetak High atau Best</li>
+        </ul>
+        
+        <h2>10. Potong dengan Rapi</h2>
+        <p>Setelah cetak, potong dengan gunting atau cutter presisi. Gunakan penggaris untuk potongan lurus. Jangan gunting asal karena bisa miring.</p>
+        
+        <p>Dengan mengikuti semua langkah di atas, pas foto Anda akan tampak rapi dan profesional. Mulai sekarang di <a onclick="navigate('tool')">tool kami</a>.</p>`,
+        
+        'persiapan-lamaran': `
+        <p>Persiapan pas foto untuk lamaran kerja adalah langkah awal yang penting. Foto yang buruk bisa membuat Anda tampak tidak profesional, sedangkan foto yang baik akan memberi kesan positif kepada HRD. Berikut checklist lengkap persiapan foto lamaran kerja.</p>
+        
+        <h2>Checklist Persiapan Foto Lamaran Kerja</h2>
+        
+        <h3>1. Tentukan Background</h3>
+        <p>Cek pengumuman lowongan kerja. Mayoritas perusahaan swasta menerima background biru. Untuk BUMN, biasanya background merah. Jika tidak disebut, pilih biru muda (sky blue) karena paling aman.</p>
+        
+        <h3>2. Siapkan Pakaian Formal</h3>
+        <ul>
+        <li><strong>Pria:</strong> Kemeja putih lengan panjang + jas hitam/navy + dasi (opsional)</li>
+        <li><strong>Wanita:</strong> Blazer formal atau kemeja rapi</li>
+        <li><strong>Sepatu:</strong> Formal, tidak harus terlihat di foto</li>
+        </ul>
+        
+        <h3>3. Rapihkan Rambut</h3>
+        <ul>
+        <li>Pria: Potong rambut agar rapi, sidap bersih</li>
+        <li>Wanita: Ikat rambut ke belakang agar wajah terlihat jelas</li>
+        <li>Pastikan dahi dan telinga terlihat</li>
+        </ul>
+        
+        <h3>4. Bersihkan Wajah</h3>
+        <ul>
+        <li>Cuci wajah agar tidak mengkilap</li>
+        <li>Jangan pakai makeup berlebihan</li>
+        <li>Pria: Cukur atau rapikan kumis/jenggot</li>
+        <li>Lepas kacamata jika memungkinkan</li>
+        </ul>
+        
+        <h3>5. Siapkan Background</h3>
+        <p>Jika tidak punya kain backdrop, Anda bisa:</p>
+        <ul>
+        <li>Gunakan dinding yang sudah dicat warna sesuai kebutuhan</li>
+        <li>Tempel kertas kado warna polos di dinding</li>
+        <li>Pinjam kain dari teman atau beli kain blaco</li>
+        </ul>
+        
+        <h3>6. Atur Pencahayaan</h3>
+        <p>Pencahayaan merata adalah kunci. Tips:</p>
+        <ul>
+        <li>Foto dekat jendela pada pagi hari</li>
+        <li>Gunakan 2 lampu dari kiri dan kanan</li>
+        <li>Hindari flash langsung</li>
+        <li>Hindari foto malam hari</li>
+        </ul>
+        
+        <h3>7. Tentukan Ukuran Foto</h3>
+        <p>Ukuran umum untuk lamaran kerja adalah <strong>3x4 cm</strong> atau <strong>4x6 cm</strong>. Jika tidak disebut, 3x4 adalah pilihan aman.</p>
+        
+        <h3>8. Ambil Banyak Foto</h3>
+        <p>Jangan puas dengan 1-2 foto. Ambil 10-15 foto dengan berbagai variasi ekspresi sedikit berbeda, lalu pilih yang terbaik.</p>
+        
+        <h3>9. Cek Kualitas Foto</h3>
+        <p>Sebelum upload ke tool kami, pastikan foto:</p>
+        <ul>
+        <li>Tidak buram</li>
+        <li>Tidak ada bayangan</li>
+        <li>Background polos tanpa kerutan</li>
+        <li>Wajah tegak, tidak miring</li>
+        <li>Mata terbuka jelas</li>
+        <li>Resolusi tinggi (minimal 5 Megapiksel)</li>
+        </ul>
+        
+        <h3>10. Proses di Tool Kami</h3>
+        <p>Upload ke <a onclick="navigate('tool')">tool pembuat pas foto</a> kami, pilih ukuran yang sesuai, atur crop, lalu download.</p>
+        
+        <h3>11. Simpan dalam Format yang Tepat</h3>
+        <ul>
+        <li><strong>Untuk lamaran online:</strong> JPG dengan kualitas 80-90% (file 100-300 KB)</li>
+        <li><strong>Untuk lamaran cetak:</strong> JPG dengan kualitas 100% (resolusi tinggi)</li>
+        <li><strong>Untuk email:</strong> JPG dengan kualitas sedang</li>
+        </ul>
+        
+        <h2>Tips Tambahan untuk Lamaran Online</h2>
+        <ul>
+        <li>Simpan beberapa ukuran (3x4 dan 4x6) untuk berjaga-jaga</li>
+        <li>Siapkan 2 versi background (biru dan merah) jika ragu</li>
+        <li>Gunakan nama file yang jelas: "PasFoto_NamaAnda.jpg"</li>
+        <li>Jangan pakai foto lebih dari 6 bulan</li>
+        </ul>
+        
+        <h2>Hal yang Harus Dihindari</h2>
+        <ul>
+        <li>Foto selfie atau foto kasual</li>
+        <li>Foto dengan filter Instagram</li>
+        <li>Foto background ramai (pohon, gedung)</li>
+        <li>Foto dengan teman atau keluarga di belakang</li>
+        <li>Foto lama yang sudah pudar</li>
+        </ul>
+        
+        <p>Dengan checklist di atas, persiapan foto lamaran kerja Anda akan lebih terstruktur. Mulai proses sekarang di <a onclick="navigate('tool')">tool kami</a>.</p>`,
+        
+        'dokumen-administrasi': `
+        <p>Pas foto adalah bagian penting dari berbagai dokumen administrasi di Indonesia. Setiap dokumen memiliki persyaratan foto yang berbeda. Berikut panduan umum pas foto untuk berbagai dokumen administrasi.</p>
+        
+        <h2>1. Pas Foto untuk KTP</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 cm</li>
+        <li><strong>Background:</strong> Merah</li>
+        <li><strong>Format:</strong> Cetak (bukan digital)</li>
+        <li><strong>Jumlah:</strong> 2-4 lembar (sesuai permintaan)</li>
+        <li><strong>Aturan:</strong> Tidak memakai kacamata, wajah netral</li>
+        </ul>
+        
+        <h2>2. Pas Foto untuk SIM</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 cm</li>
+        <li><strong>Background:</strong> Merah atau biru (cek di kantor polisi)</li>
+        <li><strong>Format:</strong> Cetak</li>
+        <li><strong>Jumlah:</strong> 2-4 lembar</li>
+        <li><strong>Aturan:</strong> Tidak memakai kacamata (kecuali kacamata khusus)</li>
+        </ul>
+        
+        <h2>3. Pas Foto untuk Paspor</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 4x6 cm</li>
+        <li><strong>Background:</strong> Putih</li>
+        <li><strong>Format:</strong> Cetak</li>
+        <li><strong>Jumlah:</strong> 2-4 lembar</li>
+        <li><strong>Aturan:</strong> Tidak memakai kacamata, wajah netral</li>
+        </ul>
+        
+        <h2>4. Pas Foto untuk CPNS</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 cm</li>
+        <li><strong>Background:</strong> Merah</li>
+        <li><strong>Format:</strong> Digital (JPG, maks 200 KB)</li>
+        <li><strong>Aturan:</strong> Tidak kacamata, tidak softlens, wajah netral</li>
+        </ul>
+        
+        <h2>5. Pas Foto untuk Ijazah</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 4x6 cm</li>
+        <li><strong>Background:</strong> Biru (umum) atau merah</li>
+        <li><strong>Format:</strong> Cetak dengan pita nama</li>
+        <li><strong>Pita:</strong> Tulisan nama sekolah di bagian bawah foto</li>
+        </ul>
+        <p>Untuk membuat pas foto ijazah dengan pita nama otomatis, gunakan <em>Mode Ijazah</em> di <a onclick="navigate('tool')">tool kami</a>.</p>
+        
+        <h2>6. Pas Foto untuk Lamaran Kerja</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 atau 4x6 cm</li>
+        <li><strong>Background:</strong> Biru (swasta) atau merah (BUMN)</li>
+        <li><strong>Format:</strong> Cetak atau digital</li>
+        <li><strong>Aturan:</strong> Pakaian formal, wajah netral/senyum tipis</li>
+        </ul>
+        
+        <h2>7. Pas Foto untuk Visa</h2>
+        <ul>
+        <li><strong>Visa USA:</strong> 2x2 inci (5.1 x 5.1 cm), background putih</li>
+        <li><strong>Visa Schengen:</strong> 3.5 x 4.5 cm, background putih/abu-abu muda</li>
+        <li><strong>Visa UK:</strong> 3.5 x 4.5 cm, background putih/abu-abu muda</li>
+        <li><strong>Visa Jepang:</strong> 4.5 x 4.5 cm, background putih</li>
+        </ul>
+        
+        <h2>8. Pas Foto untuk Sertifikat</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 atau 4x6 cm</li>
+        <li><strong>Background:</strong> Biru</li>
+        <li><strong>Format:</strong> Cetak</li>
+        </ul>
+        
+        <h2>9. Pas Foto untuk Kartu Pelajar</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 2x3 cm</li>
+        <li><strong>Background:</strong> Biru atau merah</li>
+        <li><strong>Format:</strong> Cetak</li>
+        </ul>
+        
+        <h2>10. Pas Foto untuk BPJS</h2>
+        <ul>
+        <li><strong>Ukuran:</strong> 3x4 cm</li>
+        <li><strong>Background:</strong> Merah</li>
+        <li><strong>Format:</strong> Cetak</li>
+        </ul>
+        
+        <h2>Tips Umum untuk Semua Dokumen</h2>
+        <ol>
+        <li>Selalu baca persyaratan resmi sebelum foto</li>
+        <li>Siapkan beberapa ukuran sekaligus untuk berjaga-jaga</li>
+        <li>Foto tidak lebih dari 6 bulan</li>
+        <li>Gunakan pakaian formal</li>
+        <li>Pastikan wajah terlihat jelas</li>
+        <li>Lepas kacamata dan softlens</li>
+        <li>Gunakan kualitas cetak tinggi</li>
+        </ol>
+        
+        <h2>Panduan Singkat Memilih Background</h2>
+        <ul>
+        <li><strong>Pemerintah (KTP, CPNS, SIM):</strong> Merah</li>
+        <li><strong>Swasta (lamaran kerja, sertifikat):</strong> Biru</li>
+        <li><strong>Internasional (paspor, visa):</strong> Putih</li>
+        <li><strong>Ijazah:</strong> Biru (umum) atau merah</li>
+        </ul>
+        
+        <p>Untuk membuat semua jenis pas foto di atas, gunakan <a onclick="navigate('tool')">tool kami</a> yang mendukung berbagai ukuran dan mode.</p>`,
+        
+        'faq-online': `
+        <p>Pertanyaan umum seputar pembuatan pas foto online. Berikut jawaban lengkap untuk pertanyaan yang sering diajukan.</p>
+        
+        <h2>Q: Apakah aman membuat pas foto online?</h2>
+        <p>A: Aman, selama tool yang Anda gunakan memproses foto di sisi klien (client-side) seperti tool kami. Foto tidak pernah dikirim ke server, sehingga privasi terjaga.</p>
+        
+        <h2>Q: Apakah tool pas foto online gratis?</h2>
+        <p>A: Tool kami 100% gratis tanpa biaya tersembunyi. Tidak perlu registrasi, tidak ada batas jumlah penggunaan.</p>
+        
+        <h2>Q: Format file apa yang didukung?</h2>
+        <p>A: Saat ini kami mendukung JPG/JPEG dan PNG. Untuk hasil cetak, JPG lebih disarankan karena ukuran file lebih kecil dengan kualitas baik.</p>
+        
+        <h2>Q: Berapa resolusi yang dibutuhkan?</h2>
+        <p>A: Untuk pas foto 3x4, resolusi minimal 330x450 pixel (300 DPI). Untuk 4x6, minimal 450x660 pixel. Semakin tinggi resolusi, semakin tajam hasil cetak.</p>
+        
+        <h2>Q: Bisakah saya membuat pas foto hitam putih?</h2>
+        <p>A: Ya, tool kami memiliki mode Hitam Putih yang bisa diaktifkan. Cocok untuk pas foto reguler atau keperluan dokumen lama.</p>
+        
+        <h2>Q: Bisakah saya membuat pas foto ijazah?</h2>
+        <p>A: Ya, gunakan <em>Mode Ijazah</em> di tool kami. Anda bisa menambahkan nama sekolah/universitas di bagian bawah foto dengan font yang bisa diatur.</p>
+        
+        <h2>Q: Bagaimana cara menyusun beberapa pas foto di A4?</h2>
+        <p>A: Gunakan fitur <em>Susun Pintar di A4</em>. Sistem akan otomatis menata beberapa pas foto dalam 1 halaman A4 agar tidak ada ruang terbuang.</p>
+        
+        <h2>Q: Apakah tool bisa digunakan di HP?</h2>
+        <p>A: Ya, tool kami responsif dan bisa diakses di HP Android atau iPhone. Anda bisa upload langsung dari galeri HP dan download hasil ke perangkat.</p>
+        
+        <h2>Q: Berapa maksimal foto yang bisa diproses sekaligus?</h2>
+        <p>A: Tool kami mendukung hingga 50 foto sekaligus. Cocok untuk membuat pas foto ijazah kelas atau pas foto untuk banyak karyawan.</p>
+        
+        <h2>Q: Bagaimana cara menyesuaikan posisi crop?</h2>
+        <p>A: Anda bisa:</p>
+        <ul>
+        <li>Seret foto langsung di canvas</li>
+        <li>Gunakan tombol panah untuk pergerakan halus</li>
+        <li>Zoom dengan tombol plus/minus atau scroll</li>
+        <li>Pinch (jepit) di canvas untuk zoom (HP)</li>
+        </ul>
+        
+        <h2>Q: Apakah ada panduan posisi wajah?</h2>
+        <p>A: Ya, tool kami menampilkan panduan golden ratio (garis hijau) yang membantu Anda menempatkan wajah di posisi ideal sesuai komposisi estetika.</p>
+        
+        <h2>Q: Bisakah saya menyamakan posisi beberapa foto?</h2>
+        <p>A: Ya, gunakan fitur <em>Jadikan Acuan</em>. Pilih foto yang diinginkan, terapkan ke semua foto dengan ukuran sama. Cocok untuk ijazah kelas.</p>
+        
+        <h2>Q: Apakah ada batasan ukuran file yang diupload?</h2>
+        <p>A: Tidak ada batasan spesifik, tetapi disarankan setiap foto tidak lebih dari 5 MB agar proses cepat.</p>
+        
+        <h2>Q: Bisakah saya download semua foto sekaligus?</h2>
+        <p>A: Ya, gunakan tombol <em>Download Semua Foto</em>. Setiap foto akan diunduh terpisah dengan nama file yang jelas.</p>
+        
+        <h2>Q: Apakah tool menyimpan foto saya?</h2>
+        <p>A: Tidak. Semua proses dilakukan di browser Anda (client-side). Foto tidak dikirim atau disimpan di server kami.</p>
+        
+        <h2>Q: Bagaimana cara mencetak hasil pas foto?</h2>
+        <p>A: Baca panduan lengkap di artikel <a onclick="navigate('article', 'cetak-pas-foto')">Cara Mencetak Pas Foto</a>.</p>
+        
+        <p>Masih ada pertanyaan? Lihat halaman <a onclick="navigate('faq')">FAQ Lengkap</a> atau <a onclick="navigate('contact')">hubungi kami</a>.</p>`
+    };
+    
+    if (articlesContent[id]) {
+        html += articlesContent[id];
     } else {
         html += `
         <p>${article.desc}. Pada artikel ini, kita akan membahas secara tuntas mengenai topik tersebut agar Anda dapat mempersiapkan dokumen administrasi dengan lebih baik.</p>
         <h2>Persiapan Awal</h2>
-        <p>Sebelum memulai proses pemotretan atau pengeditan, pastikan Anda telah menyiapkan segala kebutuhan dasar. Pencahayaan yang baik dan kamera yang jernih adalah kunci utama dari hasil pas foto yang berkualitas.</p>
-        <h2>Langkah-Langkah</h2>
+        <p>Sebelum memulai proses pemotretan atau pengeditan, pastikan Anda telah menyiapkan segala kebutuhan dasar. Pencahayaan yang baik dan kamera yang jernih adalah kunci utama dari hasil pas foto yang berkualitas. Siapkan background sesuai kebutuhan, pakaian formal yang rapi, dan perangkat kamera dengan resolusi memadai.</p>
+        <h2>Proses Pengambilan Foto</h2>
         <ul>
             <li>Pastikan wajah berada di tengah frame.</li>
             <li>Hindari penggunaan aksesoris yang berlebihan.</li>
             <li>Perhatikan ketentuan background sesuai instansi.</li>
             <li>Gunakan resolusi gambar yang tinggi.</li>
+            <li>Posisi tegak, pandangan lurus ke kamera.</li>
         </ul>
+        <h2>Pengeditan di Tool Kami</h2>
+        <p>Setelah foto diambil, upload ke <a onclick="navigate('tool')">tool pembuat pas foto</a> kami. Pilih ukuran yang sesuai (2x3, 3x4, 4x6, atau 5x5). Atur posisi crop dengan seret atau tombol panah. Gunakan panduan golden ratio agar wajah proporsional.</p>
+        <h2>Penyusunan dan Pencetakan</h2>
+        <p>Gunakan fitur <em>Susun Pintar di A4</em> untuk menata beberapa foto dalam 1 halaman A4. Download hasil, lalu cetak dengan skala 100% agar ukuran tidak berubah. Gunakan kertas foto glossy untuk hasil terbaik.</p>
         <h2>Kesimpulan</h2>
         <p>Dengan mengikuti panduan di atas, Anda diharapkan dapat menghasilkan pas foto yang sesuai standar. Untuk mempraktikkannya langsung, silakan kunjungi halaman <a onclick="navigate('tool')">Buat Pas Foto</a>. Jika membutuhkan informasi ukuran, cek halaman <a onclick="navigate('sizes')">Ukuran Pas Foto</a>.</p>`;
     }
-
+    
     content.innerHTML = html;
 }
 
-// ===== TOOL JAVASCRIPT (ORIGINAL LOGIC FIXED) =====
+// ===== TOOL JAVASCRIPT =====
 const MM_PX=10,CUT_W=1.5,CUT_COLOR='#999999',A4_W=2100,A4_H=2970,A4_M=50,MOVE=5,ZOOM_D=0.01,MAX=50,BAND_H=30,BAND_TEXT_Y=3;
 const PHI=1.618033988749895,GR1=1/(PHI*PHI),GR2=1/PHI;
 const SIZES={'2X3':{w:216,h:279},'3X4':{w:279,h:381},'4X6':{w:381,h:559},'5X5':{w:500,h:500},'2X3L':{w:279,h:216},'3X4L':{w:381,h:279},'4X6L':{w:559,h:381}};
@@ -1123,7 +2080,7 @@ function handleIjazahToggle(on) {
     if($('ijazahBox')) $('ijazahBox').style.display = on ? 'flex' : 'none';
     lockSizes(on);
     if(on) {
-        if($('bwToggle')) $('bwToggle').checked = false; // Perbaikan: Uncheck UI Hitam Putih
+        if($('bwToggle')) $('bwToggle').checked = false;
         handleBwToggle(false);
     }
 }
@@ -1714,7 +2671,6 @@ function packBinPack(jobs, sizeKey) {
                 let nfr = [];
                 for(const f of freeR) {
                     if (intersects(f, placed)) {
-                        // Perbaikan: Guillotine Split agar tidak tumpang tindih
                         if (placed.y > f.y) {
                             nfr.push({ x: f.x, y: f.y, w: f.w, h: placed.y - f.y });
                         }
@@ -1793,13 +2749,13 @@ function downloadA4Pages() {
     });
 }
 
-let toastTimer; // Perbaikan: Variabel global untuk timeout toast
+let toastTimer;
 function showToast(msg) {
     const toastEl = $('toast');
     if(!toastEl) return;
     toastEl.textContent = msg;
     toastEl.className = 'show';
-    clearTimeout(toastTimer); // Perbaikan: Bersihkan timer sebelumnya
+    clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
 }
 
@@ -1816,7 +2772,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initTool();
     navigate('home');
     
-    // Auto update tahun di footer
     const yearSpan = document.getElementById('currentYear');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
