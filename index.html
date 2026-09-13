@@ -967,9 +967,7 @@ function navigate(viewId, articleId = null) {
     if (view) {
         view.classList.add('active');
         window.scrollTo(0, 0);
-        
         document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-        
         if (viewId === 'article' && articleId) {
             renderArticle(articleId);
         }
@@ -993,7 +991,8 @@ const articles = [
     { id: 'foto-rapi', title: 'Tips Membuat Pas Foto yang Rapi untuk Dokumen', desc: 'Mengatur crop dan proporsi wajah.', icon: 'fa-scissors' },
     { id: 'persiapan-lamaran', title: 'Cara Menyiapkan Foto untuk Lamaran Kerja', desc: 'Checklist persiapan foto administrasi.', icon: 'fa-list-check' },
     { id: 'dokumen-administrasi', title: 'Panduan Foto untuk Dokumen Administrasi', desc: 'Panduan umum foto untuk berbagai dokumen.', icon: 'fa-folder-open' },
-    { id: 'faq-online', title: 'FAQ Seputar Pas Foto Online', desc: 'Jawaban pertanyaan umum seputar pas foto digital.', icon: 'fa-circle-question' }
+    { id: 'faq-online', title: 'FAQ Seputar Pas Foto Online', desc: 'Jawaban pertanyaan umum seputar pas foto digital.', icon: 'fa-circle-question' },
+    { id: 'panduan-paspor', title: 'Panduan Lengkap Pas Foto untuk Paspor Indonesia', desc: 'Syarat, ukuran, dan aturan pas foto paspor sesuai standar Imigrasi Indonesia.', icon: 'fa-passport' }
 ];
 
 function renderGuides() {
@@ -1019,7 +1018,6 @@ function renderArticle(id) {
     const articlesContent = {
         'ukuran-2x3-3x4-4x6': `
         <p>Di Indonesia, terdapat tiga ukuran pas foto yang paling umum digunakan untuk berbagai keperluan administrasi: <strong>2x3, 3x4, dan 4x6</strong>. Pemahaman tentang perbedaan ukuran ini sangat penting agar dokumen Anda tidak ditolak oleh instansi tujuan. Banyak orang masih keliru mengira angka 2x3 berarti 2 cm x 3 cm, padahal ukuran sebenarnya berbeda.</p>
-        
         <h2>Tabel Lengkap Ukuran Pas Foto</h2>
         <table class="size-table">
         <thead><tr><th>Ukuran</th><th>Centimeter</th><th>Milimeter</th><th>Pixel (300 DPI)</th></tr></thead>
@@ -1029,7 +1027,6 @@ function renderArticle(id) {
         <tr><td>4x6</td><td>3.81 x 5.59 cm</td><td>38.1 x 55.9 mm</td><td>450 x 660 px</td></tr>
         </tbody>
         </table>
-        
         <h2>1. Ukuran Pas Foto 2x3 cm</h2>
         <p>Ukuran 2x3 merupakan pas foto terkecil yang umum diminta. Walau disebut "2x3", ukuran sebenarnya adalah 2.16 cm x 2.79 cm. Ukuran ini sering digunakan untuk:</p>
         <ul>
@@ -1038,7 +1035,6 @@ function renderArticle(id) {
         <li>ID kecil keanggotaan organisasi</li>
         <li>Bukti pendaftaran event</li>
         </ul>
-        
         <h2>2. Ukuran Pas Foto 3x4 cm</h2>
         <p>Ukuran 3x4 adalah ukuran yang paling sering diminta di Indonesia. Ukuran sebenarnya adalah 2.79 cm x 3.81 cm. Hampir semua dokumen administrasi resmi menggunakan ukuran ini, di antaranya:</p>
         <ul>
@@ -1049,7 +1045,6 @@ function renderArticle(id) {
         <li>Pendaftaran CPNS (sering dikombinasi background merah)</li>
         <li>Kartu BPJS Kesehatan dan Ketenagakerjaan</li>
         </ul>
-        
         <h2>3. Ukuran Pas Foto 4x6 cm</h2>
         <p>Ukuran 4x6 memiliki dimensi 3.81 cm x 5.59 cm dan menampilkan wajah dengan detail lebih besar. Ukuran ini biasanya digunakan untuk:</p>
         <ul>
@@ -1059,7 +1054,6 @@ function renderArticle(id) {
         <li>Dokumen visa</li>
         <li>Ijazah dan transkrip nilai</li>
         </ul>
-        
         <h2>Tips Memilih Ukuran yang Tepat</h2>
         <p>Jika Anda ragu ukuran apa yang dibutuhkan, berikut panduan praktisnya:</p>
         <ul>
@@ -1068,16 +1062,13 @@ function renderArticle(id) {
         <li><strong>Perhatikan background</strong>: merah untuk dokumen pemerintah, biru untuk swasta, putih untuk paspor.</li>
         <li><strong>Siapkan beberapa ukuran</strong> sekaligus untuk berjaga-jaga.</li>
         </ul>
-        
         <p>Anda bisa langsung membuat ketiga ukuran di atas menggunakan tool gratis kami di halaman <a onclick="navigate('tool')">Buat Pas Foto</a>.</p>`,
         
         'lamaran-kerja': `
         <p>Pas foto adalah kesan pertama yang dilihat HRD saat menilai pelamar. Foto yang profesional dan rapi menunjukkan keseriusan Anda dalam melamar pekerjaan. Sebaliknya, foto yang asal-asalan bisa membuat aplikasi Anda dianggap remeh, walau kualifikasi akademik Anda bagus.</p>
-        
         <h2>1. Pilih Background yang Tepat</h2>
-        <p>Mayoritas perusahaan di Indonesia meminta pas foto lamaran kerja dengan <strong>background biru</strong>. Namun, ada juga yang menerima background merah, terutama untuk BUMN atau instansi pemerintah. Hindari background putih kecuali diminta khusus, karena biasanya putih khusus untuk paspor.</p>
+        <p>Mayoritas perusahaan di Indonesia meminta pas foto lamaran kerja dengan <strong>background biru</strong>. Namun, ada juga yang menerima background merah, terutanya untuk BUMN atau instansi pemerintah. Hindari background putih kecuali diminta khusus, karena biasanya putih khusus untuk paspor.</p>
         <p>Pastikan background benar-benar polos, tanpa bayangan, tanpa objek lain, dan tanpa kerutan kain backdrop. Jika Anda tidak punya backdrop, Anda bisa menempel kertas warna di dinding sebagai alternatif.</p>
-        
         <h2>2. Pakai Pakaian Formal</h2>
         <p>Untuk laki-laki, gunakan kemeja putih berlengan panjang dipadukan jas hitam atau biru tua. Untuk perempuan, gunakan blazer formal atau kemeja rapi. Hindari pakaian dengan:</p>
         <ul>
@@ -1086,7 +1077,6 @@ function renderArticle(id) {
         <li>Kaos oblong atau pakaian kasual</li>
         <li>Pakaian kerah rendah yang menampakkan dada</li>
         </ul>
-        
         <h2>3. Ekspresi yang Profesional</h2>
         <p>Tersenyum boleh, tetapi jangan terlalu lebar. Senyum tipis yang natural paling ideal. Pastikan:</p>
         <ul>
@@ -1095,7 +1085,6 @@ function renderArticle(id) {
         <li>Dahi rileks, tidak berkerut</li>
         <li>Bibir tertutup rapat saat tidak tersenyum</li>
         </ul>
-        
         <h2>4. Pencahayaan yang Merata</h2>
         <p>Ambil foto di tempat dengan cahaya alami yang merata, idealnya dekat jendela pada pagi atau sore hari. Hindari:</p>
         <ul>
@@ -1103,18 +1092,14 @@ function renderArticle(id) {
         <li>Foto backlight (cahaya di belakang subjek)</li>
         <li>Ruangan yang terlalu redup</li>
         </ul>
-        
         <h2>5. Aksesoris dan Rambut</h2>
         <p>Ikat rambut ke belakang agar tidak menutupi wajah. Lepas kacamata jika terlalu memantul cahaya, atau pastikan lensa tidak menyebabkan refleksi. Jangan gunakan topi, masker, atau aksesoris berlebihan.</p>
-        
         <h2>6. Format File untuk Lamaran Online</h2>
         <p>Untuk lamaran online via email atau portal rekrutmen, simpan foto dalam format JPG dengan resolusi minimal 300 DPI. Ukuran file idealnya 100-500 KB agar cukup jelas tetapi tidak terlalu besar untuk diupload.</p>
-        
         <p>Setelah foto siap, langsung proses di <a onclick="navigate('tool')">tool pembuat pas foto</a> kami untuk mendapat hasil dengan ukuran presisi.</p>`,
         
         'cpns': `
         <p>Pas foto untuk pendaftaran CPNS (Calon Pegawai Negeri Sipil) memiliki aturan yang ketat. Banyak pendaftar gagal pada tahap verifikasi karena tidak memenuhi persyaratan foto. Berikut panduan resmi berdasarkan ketentuan umum dari panitia ASN.</p>
-        
         <h2>Spesifikasi Pas Foto CPNS</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 cm (portrait)</li>
@@ -1123,23 +1108,17 @@ function renderArticle(id) {
         <li><strong>Resolusi minimal:</strong> 300 DPI</li>
         <li><strong>Ukuran file:</strong> umumnya maksimal 200 KB (sesuaikan dengan pengumuman)</li>
         </ul>
-        
         <h2>Aturan Tambahan yang Wajib Dipatuhi</h2>
         <h3>1. Wajib Lepas Kacamata</h3>
         <p>Peserta wajib melepas kacamata saat pengambilan foto. Hal ini agar wajah dan mata terlihat jelas untuk verifikasi biometrik.</p>
-        
         <h3>2. Wajib Lepas Softlens</h3>
         <p>Lensa kontak (softlens) juga dilarang. Jika Anda menggunakan softlens untuk koreksi penglihatan, lepaskan terlebih dahulu sebelum difoto.</p>
-        
         <h3>3. Tidak Memakai Aksesoris</h3>
         <p>Hindari anting, kalung, jilbab yang menutupi wajah, atau atribut lain. Untuk peserta wanita berhijab, pastikan hijab tidak menutupi dahi, pipi, dan dagu.</p>
-        
         <h3>4. Pakaian Formal</h3>
         <p>Gunakan pakaian formal (kemeja putih dan jas hitam untuk pria, blazer untuk wanita). Hindari pakaian pola ramai atau warna mencolok.</p>
-        
         <h3>5. Wajah Netral</h3>
         <p>Wajah harus tampak datar, tidak tersenyum. Pandangan lurus ke depan ke arah kamera.</p>
-        
         <h2>Cara Membuat Pas Foto CPNS di Rumah</h2>
         <ol>
         <li>Siapkan kain merah polos sebagai background. Jemur dulu agar tidak kerutan.</li>
@@ -1150,7 +1129,6 @@ function renderArticle(id) {
         <li>Atur posisi crop agar wajah proporsional sesuai standar.</li>
         <li>Download hasil dengan kualitas tinggi.</li>
         </ol>
-        
         <h2>Kesalahan yang Sering Dilakukan</h2>
         <ul>
         <li>Masih memakai kacamata atau softlens</li>
@@ -1159,15 +1137,12 @@ function renderArticle(id) {
         <li>Wajah tersenyum atau miring</li>
         <li>File terlalu besar sehingga ditolak sistem</li>
         </ul>
-        
         <p>Pastikan Anda membaca pengumuman resmi dari instansi tujuan karena persyaratan bisa berbeda antar tahun. Setiap detail kecil bisa membuat foto Anda diterima atau ditolak.</p>`,
         
         'bg-merah': `
         <p>Background merah adalah warna paling umum untuk pas foto resmi di Indonesia. Background ini dipakai untuk KTP, SIM, CPNS, dan dokumen kependudukan lainnya. Jika Anda ingin membuat pas foto background merah sendiri di rumah, berikut panduan lengkapnya.</p>
-        
         <h2>Persiapan Background Merah</h2>
         <p>Ada beberapa cara untuk mendapatkan background merah yang bagus:</p>
-        
         <h3>Opsi 1: Kain Merah Polos</h3>
         <ul>
         <li>Gunakan kain blaco merah atau kain sutra merah polos</li>
@@ -1175,13 +1150,10 @@ function renderArticle(id) {
         <li>Setrika kain agar tidak ada kerutan</li>
         <li>Jemur dulu agar tidak lembap</li>
         </ul>
-        
         <h3>Opsi 2: Kertas Kado Merah</h3>
         <p>Jika tidak ada kain, Anda bisa menempel kertas kado warna merah polos di dinding. Pastikan permukaannya rata dan tidak ada lipatan.</p>
-        
         <h3>Opsi 3: Cat Dinding</h3>
         <p>Jika ada dinding yang dicat merah, ini adalah opsi paling stabil dan profesional. Pastikan cat dalam kondisi baik, tidak mengelupas atau pudar.</p>
-        
         <h2>Tips Pengambilan Foto</h2>
         <ol>
         <li><strong>Jarak subjek ke background:</strong> minimal 50 cm agar tidak ada bayangan jatuh di background.</li>
@@ -1190,7 +1162,6 @@ function renderArticle(id) {
         <li><strong>Jarak kamera ke subjek:</strong> sekitar 1.5 - 2 meter.</li>
         <li><strong>Pakaian:</strong> jangan pakai warna merah, agar tidak menyatu dengan background.</li>
         </ol>
-        
         <h2>Mengapa Background Merah Digunakan?</h2>
         <p>Pemilihan warna merah untuk dokumen resmi memiliki alasan teknis dan tradisional:</p>
         <ul>
@@ -1199,7 +1170,6 @@ function renderArticle(id) {
         <li>Tradisi administrasi Indonesia sejak lama</li>
         <li>Membedakan dengan foto informal (yang biasanya pakai background natural)</li>
         </ul>
-        
         <h2>Yang Harus Dihindari</h2>
         <ul>
         <li>Background merah dengan gradasi atau bayangan</li>
@@ -1207,12 +1177,10 @@ function renderArticle(id) {
         <li>Kain kerut atau ada lipatan</li>
         <li>Warna merah pudar atau terlalu gelap</li>
         </ul>
-        
         <p>Setelah foto ber-background merah siap, langsung proses di <a onclick="navigate('tool')">tool kami</a> untuk crop dengan ukuran 3x4 standar CPNS atau KTP.</p>`,
         
         'bg-biru': `
         <p>Background biru adalah pilihan paling populer untuk pas foto lamaran kerja di sektor swasta, sertifikat, dan keperluan akademik. Background biru memberi kesan profesional dan bersih, cocok untuk berbagai jenis dokumen administrasi.</p>
-        
         <h2>Jenis Warna Biru yang Tepat</h2>
         <p>Tidak semua biru cocok untuk pas foto. Pilih warna biru yang ideal:</p>
         <ul>
@@ -1220,23 +1188,17 @@ function renderArticle(id) {
         <li><strong>Biru langit (sky blue):</strong> paling populer dan sering diminta</li>
         <li><strong>Biru tua (navy):</strong> kurang disarankan karena kontras rendah dengan pakaian gelap</li>
         </ul>
-        
         <h2>Cara Membuat Background Biru di Rumah</h2>
         <h3>Langkah 1: Siapkan Backdrop</h3>
         <p>Gunakan kain blaco biru, kertas kado warna biru muda, atau cat dinding biru. Hindari kain dengan pola atau tekstur.</p>
-        
         <h3>Langkah 2: Setrika dan Rapihkan</h3>
         <p>Pastikan kain benar-benar rata, tanpa kerutan. Kerutan akan muncul sebagai bayangan yang mengganggu hasil foto.</p>
-        
         <h3>Langkah 3: Atur Pencahayaan</h3>
         <p>Pencahayaan merata adalah kunci. Gunakan 2 sumber cahaya dari sisi kiri dan kanan. Hindari flash langsung karena bisa menyebabkan pantulan di wajah.</p>
-        
         <h3>Langkah 4: Posisi Subjek</h3>
         <p>Duduk atau berdiri dengan punggung tegak, jarak ke background minimal 50 cm. Posisikan kamera sejajar dengan hidung.</p>
-        
         <h3>Langkah 5: Ambil Banyak Foto</h3>
         <p>Jangan puas dengan 1 jepretan. Ambil 10-15 foto dengan berbagai ekspresi sedikit berbeda, lalu pilih yang terbaik.</p>
-        
         <h2>Kegunaan Pas Foto Background Biru</h2>
         <table class="size-table">
         <thead><tr><th>Kebutuhan</th><th>Ukuran Umum</th></tr></thead>
@@ -1248,7 +1210,6 @@ function renderArticle(id) {
         <tr><td>Pendaftaran kursus</td><td>3x4</td></tr>
         </tbody>
         </table>
-        
         <h2>Tips Tambahan</h2>
         <ul>
         <li>Pakai pakaian dengan warna yang kontras dengan biru (misal putih, krem, atau hitam).</li>
@@ -1256,12 +1217,10 @@ function renderArticle(id) {
         <li>Pastikan rambut tidak menutupi dahi atau telinga.</li>
         <li>Jika Anda memakai jilbab, pilih warna yang kontras dengan background.</li>
         </ul>
-        
         <p>Setelah foto background biru siap, langsung upload ke <a onclick="navigate('tool')">tool pembuat pas foto</a> kami untuk dipotong dengan ukuran presisi.</p>`,
         
         'bg-putih': `
         <p>Pas foto background putih adalah standar internasional yang dipakai untuk paspor, visa, dan dokumen perjalanan lintas negara. Jika Anda berencana bepergian ke luar negeri, kemungkinan besar akan diminta pas foto dengan background putih polos.</p>
-        
         <h2>Standar Pas Foto Background Putih</h2>
         <ul>
         <li><strong>Background:</strong> Putih murni, tanpa pola atau tekstur</li>
@@ -1270,7 +1229,6 @@ function renderArticle(id) {
         <li><strong>Ekspresi:</strong> Netral, tidak tersenyum</li>
         <li><strong>Pakaian:</strong> Formal, hindari putih agar tidak menyatu dengan background</li>
         </ul>
-        
         <h2>Persyaratan Khusus Paspor Indonesia</h2>
         <p>Untuk paspor Indonesia, persyaratan umum pas foto adalah:</p>
         <ul>
@@ -1281,21 +1239,15 @@ function renderArticle(id) {
         <li>Wajah netral, tidak tersenyum</li>
         <li>Tidak memakai aksesoris yang menutupi wajah</li>
         </ul>
-        
         <h2>Tips Pengambilan Foto Background Putih</h2>
-        
         <h3>1. Gunakan Backdrop Putih Bersih</h3>
         <p>Kertas putih atau dinding cat putih yang bersih adalah pilihan ideal. Pastikan tidak ada noda atau bekas.</p>
-        
         <h3>2. Hindari Bayangan</h3>
         <p>Bayangan di background adalah masalah paling umum. Atur pencahayaan agar merata. Anda bisa menggunakan lampu ringan (ring light) untuk hasil terbaik.</p>
-        
         <h3>3. Pakaian Berwarna Gelap</h3>
         <p>Pakai baju warna gelap (hitam, navy, atau abu-abu tua) agar kontras dengan background putih. Hindari baju putih karena akan menyatu.</p>
-        
         <h3>4. Rambut Rapi</h3>
         <p>Ikat rambut ke belakang agar dahi dan telinga terlihat. Untuk wanita berhijab, pastikan hijab berwarna gelap agar kontras.</p>
-        
         <h2>Standar Visa Internasional</h2>
         <p>Beberapa negara memiliki standar sendiri:</p>
         <ul>
@@ -1304,7 +1256,6 @@ function renderArticle(id) {
         <li><strong>Visa UK:</strong> 3.5 x 4.5 cm, background putih atau abu-abu muda</li>
         <li><strong>Visa Jepang:</strong> 4.5 x 4.5 cm, background putih</li>
         </ul>
-        
         <h2>Kesalahan yang Sering Terjadi</h2>
         <ul>
         <li>Ada bayangan di belakang kepala</li>
@@ -1313,16 +1264,13 @@ function renderArticle(id) {
         <li>Masih memakai kacamata</li>
         <li>Wajah tersenyum atau miring</li>
         </ul>
-        
         <p>Gunakan <a onclick="navigate('tool')">tool kami</a> untuk memastikan ukuran pas foto background putih Anda sesuai standar.</p>`,
         
         'dari-hp': `
         <p>Membuat pas foto sendiri dari smartphone kini sangat memungkinkan. Dengan kamera HP resolusi tinggi yang banyak beredar, hasil foto bisa setara dengan studio. Berikut panduan lengkap membuat pas foto dari HP Android atau iPhone.</p>
-        
         <h2>Persiapan Sebelum Foto</h2>
         <h3>1. Siapkan Background</h3>
         <p>Tentukan warna background sesuai kebutuhan (merah, biru, atau putih). Gunakan kain polos atau tempel kertas warna di dinding.</p>
-        
         <h3>2. Atur Pencahayaan</h3>
         <p>Pencahayaan adalah kunci utama. Tips:</p>
         <ul>
@@ -1331,14 +1279,11 @@ function renderArticle(id) {
         <li>Jika perlu, gunakan 2 lampu meja dari kiri dan kanan</li>
         <li>Hindari flash HP karena bisa menyebabkan pantulan</li>
         </ul>
-        
         <h3>3. Pakaian</h3>
         <p>Gunakan pakaian formal yang kontras dengan background. Jika background biru, pakai baju putih atau hitam. Jika background putih, pakai baju gelap.</p>
-        
         <h2>Teknik Pengambilan Foto</h2>
         <h3>Posisi Kamera</h3>
         <p>Pegang HP sejajar dengan wajah. Jangan mengambil dari bawah (akan membuat dagu tampak besar) atau dari atas (akan membuat kepala tampak besar).</p>
-        
         <h3>Posisi Subjek</h3>
         <ul>
         <li>Duduk atau berdiri tegak dengan punggung lurus</li>
@@ -1347,7 +1292,6 @@ function renderArticle(id) {
         <li>Bahu rileks, tidak tegang</li>
         <li>Wajah netral atau senyum tipis</li>
         </ul>
-        
         <h3>Pengaturan Kamera HP</h3>
         <ul>
         <li>Gunakan mode Portrait untuk background blur</li>
@@ -1356,7 +1300,6 @@ function renderArticle(id) {
         <li>Gunakan timer 3 detik untuk menghindari goyangan</li>
         <li>Pakai tripod HP jika ada</li>
         </ul>
-        
         <h2>Langkah-langkah Membuat Pas Foto dari HP</h2>
         <ol>
         <li>Buka tool <a onclick="navigate('tool')">Buat Pas Foto</a> di browser HP Anda.</li>
@@ -1368,7 +1311,6 @@ function renderArticle(id) {
         <li>Klik tombol Susun Pintar di A4 untuk menata otomatis.</li>
         <li>Download hasil ke galeri HP.</li>
         </ol>
-        
         <h2>Tips Tambahan untuk Hasil Maksimal</h2>
         <ul>
         <li>Bersihkan lensa kamera HP dengan kain microfiber sebelum foto.</li>
@@ -1377,16 +1319,13 @@ function renderArticle(id) {
         <li>Jangan pakai filter Instagram atau beauty camera, hasilnya tidak natural.</li>
         <li>Edit di tool kami, bukan di aplikasi editor yang bisa mengubah rasio.</li>
         </ul>
-        
         <h2>Mencetak Hasil Pas Foto</h2>
         <p>Setelah download, kirim file ke printer rumah atau ke percetakan terdekat. Jika dicetak di A4, gunakan fitur <em>Susun Pintar</em> kami untuk menghemat kertas. Atur skala cetak 100% agar ukuran tidak berubah.</p>`,
         
         'tips-mengambil-foto': `
         <p>Mengambil foto untuk pas foto tampak sederhana, tetapi banyak yang gagal karena tidak memperhatikan detail. Hasil foto yang buruk akan menyulitkan proses crop dan menurunkan kualitas cetak. Berikut tips lengkap untuk mengambil foto pas foto yang baik.</p>
-        
         <h2>1. Pencahayaan yang Merata</h2>
         <p>Pencahayaan adalah faktor paling penting. Foto yang baik harus terang merata di seluruh wajah tanpa bayangan.</p>
-        
         <h3>Cara Mendapat Pencahayaan Merata:</h3>
         <ul>
         <li>Foto dekat jendela pada pagi hari (07:00-10:00) atau sore (15:00-17:00)</li>
@@ -1394,7 +1333,6 @@ function renderArticle(id) {
         <li>Hindari flash langsung dari kamera</li>
         <li>Hindari foto di tengah hari saat matahari terlalu terang</li>
         </ul>
-        
         <h2>2. Background Polos</h2>
         <p>Background harus polos, satu warna, tanpa objek lain. Pilihan warna tergantung kebutuhan dokumen:</p>
         <ul>
@@ -1402,9 +1340,7 @@ function renderArticle(id) {
         <li><strong>Biru:</strong> Lamaran kerja swasta, sertifikat</li>
         <li><strong>Putih:</strong> Paspor, visa, dokumen internasional</li>
         </ul>
-        
         <p>Hindari background dengan pola, tekstur, atau banyak objek. Background yang berisik akan menyulitkan proses crop otomatis dan menghasilkan tepi yang tidak rapi.</p>
-        
         <h2>3. Posisi Tegak dan Netral</h2>
         <ul>
         <li>Duduk atau berdiri dengan punggung tegak lurus</li>
@@ -1413,7 +1349,6 @@ function renderArticle(id) {
         <li>Bahu rileks, tidak terangkat</li>
         <li>Wajah netral atau senyum tipis natural</li>
         </ul>
-        
         <h2>4. Komposisi Wajah dalam Frame</h2>
         <p>Posisi wajah di dalam frame sangat menentukan hasil akhir. Panduan komposisi:</p>
         <ul>
@@ -1423,13 +1358,10 @@ function renderArticle(id) {
         <li>Dada hingga bahu terlihat</li>
         <li>Ruang atas kepala cukup (jangan terlalu mepet)</li>
         </ul>
-        
         <h2>5. Jarak Kamera ke Subjek</h2>
         <p>Jangan terlalu dekat karena bisa menyebabkan distorsi (wajah terlihat bulat). Jangan juga terlalu jauh karena resolusi wajah rendah. Idealnya 1.5 - 2 meter dari subjek.</p>
-        
         <h2>6. Resolusi Tinggi</h2>
         <p>Gunakan kamera minimal 5 Megapiksel. Semakin tinggi resolusi, semakin tajam hasil cetak. Hindari foto dari screenshot atau foto yang sudah dikompres di WhatsApp.</p>
-        
         <h2>7. Pakaian yang Sesuai</h2>
         <ul>
         <li>Formal: kemeja, jas, blazer</li>
@@ -1437,71 +1369,50 @@ function renderArticle(id) {
         <li>Hindari pola ramai (kotak-kotak, garis, bunga)</li>
         <li>Hindari warna mencolok (kuning, oranye neon)</li>
         </ul>
-        
         <h2>8. Rambut Rapi</h2>
         <p>Ikat rambut ke belakang agar tidak menutupi wajah. Untuk pria, rapikan rambut agar tidak menutupi dahi. Untuk wanita, pastikan rambut tidak menutupi telinga.</p>
-        
         <h2>9. Hindari Aksesoris Berlebihan</h2>
         <p>Lepas kacamata jika bisa, karena bisa memantul cahaya dan menyembunyikan mata. Hindari anting yang besar, kalung yang mencolok, atau topi. Untuk wanita berhijab, pastikan hijab tidak menutupi dahi dan pipi.</p>
-        
         <h2>10. Ekspresi yang Tepat</h2>
         <p>Untuk dokumen resmi, gunakan ekspresi netral (tidak tersenyum). Untuk lamaran kerja, senyum tipis diperbolehkan. Pastikan mata terbuka jelas dan tidak mengedip.</p>
-        
         <p>Setelah foto siap, langsung proses di <a onclick="navigate('tool')">tool kami</a> untuk mendapat hasil dengan ukuran presisi.</p>`,
         
         'kesalahan': `
         <p>Banyak pas foto ditolak instansi karena kesalahan kecil yang sebenarnya mudah dihindari. Berikut adalah kesalahan paling umum saat membuat pas foto dan cara menghindarinya.</p>
-        
         <h2>Kesalahan #1: Background Tidak Sesuai</h2>
         <p>Menggunakan background yang salah adalah penyebab penolakan paling sering. Misalnya, pas foto CPNS harus background merah, tetapi Anda pakai biru. <strong>Solusi:</strong> Baca pengumuman resmi sebelum foto.</p>
-        
         <h2>Kesalahan #2: Masih Memakai Kacamata</h2>
         <p>Banyak instansi melarang pemakaian kacamata, terutama CPNS, paspor, dan visa. Kacamata bisa memantulkan cahaya dan menyembunyikan mata. <strong>Solusi:</strong> Lepas kacamata saat foto, atau gunakan kacamata tanpa pantulan (anti-reflective coating).</p>
-        
         <h2>Kesalahan #3: Wajah Tersenyum Terlalu Lebar</h2>
         <p>Untuk dokumen resmi, senyum lebar bisa membuat foto ditolak. Instansi menginginkan ekspresi netral agar verifikasi biometrik akurat. <strong>Solusi:</strong> Senyum tipis atau tidak tersenyum sama sekali.</p>
-        
         <h2>Kesalahan #4: Kepala Miring</h2>
         <p>Kepala yang miring ke samping menyulitkan verifikasi wajah. Foto resmi mengharuskan kepala tegak lurus. <strong>Solusi:</strong> Pasang cermin di belakang kamera untuk memastikan kepala tegak.</p>
-        
         <h2>Kesalahan #5: Bayangan di Wajah</h2>
         <p>Bayangan di wajah (terutama di hidung atau mata) menurunkan kualitas foto. Ini disebabkan pencahayaan tidak merata. <strong>Solusi:</strong> Gunakan 2 lampu dari kiri dan kanan dengan intensitas sama.</p>
-        
         <h2>Kesalahan #6: Background Kerutan</h2>
         <p>Jika menggunakan kain sebagai background, kerutan akan terlihat sebagai garis gelap. <strong>Solusi:</strong> Setrika kain terlebih dahulu dan kencangkan saat dipasang.</p>
-        
         <h2>Kesalahan #7: Foto Buram</h2>
         <p>Foto buram biasanya karena kamera goyang atau jarak terlalu dekat. <strong>Solusi:</strong> Gunakan tripod atau timer 3 detik, dan jaga jarak minimal 1.5 meter dari subjek.</p>
-        
         <h2>Kesalahan #8: Resolusi Terlalu Rendah</h2>
         <p>Foto dari screenshot WhatsApp atau hasil unduh dari media sosial biasanya resolusinya rendah. <strong>Solusi:</strong> Selalu gunakan foto asli dari kamera, bukan hasil unduhan.</p>
-        
         <h2>Kesalahan #9: Memakai Softlens</h2>
         <p>Untuk CPNS, softlens dilarang keras. Softlens bisa mengubah warna mata dan mengganggu verifikasi. <strong>Solusi:</strong> Lepas softlens sebelum foto.</p>
-        
         <h2>Kesalahan #10: Wajah Terpotong</h2>
         <p>Crop yang salah bisa memotong dahi, dagu, atau telinga. <strong>Solusi:</strong> Gunakan tool kami yang menampilkan panduan golden ratio agar crop tepat.</p>
-        
         <h2>Kesalahan #11: File Terlalu Besar</h2>
         <p>Upload pas foto untuk lamaran online sering ditolak karena file terlalu besar. <strong>Solusi:</strong> Simpan dalam JPG dengan kualitas 80-90% agar file 100-300 KB.</p>
-        
         <h2>Kesalahan #12: Pakai Filter atau Beauty Camera</h2>
         <p>Filter Instagram atau aplikasi beauty camera mengubah wajah secara signifikan. Hasilnya tidak natural dan bisa ditolak. <strong>Solusi:</strong> Gunakan foto asli tanpa filter.</p>
-        
         <h2>Kesalahan #13: Pakaian Tidak Sesuai</h2>
         <p>Pakaian kasual (kaos oblong) atau warna mencolok (kuning, merah neon) tidak profesional. <strong>Solusi:</strong> Pakai kemeja formal atau jas.</p>
-        
         <h2>Kesalahan #14: Foto Lama</h2>
         <p>Menggunakan foto lama (lebih dari 6 bulan) bisa ditolak karena wajah sudah berubah. <strong>Solusi:</strong> Foto ulang setiap 6 bulan untuk dokumen penting.</p>
-        
         <h2>Kesalahan #15: Ukuran Tidak Sesuai</h2>
         <p>Mengirim pas foto 3x4 padahal yang diminta 4x6 akan langsung ditolak. <strong>Solusi:</strong> Selalu cek ukuran di pengumuman dan gunakan tool ukuran presisi.</p>
-        
         <p>Hindari semua kesalahan di atas dan hasilkan pas foto yang berkualitas. Untuk memastikan ukuran presisi, gunakan <a onclick="navigate('tool')">tool kami</a>.</p>`,
         
         'cetak-pas-foto': `
         <p>Setelah berhasil membuat pas foto digital, langkah berikutnya adalah mencetak. Hasil cetak yang baik akan membuat foto terlihat profesional, sementara kesalahan cetak bisa merusak kualitas foto. Berikut panduan lengkap mencetak pas foto.</p>
-        
         <h2>Persiapan Sebelum Mencetak</h2>
         <h3>1. Pilih Kertas yang Tepat</h3>
         <p>Kertas foto khusus adalah pilihan terbaik. Beberapa pilihan:</p>
@@ -1511,21 +1422,17 @@ function renderArticle(id) {
         <li><strong>Kertas matte:</strong> tidak mengkilap, cocok untuk pas foto ijazah</li>
         </ul>
         <p>Hindari kertas HVS biasa karena kualitas cetak rendah dan cepat pudar.</p>
-        
         <h3>2. Ukuran Kertas</h3>
         <ul>
         <li><strong>Kertas 4R (4x6 inci):</strong> untuk 1-4 pas foto</li>
         <li><strong>Kertas A4:</strong> untuk 8-20 pas foto sekaligus</li>
         <li><strong>Kertas 3R (3x5 inci):</strong> untuk 1-2 pas foto kecil</li>
         </ul>
-        
         <h2>Cara Mencetak Sendiri di Rumah</h2>
         <h3>Langkah 1: Susun Pas Foto di A4</h3>
         <p>Gunakan fitur <em>Susun Pintar di A4</em> di <a onclick="navigate('tool')">tool kami</a> untuk menata beberapa pas foto otomatis dalam 1 halaman A4. Ini akan menghemat kertas.</p>
-        
         <h3>Langkah 2: Download Hasil Susunan</h3>
         <p>Setelah disusun, download file JPG ke komputer Anda. Pastikan resolusi tinggi (300 DPI).</p>
-        
         <h3>Langkah 3: Buka di Aplikasi Print</h3>
         <p>Buka file di aplikasi seperti Windows Photo Viewer, Preview (Mac), atau aplikasi printer bawaan. Atur pengaturan cetak:</p>
         <ul>
@@ -1534,10 +1441,8 @@ function renderArticle(id) {
         <li><strong>Kertas:</strong> Photo Paper</li>
         <li><strong>Warna:</strong> Color</li>
         </ul>
-        
         <h3>Langkah 4: Cetak dan Potong</h3>
         <p>Setelah cetak, gunakan gunting atau cutter presisi untuk memotong masing-masing pas foto. Gunakan penggaris untuk potongan yang lurus.</p>
-        
         <h2>Mencetak di Percetakan</h2>
         <p>Jika tidak punya printer, bawa file ke percetakan atau studio foto terdekat. Tips:</p>
         <ul>
@@ -1546,7 +1451,6 @@ function renderArticle(id) {
         <li>Minta cetak di kertas foto, bukan HVS</li>
         <li>Cek hasil cetak sebelum bayar</li>
         </ul>
-        
         <h2>Tips Agar Hasil Cetak Maksimal</h2>
         <ol>
         <li><strong>Gunakan resolusi 300 DPI</strong> agar tidak pecah saat dicetak.</li>
@@ -1555,7 +1459,6 @@ function renderArticle(id) {
         <li><strong>Hindari cetak dalam mode draft</strong> karena kualitas rendah.</li>
         <li><strong>Simpan kertas foto di tempat kering</strong> agar tidak lembap.</li>
         </ol>
-        
         <h2>Perawatan Pas Foto Setelah Cetak</h2>
         <ul>
         <li>Simpan di amplop atau kantong plastik agar tidak terkena air</li>
@@ -1563,12 +1466,10 @@ function renderArticle(id) {
         <li>Hindari paparan sinar matahari langsung (warna bisa pudar)</li>
         <li>Gunakan lem yang bersih saat menempel di dokumen</li>
         </ul>
-        
         <p>Untuk menyusun pas foto otomatis di A4, gunakan tool gratis kami di <a onclick="navigate('tool')">Buat Pas Foto</a>.</p>`,
         
         'perbedaan-ukuran': `
         <p>Banyak orang bingung kapan harus menggunakan pas foto 2x3, 3x4, atau 4x6. Setiap ukuran memiliki kegunaan spesifik. Memilih ukuran yang salah bisa membuat dokumen ditolak. Berikut panduan perbedaan lengkap.</p>
-        
         <h2>Ukuran 2x3 cm</h2>
         <h3>Karakteristik:</h3>
         <ul>
@@ -1576,7 +1477,6 @@ function renderArticle(id) {
         <li>Wajah tampak kecil tapi cukup untuk identifikasi</li>
         <li>Tidak cocok untuk dokumen resmi yang serius</li>
         </ul>
-        
         <h3>Kegunaan Umum:</h3>
         <ul>
         <li>Kartu pelajar</li>
@@ -1584,7 +1484,6 @@ function renderArticle(id) {
         <li>Kartu keanggotaan organisasi kecil</li>
         <li>Bukti pendaftaran event informal</li>
         </ul>
-        
         <h2>Ukuran 3x4 cm</h2>
         <h3>Karakteristik:</h3>
         <ul>
@@ -1592,7 +1491,6 @@ function renderArticle(id) {
         <li>Wajah tampak proporsional</li>
         <li>Standar paling umum di Indonesia</li>
         </ul>
-        
         <h3>Kegunaan Umum:</h3>
         <ul>
         <li>KTP (Kartu Tanda Penduduk)</li>
@@ -1603,7 +1501,6 @@ function renderArticle(id) {
         <li>Kartu BPJS</li>
         <li>Kartu pegawai</li>
         </ul>
-        
         <h2>Ukuran 4x6 cm</h2>
         <h3>Karakteristik:</h3>
         <ul>
@@ -1611,7 +1508,6 @@ function renderArticle(id) {
         <li>Wajah tampak jelas dan detail</li>
         <li>Cocok untuk dokumen yang membutuhkan verifikasi wajah tingkat tinggi</li>
         </ul>
-        
         <h3>Kegunaan Umum:</h3>
         <ul>
         <li>Paspor</li>
@@ -1620,7 +1516,6 @@ function renderArticle(id) {
         <li>Visa internasional</li>
         <li>Lamaran kerja instansi tertentu</li>
         </ul>
-        
         <h2>Tabel Perbandingan Cepat</h2>
         <table class="size-table">
         <thead><tr><th>Aspek</th><th>2x3</th><th>3x4</th><th>4x6</th></tr></thead>
@@ -1632,35 +1527,26 @@ function renderArticle(id) {
         <tr><td>Tingkat Resmi</td><td>Rendah</td><td>Sedang</td><td>Tinggi</td></tr>
         </tbody>
         </table>
-        
         <h2>Kapan Pakai Masing-masing?</h2>
         <h3>Untuk Lamaran Kerja:</h3>
         <p>Pakai <strong>3x4 atau 4x6</strong>. Jika tidak disebutkan, 3x4 adalah pilihan aman.</p>
-        
         <h3>Untuk CPNS:</h3>
         <p>Pakai <strong>3x4 background merah</strong>. Ini standar resmi.</p>
-        
         <h3>Untuk Paspor:</h3>
         <p>Pakai <strong>4x6 background putih</strong>. Standar Imigrasi Indonesia.</p>
-        
         <h3>Untuk Ijazah:</h3>
         <p>Pakai <strong>4x6 dengan pita nama</strong>. Bisa dibuat di tool kami dengan Mode Ijazah.</p>
-        
         <h3>Untuk KTP/SIM:</h3>
         <p>Pakai <strong>3x4 background merah</strong>.</p>
-        
         <h3>Untuk Kartu Pelajar:</h3>
         <p>Pakai <strong>2x3</strong>. Standar sekolah.</p>
-        
         <p>Untuk membuat ketiga ukuran, langsung gunakan <a onclick="navigate('tool')">tool kami</a>. Lihat juga tabel lengkap di halaman <a onclick="navigate('sizes')">Ukuran Pas Foto</a>.</p>`,
         
         'foto-rapi': `
         <p>Pas foto yang rapi memberi kesan profesional dan menunjukkan keseriusan Anda. Sebaliknya, pas foto yang acak akan mengurangi peluang diterima dokumen Anda. Berikut panduan membuat pas foto yang rapi dari awal sampai akhir.</p>
-        
         <h2>1. Persiapan Sebelum Foto</h2>
         <h3>Rapikan Rambut</h3>
         <p>Ikat rambut ke belakang agar tidak menutupi wajah. Pastikan dahi dan telinga terlihat. Untuk pria, rapikan jenggot dan kumis. Untuk wanita berhijab, atur hijab agar tidak menutupi pipi dan dahi.</p>
-        
         <h3>Pilih Pakaian yang Tepat</h3>
         <ul>
         <li>Pria: kemeja putih + jas hitam atau biru tua</li>
@@ -1668,16 +1554,12 @@ function renderArticle(id) {
         <li>Warna kontras dengan background</li>
         <li>Setrika agar tidak kusut</li>
         </ul>
-        
         <h3>Bersihkan Wajah</h3>
         <p>Cuci wajah agar tidak mengkilap akibat minyak. Jangan pakai makeup berlebihan. Untuk pria, cukur atau rapikan kumis.</p>
-        
         <h2>2. Atur Background</h2>
         <p>Pilih warna background sesuai kebutuhan. Setrika kain backdrop agar tidak kerutan. Pastikan tidak ada objek lain di belakang.</p>
-        
         <h2>3. Pencahayaan yang Merata</h2>
         <p>Gunakan 2 lampu dari kiri dan kanan dengan intensitas sama. Hindari cahaya dari satu sisi yang menyebabkan separuh wajah gelap.</p>
-        
         <h2>4. Posisi yang Benar</h2>
         <ul>
         <li>Punggung tegak, tidak membungkuk</li>
@@ -1686,7 +1568,6 @@ function renderArticle(id) {
         <li>Pandangan lurus ke kamera</li>
         <li>Wajah netral atau senyum tipis</li>
         </ul>
-        
         <h2>5. Crop dengan Presisi</h2>
         <p>Setelah foto diambil, crop dengan proporsi yang tepat:</p>
         <ul>
@@ -1697,7 +1578,6 @@ function renderArticle(id) {
         <li>Ruang atas kepala cukup</li>
         </ul>
         <p>Gunakan tool kami yang menampilkan panduan golden ratio untuk crop yang presisi.</p>
-        
         <h2>6. Atur Posisi Wajah</h2>
         <p>Di <a onclick="navigate('tool')">tool kami</a>, Anda bisa:</p>
         <ul>
@@ -1706,13 +1586,10 @@ function renderArticle(id) {
         <li>Zoom dengan tombol plus/minus atau scroll</li>
         <li>Lihat panduan garis hijau (golden ratio) untuk komposisi ideal</li>
         </ul>
-        
         <h2>7. Samaikan Posisi Beberapa Foto</h2>
         <p>Jika Anda mengupload beberapa foto sekaligus (misal untuk ijazah kelas), gunakan fitur <em>Jadikan Acuan</em> di tool kami. Foto yang dijadikan acuan akan diterapkan ke foto-foto lain dengan ukuran sama, sehingga semua foto punya komposisi yang konsisten.</p>
-        
         <h2>8. Susun Rapi di A4</h2>
         <p>Gunakan fitur <em>Susun Pintar di A4</em> untuk menata beberapa pas foto otomatis dalam kertas A4. Sistem akan menghitung tata letak optimal agar tidak ada ruang terbuang.</p>
-        
         <h2>9. Cetak dengan Presisi</h2>
         <ul>
         <li>Atur skala cetak 100% (Actual Size)</li>
@@ -1720,34 +1597,27 @@ function renderArticle(id) {
         <li>Gunakan kertas foto glossy untuk hasil terbaik</li>
         <li>Gunakan kualitas cetak High atau Best</li>
         </ul>
-        
         <h2>10. Potong dengan Rapi</h2>
         <p>Setelah cetak, potong dengan gunting atau cutter presisi. Gunakan penggaris untuk potongan lurus. Jangan gunting asal karena bisa miring.</p>
-        
         <p>Dengan mengikuti semua langkah di atas, pas foto Anda akan tampak rapi dan profesional. Mulai sekarang di <a onclick="navigate('tool')">tool kami</a>.</p>`,
         
         'persiapan-lamaran': `
         <p>Persiapan pas foto untuk lamaran kerja adalah langkah awal yang penting. Foto yang buruk bisa membuat Anda tampak tidak profesional, sedangkan foto yang baik akan memberi kesan positif kepada HRD. Berikut checklist lengkap persiapan foto lamaran kerja.</p>
-        
         <h2>Checklist Persiapan Foto Lamaran Kerja</h2>
-        
         <h3>1. Tentukan Background</h3>
         <p>Cek pengumuman lowongan kerja. Mayoritas perusahaan swasta menerima background biru. Untuk BUMN, biasanya background merah. Jika tidak disebut, pilih biru muda (sky blue) karena paling aman.</p>
-        
         <h3>2. Siapkan Pakaian Formal</h3>
         <ul>
         <li><strong>Pria:</strong> Kemeja putih lengan panjang + jas hitam/navy + dasi (opsional)</li>
         <li><strong>Wanita:</strong> Blazer formal atau kemeja rapi</li>
         <li><strong>Sepatu:</strong> Formal, tidak harus terlihat di foto</li>
         </ul>
-        
         <h3>3. Rapihkan Rambut</h3>
         <ul>
         <li>Pria: Potong rambut agar rapi, sidap bersih</li>
         <li>Wanita: Ikat rambut ke belakang agar wajah terlihat jelas</li>
         <li>Pastikan dahi dan telinga terlihat</li>
         </ul>
-        
         <h3>4. Bersihkan Wajah</h3>
         <ul>
         <li>Cuci wajah agar tidak mengkilap</li>
@@ -1755,7 +1625,6 @@ function renderArticle(id) {
         <li>Pria: Cukur atau rapikan kumis/jenggot</li>
         <li>Lepas kacamata jika memungkinkan</li>
         </ul>
-        
         <h3>5. Siapkan Background</h3>
         <p>Jika tidak punya kain backdrop, Anda bisa:</p>
         <ul>
@@ -1763,7 +1632,6 @@ function renderArticle(id) {
         <li>Tempel kertas kado warna polos di dinding</li>
         <li>Pinjam kain dari teman atau beli kain blaco</li>
         </ul>
-        
         <h3>6. Atur Pencahayaan</h3>
         <p>Pencahayaan merata adalah kunci. Tips:</p>
         <ul>
@@ -1772,13 +1640,10 @@ function renderArticle(id) {
         <li>Hindari flash langsung</li>
         <li>Hindari foto malam hari</li>
         </ul>
-        
         <h3>7. Tentukan Ukuran Foto</h3>
         <p>Ukuran umum untuk lamaran kerja adalah <strong>3x4 cm</strong> atau <strong>4x6 cm</strong>. Jika tidak disebut, 3x4 adalah pilihan aman.</p>
-        
         <h3>8. Ambil Banyak Foto</h3>
         <p>Jangan puas dengan 1-2 foto. Ambil 10-15 foto dengan berbagai variasi ekspresi sedikit berbeda, lalu pilih yang terbaik.</p>
-        
         <h3>9. Cek Kualitas Foto</h3>
         <p>Sebelum upload ke tool kami, pastikan foto:</p>
         <ul>
@@ -1789,17 +1654,14 @@ function renderArticle(id) {
         <li>Mata terbuka jelas</li>
         <li>Resolusi tinggi (minimal 5 Megapiksel)</li>
         </ul>
-        
         <h3>10. Proses di Tool Kami</h3>
         <p>Upload ke <a onclick="navigate('tool')">tool pembuat pas foto</a> kami, pilih ukuran yang sesuai, atur crop, lalu download.</p>
-        
         <h3>11. Simpan dalam Format yang Tepat</h3>
         <ul>
         <li><strong>Untuk lamaran online:</strong> JPG dengan kualitas 80-90% (file 100-300 KB)</li>
         <li><strong>Untuk lamaran cetak:</strong> JPG dengan kualitas 100% (resolusi tinggi)</li>
         <li><strong>Untuk email:</strong> JPG dengan kualitas sedang</li>
         </ul>
-        
         <h2>Tips Tambahan untuk Lamaran Online</h2>
         <ul>
         <li>Simpan beberapa ukuran (3x4 dan 4x6) untuk berjaga-jaga</li>
@@ -1807,7 +1669,6 @@ function renderArticle(id) {
         <li>Gunakan nama file yang jelas: "PasFoto_NamaAnda.jpg"</li>
         <li>Jangan pakai foto lebih dari 6 bulan</li>
         </ul>
-        
         <h2>Hal yang Harus Dihindari</h2>
         <ul>
         <li>Foto selfie atau foto kasual</li>
@@ -1816,12 +1677,10 @@ function renderArticle(id) {
         <li>Foto dengan teman atau keluarga di belakang</li>
         <li>Foto lama yang sudah pudar</li>
         </ul>
-        
         <p>Dengan checklist di atas, persiapan foto lamaran kerja Anda akan lebih terstruktur. Mulai proses sekarang di <a onclick="navigate('tool')">tool kami</a>.</p>`,
         
         'dokumen-administrasi': `
         <p>Pas foto adalah bagian penting dari berbagai dokumen administrasi di Indonesia. Setiap dokumen memiliki persyaratan foto yang berbeda. Berikut panduan umum pas foto untuk berbagai dokumen administrasi.</p>
-        
         <h2>1. Pas Foto untuk KTP</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 cm</li>
@@ -1830,7 +1689,6 @@ function renderArticle(id) {
         <li><strong>Jumlah:</strong> 2-4 lembar (sesuai permintaan)</li>
         <li><strong>Aturan:</strong> Tidak memakai kacamata, wajah netral</li>
         </ul>
-        
         <h2>2. Pas Foto untuk SIM</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 cm</li>
@@ -1839,7 +1697,6 @@ function renderArticle(id) {
         <li><strong>Jumlah:</strong> 2-4 lembar</li>
         <li><strong>Aturan:</strong> Tidak memakai kacamata (kecuali kacamata khusus)</li>
         </ul>
-        
         <h2>3. Pas Foto untuk Paspor</h2>
         <ul>
         <li><strong>Ukuran:</strong> 4x6 cm</li>
@@ -1848,7 +1705,6 @@ function renderArticle(id) {
         <li><strong>Jumlah:</strong> 2-4 lembar</li>
         <li><strong>Aturan:</strong> Tidak memakai kacamata, wajah netral</li>
         </ul>
-        
         <h2>4. Pas Foto untuk CPNS</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 cm</li>
@@ -1856,7 +1712,6 @@ function renderArticle(id) {
         <li><strong>Format:</strong> Digital (JPG, maks 200 KB)</li>
         <li><strong>Aturan:</strong> Tidak kacamata, tidak softlens, wajah netral</li>
         </ul>
-        
         <h2>5. Pas Foto untuk Ijazah</h2>
         <ul>
         <li><strong>Ukuran:</strong> 4x6 cm</li>
@@ -1865,7 +1720,6 @@ function renderArticle(id) {
         <li><strong>Pita:</strong> Tulisan nama sekolah di bagian bawah foto</li>
         </ul>
         <p>Untuk membuat pas foto ijazah dengan pita nama otomatis, gunakan <em>Mode Ijazah</em> di <a onclick="navigate('tool')">tool kami</a>.</p>
-        
         <h2>6. Pas Foto untuk Lamaran Kerja</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 atau 4x6 cm</li>
@@ -1873,7 +1727,6 @@ function renderArticle(id) {
         <li><strong>Format:</strong> Cetak atau digital</li>
         <li><strong>Aturan:</strong> Pakaian formal, wajah netral/senyum tipis</li>
         </ul>
-        
         <h2>7. Pas Foto untuk Visa</h2>
         <ul>
         <li><strong>Visa USA:</strong> 2x2 inci (5.1 x 5.1 cm), background putih</li>
@@ -1881,28 +1734,24 @@ function renderArticle(id) {
         <li><strong>Visa UK:</strong> 3.5 x 4.5 cm, background putih/abu-abu muda</li>
         <li><strong>Visa Jepang:</strong> 4.5 x 4.5 cm, background putih</li>
         </ul>
-        
         <h2>8. Pas Foto untuk Sertifikat</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 atau 4x6 cm</li>
         <li><strong>Background:</strong> Biru</li>
         <li><strong>Format:</strong> Cetak</li>
         </ul>
-        
         <h2>9. Pas Foto untuk Kartu Pelajar</h2>
         <ul>
         <li><strong>Ukuran:</strong> 2x3 cm</li>
         <li><strong>Background:</strong> Biru atau merah</li>
         <li><strong>Format:</strong> Cetak</li>
         </ul>
-        
         <h2>10. Pas Foto untuk BPJS</h2>
         <ul>
         <li><strong>Ukuran:</strong> 3x4 cm</li>
         <li><strong>Background:</strong> Merah</li>
         <li><strong>Format:</strong> Cetak</li>
         </ul>
-        
         <h2>Tips Umum untuk Semua Dokumen</h2>
         <ol>
         <li>Selalu baca persyaratan resmi sebelum foto</li>
@@ -1913,7 +1762,6 @@ function renderArticle(id) {
         <li>Lepas kacamata dan softlens</li>
         <li>Gunakan kualitas cetak tinggi</li>
         </ol>
-        
         <h2>Panduan Singkat Memilih Background</h2>
         <ul>
         <li><strong>Pemerintah (KTP, CPNS, SIM):</strong> Merah</li>
@@ -1921,39 +1769,28 @@ function renderArticle(id) {
         <li><strong>Internasional (paspor, visa):</strong> Putih</li>
         <li><strong>Ijazah:</strong> Biru (umum) atau merah</li>
         </ul>
-        
         <p>Untuk membuat semua jenis pas foto di atas, gunakan <a onclick="navigate('tool')">tool kami</a> yang mendukung berbagai ukuran dan mode.</p>`,
         
         'faq-online': `
         <p>Pertanyaan umum seputar pembuatan pas foto online. Berikut jawaban lengkap untuk pertanyaan yang sering diajukan.</p>
-        
         <h2>Q: Apakah aman membuat pas foto online?</h2>
         <p>A: Aman, selama tool yang Anda gunakan memproses foto di sisi klien (client-side) seperti tool kami. Foto tidak pernah dikirim ke server, sehingga privasi terjaga.</p>
-        
         <h2>Q: Apakah tool pas foto online gratis?</h2>
         <p>A: Tool kami 100% gratis tanpa biaya tersembunyi. Tidak perlu registrasi, tidak ada batas jumlah penggunaan.</p>
-        
         <h2>Q: Format file apa yang didukung?</h2>
         <p>A: Saat ini kami mendukung JPG/JPEG dan PNG. Untuk hasil cetak, JPG lebih disarankan karena ukuran file lebih kecil dengan kualitas baik.</p>
-        
         <h2>Q: Berapa resolusi yang dibutuhkan?</h2>
         <p>A: Untuk pas foto 3x4, resolusi minimal 330x450 pixel (300 DPI). Untuk 4x6, minimal 450x660 pixel. Semakin tinggi resolusi, semakin tajam hasil cetak.</p>
-        
         <h2>Q: Bisakah saya membuat pas foto hitam putih?</h2>
         <p>A: Ya, tool kami memiliki mode Hitam Putih yang bisa diaktifkan. Cocok untuk pas foto reguler atau keperluan dokumen lama.</p>
-        
         <h2>Q: Bisakah saya membuat pas foto ijazah?</h2>
         <p>A: Ya, gunakan <em>Mode Ijazah</em> di tool kami. Anda bisa menambahkan nama sekolah/universitas di bagian bawah foto dengan font yang bisa diatur.</p>
-        
         <h2>Q: Bagaimana cara menyusun beberapa pas foto di A4?</h2>
         <p>A: Gunakan fitur <em>Susun Pintar di A4</em>. Sistem akan otomatis menata beberapa pas foto dalam 1 halaman A4 agar tidak ada ruang terbuang.</p>
-        
         <h2>Q: Apakah tool bisa digunakan di HP?</h2>
         <p>A: Ya, tool kami responsif dan bisa diakses di HP Android atau iPhone. Anda bisa upload langsung dari galeri HP dan download hasil ke perangkat.</p>
-        
         <h2>Q: Berapa maksimal foto yang bisa diproses sekaligus?</h2>
         <p>A: Tool kami mendukung hingga 50 foto sekaligus. Cocok untuk membuat pas foto ijazah kelas atau pas foto untuk banyak karyawan.</p>
-        
         <h2>Q: Bagaimana cara menyesuaikan posisi crop?</h2>
         <p>A: Anda bisa:</p>
         <ul>
@@ -1962,26 +1799,63 @@ function renderArticle(id) {
         <li>Zoom dengan tombol plus/minus atau scroll</li>
         <li>Pinch (jepit) di canvas untuk zoom (HP)</li>
         </ul>
-        
         <h2>Q: Apakah ada panduan posisi wajah?</h2>
         <p>A: Ya, tool kami menampilkan panduan golden ratio (garis hijau) yang membantu Anda menempatkan wajah di posisi ideal sesuai komposisi estetika.</p>
-        
         <h2>Q: Bisakah saya menyamakan posisi beberapa foto?</h2>
         <p>A: Ya, gunakan fitur <em>Jadikan Acuan</em>. Pilih foto yang diinginkan, terapkan ke semua foto dengan ukuran sama. Cocok untuk ijazah kelas.</p>
-        
         <h2>Q: Apakah ada batasan ukuran file yang diupload?</h2>
         <p>A: Tidak ada batasan spesifik, tetapi disarankan setiap foto tidak lebih dari 5 MB agar proses cepat.</p>
-        
         <h2>Q: Bisakah saya download semua foto sekaligus?</h2>
         <p>A: Ya, gunakan tombol <em>Download Semua Foto</em>. Setiap foto akan diunduh terpisah dengan nama file yang jelas.</p>
-        
         <h2>Q: Apakah tool menyimpan foto saya?</h2>
         <p>A: Tidak. Semua proses dilakukan di browser Anda (client-side). Foto tidak dikirim atau disimpan di server kami.</p>
-        
         <h2>Q: Bagaimana cara mencetak hasil pas foto?</h2>
         <p>A: Baca panduan lengkap di artikel <a onclick="navigate('article', 'cetak-pas-foto')">Cara Mencetak Pas Foto</a>.</p>
+        <p>Masih ada pertanyaan? Lihat halaman <a onclick="navigate('faq')">FAQ Lengkap</a> atau <a onclick="navigate('contact')">hubungi kami</a>.</p>`,
+
+        'panduan-paspor': `
+        <p>Paspor adalah dokumen perjalanan internasional yang wajib dimiliki setiap warga negara Indonesia yang ingin bepergian ke luar negeri. Dalam proses pembuatan atau perpanjangan paspor, salah satu syarat utama yang harus dipenuhi adalah pas foto dengan ukuran dan kualitas tertentu. Banyak pengunjung kantor imigrasi terpaksa pulang dan datang kembali karena pas foto yang dibawa tidak memenuhi standar yang ditetapkan. Oleh karena itu, memahami persyaratan pas foto paspor sejak awal akan menghemat waktu, tenaga, dan biaya Anda secara signifikan.</p>
         
-        <p>Masih ada pertanyaan? Lihat halaman <a onclick="navigate('faq')">FAQ Lengkap</a> atau <a onclick="navigate('contact')">hubungi kami</a>.</p>`
+        <div style="margin:2rem 0; padding:2.5rem; background:linear-gradient(135deg, var(--bg-card), var(--bg-input)); border:1px solid var(--border-color); border-radius:12px; text-align:center;">
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:rgba(211,47,47,.1); border-radius:50%; margin-bottom:1rem;">
+        <i class="fa-solid fa-passport" style="font-size:2.5rem; color:var(--accent-red);"></i>
+        </div>
+        <p style="color:var(--text-muted); font-size:.85rem; margin:0;"><strong style="color:var(--text-main);">Ilustrasi:</strong> Paspor Indonesia memerlukan pas foto 4x6 cm dengan background putih polos</p>
+        </div>
+        
+        <p>Sesuai dengan ketentuan dari Direktorat Jenderal Imigrasi, ukuran pas foto untuk paspor Indonesia adalah 4x6 sentimeter dengan mode portrait atau tegak. Ukuran ini berbeda dengan pas foto 3x4 yang umum digunakan untuk KTP atau SIM. Dalam konversi pixel pada resolusi 300 DPI, ukuran 4x6 setara dengan 450x660 pixel. Pastikan foto yang Anda bawa benar-benar memiliki ukuran yang tepat karena petugas imigrasi akan melakukan verifikasi secara presisi menggunakan alat ukur khusus. Anda dapat menggunakan tool online Karya Abadi Pas Foto untuk memastikan ukuran foto Anda sudah sesuai standar resmi.</p>
+        
+        <p>Background putih adalah syarat mutlak untuk pas foto paspor di Indonesia. Warna putih dipilih karena memberikan kontras tertinggi dengan wajah subjek, sehingga sistem pengenalan wajah biometrik dapat bekerja dengan akurat. Jika Anda mengambil foto sendiri di rumah, pastikan background benar-benar putih murni, bukan putih keabu-abuan atau putih kekuningan. Hindari juga adanya bayangan yang jatuh di background, karena ini akan langsung ditolak oleh petugas imigrasi. Gunakan kertas putih tebal atau dinding yang baru dicat putih sebagai backdrop untuk hasil yang paling optimal.</p>
+        
+        <p>Kualitas pencahayaan menentukan keberhasilan pas foto paspor Anda. Foto harus terang merata di seluruh bagian wajah tanpa ada bayangan di hidung, pipi, atau dahi. Idealnya, gunakan dua sumber cahaya yang ditempatkan di sisi kiri dan kanan dengan jarak dan intensitas yang sama. Jika Anda mengambil foto di dekat jendela, pastikan cahaya mengenai wajah secara langsung, bukan dari belakang. Hindari penggunaan flash kamera secara langsung karena dapat menyebabkan pantulan di wajah yang merusak hasil foto. Pencahayaan yang baik juga memastikan warna kulit tampak natural dan tidak pucat atau terlalu gelap.</p>
+        
+        <div style="margin:2rem 0; padding:2.5rem; background:linear-gradient(135deg, var(--bg-card), var(--bg-input)); border:1px solid var(--border-color); border-radius:12px; text-align:center;">
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:rgba(255,215,0,.1); border-radius:50%; margin-bottom:1rem;">
+        <i class="fa-solid fa-camera" style="font-size:2.5rem; color:var(--gold);"></i>
+        </div>
+        <p style="color:var(--text-muted); font-size:.85rem; margin:0;"><strong style="color:var(--text-main);">Ilustrasi:</strong> Pengaturan pencahayaan dua arah untuk hasil foto paspor yang merata tanpa bayangan</p>
+        </div>
+        
+        <p>Untuk pas foto paspor, pakaian yang dikenakan harus formal dan sopan. Bagi pria, disarankan menggunakan kemeja berkerah dengan warna gelap seperti hitam, navy, atau biru tua, dipadukan dengan jas jika memungkinkan. Bagi wanita, gunakan blazer atau kemeja formal dengan warna yang kontras terhadap background putih. Hindari pakaian berwarna putih karena akan menyatu dengan background dan menyulitkan proses pemotongan tepi. Pakaian harus bersih, rapi, dan tidak berkerutan. Jangan gunakan kaos oblong, pakaian berpola ramai, atau pakaian dengan warna mencolok seperti merah, kuning, atau oranye neon.</p>
+        
+        <p>Salah satu aturan ketat untuk pas foto paspor adalah larangan penggunaan kacamata. Meskipun Anda menggunakan kacamata dalam kehidupan sehari-hari, Anda wajib melepasnya saat pengambilan foto paspor. Hal ini dikarenakan kacamata dapat memantulkan cahaya dan menyembunyikan mata, yang akan mengganggu proses verifikasi biometrik di bandara. Selain kacamata, softlens atau lensa kontak juga dilarang karena dapat mengubah warna mata dan mengganggu identifikasi. Aksesoris seperti anting besar, kalung, topi, atau penutup kepala juga harus dilepas, kecuali untuk wanita berhijab yang tetap diperbolehkan asalkan wajah terlihat jelas tanpa ada bagian yang tertutup.</p>
+        
+        <p>Ekspresi wajah untuk pas foto paspor harus netral, tidak tersenyum, dan tidak menyering. Pandangan mata harus lurus ke depan menghadap kamera dengan kepala dalam posisi tegak lurus. Jangan memiringkan kepala ke kiri atau ke kanan karena ini akan menyebabkan penolakan otomatis. Bibir harus tertutup rapat, dan mata harus terbuka jelas tanpa mengedip. Jika Anda memiliki rambut panjang, pastikan rambut tidak menutupi dahi, alis, atau telinga. Telinga harus terlihat karena merupakan salah satu titik referensi biometrik yang penting dalam sistem pengenalan wajah modern yang digunakan di bandara internasional.</p>
+        
+        <div style="margin:2rem 0; padding:2.5rem; background:linear-gradient(135deg, var(--bg-card), var(--bg-input)); border:1px solid var(--border-color); border-radius:12px; text-align:center;">
+        <div style="display:inline-flex; align-items:center; justify-content:center; width:80px; height:80px; background:rgba(76,175,80,.1); border-radius:50%; margin-bottom:1rem;">
+        <i class="fa-solid fa-user-check" style="font-size:2.5rem; color:var(--green);"></i>
+        </div>
+        <p style="color:var(--text-muted); font-size:.85rem; margin:0;"><strong style="color:var(--text-main);">Ilustrasi:</strong> Posisi tegak dengan ekspresi netral, telinga terlihat, dan pandangan lurus ke kamera</p>
+        </div>
+        
+        <p>Jika Anda ingin menghemat biaya, mengambil foto paspor sendiri di rumah adalah pilihan yang sangat memungkinkan. Persiapkan dinding putih yang bersih sebagai backdrop, atau tempel kertas putih tebal di dinding. Atur pencahayaan dengan menggunakan dua lampu meja dari sisi kiri dan kanan, atau manfaatkan cahaya alami dari jendela pada pagi hari antara pukul 07:00 hingga 10:00. Gunakan kamera HP dengan resolusi minimal 8 megapiksel dan jaga jarak sekitar 1,5 hingga 2 meter dari subjek. Setelah foto diambil, gunakan tool online Karya Abadi Pas Foto untuk memotong dan menyesuaikan ukuran menjadi 4x6 dengan presisi yang akurat.</p>
+        
+        <p>Penting untuk memahami bahwa setiap negara memiliki standar pas foto yang berbeda untuk visa. Jika paspor Indonesia menggunakan ukuran 4x6 cm dengan background putih, visa Amerika Serikat memerlukan ukuran 2x2 inci atau sekitar 5,1x5,1 cm. Visa Schengen untuk Eropa memerlukan ukuran 3,5x4,5 cm, sedangkan visa Jepang menggunakan ukuran 4,5x4,5 cm. Jadi, pas foto yang Anda gunakan untuk paspor tidak otomatis bisa digunakan untuk visa. Selalu periksa persyaratan foto dari kedutaan negara tujuan sebelum mengajukan permohonan visa untuk menghindari penolakan yang menyebabkan keterlambatan proses perjalanan Anda.</p>
+        
+        <p>Dengan memahami semua persyaratan di atas, Anda dapat mempersiapkan pas foto paspor yang sesuai standar tanpa harus datang ke studio foto. Cukup siapkan kamera atau HP dengan resolusi tinggi, background putih yang bersih, pencahayaan yang merata, dan pakaian formal yang rapi. Setelah foto diambil, langsung proses di tool online Karya Abadi Pas Foto untuk mendapatkan ukuran 4x6 yang presisi. Tool ini gratis, aman, dan dapat diakses dari browser HP maupun komputer tanpa perlu install aplikasi tambahan. Jangan lupa untuk selalu memeriksa persyaratan terbaru dari kantor imigrasi karena aturan dapat berubah sewaktu-waktu sesuai kebijakan pemerintah.</p>
+        
+        <p>Masih ada pertanyaan tentang pas foto paspor? Jangan ragu untuk menghubungi kami melalui halaman <a onclick="navigate('contact')">Kontak</a>. Untuk langsung membuat pas foto dengan ukuran 4x6, kunjungi halaman <a onclick="navigate('tool')">Buat Pas Foto</a> kami sekarang juga.</p>`
     };
     
     if (articlesContent[id]) {
@@ -2021,41 +1895,28 @@ function $(id) { return document.getElementById(id); }
 function initTool() {
     const dropzone = $('dropzone'), fileInput = $('fileInput');
     if (dropzone) setupDropzone(dropzone, fileInput);
-
     document.querySelectorAll('.faq-item').forEach(item => {
         item.querySelector('.faq-q').onclick = () => item.classList.toggle('active');
     });
-    
     document.querySelectorAll('.size-btn').forEach(b => {
-        b.onclick = () => {
-            if(b.disabled) return;
-            syncSize(b.dataset.size);
-        };
+        b.onclick = () => { if(b.disabled) return; syncSize(b.dataset.size); };
     });
-    
     const ijazahToggle = $('ijazahToggle'), bwToggle = $('bwToggle');
-    
     if(ijazahToggle) ijazahToggle.onchange = () => handleIjazahToggle(ijazahToggle.checked);
     if(bwToggle) bwToggle.onchange = () => handleBwToggle(bwToggle.checked);
-    
     if($('resetAllBtn')) $('resetAllBtn').onclick = resetAllPos;
     if($('clearAllBtn')) $('clearAllBtn').onclick = clearAll;
     if($('arrangeBtn')) $('arrangeBtn').onclick = arrangeA4;
     if($('dlAllBtn')) $('dlAllBtn').onclick = downloadAll;
-    
     if($('closeModal')) $('closeModal').onclick = () => $('a4Modal').style.display='none';
     if($('dlA4Btn')) $('dlA4Btn').onclick = downloadA4Pages;
     if($('applyRefBtn')) $('applyRefBtn').onclick = applyReferenceToAll;
-    
     window.addEventListener('click', e => { if(e.target === $('a4Modal')) $('a4Modal').style.display='none'; });
-
     const photoGrid = $('photoGrid');
     if(photoGrid) setupGridEvents(photoGrid);
-
     if($('schoolName')) $('schoolName').oninput = redrawIjazah;
     if($('fontSize')) $('fontSize').oninput = redrawIjazah;
     if($('ijazahBWToggle')) $('ijazahBWToggle').onchange = () => { photos.forEach(p=>{if(p.isIjazah){p.isBW=$('ijazahBWToggle').checked;drawPhoto(p,true);}}); };
-
     updateUI();
 }
 
@@ -2067,10 +1928,7 @@ function setupDropzone(dz, fi) {
 }
 
 function syncSize(size) {
-    document.querySelectorAll('.size-btn').forEach(x => {
-        if(x.dataset.size === size) x.classList.add('active');
-        else x.classList.remove('active');
-    });
+    document.querySelectorAll('.size-btn').forEach(x => { if(x.dataset.size === size) x.classList.add('active'); else x.classList.remove('active'); });
     selectedSize = size;
     const info = $('infoSize');
     if(info) info.textContent = size.replace('L',' Landscape');
@@ -2079,35 +1937,15 @@ function syncSize(size) {
 function handleIjazahToggle(on) {
     if($('ijazahBox')) $('ijazahBox').style.display = on ? 'flex' : 'none';
     lockSizes(on);
-    if(on) {
-        if($('bwToggle')) $('bwToggle').checked = false;
-        handleBwToggle(false);
-    }
+    if(on) { if($('bwToggle')) $('bwToggle').checked = false; handleBwToggle(false); }
 }
 
-function handleBwToggle(on) {
-    photos.forEach(p => {
-        if(!p.isIjazah) {
-            p.isBW = on;
-            drawPhoto(p, true);
-        }
-    });
-}
+function handleBwToggle(on) { photos.forEach(p => { if(!p.isIjazah) { p.isBW = on; drawPhoto(p, true); } }); }
 
 function lockSizes(lock) {
     document.querySelectorAll('.size-btn').forEach(b => {
-        if(lock) {
-            b.disabled = b.dataset.size !== '3X4';
-            if(b.dataset.size === '3X4') {
-                b.classList.add('active');
-                b.disabled = false;
-            } else {
-                b.classList.remove('active');
-            }
-            syncSize('3X4');
-        } else {
-            b.disabled = false;
-        }
+        if(lock) { b.disabled = b.dataset.size !== '3X4'; if(b.dataset.size === '3X4') { b.classList.add('active'); b.disabled = false; } else { b.classList.remove('active'); } syncSize('3X4'); }
+        else { b.disabled = false; }
     });
 }
 
@@ -2118,15 +1956,7 @@ function handleFiles(files) {
     let loaded = 0;
     toLoad.forEach(f => {
         const r = new FileReader();
-        r.onload = ev => {
-            const img = new Image();
-            img.onload = () => {
-                addPhoto(img);
-                loaded++;
-                if(loaded === toLoad.length) showToast(loaded + ' foto berhasil diupload');
-            };
-            img.src = ev.target.result;
-        };
+        r.onload = ev => { const img = new Image(); img.onload = () => { addPhoto(img); loaded++; if(loaded === toLoad.length) showToast(loaded + ' foto berhasil diupload'); }; img.src = ev.target.result; };
         r.readAsDataURL(f);
     });
     if($('fileInput')) $('fileInput').value = '';
@@ -2138,30 +1968,16 @@ function addPhoto(img) {
     const sz = SIZES[sizeKey];
     const isBW = $('bwToggle') && $('bwToggle').checked;
     const e = MM_PX * 2 + CUT_W * 2;
-    const photo = {
-        id: nextId++,
-        img,
-        sizeKey,
-        sz,
-        isBW,
-        isIjazah: isIj,
-        quantity: 1,
-        state: { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 },
-        canvas: null,
-        card: null
-    };
+    const photo = { id: nextId++, img, sizeKey, sz, isBW, isIjazah: isIj, quantity: 1, state: { scale: 1, offsetX: 0, offsetY: 0, isDragging: false, startX: 0, startY: 0 }, canvas: null, card: null };
     const c = document.createElement('canvas');
-    c.width = sz.w + e;
-    c.height = sz.h + e;
+    c.width = sz.w + e; c.height = sz.h + e;
     photo.canvas = c;
     const card = buildCard(photo);
     photo.card = card;
     photos.push(photo);
     resetSingle(photo);
-    
     const targetGrid = $('photoGrid');
     if(targetGrid) targetGrid.appendChild(card);
-    
     updateUI();
     updateAcuanButtons();
 }
@@ -2179,24 +1995,16 @@ function buildCard(p) {
 
 function drawIjazahBand(ctx, w, h, sn, mfs) {
     const bL = CUT_W / 2, bW = w - CUT_W, bB = h - CUT_W / 2, bT = bB - BAND_H;
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(bL, bT, bW, BAND_H);
-    ctx.fillStyle = '#000';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#fff'; ctx.fillRect(bL, bT, bW, BAND_H);
+    ctx.fillStyle = '#000'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     let fs = mfs > 0 ? Math.min(mfs, 40) : 20;
     ctx.font = 'bold ' + fs + 'px Arial,sans-serif';
-    while(ctx.measureText(sn).width > bW - 14 && fs > 6) {
-        fs--;
-        ctx.font = 'bold ' + fs + 'px Arial,sans-serif';
-    }
+    while(ctx.measureText(sn).width > bW - 14 && fs > 6) { fs--; ctx.font = 'bold ' + fs + 'px Arial,sans-serif'; }
     ctx.fillText(sn, w / 2, bT + BAND_H / 2 + BAND_TEXT_Y);
 }
 
 function drawGoldenGuides(ctx, x, y, w, h) {
-    ctx.save();
-    ctx.strokeStyle = '#00DD44';
-    ctx.lineWidth = 1;
+    ctx.save(); ctx.strokeStyle = '#00DD44'; ctx.lineWidth = 1;
     const vx1 = Math.round(x + w * GR1), vx2 = Math.round(x + w * GR2);
     ctx.beginPath(); ctx.moveTo(vx1, y); ctx.lineTo(vx1, y + h); ctx.stroke();
     ctx.beginPath(); ctx.moveTo(vx2, y); ctx.lineTo(vx2, y + h); ctx.stroke();
@@ -2208,39 +2016,26 @@ function drawGoldenGuides(ctx, x, y, w, h) {
 
 function drawPhoto(p, guides) {
     const ctx = p.canvas.getContext('2d'), w = p.canvas.width, h = p.canvas.height, sz = p.sz, s = p.state, ins = MM_PX + CUT_W;
-    ctx.clearRect(0, 0, w, h);
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, w, h);
+    ctx.clearRect(0, 0, w, h); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);
     if(p.isIjazah) {
         ctx.save(); ctx.beginPath(); ctx.rect(ins, ins, sz.w, sz.h); ctx.clip();
-        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale);
-        ctx.restore();
+        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale); ctx.restore();
         if(p.isBW) applyGS(ctx, ins, ins, sz.w, sz.h);
         const sn = ($('schoolName') && $('schoolName').value) || 'NAMA SEKOLAH / UNIVERSITAS';
         const fs = ($('fontSize') && $('fontSize').value) || 0;
         drawIjazahBand(ctx, w, h, sn.toUpperCase(), parseInt(fs) || 0);
     } else {
         ctx.save(); ctx.beginPath(); ctx.rect(ins, ins, sz.w, sz.h); ctx.clip();
-        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale);
-        ctx.restore();
+        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale); ctx.restore();
         if(p.isBW) applyGS(ctx, ins, ins, sz.w, sz.h);
     }
-    ctx.strokeStyle = CUT_COLOR;
-    ctx.lineWidth = CUT_W;
-    ctx.strokeRect(CUT_W / 2, CUT_W / 2, w - CUT_W, h - CUT_W);
-    if(guides) {
-        let gT = ins, gH = sz.h;
-        if(p.isIjazah) gH = sz.h - BAND_H;
-        drawGoldenGuides(ctx, ins, gT, sz.w, gH);
-    }
+    ctx.strokeStyle = CUT_COLOR; ctx.lineWidth = CUT_W; ctx.strokeRect(CUT_W / 2, CUT_W / 2, w - CUT_W, h - CUT_W);
+    if(guides) { let gT = ins, gH = sz.h; if(p.isIjazah) gH = sz.h - BAND_H; drawGoldenGuides(ctx, ins, gT, sz.w, gH); }
 }
 
 function applyGS(ctx, x, y, w, h) {
     const id = ctx.getImageData(x, y, w, h), d = id.data;
-    for(let i = 0; i < d.length; i += 4) {
-        const g = d[i] * .299 + d[i + 1] * .587 + d[i + 2] * .114;
-        d[i] = d[i + 1] = d[i + 2] = g;
-    }
+    for(let i = 0; i < d.length; i += 4) { const g = d[i] * .299 + d[i + 1] * .587 + d[i + 2] * .114; d[i] = d[i + 1] = d[i + 2] = g; }
     ctx.putImageData(id, x, y);
 }
 
@@ -2258,23 +2053,16 @@ function zoomPhoto(p, d) {
     const cx = e / 2 + sz.w / 2, cy = e / 2 + (p.isIjazah ? (sz.h - BAND_H) / 2 : sz.h / 2);
     const ix = (cx - s.offsetX) / s.scale, iy = (cy - s.offsetY) / s.scale;
     s.scale = Math.max(.01, s.scale + d);
-    s.offsetX = cx - ix * s.scale;
-    s.offsetY = cy - iy * s.scale;
+    s.offsetX = cx - ix * s.scale; s.offsetY = cy - iy * s.scale;
     drawPhoto(p, true);
 }
 
-function redrawIjazah() {
-    photos.forEach(p => { if(p.isIjazah) drawPhoto(p, true); });
-}
+function redrawIjazah() { photos.forEach(p => { if(p.isIjazah) drawPhoto(p, true); }); }
 
 function updateAcuanButtons() {
     const sizeCounts = {};
     photos.forEach(p => { sizeCounts[p.sizeKey] = (sizeCounts[p.sizeKey] || 0) + 1; });
-    photos.forEach(p => {
-        const btn = p.card.querySelector('.btn-acuan');
-        if(!btn) return;
-        btn.style.display = (sizeCounts[p.sizeKey] || 0) > 1 ? 'block' : 'none';
-    });
+    photos.forEach(p => { const btn = p.card.querySelector('.btn-acuan'); if(!btn) return; btn.style.display = (sizeCounts[p.sizeKey] || 0) > 1 ? 'block' : 'none'; });
 }
 
 function setReference(id) {
@@ -2310,10 +2098,7 @@ function applyReferenceToAll() {
     showToast('Acuan diterapkan ke ' + count + ' foto ' + sizeKey + ' lainnya');
 }
 
-function clearReference() {
-    referenceSettings = null;
-    updateRefUI();
-}
+function clearReference() { referenceSettings = null; updateRefUI(); }
 
 function updateRefUI() {
     const refSection = $('refSection');
@@ -2325,240 +2110,84 @@ function updateRefUI() {
         photos.forEach(p => {
             const btn = p.card.querySelector('.btn-acuan');
             if(!btn) return;
-            if(p.id === referenceSettings.sourceId) {
-                btn.textContent = 'ACUAN AKTIF';
-                btn.classList.add('active');
-                btn.disabled = true;
-            } else {
-                btn.textContent = 'JADIKAN ACUAN';
-                btn.classList.remove('active');
-                btn.disabled = false;
-            }
+            if(p.id === referenceSettings.sourceId) { btn.textContent = 'ACUAN AKTIF'; btn.classList.add('active'); btn.disabled = true; }
+            else { btn.textContent = 'JADIKAN ACUAN'; btn.classList.remove('active'); btn.disabled = false; }
         });
     } else {
         if(refSection) refSection.style.display = 'none';
-        photos.forEach(p => {
-            p.card.classList.remove('is-ref');
-            const btn = p.card.querySelector('.btn-acuan');
-            if(btn) {
-                btn.textContent = 'JADIKAN ACUAN';
-                btn.classList.remove('active');
-                btn.disabled = false;
-            }
-        });
+        photos.forEach(p => { p.card.classList.remove('is-ref'); const btn = p.card.querySelector('.btn-acuan'); if(btn) { btn.textContent = 'JADIKAN ACUAN'; btn.classList.remove('active'); btn.disabled = false; } });
     }
 }
 
-function getIdx(id) {
-    const i = photos.findIndex(x => x.id === id);
-    return i >= 0 ? i + 1 : '?';
-}
+function getIdx(id) { const i = photos.findIndex(x => x.id === id); return i >= 0 ? i + 1 : '?'; }
 
 function setupGridEvents(grid) {
     grid.addEventListener('click', e => {
-        const rm = e.target.closest('.card-remove');
-        if(rm) { removePhoto(+rm.dataset.id); return; }
-        const dl = e.target.closest('.card-dl');
-        if(dl) { downloadSingle(+dl.dataset.id); return; }
-        const ac = e.target.closest('.btn-acuan');
-        if(ac && !ac.disabled) { setReference(+ac.dataset.id); return; }
-        const cb = e.target.closest('.cb');
-        if(cb) { handleCtrl(+cb.dataset.id, cb.dataset.act); return; }
+        const rm = e.target.closest('.card-remove'); if(rm) { removePhoto(+rm.dataset.id); return; }
+        const dl = e.target.closest('.card-dl'); if(dl) { downloadSingle(+dl.dataset.id); return; }
+        const ac = e.target.closest('.btn-acuan'); if(ac && !ac.disabled) { setReference(+ac.dataset.id); return; }
+        const cb = e.target.closest('.cb'); if(cb) { handleCtrl(+cb.dataset.id, cb.dataset.act); return; }
     });
-    grid.addEventListener('change', e => {
-        if(e.target.classList.contains('qty-inp')) {
-            const p = photos.find(x => x.id === +e.target.dataset.id);
-            if(p) {
-                p.quantity = Math.max(1, parseInt(e.target.value) || 1);
-                updateInfo();
-            }
-        }
-    });
-    grid.addEventListener('wheel', e => {
-        const cv = e.target.closest('canvas');
-        if(!cv) return;
-        e.preventDefault();
-        const card = cv.closest('.photo-card');
-        const p = photos.find(x => x.id === +card.id.replace('card-', ''));
-        if(p) zoomPhoto(p, e.deltaY < 0 ? ZOOM_D : -ZOOM_D);
-    }, { passive: false });
-
-    grid.addEventListener('mousedown', e => {
-        const cv = e.target.closest('canvas');
-        if(!cv) return;
-        const card = cv.closest('.photo-card');
-        const p = photos.find(x => x.id === +card.id.replace('card-', ''));
-        if(!p) return;
-        dragPhoto = p;
-        const s = p.state;
-        const c = getCoords(cv, e);
-        s.isDragging = true;
-        s.startX = c.x - s.offsetX;
-        s.startY = c.y - s.offsetY;
-        e.preventDefault();
-    });
-    document.addEventListener('mousemove', e => {
-        if(!dragPhoto || !dragPhoto.state.isDragging) return;
-        const c = getCoords(dragPhoto.canvas, e);
-        dragPhoto.state.offsetX = c.x - dragPhoto.state.startX;
-        dragPhoto.state.offsetY = c.y - dragPhoto.state.startY;
-        drawPhoto(dragPhoto, true);
-    });
-    document.addEventListener('mouseup', () => {
-        if(dragPhoto) {
-            dragPhoto.state.isDragging = false;
-            dragPhoto = null;
-        }
-    });
-    grid.addEventListener('touchstart', e => {
-        const cv = e.target.closest('canvas');
-        if(!cv) return;
-        const card = cv.closest('.photo-card');
-        const p = photos.find(x => x.id === +card.id.replace('card-', ''));
-        if(!p) return;
-        dragPhoto = p;
-        const s = p.state;
-        const c = getCoords(cv, e.touches[0]);
-        s.isDragging = true;
-        s.startX = c.x - s.offsetX;
-        s.startY = c.y - s.offsetY;
-        e.preventDefault();
-    }, { passive: false });
-    document.addEventListener('touchmove', e => {
-        if(!dragPhoto || !dragPhoto.state.isDragging) return;
-        const c = getCoords(dragPhoto.canvas, e.touches[0]);
-        dragPhoto.state.offsetX = c.x - dragPhoto.state.startX;
-        dragPhoto.state.offsetY = c.y - dragPhoto.state.startY;
-        drawPhoto(dragPhoto, true);
-    }, { passive: false });
-    document.addEventListener('touchend', () => {
-        if(dragPhoto) {
-            dragPhoto.state.isDragging = false;
-            dragPhoto = null;
-        }
-    });
+    grid.addEventListener('change', e => { if(e.target.classList.contains('qty-inp')) { const p = photos.find(x => x.id === +e.target.dataset.id); if(p) { p.quantity = Math.max(1, parseInt(e.target.value) || 1); updateInfo(); } } });
+    grid.addEventListener('wheel', e => { const cv = e.target.closest('canvas'); if(!cv) return; e.preventDefault(); const card = cv.closest('.photo-card'); const p = photos.find(x => x.id === +card.id.replace('card-', '')); if(p) zoomPhoto(p, e.deltaY < 0 ? ZOOM_D : -ZOOM_D); }, { passive: false });
+    grid.addEventListener('mousedown', e => { const cv = e.target.closest('canvas'); if(!cv) return; const card = cv.closest('.photo-card'); const p = photos.find(x => x.id === +card.id.replace('card-', '')); if(!p) return; dragPhoto = p; const s = p.state; const c = getCoords(cv, e); s.isDragging = true; s.startX = c.x - s.offsetX; s.startY = c.y - s.offsetY; e.preventDefault(); });
+    document.addEventListener('mousemove', e => { if(!dragPhoto || !dragPhoto.state.isDragging) return; const c = getCoords(dragPhoto.canvas, e); dragPhoto.state.offsetX = c.x - dragPhoto.state.startX; dragPhoto.state.offsetY = c.y - dragPhoto.state.startY; drawPhoto(dragPhoto, true); });
+    document.addEventListener('mouseup', () => { if(dragPhoto) { dragPhoto.state.isDragging = false; dragPhoto = null; } });
+    grid.addEventListener('touchstart', e => { const cv = e.target.closest('canvas'); if(!cv) return; const card = cv.closest('.photo-card'); const p = photos.find(x => x.id === +card.id.replace('card-', '')); if(!p) return; dragPhoto = p; const s = p.state; const c = getCoords(cv, e.touches[0]); s.isDragging = true; s.startX = c.x - s.offsetX; s.startY = c.y - s.offsetY; e.preventDefault(); }, { passive: false });
+    document.addEventListener('touchmove', e => { if(!dragPhoto || !dragPhoto.state.isDragging) return; const c = getCoords(dragPhoto.canvas, e.touches[0]); dragPhoto.state.offsetX = c.x - dragPhoto.state.startX; dragPhoto.state.offsetY = c.y - dragPhoto.state.startY; drawPhoto(dragPhoto, true); }, { passive: false });
+    document.addEventListener('touchend', () => { if(dragPhoto) { dragPhoto.state.isDragging = false; dragPhoto = null; } });
 }
 
-function getCoords(cv, e) {
-    const r = cv.getBoundingClientRect();
-    return { x: (e.clientX - r.left) * (cv.width / r.width), y: (e.clientY - r.top) * (cv.height / r.height) };
-}
+function getCoords(cv, e) { const r = cv.getBoundingClientRect(); return { x: (e.clientX - r.left) * (cv.width / r.width), y: (e.clientY - r.top) * (cv.height / r.height) }; }
 
-function handleCtrl(id, act) {
-    const p = photos.find(x => x.id === id);
-    if(!p) return;
-    const s = p.state;
-    switch(act) {
-        case 'mu': s.offsetY -= MOVE; drawPhoto(p, true); break;
-        case 'md': s.offsetY += MOVE; drawPhoto(p, true); break;
-        case 'ml': s.offsetX -= MOVE; drawPhoto(p, true); break;
-        case 'mr': s.offsetX += MOVE; drawPhoto(p, true); break;
-        case 'zi': zoomPhoto(p, ZOOM_D); break;
-        case 'zo': zoomPhoto(p, -ZOOM_D); break;
-    }
-}
+function handleCtrl(id, act) { const p = photos.find(x => x.id === id); if(!p) return; const s = p.state; switch(act) { case 'mu': s.offsetY -= MOVE; drawPhoto(p, true); break; case 'md': s.offsetY += MOVE; drawPhoto(p, true); break; case 'ml': s.offsetX -= MOVE; drawPhoto(p, true); break; case 'mr': s.offsetX += MOVE; drawPhoto(p, true); break; case 'zi': zoomPhoto(p, ZOOM_D); break; case 'zo': zoomPhoto(p, -ZOOM_D); break; } }
 
-function removePhoto(id) {
-    if(referenceSettings && referenceSettings.sourceId === id) clearReference();
-    const idx = photos.findIndex(x => x.id === id);
-    if(idx < 0) return;
-    photos[idx].card.remove();
-    photos.splice(idx, 1);
-    renumber();
-    updateUI();
-    updateAcuanButtons();
-    showToast('Foto dihapus');
-}
+function removePhoto(id) { if(referenceSettings && referenceSettings.sourceId === id) clearReference(); const idx = photos.findIndex(x => x.id === id); if(idx < 0) return; photos[idx].card.remove(); photos.splice(idx, 1); renumber(); updateUI(); updateAcuanButtons(); showToast('Foto dihapus'); }
 
-function renumber() {
-    photos.forEach((p, i) => {
-        if(p.card) p.card.querySelector('.card-num').textContent = 'Foto #' + (i + 1);
-    });
-    if(referenceSettings) {
-        if($('refNum')) $('refNum').textContent = getIdx(referenceSettings.sourceId);
-    }
-}
+function renumber() { photos.forEach((p, i) => { if(p.card) p.card.querySelector('.card-num').textContent = 'Foto #' + (i + 1); }); if(referenceSettings) { if($('refNum')) $('refNum').textContent = getIdx(referenceSettings.sourceId); } }
 
-function updateUI() {
-    const n = photos.length;
-    if($('cntNum')) $('cntNum').textContent = n;
-    if($('clearAllBtn')) $('clearAllBtn').style.display = n ? 'inline' : 'none';
-    if($('emptyState')) $('emptyState').style.display = n ? 'none' : 'block';
-    if($('resetAllBtn')) $('resetAllBtn').disabled = !n;
-    if($('arrangeBtn')) $('arrangeBtn').disabled = !n;
-    if($('dlAllBtn')) $('dlAllBtn').disabled = !n;
-    if($('gridTotal')) $('gridTotal').textContent = n ? '(' + n + ' foto)' : '';
-    updateInfo();
-}
+function updateUI() { const n = photos.length; if($('cntNum')) $('cntNum').textContent = n; if($('clearAllBtn')) $('clearAllBtn').style.display = n ? 'inline' : 'none'; if($('emptyState')) $('emptyState').style.display = n ? 'none' : 'block'; if($('resetAllBtn')) $('resetAllBtn').disabled = !n; if($('arrangeBtn')) $('arrangeBtn').disabled = !n; if($('dlAllBtn')) $('dlAllBtn').disabled = !n; if($('gridTotal')) $('gridTotal').textContent = n ? '(' + n + ' foto)' : ''; updateInfo(); }
 
 function updateInfo() {
     const n = photos.length, total = photos.reduce((s, p) => s + p.quantity, 0);
     if($('infoCount')) $('infoCount').textContent = n;
     if($('infoTotal')) $('infoTotal').textContent = total;
-    if(!n) {
-        if($('infoPages')) $('infoPages').textContent = '0';
-        return;
-    }
+    if(!n) { if($('infoPages')) $('infoPages').textContent = '0'; return; }
     const groups = {};
-    photos.forEach(p => {
-        if(!groups[p.sizeKey]) groups[p.sizeKey] = [];
-        groups[p.sizeKey].push(p);
-    });
+    photos.forEach(p => { if(!groups[p.sizeKey]) groups[p.sizeKey] = []; groups[p.sizeKey].push(p); });
     let pages = 0;
     Object.keys(groups).forEach(sk => {
         const grp = groups[sk], sz = SIZES[sk], e = MM_PX * 2 + CUT_W * 2, pw = sz.w + e, ph = sz.h + e;
         const mW = A4_W - 2 * A4_M, mH = A4_H - 2 * A4_M;
         const totalQty = grp.reduce((s, p) => s + p.quantity, 0);
-        if(grp[0].isIjazah) {
-            const cols = Math.floor(mW / pw), rows = Math.floor(mH / ph), perPage = Math.max(1, cols * rows);
-            pages += Math.ceil(totalQty / perPage);
-        } else {
-            let area = pw * ph * totalQty;
-            pages += Math.ceil(area / (mW * mH));
-        }
+        if(grp[0].isIjazah) { const cols = Math.floor(mW / pw), rows = Math.floor(mH / ph), perPage = Math.max(1, cols * rows); pages += Math.ceil(totalQty / perPage); }
+        else { let area = pw * ph * totalQty; pages += Math.ceil(area / (mW * mH)); }
     });
     if($('infoPages')) $('infoPages').textContent = pages || '1';
 }
 
-function resetAllPos() {
-    photos.forEach(p => resetSingle(p));
-    clearReference();
-    showToast('Semua posisi direset');
-}
+function resetAllPos() { photos.forEach(p => resetSingle(p)); clearReference(); showToast('Semua posisi direset'); }
 
-function clearAll() {
-    photos.forEach(p => { if(p.card) p.card.remove(); });
-    photos = [];
-    clearReference();
-    updateUI();
-    updateAcuanButtons();
-    showToast('Semua foto dihapus');
-}
+function clearAll() { photos.forEach(p => { if(p.card) p.card.remove(); }); photos = []; clearReference(); updateUI(); updateAcuanButtons(); showToast('Semua foto dihapus'); }
 
 function getClean(p) {
     const c = document.createElement('canvas');
-    c.width = p.canvas.width;
-    c.height = p.canvas.height;
+    c.width = p.canvas.width; c.height = p.canvas.height;
     const ctx = c.getContext('2d'), w = c.width, h = c.height, sz = p.sz, s = p.state, ins = MM_PX + CUT_W;
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, w, h);
     if(p.isIjazah) {
         ctx.save(); ctx.beginPath(); ctx.rect(ins, ins, sz.w, sz.h); ctx.clip();
-        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale);
-        ctx.restore();
+        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale); ctx.restore();
         if(p.isBW) applyGS(ctx, ins, ins, sz.w, sz.h);
         const sn = ($('schoolName') && $('schoolName').value) || 'NAMA SEKOLAH / UNIVERSITAS';
         const fs = ($('fontSize') && $('fontSize').value) || 0;
         drawIjazahBand(ctx, w, h, sn.toUpperCase(), parseInt(fs) || 0);
     } else {
         ctx.save(); ctx.beginPath(); ctx.rect(ins, ins, sz.w, sz.h); ctx.clip();
-        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale);
-        ctx.restore();
+        ctx.drawImage(p.img, s.offsetX, s.offsetY, p.img.width * s.scale, p.img.height * s.scale); ctx.restore();
         if(p.isBW) applyGS(ctx, ins, ins, sz.w, sz.h);
     }
-    ctx.strokeStyle = CUT_COLOR;
-    ctx.lineWidth = CUT_W;
-    ctx.strokeRect(CUT_W / 2, CUT_W / 2, w - CUT_W, h - CUT_W);
+    ctx.strokeStyle = CUT_COLOR; ctx.lineWidth = CUT_W; ctx.strokeRect(CUT_W / 2, CUT_W / 2, w - CUT_W, h - CUT_W);
     return c;
 }
 
@@ -2569,17 +2198,10 @@ function downloadSingle(id) {
     let url = patchJFIF(c.toDataURL('image/jpeg', .95), 100, 2);
     const a = document.createElement('a');
     a.download = 'KARYA-ABADI-' + p.sizeKey + '-Foto' + getIdx(id) + '.jpg';
-    a.href = url;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    a.href = url; document.body.appendChild(a); a.click(); document.body.removeChild(a);
 }
 
-function downloadAll() {
-    if(!photos.length) return;
-    showToast('Mengunduh ' + photos.length + ' foto...');
-    photos.forEach((p, i) => { setTimeout(() => downloadSingle(p.id), 300 * i); });
-}
+function downloadAll() { if(!photos.length) return; showToast('Mengunduh ' + photos.length + ' foto...'); photos.forEach((p, i) => { setTimeout(() => downloadSingle(p.id), 300 * i); }); }
 
 function patchJFIF(url, res, unit) {
     const h = 'data:image/jpeg;base64,';
@@ -2587,13 +2209,8 @@ function patchJFIF(url, res, unit) {
     const bs = atob(url.substring(h.length)), ia = new Uint8Array(bs.length);
     for(let i = 0; i < bs.length; i++) ia[i] = bs.charCodeAt(i);
     if(ia[0] === 0xFF && ia[1] === 0xD8 && ia[2] === 0xFF && ia[3] === 0xE0 && String.fromCharCode(ia[6], ia[7], ia[8], ia[9], ia[10]) === 'JFIF\0') {
-        ia[13] = unit;
-        ia[14] = (res >> 8) & 0xFF;
-        ia[15] = res & 0xFF;
-        ia[16] = (res >> 8) & 0xFF;
-        ia[17] = res & 0xFF;
-        let bin = '';
-        for(let i = 0; i < ia.length; i++) bin += String.fromCharCode(ia[i]);
+        ia[13] = unit; ia[14] = (res >> 8) & 0xFF; ia[15] = res & 0xFF; ia[16] = (res >> 8) & 0xFF; ia[17] = res & 0xFF;
+        let bin = ''; for(let i = 0; i < ia.length; i++) bin += String.fromCharCode(ia[i]);
         return h + btoa(bin);
     }
     return url;
@@ -2602,17 +2219,11 @@ function patchJFIF(url, res, unit) {
 function arrangeA4() {
     if(!photos.length) return showToast('Upload foto dulu!');
     const groups = {};
-    photos.forEach((p, idx) => {
-        if(!groups[p.sizeKey]) groups[p.sizeKey] = [];
-        groups[p.sizeKey].push({ photo: p, idx });
-    });
+    photos.forEach((p, idx) => { if(!groups[p.sizeKey]) groups[p.sizeKey] = []; groups[p.sizeKey].push({ photo: p, idx }); });
     a4PagesData = [];
     Object.keys(groups).forEach(sk => {
         const grp = groups[sk], jobs = [];
-        grp.forEach(item => {
-            const c = getClean(item.photo);
-            for(let q = 0; q < item.photo.quantity; q++) jobs.push({ source: c, w: c.width, h: c.height });
-        });
+        grp.forEach(item => { const c = getClean(item.photo); for(let q = 0; q < item.photo.quantity; q++) jobs.push({ source: c, w: c.width, h: c.height }); });
         if(!jobs.length) return;
         const isIj = grp[0].photo.isIjazah;
         if(isIj) a4PagesData.push(...packGrid(jobs, sk));
@@ -2628,17 +2239,11 @@ function packGrid(jobs, sizeKey) {
     const j0 = jobs[0], pw = j0.w, ph = j0.h, mW = A4_W - 2 * A4_M, mH = A4_H - 2 * A4_M;
     const cols = Math.floor(mW / pw), rows = Math.floor(mH / ph), perPage = Math.max(1, cols * rows), pages = [];
     for(let i = 0; i < jobs.length; i += perPage) {
-        const cv = document.createElement('canvas');
-        cv.width = A4_W; cv.height = A4_H;
-        const ctx = cv.getContext('2d');
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(0, 0, A4_W, A4_H);
+        const cv = document.createElement('canvas'); cv.width = A4_W; cv.height = A4_H;
+        const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, A4_W, A4_H);
         const batch = jobs.slice(i, i + perPage), actualRows = Math.ceil(batch.length / cols);
         const totalW = cols * pw, startX = A4_M + Math.floor((mW - totalW) / 2), startY = A4_M;
-        batch.forEach((job, idx) => {
-            const col = idx % cols, row = Math.floor(idx / cols);
-            ctx.drawImage(job.source, startX + col * pw, startY + row * ph, pw, ph);
-        });
+        batch.forEach((job, idx) => { const col = idx % cols, row = Math.floor(idx / cols); ctx.drawImage(job.source, startX + col * pw, startY + row * ph, pw, ph); });
         const usedH = actualRows * ph, eff = Math.min(Math.round((usedH / mH) * 100), 100);
         pages.push({ url: patchJFIF(cv.toDataURL('image/jpeg', 1), 100, 2), eff, count: batch.length, sizeKey, ijazah: true });
     }
@@ -2650,20 +2255,12 @@ function packBinPack(jobs, sizeKey) {
     let pages = [], rem = [...jobs];
     rem.sort((a, b) => b.h - a.h || b.w - a.w);
     while(rem.length) {
-        const cv = document.createElement('canvas');
-        cv.width = A4_W; cv.height = A4_H;
-        const ctx = cv.getContext('2d');
-        ctx.fillStyle = '#fff';
-        ctx.fillRect(0, 0, A4_W, A4_H);
+        const cv = document.createElement('canvas'); cv.width = A4_W; cv.height = A4_H;
+        const ctx = cv.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, A4_W, A4_H);
         let freeR = [{ x: m, y: m, w: mW, h: mH }], maxY = m, unplaced = [];
         for(const j of rem) {
             let best = null, bestS = Infinity;
-            for(const fr of freeR) {
-                if(j.w <= fr.w && j.h <= fr.h) {
-                    const sc = fr.y * 1e6 + fr.x * 1e3 + Math.min(fr.w - j.w, fr.h - j.h);
-                    if(sc < bestS) { bestS = sc; best = fr; }
-                }
-            }
+            for(const fr of freeR) { if(j.w <= fr.w && j.h <= fr.h) { const sc = fr.y * 1e6 + fr.x * 1e3 + Math.min(fr.w - j.w, fr.h - j.h); if(sc < bestS) { bestS = sc; best = fr; } } }
             if(best) {
                 ctx.drawImage(j.source, best.x, best.y, j.w, j.h);
                 if(best.y + j.h > maxY) maxY = best.y + j.h;
@@ -2671,26 +2268,14 @@ function packBinPack(jobs, sizeKey) {
                 let nfr = [];
                 for(const f of freeR) {
                     if (intersects(f, placed)) {
-                        if (placed.y > f.y) {
-                            nfr.push({ x: f.x, y: f.y, w: f.w, h: placed.y - f.y });
-                        }
-                        if (placed.y + placed.h < f.y + f.h) {
-                            nfr.push({ x: f.x, y: placed.y + placed.h, w: f.w, h: (f.y + f.h) - (placed.y + placed.h) });
-                        }
-                        if (placed.x > f.x) {
-                            nfr.push({ x: f.x, y: placed.y, w: placed.x - f.x, h: placed.h });
-                        }
-                        if (placed.x + placed.w < f.x + f.w) {
-                            nfr.push({ x: placed.x + placed.w, y: placed.y, w: (f.x + f.w) - (placed.x + placed.w), h: placed.h });
-                        }
-                    } else {
-                        nfr.push(f);
-                    }
+                        if (placed.y > f.y) { nfr.push({ x: f.x, y: f.y, w: f.w, h: placed.y - f.y }); }
+                        if (placed.y + placed.h < f.y + f.h) { nfr.push({ x: f.x, y: placed.y + placed.h, w: f.w, h: (f.y + f.h) - (placed.y + placed.h) }); }
+                        if (placed.x > f.x) { nfr.push({ x: f.x, y: placed.y, w: placed.x - f.x, h: placed.h }); }
+                        if (placed.x + placed.w < f.x + f.w) { nfr.push({ x: placed.x + placed.w, y: placed.y, w: (f.x + f.w) - (placed.x + placed.w), h: placed.h }); }
+                    } else { nfr.push(f); }
                 }
                 freeR = nfr.filter((a, i, arr) => !arr.some((b, j) => i !== j && isContained(a, b)));
-            } else {
-                unplaced.push(j);
-            }
+            } else { unplaced.push(j); }
         }
         rem = unplaced;
         const eff = Math.min(Math.round(((maxY - m) / mH) * 100), 100);
@@ -2699,35 +2284,20 @@ function packBinPack(jobs, sizeKey) {
     return pages;
 }
 
-function intersects(a, b) {
-    return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
-}
-
-function isContained(i, o) {
-    return i.x >= o.x && i.y >= o.y && i.x + i.w <= o.x + o.w && i.y + i.h <= o.y + o.h;
-}
+function intersects(a, b) { return a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y; }
+function isContained(i, o) { return i.x >= o.x && i.y >= o.y && i.x + i.w <= o.x + o.w && i.y + i.h <= o.y + o.h; }
 
 function renderModal() {
     const modalBody = $('modalBody');
     if(!modalBody) return;
     modalBody.innerHTML = '';
-    if(!a4PagesData.length) {
-        modalBody.innerHTML = '<div style="color:#888;padding:20px">Tidak ada halaman</div>';
-        return;
-    }
+    if(!a4PagesData.length) { modalBody.innerHTML = '<div style="color:#888;padding:20px">Tidak ada halaman</div>'; return; }
     const grouped = {};
-    a4PagesData.forEach((pg, i) => {
-        if(!grouped[pg.sizeKey]) grouped[pg.sizeKey] = [];
-        grouped[pg.sizeKey].push({ ...pg, globalIdx: i });
-    });
+    a4PagesData.forEach((pg, i) => { if(!grouped[pg.sizeKey]) grouped[pg.sizeKey] = []; grouped[pg.sizeKey].push({ ...pg, globalIdx: i }); });
     let html = '';
     Object.keys(grouped).forEach(sk => {
-        const pages = grouped[sk];
-        const isIj = pages[0].ijazah;
-        const typeLabel = isIj ? 'IJAZAH' : 'REGULER';
-        pages.forEach((pg, i) => {
-            html += `<div class="a4-section"><div class="a4-title">${typeLabel} ${sk} — Halaman ${i + 1} <span class="badge">${pg.count} foto &bull; ~${pg.eff}% terisi</span></div><div class="a4-grid"><img src="${pg.url}" alt="Halaman A4"></div></div>`;
-        });
+        const pages = grouped[sk]; const isIj = pages[0].ijazah; const typeLabel = isIj ? 'IJAZAH' : 'REGULER';
+        pages.forEach((pg, i) => { html += `<div class="a4-section"><div class="a4-title">${typeLabel} ${sk} — Halaman ${i + 1} <span class="badge">${pg.count} foto &bull; ~${pg.eff}% terisi</span></div><div class="a4-grid"><img src="${pg.url}" alt="Halaman A4"></div></div>`; });
     });
     modalBody.innerHTML = html;
     const dlA4Btn = $('dlA4Btn');
@@ -2738,14 +2308,7 @@ function downloadA4Pages() {
     if(!a4PagesData.length) return;
     showToast('Mengunduh ' + a4PagesData.length + ' halaman...');
     a4PagesData.forEach((pg, i) => {
-        setTimeout(() => {
-            const a = document.createElement('a');
-            a.download = 'KARYA-ABADI-A4-' + pg.sizeKey + '-Hal' + (i + 1) + '-' + Date.now() + '.jpg';
-            a.href = pg.url;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-        }, 600 * i);
+        setTimeout(() => { const a = document.createElement('a'); a.download = 'KARYA-ABADI-A4-' + pg.sizeKey + '-Hal' + (i + 1) + '-' + Date.now() + '.jpg'; a.href = pg.url; document.body.appendChild(a); a.click(); document.body.removeChild(a); }, 600 * i);
     });
 }
 
@@ -2753,29 +2316,21 @@ let toastTimer;
 function showToast(msg) {
     const toastEl = $('toast');
     if(!toastEl) return;
-    toastEl.textContent = msg;
-    toastEl.className = 'show';
+    toastEl.textContent = msg; toastEl.className = 'show';
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => toastEl.classList.remove('show'), 3000);
 }
 
 // ===== INIT =====
- $('themeToggle').onclick = () => {
-    const l = document.documentElement.getAttribute('data-theme') === 'light';
-    document.documentElement.setAttribute('data-theme', l ? 'dark' : 'light');
-    $('themeToggle').innerHTML = l ? '&#9728;&#65039;' : '&#127769;';
-};
+ $('themeToggle').onclick = () => { const l = document.documentElement.getAttribute('data-theme') === 'light'; document.documentElement.setAttribute('data-theme', l ? 'dark' : 'light'); $('themeToggle').innerHTML = l ? '&#9728;&#65039;' : '&#127769;'; };
  $('mobileToggle').onclick = () => $('navMenu').classList.toggle('open');
 
 document.addEventListener('DOMContentLoaded', function() {
     renderGuides();
     initTool();
     navigate('home');
-    
     const yearSpan = document.getElementById('currentYear');
-    if (yearSpan) {
-        yearSpan.textContent = new Date().getFullYear();
-    }
+    if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
 });
 </script>
 </body>
