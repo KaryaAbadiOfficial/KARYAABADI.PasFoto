@@ -1,0 +1,8 @@
+# robots.txt - Karya Abadi Pas Foto (https://karyaabadipasfoto.my.id/)
+# Mengizinkan semua crawler, termasuk AdSense (Mediapartners-Google) untuk
+# menayangkan iklan yang relevan dan Googlebot untuk mengindeks halaman.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://karyaabadipasfoto.my.id/sitemap.xml
