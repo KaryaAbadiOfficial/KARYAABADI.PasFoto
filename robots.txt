@@ -1,0 +1,17 @@
+# robots.txt untuk https://karyaabadipasfoto.my.id/
+# Memastikan Googlebot dan AdsBot dapat meng-crawl seluruh isi website
+# (syarat "site is reachable" pada proses review Google AdSense).
+
+User-agent: *
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: AdsBot-Google
+Allow: /
+
+User-agent: AdsBot-Google-Mobile
+Allow: /
+
+Sitemap: https://karyaabadipasfoto.my.id/sitemap.xml
